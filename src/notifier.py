@@ -113,7 +113,7 @@ class TelegramNotifier:
 
 class EmailNotifier:
     """
-    Interface for handling formatting and dispatching email reports via SMTP.
+    Interface for handling formatting and dispatching email reports via Resend Web API.
     """
     def __init__(self, config: dict):
         self.config = config
@@ -121,50 +121,48 @@ class EmailNotifier:
         
         # Support secure environment variables in cloud hosting
         self.enabled = os.environ.get("EMAIL_ENABLED", "").lower() == "true" or email_params.get("email_enabled", False)
-        self.smtp_host = os.environ.get("SMTP_HOST") or email_params.get("smtp_host", "smtp.gmail.com")
-        
-        smtp_port_raw = os.environ.get("SMTP_PORT")
-        if smtp_port_raw:
-            try:
-                self.smtp_port = int(smtp_port_raw)
-            except ValueError:
-                self.smtp_port = 587
-        else:
-            self.smtp_port = int(email_params.get("smtp_port", 587))
-            
-        self.smtp_user = os.environ.get("SMTP_USER") or email_params.get("smtp_user", "")
-        self.smtp_password = os.environ.get("SMTP_PASSWORD") or email_params.get("smtp_password", "")
+        self.api_key = os.environ.get("RESEND_API_KEY") or email_params.get("resend_api_key", "")
         self.recipient = os.environ.get("RECIPIENT_EMAIL") or email_params.get("recipient_email", "vishalthakker2009@gmail.com")
+        self.from_email = os.environ.get("FROM_EMAIL") or email_params.get("from_email", "onboarding@resend.dev")
         
         logger.info(f"EmailNotifier status: {'ENABLED' if self.enabled else 'DISABLED'} | Recipient: {self.recipient}")
 
     def send_report(self, subject: str, html_content: str) -> bool:
-        """Sends an HTML email report using SMTP."""
+        """Sends an HTML email report using the Resend Web API."""
         if not self.enabled:
             return False
             
-        if not self.smtp_user or not self.smtp_password:
-            logger.warning("EmailNotifier is enabled but SMTP user or password credentials are not set in config/config.yaml.")
+        if not self.api_key:
+            logger.warning("EmailNotifier is enabled but RESEND_API_KEY is not set in environment or config.")
             return False
 
         try:
-            msg = MIMEMultipart("alternative")
-            msg["Subject"] = subject
-            msg["From"] = self.smtp_user
-            msg["To"] = self.recipient
-
-            part = MIMEText(html_content, "html")
-            msg.attach(part)
-
-            logger.info(f"Connecting to SMTP server {self.smtp_host}:{self.smtp_port}...")
-            server = smtplib.SMTP(self.smtp_host, self.smtp_port)
-            server.starttls()
-            server.login(self.smtp_user, self.smtp_password)
-            server.sendmail(self.smtp_user, self.recipient, msg.as_string())
-            server.quit()
+            url = "https://api.resend.com/emails"
+            payload = {
+                "from": self.from_email,
+                "to": [self.recipient],
+                "subject": subject,
+                "html": html_content
+            }
             
-            logger.info(f"Email notification successfully sent to {self.recipient}")
-            return True
+            req = urllib.request.Request(
+                url,
+                data=json.dumps(payload).encode("utf-8"),
+                headers={
+                    "Authorization": f"Bearer {self.api_key}",
+                    "Content-Type": "application/json"
+                }
+            )
+            
+            logger.info(f"Connecting to Resend API to send email to {self.recipient}...")
+            with urllib.request.urlopen(req, timeout=10) as response:
+                res_data = json.loads(response.read().decode("utf-8"))
+                if "id" in res_data:
+                    logger.info(f"Email notification successfully sent via Resend. ID: {res_data['id']}")
+                    return True
+                else:
+                    logger.error(f"Resend API returned unexpected response: {res_data}")
+                    return False
         except Exception as e:
-            logger.error(f"Failed to send email notification to {self.recipient}: {e}")
+            logger.error(f"Failed to send email notification via Resend: {e}")
             return False

@@ -2502,52 +2502,57 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             try:
-                import smtplib
-                from email.mime.text import MIMEText
-                from email.mime.multipart import MIMEMultipart
+                import urllib.request
+                import json
 
                 enabled = os.environ.get("EMAIL_ENABLED", "false").lower() == "true"
-                smtp_host = os.environ.get("SMTP_HOST", "smtp.gmail.com")
-                smtp_port = int(os.environ.get("SMTP_PORT", "587"))
-                smtp_user = os.environ.get("SMTP_USER", "")
-                smtp_password = os.environ.get("SMTP_PASSWORD", "")
-                recipient = os.environ.get("RECIPIENT_EMAIL") or os.environ.get("SMTP_USER", "") or "vishalthakker2009@gmail.com"
+                api_key = os.environ.get("RESEND_API_KEY", "")
+                recipient = os.environ.get("RECIPIENT_EMAIL", "vishalthakker2009@gmail.com")
+                from_email = os.environ.get("FROM_EMAIL", "onboarding@resend.dev")
 
                 if not enabled:
                     self.wfile.write(json.dumps({"status": "error", "message": "Email notifier is not enabled (EMAIL_ENABLED environment variable is not true)."}).encode("utf-8"))
                     return
 
-                if not smtp_user or not smtp_password:
-                    self.wfile.write(json.dumps({"status": "error", "message": f"SMTP credentials missing. SMTP_USER={smtp_user}, Has Password: {bool(smtp_password)}"}).encode("utf-8"))
+                if not api_key:
+                    self.wfile.write(json.dumps({"status": "error", "message": "RESEND_API_KEY is missing. Check your Railway environment variables."}).encode("utf-8"))
                     return
 
-                msg = MIMEMultipart("alternative")
-                msg["Subject"] = "Minervini OS - SMTP Test Email"
-                msg["From"] = smtp_user
-                msg["To"] = recipient
+                url = "https://api.resend.com/emails"
+                payload = {
+                    "from": from_email,
+                    "to": [recipient],
+                    "subject": "Minervini OS - Resend API Test Email",
+                    "html": """
+                    <html>
+                    <body style="font-family: Arial, sans-serif; background-color: #0f172a; color: #f8fafc; padding: 20px; border-radius: 8px;">
+                        <h2 style="color: #6366f1;">Minervini OS Resend API Connection Test</h2>
+                        <p>Congratulations! Your Railway environment variables and Resend API Key are configured correctly.</p>
+                        <p>The daily scan HTML reports will now be sent to this email address every weekday at 6:00 PM IST.</p>
+                        <hr style="border: 0; border-top: 1px solid #334155; margin: 20px 0;"/>
+                        <small style="color: #94a3b8;">Sent automatically by your Railway deployment via Resend API.</small>
+                    </body>
+                    </html>
+                    """
+                }
 
-                html_body = """
-                <html>
-                <body style="font-family: Arial, sans-serif; background-color: #0f172a; color: #f8fafc; padding: 20px; border-radius: 8px;">
-                    <h2 style="color: #6366f1;">Minervini OS SMTP Connection Test</h2>
-                    <p>Congratulations! Your Railway environment variables and Google App Password are configured correctly.</p>
-                    <p>The daily scan HTML reports will now be sent to this email address every weekday at 6:00 PM IST.</p>
-                    <hr style="border: 0; border-top: 1px solid #334155; margin: 20px 0;"/>
-                    <small style="color: #94a3b8;">Sent automatically by your Railway deployment.</small>
-                </body>
-                </html>
-                """
-                msg.attach(MIMEText(html_body, "html"))
+                req = urllib.request.Request(
+                    url,
+                    data=json.dumps(payload).encode("utf-8"),
+                    headers={
+                        "Authorization": f"Bearer {api_key}",
+                        "Content-Type": "application/json"
+                    }
+                )
 
-                server = smtplib.SMTP(smtp_host, smtp_port, timeout=10)
-                server.starttls()
-                server.login(smtp_user, smtp_password)
-                server.sendmail(smtp_user, recipient, msg.as_string())
-                server.quit()
-
-                self.wfile.write(json.dumps({"status": "success", "message": f"Test email successfully sent to {recipient}!"}).encode("utf-8"))
+                with urllib.request.urlopen(req, timeout=10) as response:
+                    res_data = json.loads(response.read().decode("utf-8"))
+                    if "id" in res_data:
+                        self.wfile.write(json.dumps({"status": "success", "message": f"Test email successfully sent to {recipient} via Resend! ID: {res_data['id']}"}).encode("utf-8"))
+                    else:
+                        self.wfile.write(json.dumps({"status": "error", "message": f"Resend API returned unexpected response: {res_data}"}).encode("utf-8"))
             except Exception as e:
-                self.wfile.write(json.dumps({"status": "error", "message": f"Failed to send test email: {str(e)}"}).encode("utf-8"))
+                self.wfile.write(json.dumps({"status": "error", "message": f"Failed to send test email via Resend: {str(e)}"}).encode("utf-8"))
             return
 
         # REST API: Trigger EOD Scan
