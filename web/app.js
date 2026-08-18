@@ -966,6 +966,44 @@ function setupEventHandlers() {
 
     });
 
+    // Grade Checkbox Automatic Pattern Toggling
+    const syncPatternCheckboxes = () => {
+        const gradeA = document.getElementById("filter-grade-a")?.checked ?? false;
+        const gradeB = document.getElementById("filter-grade-b")?.checked ?? false;
+        const gradeC = document.getElementById("filter-grade-c")?.checked ?? false;
+
+        const vcp = document.getElementById("filter-vcp");
+        const flag = document.getElementById("filter-flag");
+        const pb10 = document.getElementById("filter-pb10");
+        const pb20 = document.getElementById("filter-pb20");
+        const pb50 = document.getElementById("filter-pb50");
+        const ib = document.getElementById("filter-ib");
+        const pp = document.getElementById("filter-pp");
+
+        if (vcp) vcp.checked = gradeA || gradeB;
+        if (flag) flag.checked = gradeB;
+        if (pb10) pb10.checked = gradeB;
+        if (pb20) pb20.checked = gradeC;
+        if (pb50) pb50.checked = gradeC;
+        if (ib) ib.checked = gradeB || gradeC;
+        if (pp) pp.checked = gradeA;
+    };
+
+    const gradeAEl = document.getElementById("filter-grade-a");
+    const gradeBEl = document.getElementById("filter-grade-b");
+    const gradeCEl = document.getElementById("filter-grade-c");
+
+    if (gradeAEl && gradeBEl && gradeCEl) {
+        [gradeAEl, gradeBEl, gradeCEl].forEach(el => {
+            el.addEventListener("change", () => {
+                syncPatternCheckboxes();
+                if (window.renderFilteredWatchlist) {
+                    window.renderFilteredWatchlist();
+                }
+            });
+        });
+    }
+
 }
 
 // Load available scan dates from backend
