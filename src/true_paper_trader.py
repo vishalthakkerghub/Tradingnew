@@ -83,6 +83,11 @@ class TruePaperTrader:
             logger.error(f"Failed to save True Paper Portfolio: {e}")
 
     def rollback_day(self, date_str):
+        # Only rollback if this date was already processed (exists in snapshots)
+        if date_str not in self.state.get("daily_snapshots", {}):
+            logger.info(f"Date {date_str} has not been processed yet. Skipping rollback.")
+            return
+
         logger.info(f"Rolling back execution for date: {date_str}...")
         
         # 1. Remove new trades entered today

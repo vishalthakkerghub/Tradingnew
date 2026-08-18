@@ -2454,6 +2454,48 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
         if self.path.startswith("/web/"):
             return super().do_GET()
 
+        # REST API: Fix Paper Trading Days Active
+        if path == "/api/fix_days":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            try:
+                portfolio_file = "data/true_paper_portfolio.json"
+                nifty_file = "data/cache/NIFTY_50.csv"
+                if not os.path.exists(portfolio_file):
+                    portfolio_file = os.path.join("minervini_os", portfolio_file)
+                if not os.path.exists(nifty_file):
+                    nifty_file = os.path.join("minervini_os", nifty_file)
+                
+                if os.path.exists(portfolio_file) and os.path.exists(nifty_file):
+                    with open(portfolio_file, "r", encoding="utf-8") as f:
+                        state = json.load(f)
+                    
+                    df_nifty = pd.read_csv(nifty_file)
+                    trading_dates = sorted(pd.to_datetime(df_nifty['Date']).dt.strftime('%Y-%m-%d').unique())
+                    
+                    end_date = trading_dates[-1]
+                    updated_count = 0
+                    for t in state.get("open_trades", []):
+                        sym = t["symbol"]
+                        entry = t["entry_date"]
+                        if entry in trading_dates and end_date in trading_dates:
+                            start_idx = trading_dates.index(entry)
+                            end_idx = trading_dates.index(end_date)
+                            days = end_idx - start_idx + 1
+                            t["days_active"] = days
+                            updated_count += 1
+                    
+                    with open(portfolio_file, "w", encoding="utf-8") as f:
+                        json.dump(state, f, indent=2)
+                        
+                    self.wfile.write(json.dumps({"status": "success", "message": f"Successfully updated days_active for {updated_count} open trades ending {end_date}."}).encode("utf-8"))
+                else:
+                    self.wfile.write(json.dumps({"status": "error", "message": "Missing portfolio or nifty index files."}).encode("utf-8"))
+            except Exception as e:
+                self.wfile.write(json.dumps({"status": "error", "message": f"Failed to fix days: {str(e)}"}).encode("utf-8"))
+            return
+
         # REST API: Trigger EOD Scan
         if path == "/api/run_scan":
             self.send_response(200)
