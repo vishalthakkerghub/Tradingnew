@@ -896,6 +896,20 @@ def run_daily_scan():
                 html_lines.append(f"<h2>Daily Minervini Scanner Report - {scan_date_str}</h2>")
                 html_lines.append(f"<p><strong>Market Posture:</strong> {posture} (Score: {health_score}/10)</p>")
                 
+                # Focus Gates Warning check
+                has_candidates = bool(strict_list or flex_list or mini_list or flag_candidates_detailed)
+                if not has_candidates:
+                    html_lines.append("""
+                    <div style="background-color: #fef2f2; border: 1px solid #fecaca; padding: 15px; border-radius: 8px; margin: 15px 0; color: #991b1b; font-family: Arial, sans-serif; border-left: 5px solid #ef4444;">
+                        <h3 style="margin-top: 0; color: #991b1b; font-weight: bold;">
+                            ⚠️ CAPITAL PRESERVATION ACTIVE
+                        </h3>
+                        <p style="margin-bottom: 0; font-size: 14px; line-height: 1.5;">
+                            <strong>No stocks cleared the 4 Focus Gates today.</strong> The market posture restricts aggressive buying, and no setups cleared the tight risk parameters. <strong>No new trades tomorrow!</strong>
+                        </p>
+                    </div>
+                    """)
+                
                 # Watchlist summary
                 html_lines.append("<h3>STRICT VCP Candidates</h3>")
                 if strict_list:
