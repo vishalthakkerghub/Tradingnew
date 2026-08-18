@@ -2503,6 +2503,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             try:
                 import urllib.request
+                import urllib.error
                 import json
 
                 enabled = os.environ.get("EMAIL_ENABLED", "false").lower() == "true"
@@ -2551,6 +2552,12 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                         self.wfile.write(json.dumps({"status": "success", "message": f"Test email successfully sent to {recipient} via Resend! ID: {res_data['id']}"}).encode("utf-8"))
                     else:
                         self.wfile.write(json.dumps({"status": "error", "message": f"Resend API returned unexpected response: {res_data}"}).encode("utf-8"))
+            except urllib.error.HTTPError as he:
+                try:
+                    error_body = he.read().decode("utf-8")
+                except Exception:
+                    error_body = "Could not parse response body."
+                self.wfile.write(json.dumps({"status": "error", "message": f"Resend API Error (HTTP {he.code}): {error_body}"}).encode("utf-8"))
             except Exception as e:
                 self.wfile.write(json.dumps({"status": "error", "message": f"Failed to send test email via Resend: {str(e)}"}).encode("utf-8"))
             return
