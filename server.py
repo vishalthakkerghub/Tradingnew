@@ -2496,6 +2496,43 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"status": "error", "message": f"Failed to fix days: {str(e)}"}).encode("utf-8"))
             return
 
+        # REST API: Update GANDHAR Journal Entry
+        if path == "/api/update_gandhar":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            try:
+                journal_file = "data/trade_journal_data.json"
+                if not os.path.exists(journal_file):
+                    journal_file = os.path.join("minervini_os", journal_file)
+                
+                if os.path.exists(journal_file):
+                    with open(journal_file, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                    
+                    updated = False
+                    for item in data:
+                        if 'GANDHAR' in item.get('symbol', '').upper():
+                            item['entry_price'] = 242
+                            item['total_qty'] = 500
+                            item['open_qty'] = 500
+                            item['stop_loss'] = 230
+                            item['invested_amount'] = 500 * 242
+                            item['risk_pct'] = round(((242 - 230) / 242) * 100, 2)
+                            updated = True
+                    
+                    if updated:
+                        with open(journal_file, "w", encoding="utf-8") as f:
+                            json.dump(data, f, indent=2)
+                        self.wfile.write(json.dumps({"status": "success", "message": "Successfully updated GANDHAR entry inside cloud database!"}).encode("utf-8"))
+                    else:
+                        self.wfile.write(json.dumps({"status": "error", "message": "GANDHAR entry not found in trade journal."}).encode("utf-8"))
+                else:
+                    self.wfile.write(json.dumps({"status": "error", "message": "Trade journal file not found."}).encode("utf-8"))
+            except Exception as e:
+                self.wfile.write(json.dumps({"status": "error", "message": f"Failed to update GANDHAR: {str(e)}"}).encode("utf-8"))
+            return
+
         # REST API: Send Test Email
         if path == "/api/test_email":
             self.send_response(200)
