@@ -2502,18 +2502,30 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             try:
-                from src.notifier import EmailNotifier
-                mock_config = {
-                    "notifications": {
-                        "email_enabled": True
-                    }
-                }
-                email_notifier = EmailNotifier(mock_config)
-                if not email_notifier.enabled:
+                import smtplib
+                from email.mime.text import MIMEText
+                from email.mime.multipart import MIMEMultipart
+
+                enabled = os.environ.get("EMAIL_ENABLED", "false").lower() == "true"
+                smtp_host = os.environ.get("SMTP_HOST", "smtp.gmail.com")
+                smtp_port = int(os.environ.get("SMTP_PORT", "587"))
+                smtp_user = os.environ.get("SMTP_USER", "")
+                smtp_password = os.environ.get("SMTP_PASSWORD", "")
+                recipient = os.environ.get("RECIPIENT_EMAIL") or os.environ.get("SMTP_USER", "") or "vishalthakker2009@gmail.com"
+
+                if not enabled:
                     self.wfile.write(json.dumps({"status": "error", "message": "Email notifier is not enabled (EMAIL_ENABLED environment variable is not true)."}).encode("utf-8"))
                     return
-                
-                subject = "Minervini OS - SMTP Test Email"
+
+                if not smtp_user or not smtp_password:
+                    self.wfile.write(json.dumps({"status": "error", "message": f"SMTP credentials missing. SMTP_USER={smtp_user}, Has Password: {bool(smtp_password)}"}).encode("utf-8"))
+                    return
+
+                msg = MIMEMultipart("alternative")
+                msg["Subject"] = "Minervini OS - SMTP Test Email"
+                msg["From"] = smtp_user
+                msg["To"] = recipient
+
                 html_body = """
                 <html>
                 <body style="font-family: Arial, sans-serif; background-color: #0f172a; color: #f8fafc; padding: 20px; border-radius: 8px;">
@@ -2525,11 +2537,15 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 </body>
                 </html>
                 """
-                success = email_notifier.send_report(subject, html_body)
-                if success:
-                    self.wfile.write(json.dumps({"status": "success", "message": f"Test email successfully sent to {email_notifier.recipient}!"}).encode("utf-8"))
-                else:
-                    self.wfile.write(json.dumps({"status": "error", "message": "SMTP connection failed. Check your username and app password."}).encode("utf-8"))
+                msg.attach(MIMEText(html_body, "html"))
+
+                server = smtplib.SMTP(smtp_host, smtp_port, timeout=10)
+                server.starttls()
+                server.login(smtp_user, smtp_password)
+                server.sendmail(smtp_user, recipient, msg.as_string())
+                server.quit()
+
+                self.wfile.write(json.dumps({"status": "success", "message": f"Test email successfully sent to {recipient}!"}).encode("utf-8"))
             except Exception as e:
                 self.wfile.write(json.dumps({"status": "error", "message": f"Failed to send test email: {str(e)}"}).encode("utf-8"))
             return
