@@ -1,3 +1,4 @@
+import os
 import logging
 import smtplib
 import urllib.request
@@ -117,12 +118,23 @@ class EmailNotifier:
     def __init__(self, config: dict):
         self.config = config
         email_params = config.get("notifications", {})
-        self.enabled = email_params.get("email_enabled", False)
-        self.smtp_host = email_params.get("smtp_host", "smtp.gmail.com")
-        self.smtp_port = email_params.get("smtp_port", 587)
-        self.smtp_user = email_params.get("smtp_user", "")
-        self.smtp_password = email_params.get("smtp_password", "")
-        self.recipient = email_params.get("recipient_email", "vishalthakker2009@gmail.com")
+        
+        # Support secure environment variables in cloud hosting
+        self.enabled = os.environ.get("EMAIL_ENABLED", "").lower() == "true" or email_params.get("email_enabled", False)
+        self.smtp_host = os.environ.get("SMTP_HOST") or email_params.get("smtp_host", "smtp.gmail.com")
+        
+        smtp_port_raw = os.environ.get("SMTP_PORT")
+        if smtp_port_raw:
+            try:
+                self.smtp_port = int(smtp_port_raw)
+            except ValueError:
+                self.smtp_port = 587
+        else:
+            self.smtp_port = int(email_params.get("smtp_port", 587))
+            
+        self.smtp_user = os.environ.get("SMTP_USER") or email_params.get("smtp_user", "")
+        self.smtp_password = os.environ.get("SMTP_PASSWORD") or email_params.get("smtp_password", "")
+        self.recipient = os.environ.get("RECIPIENT_EMAIL") or email_params.get("recipient_email", "vishalthakker2009@gmail.com")
         
         logger.info(f"EmailNotifier status: {'ENABLED' if self.enabled else 'DISABLED'} | Recipient: {self.recipient}")
 
