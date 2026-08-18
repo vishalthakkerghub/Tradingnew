@@ -1,0 +1,95 @@
+{
+  "trades": [
+    {
+      "id": "1785736405941",
+      "symbol": "GANDHAR",
+      "earnings_date": "2026-10-22",
+      "days_to_earnings": 65,
+      "setup_type": "STRICT_VCP",
+      "grade": "Grade A",
+      "entry_price": 236.0,
+      "current_price": 255.1000061035156,
+      "days_active": 13,
+      "r_multiple": 1.74,
+      "eqs": 100,
+      "tbs": 100,
+      "fci": 0,
+      "mhs": 50,
+      "expectancy_regime": "Category 2 (Strong)",
+      "probs": {
+        "category_3": 35.0,
+        "category_2": 45.0,
+        "category_1": 20.0
+      },
+      "recommended_stop": 236.04,
+      "stop_reason": "Trail 20 EMA (Category 2 Strong Trend strategy).",
+      "action": "\ud83d\udea8 EXIT NOW (CONSTITUTION BREACH)",
+      "confidence": 100,
+      "reasons": [
+        "CONSTITUTION VIOLATION: This position is being held in violation of a past stop loss breach! Cut the trade immediately. Save your capital.",
+        "[CONSTITUTION WARNING: Stop Loss was historically breached on close/intraday on 2026-07-31, violating Rule 4 & Rule 0. Active position is currently held in violation of stop.]"
+      ],
+      "partial_exit_pct": 0,
+      "allow_pyramid": false,
+      "day_summary": "Recovery Attempt",
+      "metrics": {
+        "rs_score": 92.9,
+        "ema10": 243.44,
+        "ema10_dist_pct": 4.79,
+        "vdu_ratio": 0.61,
+        "vol_ratio": 0.61,
+        "higher_high": true,
+        "stop_loss": 225.0,
+        "recommended_stop": 236.04,
+        "closing_position_pct": 81.1,
+        "is_up_day": true
+      }
+    },
+    {
+      "id": "1783614549191",
+      "symbol": "APOLLO",
+      "earnings_date": "2026-11-06",
+      "days_to_earnings": 80,
+      "setup_type": "STRICT_VCP",
+      "grade": "Grade A",
+      "entry_price": 397.0,
+      "current_price": 387.8500061035156,
+      "days_active": 29,
+      "r_multiple": -0.83,
+      "eqs": 100,
+      "tbs": 0,
+      "fci": 100,
+      "mhs": 50,
+      "expectancy_regime": "Category 2 (Strong)",
+      "probs": {
+        "category_3": 35.0,
+        "category_2": 45.0,
+        "category_1": 20.0
+      },
+      "recommended_stop": 386.0,
+      "stop_reason": "Keep original stop loss (default protection window)",
+      "action": "\ud83d\udea8 EXIT NOW (SL BREACHED)",
+      "confidence": 100,
+      "reasons": [
+        "CONSTITUTION RULE 4 VIOLATION: Stop Loss has been breached! You must exit immediately. No hope, no ego. Sell now.",
+        "Stop Loss Breach Intraday [Violates RULE 4: Stop Loss is Sacred & RULE #0: No Hesitation to Exit]: Intraday Low Rs.384.00 touched Stop Loss Rs.386.00."
+      ],
+      "partial_exit_pct": 0,
+      "allow_pyramid": false,
+      "day_summary": "SL Touched Intraday",
+      "metrics": {
+        "rs_score": 36.0,
+        "ema10": 390.3,
+        "ema10_dist_pct": -0.63,
+        "vdu_ratio": 0.25,
+        "vol_ratio": 0.25,
+        "higher_high": false,
+        "stop_loss": 386.0,
+        "recommended_stop": 386.0,
+        "closing_position_pct": 59.2,
+        "is_up_day": true
+      }
+    }
+  ],
+  "summary": "Analyzed 2 open positions successfully."
+}

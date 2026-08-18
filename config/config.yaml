@@ -1,0 +1,39 @@
+# Minervini AI Operating System Config File (v1.0 Scaffold)
+
+system:
+  trading_universe: "NSE"
+  primary_index: "NIFTY_MIDSML400"
+  secondary_index: "NIFTY_50"
+  scan_interval_minutes: 1440       # EOD (Daily)
+
+liquidity:
+  min_volume_sma50: 50000           # User-defined baseline placeholder
+
+vcp_parameters:
+  pivot_sensitivity_bars: 5         # Left/Right pivot check
+  min_contractions: 2
+  max_contractions: 4
+  min_base_duration_weeks: 5
+  max_base_duration_weeks: 26
+  watchlist_readiness_pct: 0.95     # 5% distance from pivot price
+
+risk_management:
+  risk_per_trade_pct: 0.0100        # U_RiskPct (1.00%)
+  max_portfolio_heat_pct: 0.0600    # U_HeatPct (6.00%)
+  max_positions: 8                  # U_MaxPositions
+  max_allocation_per_stock_pct: 0.25 # U_MaxAllocationPct (25%)
+  sector_limit_pct: 0.3000          # U_SectorLimitPct (30%)
+  drawdown_halt_pct: 0.1000         # U_DrawdownHaltPct (10%)
+
+notifications:
+  telegram_enabled: true
+  telegram_bot_token: ""            # Loaded via ENV var in production
+  telegram_chat_id: ""              # Loaded via ENV var in production
+  email_enabled: true              # Set to true to enable email reports
+  smtp_host: "smtp.gmail.com"
+  smtp_port: 587
+  smtp_user: "your_email@gmail.com"
+  smtp_password: "your_app_password" # Use a Gmail App Password
+  recipient_email: "vishalthakker2009@gmail.com"
+
+gemini_api_key: ""

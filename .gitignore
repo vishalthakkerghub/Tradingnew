@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDEs
+.vscode/
+.idea/
+
+# Local databases and cache (critical to avoid large files)
+data/cache/
+data/mto/
+logs/
+*.log
+
+# Temp/Scratch files
+scratch/
+C:\Users\visha\.gemini\antigravity\brain\

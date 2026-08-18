@@ -1,0 +1,196 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset="utf-8">
+<title>Watchlist Pattern Analysis Report</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        line-height: 1.6;
+        color: #333333;
+        margin: 20px;
+    }
+    h1 {
+        color: #1F4E78;
+        font-size: 22pt;
+        border-bottom: 2px solid #1F4E78;
+        padding-bottom: 6px;
+        margin-bottom: 12pt;
+    }
+    h2 {
+        color: #2C3E50;
+        font-size: 16pt;
+        margin-top: 18pt;
+        margin-bottom: 6pt;
+        border-bottom: 1px dashed #BFBFBF;
+        padding-bottom: 3px;
+    }
+    p {
+        font-size: 11pt;
+        margin-bottom: 10pt;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10pt;
+        margin-bottom: 15pt;
+    }
+    th {
+        background-color: #2C3E50;
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: 10.5pt;
+        border: 1px solid #BFBFBF;
+        padding: 8px;
+        text-align: left;
+    }
+    td {
+        border: 1px solid #BFBFBF;
+        padding: 8px;
+        font-size: 10pt;
+        vertical-align: top;
+    }
+    tr:nth-child(even) {
+        background-color: #F9F9F9;
+    }
+    .highlight-win {
+        background-color: #E2EFDA;
+        color: #375623;
+        font-weight: bold;
+    }
+    .highlight-fail {
+        background-color: #FCE5CD;
+        color: #B45F06;
+        font-weight: bold;
+    }
+    .note-box {
+        background-color: #F2F4F7;
+        border-left: 4px solid #1F4E78;
+        padding: 10px 15px;
+        margin: 15px 0;
+        font-size: 10.5pt;
+    }
+</style>
+</head>
+<body>
+
+<h1>Watchlist Pattern &amp; Correlation Analysis (June 15 - July 15, 2026)</h1>
+
+<p>This analysis is based on <strong>761 triggered and completed swing trades</strong> from the June 15 to July 15, 2026 watchlist period. It evaluates how various metrics correlate with trade success (hitting Target 1 or BOTH targets) vs failure (stopped out).</p>
+
+<h2>1. Industry Category: The Deciding Factor</h2>
+<p>The single most powerful predictor of success is the <strong>Weekly Industry Category</strong>. Buying breakouts in Leading or Emerging sectors yields exceptionally high odds compared to Weak or Unscaled sectors.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Industry Category</th>
+            <th>Completed Trades</th>
+            <th>Win Rate</th>
+            <th>Analysis &amp; Takeaway</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="font-weight:bold;">Leading</td>
+            <td>11</td>
+            <td class="highlight-win">90.91%</td>
+            <td><strong>Golden Group</strong>: Almost all breakouts in Leading groups hit their targets (10 out of 11).</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold;">Emerging</td>
+            <td>17</td>
+            <td class="highlight-win">64.71%</td>
+            <td><strong>Strong Edge</strong>: High success rate as capital rotates into these early-stage leaders.</td>
+        </tr>
+        <tr>
+            <td>Neutral</td>
+            <td>242</td>
+            <td>35.12%</td>
+            <td>Standard baseline probability.</td>
+        </tr>
+        <tr>
+            <td>Weak</td>
+            <td>445</td>
+            <td>35.06%</td>
+            <td>Standard baseline probability.</td>
+        </tr>
+        <tr>
+            <td style="color:#C00000; font-weight:bold;">Unscaled</td>
+            <td>46</td>
+            <td class="highlight-fail">15.22%</td>
+            <td><strong>High Danger</strong>: Avoid. Small-scale sectors (&lt; 5 stocks) lack institutional depth and fail easily.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>2. Setup Type: Mini &amp; Flex VCPs Outperform</h2>
+<p>Different VCP engine calibrations show varying edge profiles. Mini-VCPs (very tight contraction sequences) show high precision.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Setup/Engine Type</th>
+            <th>Completed Trades</th>
+            <th>Win Rate</th>
+            <th>Analysis &amp; Takeaway</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="font-weight:bold;">MINI_VCP</td>
+            <td>9</td>
+            <td class="highlight-win">66.67%</td>
+            <td><strong>Excellent Edge</strong>: Very tight, compact contraction structures yield explosive, clean breakouts.</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold;">FLEX_VCP</td>
+            <td>62</td>
+            <td class="highlight-win">51.61%</td>
+            <td><strong>Solid Edge</strong>: Moderate volatility contractions perform well above average.</td>
+        </tr>
+        <tr>
+            <td>FLAG</td>
+            <td>665</td>
+            <td>33.68%</td>
+            <td>Highly populated setup, performing at standard market baseline.</td>
+        </tr>
+        <tr>
+            <td>STRICT_VCP</td>
+            <td>25</td>
+            <td>28.00%</td>
+            <td>Underperformed during this period (often because strict entry criteria require clean macro tailwinds).</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>3. The Delivery Paradox: High Beta vs Defensives</h2>
+<p>An interesting trend emerged when comparing Delivery % buckets:</p>
+<ul>
+    <li><strong>Low Delivery (&lt;25%)</strong>: Count: 626 | <strong>Win Rate: 35.94%</strong></li>
+    <li><strong>High Delivery (&gt;50%)</strong>: Count: 40 | <strong>Win Rate: 17.50%</strong></li>
+</ul>
+
+<div class="note-box">
+    <strong>Why this happens (Market Insight):</strong><br>
+    High-delivery stocks (&gt;50%) are typically large-cap, high-float, defensive stocks (e.g. major banks, consumer goods). They have high institutional absorption but lack the beta/volatility to hit aggressive swing targets (Target 1: +15%, Target 2: +25%) before pulling back to hit stop losses.<br><br>
+    Conversely, low-delivery stocks are often high-beta mid/small caps that experience explosive, fast-momentum breakout surges, hitting targets rapidly.
+</div>
+
+<h2>4. Failure Correlations: The "Avoid" Setup</h2>
+<p>By combining negative metrics, we can create a clear filter for trades to avoid:</p>
+<ul>
+    <li><strong>Filter Criteria</strong>: Stock is in a <strong>Weak Sector</strong> OR has a low <strong>AMS Score (&lt; 60)</strong>.</li>
+    <li><strong>Resulting Trades</strong>: 654 completed trades met this criteria.</li>
+    <li><strong>Failure Rate</strong>: <strong style="color:#C00000;">64.22%</strong> (Over 64% of these setups resulted in a stopped-out loss).</li>
+</ul>
+
+<h2>5. Summary Actionable Rules for Trading</h2>
+<ol>
+    <li><strong>Strict Selection</strong>: Focus first on VCP candidates in <strong>Leading</strong> and <strong>Emerging</strong> sectors.</li>
+    <li><strong>Avoid Weak/Unscaled</strong>: Filter out and skip any candidate in a <strong>Weak</strong> or <strong>Unscaled</strong> group.</li>
+    <li><strong>Engine Preference</strong>: Favor <strong>MINI_VCP</strong> and <strong>FLEX_VCP</strong> setups when they present clean triggers.</li>
+    <li><strong>Sizing by Beta</strong>: For high-delivery large caps, target smaller targets (e.g., exit half at +8% to +10%) rather than waiting for full swing targets.</li>
+</ol>
+
+</body>
+</html>

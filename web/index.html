@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minervini OS - Trade Dashboard</title>
+    <link rel="stylesheet" href="web/style.css?v=1.6">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    window.onerror = function(message, source, lineno, colno, error) {
+        fetch('/api/client_error', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: message,
+                source: source,
+                lineno: lineno,
+                colno: colno,
+                stack: error ? error.stack : ''
+            })
+        }).catch(err => console.error("Logger failed:", err));
+    };
+    </script>
+</head>
+<body>
+    <div class="glass-bg"></div>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar glass">
+            <div class="logo">
+                <i class="fa-solid fa-chart-line-up logo-icon"></i>
+                <h2>Minervini <span>OS</span></h2>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-tab="dashboard">
+                    <i class="fa-solid fa-gauge"></i> Dashboard
+                </button>
+                <button class="nav-btn" data-tab="dashboard2">
+                    <i class="fa-solid fa-gauge-simple-high"></i> Dashboard 2
+                </button>
+                <button class="nav-btn" data-tab="stocks_filter">
+                    <i class="fa-solid fa-filter"></i> Stocks Filter
+                </button>
+                <button class="nav-btn" data-tab="sector_rotation">
+                    <i class="fa-solid fa-arrows-spin"></i> Sector Rotation
+                </button>
+                <button class="nav-btn" data-tab="trade_journal">
+                    <i class="fa-solid fa-book-bookmark"></i> Trade Journal
+                </button>
+                <button class="nav-btn" data-tab="risk">
+                    <i class="fa-solid fa-shield-halved"></i> Risk Manager
+                </button>
+                <button class="nav-btn" data-tab="trade_management">
+                    <i class="fa-solid fa-sliders"></i> Trade Management
+                </button>
+                <button class="nav-btn" data-tab="true_paper_portfolio">
+                    <i class="fa-solid fa-gamepad"></i> True Paper Trading
+                </button>
+
+                <button class="nav-btn" data-tab="earnings">
+                    <i class="fa-solid fa-calendar-days"></i> Earnings Calendar
+                </button>
+                <button class="nav-btn" data-tab="daily_report">
+                    <i class="fa-solid fa-file-invoice"></i> Action Report
+                </button>
+                <button class="nav-btn" data-tab="chat">
+                    <i class="fa-solid fa-comments"></i> AI Assistant
+                </button>
+            </nav>
+            <div class="market-posture-card glass" id="market-posture-card-wrapper">
+                <div class="label">Market Posture</div>
+                <div class="posture-badge red" id="market-posture-badge">RED</div>
+                <div class="health-bar-container">
+                    <div class="health-bar" id="market-health-bar" style="width: 0%"></div>
+                </div>
+                <div class="health-text" id="market-health-score">Score: 0/10</div>
+                <div class="posture-details-tooltip glass" id="posture-details-tooltip">
+                    <h4>Breakdown Details</h4>
+                    <ul class="breakdown-list" id="posture-breakdown-list">
+                        <!-- Loaded dynamically -->
+                    </ul>
+                    <div class="recommendation-line" id="posture-tooltip-recommendation">Loading...</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header glass">
+                <div class="header-title">
+                    <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                        <h1 id="tab-title" style="margin: 0;">Dashboard Overview</h1>
+                        <span id="scan-status-badge" class="scan-status-badge">Last Scan: Loading...</span>
+                    </div>
+                    <p id="current-date-display">Loading trading session date...</p>
+                </div>
+                
+                <div class="index-ticker">
+                    <div class="index-item">
+                        <span class="index-name">NIFTY 50</span>
+                        <span class="index-value" id="nifty-value">0.00</span>
+                        <span class="index-change" id="nifty-change">+0.00%</span>
+                    </div>
+                    <div class="index-item">
+                        <span class="index-name">SENSEX</span>
+                        <span class="index-value" id="sensex-value">0.00</span>
+                        <span class="index-change" id="sensex-change">+0.00%</span>
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <div class="date-selector-wrapper glass">
+                        <i class="fa-solid fa-calendar-day"></i>
+                        <select id="dashboard-date-picker" class="date-picker-select">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="calendar-display">
+                        <i class="fa-regular fa-calendar-days"></i>
+                        <span id="calendar-date">Loading...</span>
+                    </div>
+                    <button class="refresh-btn" id="refresh-data-btn">
+                        <i class="fa-solid fa-rotate"></i> Refresh
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Tab Content -->
+            <section class="tab-content active" id="tab-dashboard">
+                <!-- Hero KPI Cards Grid -->
+                <div class="dashboard-kpi-grid">
+                    <div class="kpi-card glass">
+                        <div class="kpi-info">
+                            <div class="kpi-label">Portfolio Value</div>
+                            <div class="kpi-val" id="kpi-portfolio-value">₹0.00</div>
+                            <div class="kpi-subtext" id="kpi-portfolio-pnl">Daily P&L: ₹0.00 (0.0%)</div>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    </div>
+                    <div class="kpi-card glass" id="kpi-posture-card" style="cursor: pointer;">
+                        <div class="kpi-info">
+                            <div class="kpi-label">Market Posture</div>
+                            <div class="kpi-val" id="kpi-market-posture">LOADING</div>
+                            <div class="kpi-subtext" id="kpi-market-health">Score: 0/10</div>
+                        </div>
+                        <div class="kpi-icon orange" id="kpi-posture-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                    </div>
+                    <div class="kpi-card glass">
+                        <div class="kpi-info">
+                            <div class="kpi-label">Active Setups</div>
+                            <div class="kpi-val" id="kpi-setups-count">0</div>
+                            <div class="kpi-subtext" id="kpi-setups-breakdown">VCP: 0 | Flag: 0 | IB: 0</div>
+                        </div>
+                        <div class="kpi-icon blue"><i class="fa-solid fa-chart-line-up"></i></div>
+                    </div>
+                    <div class="kpi-card glass">
+                        <div class="kpi-info">
+                            <div class="kpi-label">Top Sector Theme</div>
+                            <div class="kpi-val" id="kpi-top-sector" style="font-size: 15px; max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.6;">N/A</div>
+                            <div class="kpi-subtext" id="kpi-top-sector-score">Part: 0% above 20 EMA</div>
+                        </div>
+                        <div class="kpi-icon green"><i class="fa-solid fa-fire"></i></div>
+                    </div>
+                </div>
+
+                <!-- Segmented subtabs navigation wrapper -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; width: 100%;">
+                    <div class="dashboard-subtabs-nav" style="margin-bottom: 0;">
+                        <button class="dashboard-subtab-btn active" data-subtab="portfolio">Portfolio Holdings</button>
+                        <button class="dashboard-subtab-btn" data-subtab="trade-management">Trade Management</button>
+                        <button class="dashboard-subtab-btn" data-subtab="market-breadth-rrg">Market Breadth & RRG</button>
+                    </div>
+                </div>
+
+                <!-- Subtab 1: Active Portfolio -->
+                <div class="dashboard-subtab-content active" id="subtab-portfolio">
+                    <!-- Active Trades Section -->
+                    <div class="active-trades-section" style="margin-bottom: 20px;">
+                        <div class="section-header" style="margin-bottom: 16px;">
+                            <h2><i class="fa-solid fa-briefcase" style="color: var(--accent-purple);"></i> Active Portfolio Holdings</h2>
+                            <span class="badge" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple);" id="dashboard-portfolio-count">Open Positions</span>
+                        </div>
+                        <div class="table-container glass">
+                            <table class="watchlist-table portfolio-table">
+                                <thead>
+                                    <tr>
+                                        <th>Symbol</th>
+                                        <th>Industry</th>
+                                        <th>Setup</th>
+                                        <th>Earnings</th>
+                                        <th>Entry Date</th>
+                                        <th>Qty</th>
+                                        <th>Entry Price</th>
+                                        <th>Stop Loss</th>
+                                        <th>CMP</th>
+                                        <th>PnL Net</th>
+                                        <th>R-Multiple</th>
+                                        <th>Target 1</th>
+                                        <th>Target 2</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="portfolio-table-body">
+                                    <!-- Loaded dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subtab 2: Trade Management -->
+                <div class="dashboard-subtab-content" id="subtab-trade-management" style="display: none;">
+                    <!-- Overview section for expectancy and indicators -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+                        <div class="kpi-card glass" style="padding: 16px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
+                            <div style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Portfolio Expectancy Regime</div>
+                            <div style="font-size: 20px; font-weight: 800; color: var(--accent-purple);" id="pm-expectancy-regime">Loading...</div>
+                            <div style="font-size: 12px; color: var(--text-secondary);" id="pm-expectancy-subtext">Calculating win rates & payoff ratios</div>
+                        </div>
+                        <div class="kpi-card glass" style="padding: 16px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
+                            <div style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Average EQS / TBS / MHS</div>
+                            <div style="font-size: 20px; font-weight: 800; color: var(--accent-green);" id="pm-average-scores">-- / -- / --</div>
+                            <div style="font-size: 12px; color: var(--text-secondary);">Entry / Behavior / Mental Hygiene</div>
+                        </div>
+                        <div class="kpi-card glass" style="padding: 16px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
+                            <div style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Active Trade Management Summary</div>
+                            <div style="font-size: 20px; font-weight: 800; color: var(--accent-orange);" id="pm-positions-count">0 Open Positions</div>
+                            <div style="font-size: 12px; color: var(--text-secondary);" id="pm-summary-text">No active audit loaded</div>
+                        </div>
+                    </div>
+
+                    <!-- Main Trade Management Table Section -->
+                    <div class="active-trades-section">
+                        <div class="section-header" style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+                            <h2><i class="fa-solid fa-user-gear" style="color: var(--accent-purple);"></i> Post-Entry Position Management Dashboard</h2>
+                            <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green);" id="pm-last-updated-badge">EOD Audit: Active</span>
+                        </div>
+                        <div class="table-container glass">
+                            <table class="watchlist-table portfolio-table">
+                                <thead>
+                                    <tr>
+                                        <th>Symbol</th>
+                                        <th>Setup</th>
+                                        <th>CMP / Entry</th>
+                                        <th>Days</th>
+                                        <th>R-Mult</th>
+                                        <th>EQS</th>
+                                        <th>TBS</th>
+                                        <th>MHS</th>
+                                        <th>FCI</th>
+                                        <th>Recommended Stop</th>
+                                        <th>Stop Reason</th>
+                                        <th>Regime</th>
+                                        <th>Action</th>
+                                        <th>Reasons & AI Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pm-table-body">
+                                    <!-- Loaded dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subtab 4: Market Breadth & RRG -->
+                <div class="dashboard-subtab-content" id="subtab-market-breadth-rrg">
+                    <!-- RRG Section -->
+                    <div style="display: grid; grid-template-columns: 1.8fr 1fr; gap: 24px; margin-bottom: 24px;">
+                        <div class="rrg-container glass" style="padding: 20px; border-radius: 16px; border: 1px solid var(--border-color); display: flex; flex-direction: column;">
+                            <div class="section-header" style="margin-bottom: 16px;">
+                                <h2 style="margin: 0;"><i class="fa-solid fa-arrows-spin" style="color: var(--accent-purple);"></i> Relative Rotation Graph (RRG)</h2>
+                                <span class="badge" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple);">SECTOR ROTATION</span>
+                            </div>
+                            <div style="display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,0.2); border-radius: 12px; padding: 10px; border: 1px solid var(--border-color); position: relative; width: 100%;">
+                                <canvas id="rrg-canvas" width="550" height="550" style="max-width: 100%; height: auto; display: block;"></canvas>
+                            </div>
+                        </div>
+                        <div class="rrg-info-panel glass" style="padding: 20px; border-radius: 16px; border: 1px solid var(--border-color); display: flex; flex-direction: column;">
+                            <h3 style="margin-top: 0; margin-bottom: 12px; font-weight: bold; color: var(--text-primary);">RRG Industry Legend</h3>
+                            <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.5;">
+                                Relative Rotation Graphs plot the relative strength (RS-Ratio, X-axis) and momentum of strength (RS-Momentum, Y-axis) of industries compared to the index. 
+                                <br><br>
+                                Industries rotate clockwise:
+                                <br>
+                                <span style="color: var(--accent-blue); font-weight: bold;">Improving</span> &rarr; 
+                                <span style="color: var(--accent-green); font-weight: bold;">Leading</span> &rarr; 
+                                <span style="color: var(--accent-orange); font-weight: bold;">Weakening</span> &rarr; 
+                                <span style="color: var(--accent-red); font-weight: bold;">Lagging</span>.
+                            </p>
+                            <div id="rrg-legend-list" style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto; max-height: 380px;">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Market Breadth Chart Section -->
+                    <div class="market-breadth-chart-section glass" style="padding: 20px; border-radius: 16px; border: 1px solid var(--border-color); margin-bottom: 24px;">
+                        <div class="section-header" style="margin-bottom: 16px;">
+                            <h2 style="margin: 0;"><i class="fa-solid fa-chart-line" style="color: var(--accent-green);"></i> Market Breadth Index (10-Day Trend)</h2>
+                            <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green);" id="breadth-status-badge">HEALTH TREND</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 16px; border: 1px solid var(--border-color); margin-bottom: 20px;">
+                            <canvas id="breadth-chart-canvas" width="800" height="250" style="width: 100%; max-height: 250px; display: block;"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Market Breadth Past 7 Days Table Section -->
+                    <div class="market-breadth-table-section glass" style="padding: 20px; border-radius: 16px; border: 1px solid var(--border-color);">
+                        <div class="section-header" style="margin-bottom: 16px;">
+                            <h2 style="margin: 0;"><i class="fa-solid fa-table-list" style="color: var(--accent-blue);"></i> Daily Market Internals (Past 7 Sessions)</h2>
+                            <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue);">calculated percentages</span>
+                        </div>
+                        <div class="table-container">
+                            <table class="watchlist-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Breadth Index</th>
+                                        <th>Above 20 EMA</th>
+                                        <th>Above 50 SMA</th>
+                                        <th>Above 200 SMA</th>
+                                        <th>Stacked MAs</th>
+                                        <th>Advances / Declines</th>
+                                        <th>Near 52W High</th>
+                                        <th>High Relative Strength</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="market-breadth-history-table-body">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 1 & Section 2: Market Health & Focus Industries -->
+                <div style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 24px; margin-top: 30px; margin-bottom: 20px; border-top: 1px solid var(--border-color); padding-top: 30px;">
+                    <!-- Section 1: Market Health Panel -->
+                    <div class="market-health-panel glass" style="padding: 20px; display: flex; flex-direction: column; gap: 15px;">
+                        <h3 style="margin: 0; font-size: 15px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-heart-pulse" style="color: var(--accent-red);"></i> Section 1: Market Health Status
+                        </h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color); text-align: center;">
+                                <div style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;">Market Status</div>
+                                <div id="mhp-status" style="font-size: 18px; font-weight: 800; margin-top: 4px; color: var(--accent-orange);">Caution</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color); text-align: center;">
+                                <div style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;">Aggressiveness</div>
+                                <div id="mhp-agg" style="font-size: 18px; font-weight: 800; margin-top: 4px; color: var(--accent-orange);">Moderated</div>
+                            </div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color);">
+                            <div style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px;">Position Sizing Recommendation</div>
+                            <div id="mhp-sizing" style="font-size: 12.5px; font-weight: 700; color: var(--text-primary);">50% Exposure / Moderated Position Sizing</div>
+                        </div>
+                    </div>
+
+                    <!-- Section 2: Focus Industries Panel -->
+                    <div class="focus-industries-panel glass" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+                        <h3 style="margin: 0; font-size: 15px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-fire" style="color: var(--accent-orange);"></i> Section 2: Focus Industries (Top 10)
+                        </h3>
+                        <div id="focus-industries-list-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; height: 100%; align-content: start;">
+                            <!-- Loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard 2 Tab Content -->
+            <section class="tab-content" id="tab-dashboard2">
+                <!-- Hero KPI Cards Grid (Clickable) -->
+                <div class="dashboard-kpi-grid">
+                    <div class="kpi-card glass" id="kpi2-portfolio-card" style="transition: transform 0.2s, box-shadow 0.2s;">
+                        <div class="kpi-info">
+                            <div class="kpi-label">Portfolio Value</div>
+                            <div class="kpi-val" id="kpi2-portfolio-value">₹0.00</div>
+                            <div class="kpi-subtext" id="kpi2-portfolio-pnl">Daily P&L: ₹0.00 (0.0%)</div>
+                        </div>
+                        <div class="kpi-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    </div>
+                    <div class="kpi-card glass clickable-kpi" id="kpi2-posture-card" style="cursor: pointer; position: relative; transition: transform 0.2s, box-shadow 0.2s;">
+                        <div class="kpi-info">
+                            <div class="kpi-label">Market Posture <i class="fa-solid fa-arrow-right-long" style="font-size: 10px; opacity: 0.7; margin-left: 4px;"></i></div>
+                            <div class="kpi-val" id="kpi2-market-posture">LOADING</div>
+                            <div class="kpi-subtext" id="kpi2-market-health">Score: 0/10</div>
+                        </div>
+                        <div class="kpi-icon orange" id="kpi2-posture-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                    </div>
+                    <div class="kpi-card glass clickable-kpi" id="kpi2-setups-card" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
+                        <div class="kpi-info">
+                            <div class="kpi-label">Active Setups <i class="fa-solid fa-arrow-right-long" style="font-size: 10px; opacity: 0.7; margin-left: 4px;"></i></div>
+                            <div class="kpi-val" id="kpi2-setups-count">0</div>
+                            <div class="kpi-subtext" id="kpi2-setups-breakdown">VCP: 0 | Flag: 0 | IB: 0</div>
+                        </div>
+                        <div class="kpi-icon blue"><i class="fa-solid fa-chart-line-up"></i></div>
+                    </div>
+                    <div class="kpi-card glass clickable-kpi" id="kpi2-sector-card" style="cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
+                        <div class="kpi-info">
+                            <div class="kpi-label">Top Sector Theme <i class="fa-solid fa-arrow-right-long" style="font-size: 10px; opacity: 0.7; margin-left: 4px;"></i></div>
+                            <div class="kpi-val" id="kpi2-top-sector" style="font-size: 15px; max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.6;">N/A</div>
+                            <div class="kpi-subtext" id="kpi2-top-sector-score">Part: 0% above 20 EMA</div>
+                        </div>
+                        <div class="kpi-icon green"><i class="fa-solid fa-fire"></i></div>
+                    </div>
+                </div>
+
+                <!-- Subtab Navigation for Dashboard 2 -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; width: 100%;">
+                    <div class="dashboard-subtabs-nav" id="dashboard2-subtabs-nav" style="margin-bottom: 0;">
+                        <button class="dashboard2-subtab-btn active" data-subtab="d2-portfolio">Holding Overview</button>
+                        <button class="dashboard2-subtab-btn" data-subtab="d2-rrg">Rotation Graph (RRG)</button>
+                        <button class="dashboard2-subtab-btn" data-subtab="d2-internals">Market Internals</button>
+                    </div>
+                </div>
+
+                <!-- Dashboard 2 Subtab 1: Holdings Overview -->
+                <div class="dashboard2-subtab-content active" id="subtab-d2-portfolio">
+                    <div class="d2-columns-layout" style="display: grid; grid-template-columns: 2.2fr 1fr; gap: 24px;">
+                        <!-- Holdings Table (Left Column) -->
+                        <div class="active-trades-section">
+                            <div class="section-header" style="margin-bottom: 16px;">
+                                <h2><i class="fa-solid fa-briefcase" style="color: var(--accent-purple);"></i> Active Portfolio Holdings</h2>
+                                <span class="badge" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple);" id="d2-portfolio-count">Open Positions</span>
+                            </div>
+                            <div class="table-container glass">
+                                <table class="watchlist-table portfolio-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Symbol</th>
+                                            <th>Industry</th>
+                                            <th>Setup</th>
+                                            <th>CMP</th>
+                                            <th>PnL Net</th>
+                                            <th>R-Multiple</th>
+                                            <th>Stop Loss</th>
+                                            <th>Entry Price</th>
+                                            <th>Qty</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="d2-portfolio-table-body">
+                                        <!-- Loaded dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Risk & Exposure Panel (Right Column) -->
+                        <div class="glass d2-risk-panel" style="padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 20px; height: fit-content; background: rgba(255,255,255,0.015);">
+                            <h3 style="margin: 0; font-size: 15px; font-weight: 750; color: var(--text-primary); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                                <i class="fa-solid fa-shield-halved" style="color: var(--accent-blue);"></i> Risk & Exposure Panel
+                            </h3>
+                            
+                            <!-- Capital Exposure Progress Bar -->
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; margin-bottom: 6px;">
+                                    <span style="color: var(--text-secondary);">Capital Invested vs Cash</span>
+                                    <span id="d2-risk-exposure-pct" style="color: var(--text-primary);">0% / 100%</span>
+                                </div>
+                                <div style="height: 10px; background: rgba(255,255,255,0.04); border-radius: 5px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); display: flex;">
+                                    <div id="d2-risk-exposure-fill" style="height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-purple) 100%); border-radius: 5px; transition: width 0.3s ease;"></div>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 10.5px; color: var(--text-secondary); margin-top: 6px;">
+                                    <span id="d2-risk-invested-val">Invested: ₹0.00</span>
+                                    <span id="d2-risk-cash-val">Cash: ₹0.00</span>
+                                </div>
+                            </div>
+
+                            <!-- Total Portfolio Risk at Stake -->
+                            <div style="background: rgba(0,0,0,0.15); border: 1px solid var(--border-color); padding: 14px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; flex-direction: column; gap: 4px;">
+                                    <span style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Total Risk-at-Stake</span>
+                                    <span id="d2-risk-at-stake-val" style="font-size: 18px; font-weight: 850; color: var(--text-primary);">₹0.00</span>
+                                </div>
+                                <div style="text-align: right; display: flex; flex-direction: column; gap: 4px;">
+                                    <span style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Risk % of Capital</span>
+                                    <span id="d2-risk-at-stake-pct" style="font-size: 18px; font-weight: 850; color: var(--accent-green); font-family: monospace;">0.0%</span>
+                                </div>
+                            </div>
+
+                            <!-- Positions Industry Concentration list -->
+                            <div>
+                                <h4 style="margin: 0 0 10px 0; font-size: 11.5px; color: var(--text-secondary); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Industry Allocation</h4>
+                                <div id="d2-concentration-list" style="display: flex; flex-direction: column; gap: 8px; max-height: 180px; overflow-y: auto; padding-right: 4px;">
+                                    <!-- Populated dynamically -->
+                                    <div style="font-size: 11.5px; color: var(--text-secondary); text-align: center; padding: 10px;">No open positions.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard 2 Subtab 2: RRG Rotation Graph -->
+                <div class="dashboard2-subtab-content" id="subtab-d2-rrg" style="display: none;">
+                    <div style="display: grid; grid-template-columns: 1.8fr 1fr; gap: 24px;">
+                        <div class="rrg-container glass" style="padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; flex-direction: column;">
+                            <div class="section-header" style="margin-bottom: 16px;">
+                                <h2 style="margin: 0;"><i class="fa-solid fa-arrows-spin" style="color: var(--accent-purple);"></i> Relative Rotation Graph (RRG)</h2>
+                                <span class="badge" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple);">SECTOR ROTATION</span>
+                            </div>
+                            <div style="display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,0.2); border-radius: 12px; padding: 10px; border: 1px solid var(--border-color); position: relative; width: 100%;">
+                                <canvas id="rrg-canvas-d2" width="550" height="550" style="max-width: 100%; height: auto; display: block;"></canvas>
+                            </div>
+                        </div>
+                        <div class="rrg-info-panel glass" style="padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); display: flex; flex-direction: column; background: rgba(255,255,255,0.015);">
+                            <h3 style="margin-top: 0; margin-bottom: 12px; font-weight: bold; color: var(--text-primary);">RRG Industry Legend</h3>
+                            <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.5;">
+                                Relative Rotation Graphs plot the relative strength (RS-Ratio, X-axis) and momentum of strength (RS-Momentum, Y-axis) of industries compared to the index.
+                                <br><br>
+                                Industries rotate clockwise:
+                                <br>
+                                <span style="color: var(--accent-blue); font-weight: bold;">Improving</span> &rarr; 
+                                <span style="color: var(--accent-green); font-weight: bold;">Leading</span> &rarr; 
+                                <span style="color: var(--accent-orange); font-weight: bold;">Weakening</span> &rarr; 
+                                <span style="color: var(--accent-red); font-weight: bold;">Lagging</span>.
+                            </p>
+                            <div id="rrg-legend-list-d2" style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto; max-height: 380px;">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard 2 Subtab 3: Market Internals -->
+                <div class="dashboard2-subtab-content" id="subtab-d2-internals" style="display: none;">
+                    <!-- Market Breadth Chart Section -->
+                    <div class="market-breadth-chart-section glass" style="padding: 20px; border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 24px;">
+                        <div class="section-header" style="margin-bottom: 16px;">
+                            <h2 style="margin: 0;"><i class="fa-solid fa-chart-line" style="color: var(--accent-green);"></i> Market Breadth Index (10-Day Trend)</h2>
+                            <span class="badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green);" id="breadth-status-badge-d2">HEALTH TREND</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.2); border-radius: 12px; padding: 16px; border: 1px solid var(--border-color); margin-bottom: 20px;">
+                            <canvas id="breadth-chart-canvas-d2" width="800" height="250" style="width: 100%; max-height: 250px; display: block;"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Market Breadth Table Section -->
+                    <div class="market-breadth-table-section glass" style="padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);">
+                        <div class="section-header" style="margin-bottom: 16px;">
+                            <h2 style="margin: 0;"><i class="fa-solid fa-table-list" style="color: var(--accent-blue);"></i> Daily Market Internals (Past 7 Sessions)</h2>
+                            <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue);">calculated percentages</span>
+                        </div>
+                        <div class="table-container">
+                            <table class="watchlist-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Breadth Index</th>
+                                        <th>Above 20 EMA</th>
+                                        <th>Above 50 SMA</th>
+                                        <th>Above 200 SMA</th>
+                                        <th>Stacked MAs</th>
+                                        <th>Advances / Declines</th>
+                                        <th>Near 52W High</th>
+                                        <th>High Relative Strength</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="market-breadth-history-table-body-d2">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stocks Filter Tab Content -->
+            <section class="tab-content" id="tab-stocks_filter">
+                <!-- Header Card -->
+                <div class="stocks-filter-header glass" style="padding: 20px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
+                    <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-filter" style="color: var(--accent-purple);"></i> Strategic Stocks Screener & Filter
+                    </h2>
+                    <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                        Filter scan candidates dynamically by Setup/Pattern, leading Sectors, and focus Industries to identify optimal entry points.
+                    </p>
+                </div>
+
+                <!-- Filters Console -->
+                <div class="filters-console glass" style="padding: 24px; border-radius: 16px; border: 1px solid var(--border-color); margin-bottom: 24px; display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        <!-- Column 1: Setup Types -->
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Setup / Pattern</label>
+                            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-vcp" class="filter-checkbox" checked> VCP Breakouts (Strict & Flex)
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-flag" class="filter-checkbox" checked> High Tight Flag
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-pb10" class="filter-checkbox" checked> EMA 10 Pullback
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-pb20" class="filter-checkbox" checked> EMA 20 Pullback
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-pb50" class="filter-checkbox" checked> EMA 50 Pullback
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-ib" class="filter-checkbox" checked> Inside Bar Setup
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-pp" class="filter-checkbox" checked> Pocket Pivot Setup
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Column 2: Sectors -->
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Industry Group Status</label>
+                            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-leading-sectors" class="filter-checkbox" checked> Focus Groups (Confirmed & Early Uptrend)
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-other-sectors" class="filter-checkbox" checked> Other Groups (Consolidation, Warning, Avoid)
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Column 3: Focus Industry Dropdown -->
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;" for="filter-industry-select">Industry Filter</label>
+                            <select id="filter-industry-select" class="date-picker-select" style="width: 100%; padding: 10px; margin-top: 4px; border-radius: 8px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: var(--text-primary); outline: none; font-size: 13px;">
+                                <option value="ALL">Show All Industries</option>
+                                <!-- Populated dynamically -->
+                            </select>
+                                             <!-- Column 4: Focus & Grade Leaderboard Filter -->
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Focus & Grade Filter</label>
+                            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+                                <span style="font-size: 10px; font-weight: bold; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">Leaderboard Focus</span>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-focus-top3conf" class="filter-checkbox" checked> Top 3 Confirmed
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-focus-top5conf" class="filter-checkbox" checked> Top 5 Confirmed
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-focus-top3early" class="filter-checkbox" checked> Top 3 Early
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-focus-top5early" class="filter-checkbox" checked> Top 5 Early
+                                </label>
+                                
+                                <span style="font-size: 10px; font-weight: bold; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 6px; margin-bottom: 2px;">Setup Grades</span>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-grade-a" class="filter-checkbox" checked> Grade A
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-grade-b" class="filter-checkbox" checked> Grade B
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-grade-c" class="filter-checkbox" checked> Grade C
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Column 5: Circuit Limit Checkboxes -->
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Circuit Filter</label>
+                            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-circuit-20" class="filter-checkbox" checked> 20% Band
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-circuit-10" class="filter-checkbox" checked> 10% Band
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-circuit-5" class="filter-checkbox" checked> 5% Band
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-circuit-2" class="filter-checkbox" checked> 2% Band
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
+                                    <input type="checkbox" id="filter-circuit-noband" class="filter-checkbox" checked> No Band (F&O)
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Column 4: Screener Scope -->
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Screener Scope</label>
+                            <div style="display: flex; gap: 8px; margin-top: 4px;">
+                                <button id="scope-curated" onclick="setScreenerScope('curated')" class="btn" style="flex: 1; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: bold; background: var(--accent-purple); color: white; border: none; cursor: pointer; text-align: center; transition: all 0.2s ease;">Curated Watchlist</button>
+                                <button id="scope-all" onclick="setScreenerScope('all')" class="btn" style="flex: 1; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: bold; background: rgba(255,255,255,0.05); color: var(--text-secondary); border: 1px solid var(--border-color); cursor: pointer; text-align: center; transition: all 0.2s ease;">All Scanned (230+)</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 12px; margin-top: 10px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+                        <button id="btn-apply-filters" onclick="applyStocksFilters()" class="btn" style="background: var(--accent-purple); color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; outline: none; border: none; font-size: 13px;">
+                            <i class="fa-solid fa-circle-check"></i> Apply Filters
+                        </button>
+                        <button id="btn-reset-filters" onclick="resetStocksFilters()" class="btn" style="background: rgba(255,255,255,0.05); color: var(--text-secondary); border: 1px solid var(--border-color); padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; outline: none; font-size: 13px;">
+                            <i class="fa-solid fa-arrow-rotate-left"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Watchlist Table Results -->
+                <div class="stocks-filter-results glass" style="padding: 20px; border-radius: 16px; border: 1px solid var(--border-color);">
+                    <div class="section-header" style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                        <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                            <h2 style="margin: 0;"><i class="fa-solid fa-gem" style="color: var(--accent-blue);"></i> Watchlist Setup Candidates</h2>
+                            <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue);" id="filtered-stocks-count">0 candidates</span>
+                            
+                            <!-- Search Ticker/Industry Box -->
+                            <div style="position: relative; width: 100%; max-width: 240px; margin-left: 12px;">
+                                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); font-size: 12px;"></i>
+                                <input type="text" id="watchlist-search" placeholder="Search symbol, company, industry..." style="width: 100%; padding: 6px 10px 6px 28px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.25); color: var(--text-primary); font-size: 12px; outline: none; transition: border-color 0.2s;">
+                            </div>
+                        </div>
+                        <button id="btn-tradingview-watchlist-filter" onclick="openTradingViewWatchlistFilterModal()" class="btn" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.3); padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                            <img src="https://www.tradingview.com/favicon.ico" style="width: 12px; height: 12px; border-radius: 2px;" alt="TradingView">
+                            Get TradingView Watchlist
+                        </button>
+                    </div>
+                    <!-- MBI Command Bar: auto-rendered by renderMBICommandBar() -->
+                    <div id="mbi-command-bar"></div>
+
+                    <!-- Valid-Only filter row -->
+                    <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px;padding:8px 14px;background:rgba(255,255,255,0.03);border:1px solid var(--border-color);border-radius:8px;flex-wrap:wrap;">
+                        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;font-weight:600;color:var(--text-primary);user-select:none;">
+                            <input type="checkbox" id="filter-valid-only" class="filter-checkbox" onchange="renderFilteredWatchlist()" style="accent-color:#10b981;width:14px;height:14px;">
+                            <span style="color:#10b981;">&#10003;</span> Show only <strong>all-gates pass</strong> stocks
+                        </label>
+                        <span style="font-size:10.5px;color:var(--text-muted);">Hides blocked setups (failed MBI / Sector / Pattern / SL band)</span>
+                        <span style="margin-left:auto;font-size:10px;color:var(--text-secondary);">
+                            Gates: <span style="color:#10b981;">&#9646; MBI</span>&nbsp;
+                            <span style="color:#3b82f6;">&#9646; Sector</span>&nbsp;
+                            <span style="color:#f59e0b;">&#9646; Pattern</span>&nbsp;
+                            <span style="color:#ef4444;">&#9646; SL Band</span>
+                        </span>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="watchlist-table">
+                            <thead id="screener-table-header">
+                                <tr>
+                                    <th onclick="sortScreener('_priorityScore')" style="cursor: pointer; user-select: none;">Priority <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('_setupType')" style="cursor: pointer; user-select: none;">Type <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('Symbol')" style="cursor: pointer; user-select: none;">Symbol <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('Company_Name')" style="cursor: pointer; user-select: none;">Company <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('Industry')" style="cursor: pointer; user-select: none;">Industry / Zone <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('Setup_Type')" style="cursor: pointer; user-select: none;">Pattern <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('Setup_Grade')" style="cursor: pointer; user-select: none;">Grade <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('MS_Score')" style="cursor: pointer; user-select: none;">MS <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('Distance')" style="cursor: pointer; user-select: none;">Dist <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('VDU_Pct')" style="cursor: pointer; user-select: none;">VDU <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('Risk_Pct')" style="cursor: pointer; user-select: none;">Risk% <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('Days_To_Earnings')" style="cursor: pointer; user-select: none;">Earnings <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('CMP')" style="cursor: pointer; user-select: none;">CMP <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('Entry')" style="cursor: pointer; user-select: none;">Entry <span class="sort-icon"></span></th>
+                                    <th onclick="sortScreener('Stop_Loss')" style="cursor: pointer; user-select: none; color: var(--accent-red);">SL <span class="sort-icon"></span></th>
+                                    <th style="color: #10b981;">T1 (+R)</th>
+                                    <th style="color: #3b82f6;">T2 (+R)</th>
+                                    <th style="white-space:nowrap;">Gates &#9432;</th>
+                                    <th>Add</th>
+                                </tr>
+                            </thead>
+                            <tbody id="filtered-watchlist-table-body">
+                                <!-- Loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+            <!-- Sector Rotation Tab Content -->
+            <section class="tab-content" id="tab-sector_rotation">
+                <div class="sector-rotation-header glass" style="padding: 20px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
+                    <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-arrows-spin" style="color: var(--accent-purple);"></i> Daily Sector Rotation & Multi-Week Money Flow Analysis
+                    </h2>
+                    <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                        Tracks daily capital rotation (today vs yesterday) and participation consistency of the NSE equity universe across the last 3 weeks. Swing trading opportunities are prioritized based on stable or improving stock participation above key averages and positive daily inflows.
+                    </p>
+                </div>
+                
+                <!-- Stock Search & Industry Finder -->
+                <div class="glass" style="padding: 16px 20px; margin-bottom: 24px; border: 1px solid var(--border-color); border-radius: 8px; display: flex; flex-direction: column; gap: 12px; background: rgba(255, 255, 255, 0.01);">
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-magnifying-glass" style="color: var(--accent-purple); font-size: 14px;"></i>
+                            <span style="font-size: 13px; font-weight: 750; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Find Industry by Stock Symbol</span>
+                        </div>
+                        <div style="position: relative; flex: 1; min-width: 250px; max-width: 400px;">
+                            <input type="text" id="sector-stock-search-input" placeholder="Type stock symbol (e.g. GANESHBE, RELIANCE)..." style="width: 100%; padding: 8px 12px 8px 36px; border: 1px solid var(--border-color); border-radius: 6px; background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; transition: border-color 0.2s;" oninput="window.handleSectorStockSearch(this.value)">
+                            <i class="fa-solid fa-search" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); font-size: 12px;"></i>
+                        </div>
+                    </div>
+                    <div id="sector-stock-search-results" style="display: none; padding: 10px 14px; border-top: 1px dashed rgba(255,255,255,0.05); gap: 10px; align-items: center; flex-wrap: wrap; background: rgba(0,0,0,0.15); border-radius: 6px;">
+                        <!-- Results injected dynamically -->
+                    </div>
+                </div>
+
+                <!-- Sector Rotation Filter Bar -->
+                <div class="sector-filters" id="sector-rotation-filters" style="margin-bottom: 24px;">
+                    <button class="sector-filter-btn active" data-category="ALL">All Categories</button>
+                    <button class="sector-filter-btn" data-category="Confirmed Uptrend">🟢 Confirmed Uptrend</button>
+                    <button class="sector-filter-btn" data-category="Early Uptrend">🔵 Early Uptrend</button>
+                    <button class="sector-filter-btn" data-category="Consolidation">🟡 Consolidation</button>
+                    <button class="sector-filter-btn" data-category="Downtrend Warning">🔴 Downtrend Warning</button>
+                    <button class="sector-filter-btn" data-category="Avoid">Avoid</button>
+                </div>
+
+                <!-- Rotation Categories Container -->
+                <div class="rotation-categories-container" id="rotation-categories-container" style="display: flex; flex-direction: column; gap: 24px;">
+                    <!-- Populated dynamically by JS -->
+                    <div class="loading-state" style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                        <i class="fa-solid fa-spinner fa-spin fa-2x" style="margin-bottom: 10px; display: block; color: var(--accent-purple);"></i>
+                        Analyzing multi-week sector rotation data...
+                    </div>
+                </div>
+            </section>
+
+            <!-- Daily Action Report Tab Content -->
+            <section class="tab-content" id="tab-daily_report">
+                <div class="daily-report-header glass" style="padding: 24px; margin-bottom: 24px; background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%); border: 1px solid var(--border-color); border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <h2 style="font-size: 20px; font-weight: 800; color: #fff; display: flex; align-items: center; gap: 10px; margin: 0; letter-spacing: 0.5px;">
+                            <i class="fa-solid fa-file-invoice" style="color: var(--accent-purple);"></i> DAILY ACTION REPORT
+                        </h2>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.5;">
+                            Actionable Focus Groups, Building Interest tiers, and Market Health tracking for the next trading session.
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="badge" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); font-weight: 600; padding: 6px 12px; border-radius: 6px; font-size: 12px; border: 1px solid rgba(139, 92, 246, 0.25);">
+                            MOMENTUM SWING TRADING
+                        </span>
+                    </div>
+                </div>
+
+                <div id="daily-report-loading-state" class="loading-state" style="text-align: center; padding: 60px 20px; color: var(--text-secondary);">
+                    <i class="fa-solid fa-spinner fa-spin fa-3x" style="margin-bottom: 15px; display: block; color: var(--accent-purple);"></i>
+                    Compiling daily action report metrics...
+                </div>
+
+                <div id="daily-report-content" style="display: none; flex-direction: column; gap: 32px;">
+                    <!-- Dynamically populated by app.js -->
+                </div>
+            </section>
+
+            <!-- Trade Journal Tab Content -->
+            <section class="tab-content" id="tab-trade_journal">
+                <!-- Trade Journal Header -->
+                <div class="journal-header glass" style="padding: 20px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-book-bookmark" style="color: var(--accent-purple);"></i> Trade Journal
+                        </h2>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0;">
+                            Master your discipline, master the market. Document and analyze trade entries, exits, and psychological rationales.
+                        </p>
+                    </div>
+                    <div class="journal-actions" style="display: flex; gap: 12px;">
+                        <button class="add-trade-btn" id="add-trade-btn" style="background: var(--accent-purple); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 13px; transition: opacity 0.2s;">
+                            <i class="fa-solid fa-plus"></i> Add Trade
+                        </button>
+                        <button class="pdf-btn" id="export-pdf-btn" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); padding: 10px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 13px; transition: background 0.2s;">
+                            <i class="fa-solid fa-file-pdf"></i> Export PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Journal Metrics Grid -->
+                <div class="journal-metrics-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 24px;">
+                    <div class="finance-card glass" style="padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; font-weight: 500;">Open Trades</div>
+                        <div id="j-stat-open-trades" style="font-size: 22px; font-weight: 700; color: var(--text-primary);">₹0</div>
+                    </div>
+                    <div class="finance-card glass" style="padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; font-weight: 500;">Profitable (Closed)</div>
+                        <div id="j-stat-profitable" style="font-size: 22px; font-weight: 700; color: var(--accent-green);">+₹0</div>
+                    </div>
+                    <div class="finance-card glass" style="padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; font-weight: 500;">Losses (Closed)</div>
+                        <div id="j-stat-losses" style="font-size: 22px; font-weight: 700; color: var(--accent-red);">-₹0</div>
+                    </div>
+                    <div class="finance-card glass" style="padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; font-weight: 500;">Net Performance</div>
+                        <div id="j-stat-net-perf" style="font-size: 22px; font-weight: 700; color: var(--text-primary);">₹0</div>
+                    </div>
+                </div>
+
+                <div class="journal-metrics-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 24px;">
+                    <div class="finance-card glass" style="padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; font-weight: 500;">Success Rate</div>
+                        <div id="j-stat-success-rate" style="font-size: 22px; font-weight: 700; color: var(--accent-blue);">0%</div>
+                    </div>
+                    <div class="finance-card glass" style="padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; font-weight: 500;">Status</div>
+                            <div id="j-stat-discipline-badge" style="font-size: 16px; font-weight: 700; color: #f59e0b; margin-top: 4px;">DISCIPLINED 🔥</div>
+                        </div>
+                        <i class="fa-solid fa-award" style="font-size: 28px; color: #f59e0b;"></i>
+                    </div>
+                </div>
+
+                <!-- Journal Charts Grid -->
+                <div class="journal-charts-grid" style="display: grid; grid-template-columns: 2.2fr 1fr; gap: 24px; margin-bottom: 24px;">
+                    <div class="chart-card glass" style="padding: 16px; height: 260px; display: flex; flex-direction: column; gap: 10px;">
+                        <h4 style="font-size: 12px; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; margin: 0; letter-spacing: 0.5px;">Realized Equity Curve (Cumulative P&L)</h4>
+                        <div style="flex-grow: 1; position: relative; height: calc(100% - 24px);">
+                            <canvas id="equity-curve-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card glass" style="padding: 16px; height: 260px; display: flex; flex-direction: column; gap: 10px;">
+                        <h4 style="font-size: 12px; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; margin: 0; letter-spacing: 0.5px;">Win / Loss Ratio</h4>
+                        <div style="flex-grow: 1; position: relative; height: calc(100% - 24px); display: flex; justify-content: center; align-items: center;">
+                            <canvas id="win-loss-chart" style="max-height: 180px; max-width: 180px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Two-Column Layout -->
+                <div class="journal-layout-grid" style="display: grid; grid-template-columns: 2.2fr 1fr; gap: 24px; align-items: start;">
+                    <!-- Left Column: Trades List -->
+                    <div class="journal-main-col" style="display: flex; flex-direction: column; gap: 20px;">
+                        <div class="journal-filter-bar glass" style="padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;">
+                            <div class="filter-tabs" style="display: flex; gap: 8px;">
+                                <button class="j-filter-tab active" data-status="ALL" style="background: none; border: none; padding: 6px 14px; border-radius: 6px; color: var(--text-secondary); cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.2s;">All Trades</button>
+                                <button class="j-filter-tab" data-status="OPEN" style="background: none; border: none; padding: 6px 14px; border-radius: 6px; color: var(--text-secondary); cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.2s;">Open Positions</button>
+                                <button class="j-filter-tab" data-status="CLOSED" style="background: none; border: none; padding: 6px 14px; border-radius: 6px; color: var(--text-secondary); cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.2s;">Completed Trades</button>
+                            </div>
+                            <div class="search-wrapper" style="position: relative; width: 220px;">
+                                <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); font-size: 13px;"></i>
+                                <input type="text" id="journal-search-input" placeholder="Search symbol or name..." style="width: 100%; padding: 8px 12px 8px 34px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.2); color: var(--text-primary); font-size: 12px; outline: none;">
+                            </div>
+                        </div>
+
+                        <div class="journal-trades-list" id="journal-trades-list" style="display: flex; flex-direction: column; gap: 16px;">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Sidebar Widgets -->
+                    <div class="journal-sidebar-col" style="display: flex; flex-direction: column; gap: 24px;">
+                        <!-- Quote Card -->
+                        <div class="journal-widget-card glass" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+                            <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px;">The Growth Mindset</h3>
+                            <blockquote style="font-size: 13px; line-height: 1.6; color: var(--text-primary); border-left: 3px solid var(--accent-purple); padding-left: 12px; margin: 0; font-style: italic;">
+                                "The best traders are the ones who can handle losses better than anyone else. Your job is to execute your plan with surgical precision. The money is just a byproduct of your discipline."
+                            </blockquote>
+                        </div>
+
+                        <!-- Mantra Card -->
+                        <div class="journal-widget-card glass" style="padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+                            <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.5px;">Daily Mantra</h3>
+                            <p style="font-size: 14px; line-height: 1.6; color: var(--text-primary); margin: 0; font-weight: 500; text-align: center;">
+                                I trade what I see, not what I hope.<br>I am patient, I am disciplined, I am profitable.
+                            </p>
+                        </div>
+
+                        <!-- Calendar Widget -->
+                        <div class="journal-widget-card glass" id="journal-calendar-card" style="padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-green); text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Trade Calendar</h3>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <button id="calendar-prev-btn" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 2px 6px; font-size: 12px; transition: color 0.2s;"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <div style="font-size: 12px; font-weight: 600; color: var(--text-secondary); min-width: 75px; text-align: center;" id="calendar-header-label">June 2026</div>
+                                    <button id="calendar-next-btn" style="background: none; border: none; color: var(--text-secondary); cursor: pointer; padding: 2px 6px; font-size: 12px; transition: color 0.2s;"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            <!-- Calendar Grid -->
+                            <div class="calendar-container" style="display: flex; flex-direction: column; gap: 6px;">
+                                <div class="calendar-days-header" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; font-size: 10px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">
+                                    <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+                                </div>
+                                <div class="calendar-days-grid" id="journal-calendar-days-grid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;">
+                                    <!-- Rendered dynamically -->
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid var(--border-color); padding-top: 12px; display: flex; justify-content: space-between; align-items: center;">
+                                <span style="font-size: 11px; color: var(--text-secondary); font-weight: 600;">Active Streak:</span>
+                                <span style="font-size: 11px; color: var(--accent-green); font-weight: 700; display: flex; align-items: center; gap: 6px;">
+                                    <i class="fa-solid fa-fire"></i> 3 Days Winning Momentum
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chat Tab Content -->
+            <section class="tab-content" id="tab-chat">
+                <div class="chat-header glass" style="padding: 20px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px;">
+                    <i class="fa-solid fa-robot" style="font-size: 24px; color: var(--accent-purple);"></i>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 0;">Minervini OS AI Assistant</h2>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin: 0;">
+                            Ask questions about your watchlist, portfolio performance, trade journal metrics, or scanner setups.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="api-key-container glass" id="api-key-section" style="padding: 12px 16px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; border-radius: 12px; border: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.03);">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-key" style="color: var(--accent-purple); font-size: 14px;"></i>
+                        <span>Global AI Intelligence (Gemini + Search): <strong id="api-key-status" style="color: var(--accent-red);">Checking Status...</strong></span>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <input type="password" id="api-key-input" placeholder="Paste Gemini API key..." style="padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.2); color: var(--text-primary); font-size: 11px; outline: none; width: 180px;">
+                        <button id="save-key-btn" style="background: var(--accent-purple); color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 11px; font-weight: 600; transition: opacity 0.2s;">Enable</button>
+                    </div>
+                </div>
+
+                <div class="chat-container glass" style="display: flex; flex-direction: column; height: calc(100vh - 270px); min-height: 420px; overflow: hidden; padding: 0;">
+                    <!-- Chat Messages Area -->
+                    <div id="chat-messages" style="flex-grow: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px;">
+                        <!-- AI Greeting -->
+                        <div class="chat-message assistant">
+                            <div class="avatar"><i class="fa-solid fa-robot"></i></div>
+                            <div class="message-bubble glass">
+                                Hello! I am your Minervini OS AI Assistant. I have full access to your scanner watchlist, portfolio holdings, sector money flow, and trade journal statistics.
+                                <br><br>
+                                You can ask me questions like:
+                                <ul style="margin: 8px 0 0 16px; padding: 0; display: flex; flex-direction: column; gap: 4px;">
+                                    <li>"What are the top 5 watchlist ideas?"</li>
+                                    <li>"Show my portfolio value and open holdings."</li>
+                                    <li>"How is my trade journal performance?"</li>
+                                    <li>"Which sectors have the strongest capital money flow?"</li>
+                                    <li>"Show info for STARHEALTH."</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chat Input Area -->
+                    <div class="chat-input-bar" style="padding: 16px; border-top: 1px solid var(--border-color); background: rgba(0,0,0,0.15); display: flex; gap: 12px; align-items: center;">
+                        <input type="text" id="chat-input-field" placeholder="Ask your assistant anything..." style="flex-grow: 1; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none;">
+                        <button id="chat-send-btn" style="background: var(--accent-purple); color: white; border: none; width: 42px; height: 42px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: opacity 0.2s;"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Risk Manager Tab Content -->
+            <section class="tab-content" id="tab-risk">
+                <!-- Risk Header -->
+                <div class="risk-header glass" style="padding: 20px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
+                    <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; margin: 0;">
+                        <i class="fa-solid fa-shield-halved" style="color: var(--accent-red);"></i> Chief Risk Officer Audit
+                    </h2>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin: 0;">
+                        Monitor your trading discipline score history, identify active rule violations, and assess the exact capital impact of process slips.
+                    </p>
+                </div>
+
+                <!-- Risk Metrics Grid -->
+                <div class="risk-metrics-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px;">
+                    <div class="finance-card glass" style="padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; font-weight: 500;">Discipline Score</div>
+                        <div id="risk-discipline-score" style="font-size: 22px; font-weight: 700; color: var(--accent-green);">100/100</div>
+                    </div>
+                    <div class="finance-card glass" style="padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; font-weight: 500;">Capital Exposed (No Stop Loss)</div>
+                        <div id="risk-capital-exposed" style="font-size: 22px; font-weight: 700; color: var(--text-primary);">₹0</div>
+                    </div>
+                    <div class="finance-card glass" style="padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+                        <div style="font-size: 12px; color: var(--text-secondary); text-transform: uppercase; font-weight: 500;">Excess Breach Damage</div>
+                        <div id="risk-breach-damage" style="font-size: 22px; font-weight: 700; color: var(--accent-red);">₹0</div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Allocation & Risk Panel -->
+                <div class="risk-layout-grid" style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; margin-bottom: 24px; align-items: start;">
+                    <!-- Left: Allocation Stats & Risk Map -->
+                    <div class="risk-main-card glass" style="padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--border-color);">
+                            <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Portfolio Capital & Risk Allocation</h3>
+                            <button id="edit-seed-capital-btn" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.3); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer;">
+                                <i class="fa-solid fa-edit"></i> Edit Seed Capital
+                            </button>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+                            <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); text-align: center;">
+                                <div style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Seed Capital</div>
+                                <div id="fin-seed-capital" style="font-size: 16px; font-weight: 800; margin-top: 4px; color: var(--text-primary);">₹0</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); text-align: center;">
+                                <div style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Deployed</div>
+                                <div id="fin-deployed-funds" style="font-size: 16px; font-weight: 800; margin-top: 4px; color: var(--text-primary);">₹0</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); text-align: center;">
+                                <div style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Available</div>
+                                <div id="fin-available-funds" style="font-size: 16px; font-weight: 800; margin-top: 4px; color: var(--text-primary);">₹0</div>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); text-align: center;">
+                                <div style="font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">Realized P&L</div>
+                                <div id="fin-realized-pnl" style="font-size: 16px; font-weight: 800; margin-top: 4px; color: var(--text-primary);">₹0</div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.02); padding: 16px; border-radius: 8px; border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+                                <span style="color: var(--text-secondary); font-weight: 600;">Total Capital Risk at Stake (SL): <strong id="fin-risk-at-stake" style="color: var(--text-primary);">₹0</strong></span>
+                                <span id="risk-pct-text" style="color: var(--accent-red); font-weight: 700;">0.0% of Capital</span>
+                            </div>
+                            <div class="health-bar-container" style="height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden;">
+                                <div id="risk-pct-bar" style="height: 100%; background: var(--accent-red); width: 0%; transition: width 0.3s;"></div>
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px;">
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <h4 style="font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; margin: 0; letter-spacing: 0.5px;">Position Concentration</h4>
+                                <div id="fin-concentration-list" style="display: flex; flex-direction: column; gap: 8px; max-height: 150px; overflow-y: auto;">
+                                    <!-- Rendered dynamically -->
+                                </div>
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <h4 style="font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; margin: 0; letter-spacing: 0.5px;">Risk Heat Map</h4>
+                                <div id="fin-risk-map-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; max-height: 150px; overflow-y: auto;">
+                                    <!-- Rendered dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: Info Widget -->
+                    <div class="risk-chart-card glass" style="padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+                        <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Stop Loss Discipline</h3>
+                        <p style="font-size: 13px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+                            A critical part of Mark Minervini's trading strategy is cutting losses quickly. Ensure that every open position has a predefined stop-loss level mapped in your journal. 
+                        </p>
+                        <ul style="font-size: 12.5px; line-height: 1.6; color: var(--text-secondary); padding-left: 20px; margin: 0; display: flex; flex-direction: column; gap: 6px;">
+                            <li>Never risk more than 1.5% of total capital on a single trade.</li>
+                            <li>Average losses should be held to 5% - 6% of the purchase price.</li>
+                            <li>Always maintain a positive risk/reward ratio of at least 1:2.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Main Content Grid -->
+                <div class="risk-layout-grid" style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; margin-bottom: 24px; align-items: start;">
+                    <!-- Left: Violations List -->
+                    <div class="risk-main-card glass" style="padding: 20px; display: flex; flex-direction: column; gap: 16px;">
+                        <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-red); text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Active Constitution Breaches</h3>
+                        <div id="risk-violations-list" style="display: flex; flex-direction: column; gap: 12px;">
+                            <!-- Rendered dynamically -->
+                        </div>
+                    </div>
+                    <!-- Right: History Chart -->
+                    <div class="risk-chart-card glass" style="padding: 20px; height: 320px; display: flex; flex-direction: column; gap: 12px;">
+                        <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Discipline Score Trend (Last 15 Sessions)</h3>
+                        <div style="flex-grow: 1; position: relative; height: calc(100% - 24px);">
+                            <canvas id="discipline-history-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Post-Entry Trade Management Engine Tab Content -->
+            <section class="tab-content" id="tab-trade_management">
+                <!-- Expectancy Regime & Global Post-Entry Stats -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 24px;">
+                    <!-- Regime Card -->
+                    <div class="kpi-card glass" style="padding: 20px; display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <div style="font-size: 12px; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.5px; margin-bottom: 6px;">Expectancy Regime</div>
+                            <div class="kpi-val" id="pm-expectancy-regime" style="font-size: 22px; font-weight: 700; color: var(--accent-blue);">LOADING...</div>
+                            <div class="kpi-subtext" id="pm-regime-desc">Regime status and trading posture adjustment</div>
+                        </div>
+                        <div class="kpi-icon blue"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    </div>
+                    <!-- System Metrics Summary -->
+                    <div class="kpi-card glass" style="padding: 20px; display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <div style="font-size: 12px; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.5px; margin-bottom: 6px;">Avg Entry Quality (EQS)</div>
+                            <div class="kpi-val" id="pm-avg-eqs" style="font-size: 22px; font-weight: 700; color: var(--accent-purple);">0.0 / 10</div>
+                            <div class="kpi-subtext" id="pm-eqs-sub">VCP setup alignment and market posture match</div>
+                        </div>
+                        <div class="kpi-icon purple"><i class="fa-solid fa-medal"></i></div>
+                    </div>
+                    <!-- Trade Behavior Score -->
+                    <div class="kpi-card glass" style="padding: 20px; display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <div style="font-size: 12px; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.5px; margin-bottom: 6px;">Trade Behavior Score (TBS)</div>
+                            <div class="kpi-val" id="pm-avg-tbs" style="font-size: 22px; font-weight: 700; color: var(--accent-green);">0.0 / 10</div>
+                            <div class="kpi-subtext" id="pm-tbs-sub">Discipline score, execution accuracy and stops adherence</div>
+                        </div>
+                        <div class="kpi-icon green"><i class="fa-solid fa-graduation-cap"></i></div>
+                    </div>
+                    <!-- Failure Confidence Index -->
+                    <div class="kpi-card glass" style="padding: 20px; display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <div style="font-size: 12px; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.5px; margin-bottom: 6px;">Failure Confidence (FCI)</div>
+                            <div class="kpi-val" id="pm-fci" style="font-size: 22px; font-weight: 700; color: var(--accent-orange);">0.0%</div>
+                            <div class="kpi-subtext" id="pm-fci-sub">Capacity to exit failed trades cleanly</div>
+                        </div>
+                        <div class="kpi-icon orange"><i class="fa-solid fa-shield-heart"></i></div>
+                    </div>
+                </div>
+
+                <!-- Live Recommendations Alert Board -->
+                <div class="risk-header glass" style="padding: 20px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 15px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; margin: 0;">
+                            <i class="fa-solid fa-bell" style="color: var(--accent-orange);"></i> AI Action Recommendations & Alerts
+                        </h2>
+                        <span class="scan-status-badge" id="pm-last-updated" style="background: rgba(255,255,255,0.05); color: var(--text-secondary);">Last updated: N/A</span>
+                    </div>
+                    <div id="pm-alerts-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 15px;">
+                        <!-- Alerts rendered dynamically -->
+                        <div class="no-alerts-state glass" style="grid-column: 1 / -1; padding: 20px; text-align: center; color: var(--text-secondary); font-size: 13px;">
+                            <i class="fa-solid fa-check-circle" style="color: var(--accent-green); font-size: 20px; margin-bottom: 8px; display: block;"></i>
+                            All open trades are aligned. No active exit or trailing stop adjustments required.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Positions Table (Full Width) -->
+                <div class="watchlist-section glass" style="padding: 20px; margin-bottom: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+                        <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin: 0;">
+                            <i class="fa-solid fa-list-check" style="color: var(--accent-blue);"></i> Active Open Positions Audit
+                        </h3>
+                        <div style="display: flex; gap: 8px;">
+                            <select id="pm-filter-action" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-primary); padding: 6px 12px; border-radius: 6px; font-size: 12px; cursor: pointer; outline: none;">
+                                <option value="ALL">All Actions</option>
+                                <option value="EXIT">Exits (Full & Partial)</option>
+                                <option value="TRAIL">Trail / Adjust Stops</option>
+                                <option value="ADD">Add Positions</option>
+                                <option value="HOLD">Holds</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="overflow-x: auto;">
+                        <table class="watchlist-table" style="width: 100%; border-collapse: collapse; text-align: left;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <th style="padding: 12px 10px; font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600;">Symbol</th>
+                                    <th style="padding: 12px 10px; font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600;">Details</th>
+                                    <th style="padding: 12px 10px; font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600;">Earnings</th>
+                                    <th style="padding: 12px 10px; font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600;">PnL (%)</th>
+                                    <th style="padding: 12px 10px; font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600;">R-Mult</th>
+                                    <th style="padding: 12px 10px; font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; text-align: center;">EQS</th>
+                                    <th style="padding: 12px 10px; font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600; text-align: center;">TBS</th>
+                                    <th style="padding: 12px 10px; font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600;">Stop Loss</th>
+                                    <th style="padding: 12px 10px; font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600;">AI Action</th>
+                                    <th style="padding: 12px 10px; font-size: 11px; text-transform: uppercase; color: var(--text-secondary); font-weight: 600;">Rationale</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pm-active-trades-table-body">
+                                <!-- Loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Statistics & Distribution Graphs Row -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px;">
+                    <!-- Stat Card: Trade Behavior Distribution -->
+                    <div class="risk-chart-card glass" style="padding: 20px; min-height: 320px; display: flex; flex-direction: column; gap: 12px;">
+                        <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Entry Quality vs Trade Behavior Correlation</h3>
+                        <div style="flex-grow: 1; position: relative; height: calc(100% - 24px); display: flex; align-items: center; justify-content: center;">
+                            <canvas id="pm-correlation-chart"></canvas>
+                        </div>
+                    </div>
+                    <!-- Stat Card: Expectancy Regime Historical Context -->
+                    <div class="risk-chart-card glass" style="padding: 20px; min-height: 320px; display: flex; flex-direction: column; gap: 12px;">
+                        <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Expectancy Regime Stats & Distribution</h3>
+                        <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 15px;">
+                            <div style="display: flex; flex-direction: column; gap: 10px;" id="pm-regime-stats-container">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- True Paper Trading Tab Content -->
+            <section class="tab-content" id="tab-true_paper_portfolio">
+                <div class="risk-header glass" style="padding: 20px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
+                    <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; margin: 0;">
+                        <i class="fa-solid fa-gamepad" style="color: #10b981;"></i> True Paper Trading Portfolio (₹1L Capital)
+                    </h2>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin: 0;">
+                        Zero-emotion, evidence-based simulation running strictly on the 4-gate verification system. Automatically enters on trigger and executes rule-bound exits daily.
+                    </p>
+                </div>
+
+                <!-- Metrics Overview Row -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px;">
+                    <div class="stat-card glass" style="padding: 16px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Total Equity</span>
+                        <h3 id="tpp-total-equity" style="font-size: 20px; margin: 4px 0 0 0; font-weight: 700;">₹1,00,000.00</h3>
+                        <span id="tpp-total-return-pct" style="font-size: 11px; font-weight: 600; color: var(--text-secondary);">+0.00% Overall</span>
+                    </div>
+                    <div class="stat-card glass" style="padding: 16px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Available Cash</span>
+                        <h3 id="tpp-cash" style="font-size: 20px; margin: 4px 0 0 0; font-weight: 700;">₹1,00,000.00</h3>
+                        <span style="font-size: 11px; color: var(--text-secondary);">₹1L Starting capital</span>
+                    </div>
+                    <div class="stat-card glass" style="padding: 16px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Active Value</span>
+                        <h3 id="tpp-open-value" style="font-size: 20px; margin: 4px 0 0 0; font-weight: 700;">₹0.00</h3>
+                        <span id="tpp-positions-count" style="font-size: 11px; color: var(--text-secondary);">0 open positions</span>
+                    </div>
+                    <div class="stat-card glass" style="padding: 16px;">
+                        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">Realized PnL</span>
+                        <h3 id="tpp-realized-pnl" style="font-size: 20px; margin: 4px 0 0 0; font-weight: 700; color: var(--text-primary);">₹0.00</h3>
+                        <span id="tpp-closed-count" style="font-size: 11px; color: var(--text-secondary);">0 closed trades</span>
+                    </div>
+                </div>
+
+                <!-- Performance Stats Panel -->
+                <div class="glass" style="padding: 20px; margin-bottom: 24px;">
+                    <h3 style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-purple); margin: 0 0 16px 0;">Portfolio Performance Metrics</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; text-align: center;">
+                        <div style="padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 8px;">
+                            <span style="font-size: 11px; color: var(--text-secondary);">Win Rate</span>
+                            <div id="tpp-win-rate" style="font-size: 18px; font-weight: 700; margin-top: 4px; color: var(--text-primary);">0.0%</div>
+                        </div>
+                        <div style="padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 8px;">
+                            <span style="font-size: 11px; color: var(--text-secondary);">T1 Hit Rate</span>
+                            <div id="tpp-t1-rate" style="font-size: 18px; font-weight: 700; margin-top: 4px; color: #10b981;">0.0%</div>
+                        </div>
+                        <div style="padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 8px;">
+                            <span style="font-size: 11px; color: var(--text-secondary);">T2 Hit Rate</span>
+                            <div id="tpp-t2-rate" style="font-size: 18px; font-weight: 700; margin-top: 4px; color: #3b82f6;">0.0%</div>
+                        </div>
+                        <div style="padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 8px;">
+                            <span style="font-size: 11px; color: var(--text-secondary);">SL Hit Rate</span>
+                            <div id="tpp-sl-rate" style="font-size: 18px; font-weight: 700; margin-top: 4px; color: var(--accent-red);">0.0%</div>
+                        </div>
+                        <div style="padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 8px;">
+                            <span style="font-size: 11px; color: var(--text-secondary);">Avg R-Multiple</span>
+                            <div id="tpp-avg-r" style="font-size: 18px; font-weight: 700; margin-top: 4px; color: var(--text-primary);">+0.00R</div>
+                        </div>
+                        <div style="padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 8px;">
+                            <span style="font-size: 11px; color: var(--text-secondary);">EV per Trade</span>
+                            <div id="tpp-ev" style="font-size: 18px; font-weight: 700; margin-top: 4px; color: var(--text-primary);">+0.00R</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Holdings -->
+                <div class="glass" style="padding: 20px; margin-bottom: 24px;">
+                    <h3 style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-purple); margin: 0 0 14px 0;">Active Holdings (Max 8 Positions)</h3>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table class="watchlist-table" style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Grade</th>
+                                    <th>Entry Price</th>
+                                    <th>Qty</th>
+                                    <th>CMP</th>
+                                    <th>Trailing SL</th>
+                                    <th>T1</th>
+                                    <th>T2</th>
+                                    <th>PnL Net</th>
+                                    <th>R-Mult</th>
+                                    <th>Days</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tpp-open-trades-body">
+                                <tr><td colspan="11" style="text-align: center; color: var(--text-muted); padding: 20px;">No active holdings currently.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Historical Trades & Process Logs -->
+                <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 24px; min-height: 400px; flex-wrap: wrap;">
+                    
+                    <!-- Closed Trades Table -->
+                    <div class="glass" style="padding: 20px; display: flex; flex-direction: column;">
+                        <h3 style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-purple); margin: 0 0 14px 0;">Closed Trades Log</h3>
+                        <div class="table-container" style="overflow-x: auto; flex-grow: 1;">
+                            <table class="watchlist-table" style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr>
+                                        <th>Symbol</th>
+                                        <th>Grade</th>
+                                        <th>Entry Date</th>
+                                        <th>Exit Date</th>
+                                        <th>Entry Px</th>
+                                        <th>Exit Px</th>
+                                        <th>PnL Net</th>
+                                        <th>R-Mult</th>
+                                        <th>Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tpp-closed-trades-body">
+                                    <tr><td colspan="9" style="text-align: center; color: var(--text-muted); padding: 20px;">No historical trades closed yet.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Process Log Terminal -->
+                    <div class="glass" style="padding: 20px; display: flex; flex-direction: column; max-height: 500px;">
+                        <h3 style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-purple); margin: 0 0 10px 0;">Daily EOD Process Log</h3>
+                        <div id="tpp-process-log" style="flex-grow: 1; overflow-y: auto; background: rgba(0,0,0,0.6); padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border-color); font-family: 'Consolas', 'Courier New', monospace; font-size: 11.5px; color: #10b981; line-height: 1.5; white-space: pre-wrap; max-height: 380px;">
+                            Waiting for EOD scan execution...
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Earnings Calendar Tab Content -->
+            <section class="tab-content" id="tab-earnings">
+                <div class="risk-header glass" style="padding: 20px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
+                    <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; margin: 0;">
+                        <i class="fa-solid fa-calendar-days" style="color: var(--accent-purple);"></i> Corporate Earnings Calendar
+                    </h2>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin: 0;">
+                        Monitor upcoming earnings announcements for all active portfolio positions and watchlist setups. Avoid binary gap-down risks by tracking days left until report date.
+                    </p>
+                </div>
+
+                <div class="glass" style="padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                        <h3 style="font-size: 14px; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Upcoming Earnings & Risk Alerts</h3>
+                        <span class="badge" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple);" id="earnings-total-count">0 Tracked Stocks</span>
+                    </div>
+
+                    <table class="watchlist-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 12px;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-secondary); font-weight: 700; font-size: 10.5px; text-transform: uppercase;">
+                                <th style="padding: 10px 12px;">Symbol</th>
+                                <th style="padding: 10px 12px;">Type / Status</th>
+                                <th style="padding: 10px 12px; text-align: right;">Earnings Date</th>
+                                <th style="padding: 10px 12px; text-align: right;">Days Until Earnings</th>
+                                <th style="padding: 10px 12px; text-align: center;">Risk Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="earnings-calendar-body" style="color: var(--text-primary);">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <!-- Edit/Add Trade Modal -->
+        <div class="modal-overlay" id="trade-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); z-index: 1000; justify-content: center; align-items: center; padding: 20px; overflow-y: auto;">
+            <div class="modal-content glass" style="width: 100%; max-width: 680px; padding: 24px; display: flex; flex-direction: column; gap: 16px; margin: auto;">
+                <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                    <h3 id="modal-title" style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin: 0;">Add New Trade</h3>
+                    <button type="button" class="close-modal-btn" id="close-trade-modal-btn" onclick="document.getElementById('trade-modal').style.display='none'" style="background: none; border: none; color: var(--text-secondary); font-size: 24px; cursor: pointer; line-height: 1; z-index: 100; padding: 4px;">&times;</button>
+                </div>
+                <form id="trade-form" style="display: flex; flex-direction: column; gap: 16px; overflow-y: auto; max-height: 80vh; padding-right: 4px;">
+                    <input type="hidden" id="trade-id-field">
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="trade-symbol" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Symbol</label>
+                            <input type="text" id="trade-symbol" required placeholder="e.g. STARHEALTH" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; width: 100%;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="trade-name" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Company Name</label>
+                            <input type="text" id="trade-name" required placeholder="e.g. Star Health Insurance" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; width: 100%;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="trade-entry-date" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Entry Date</label>
+                            <input type="date" id="trade-entry-date" required style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; width: 100%; color-scheme: dark;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="trade-exit-date" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Exit Date</label>
+                            <input type="date" id="trade-exit-date" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; width: 100%; color-scheme: dark;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="trade-entry-price" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Entry Price (₹)</label>
+                            <input type="number" step="0.01" id="trade-entry-price" required style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; width: 100%;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="trade-qty" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Quantity</label>
+                            <input type="number" id="trade-qty" required style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; width: 100%;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="trade-t1" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Target 1 (₹)</label>
+                            <input type="number" step="0.01" id="trade-t1" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; width: 100%;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="trade-t2" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Target 2 (₹)</label>
+                            <input type="number" step="0.01" id="trade-t2" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; width: 100%;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="trade-sl" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Stop Loss (₹)</label>
+                            <input type="number" step="0.01" id="trade-sl" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; width: 100%;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="trade-risk-pct" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Risk per Trade (%)</label>
+                            <input type="number" step="0.1" id="trade-risk-pct" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; width: 100%;">
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 6px; grid-column: span 2;">
+                            <label for="trade-status" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Status</label>
+                            <select id="trade-status" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(18, 20, 28, 0.9); color: var(--text-primary); font-size: 13px; outline: none; width: 100%; cursor: pointer;">
+                                <option value="OPEN">OPEN</option>
+                                <option value="CLOSED">CLOSED</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Exits editor -->
+                    <div style="border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; background: rgba(0,0,0,0.15);">
+                        <h4 style="font-size: 12px; margin: 0 0 12px 0; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700;">Exits Breakdown</h4>
+                        <div id="modal-exits-container" style="display: flex; flex-direction: column; gap: 8px;">
+                            <!-- Exits will be rendered dynamically -->
+                        </div>
+                        <button type="button" id="modal-add-exit-row" style="background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.3); padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; margin-top: 10px;">
+                            <i class="fa-solid fa-plus"></i> Add Exit Allocation
+                        </button>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label for="trade-tech-desc" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">Technical Setup Description</label>
+                        <textarea id="trade-tech-desc" rows="2" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; width: 100%; resize: vertical;" placeholder="e.g. Bull Flag breakout on 50-DMA support..."></textarea>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label for="trade-comments" style="font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase;">My Comments / Rationale</label>
+                        <textarea id="trade-comments" rows="3" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: var(--text-primary); font-size: 13px; outline: none; width: 100%; resize: vertical;" placeholder="e.g. results expected next week, promoter details..."></textarea>
+                    </div>
+
+                    <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 12px; border-top: 1px solid var(--border-color); padding-top: 16px; margin-top: 8px;">
+                        <button type="button" class="btn-secondary" id="cancel-trade-modal-btn" onclick="document.getElementById('trade-modal').style.display='none'" style="background: none; border: 1px solid var(--border-color); color: var(--text-secondary); padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.2s;">Cancel</button>
+                        <button type="submit" style="background: var(--accent-purple); color: white; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 13px; transition: opacity 0.2s;">Save Trade</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Antigravity Momentum Score (AMS) Detailed Dashboard Modal -->
+        <div class="modal-overlay" id="ams-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); z-index: 1000; justify-content: center; align-items: center; padding: 20px;">
+            <div class="modal-content glass" style="width: 100%; max-width: 440px; padding: 24px; display: flex; flex-direction: column; gap: 16px; border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; position: relative; border-left: 5px solid var(--accent-green); background: #0f111a;">
+                
+                <!-- Close Button -->
+                <button type="button" class="close-modal-btn" id="close-ams-modal-btn" onclick="document.getElementById('ams-modal').style.display='none'" style="position: absolute; top: 12px; right: 16px; background: none; border: none; color: var(--text-secondary); font-size: 28px; cursor: pointer; line-height: 1; z-index: 100; padding: 4px; display: flex; align-items: center; justify-content: center;">&times;</button>
+                
+                <!-- Header Card Area -->
+                <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span id="ams-modal-symbol" style="font-size: 24px; font-weight: 800; color: var(--text-primary); letter-spacing: 0.5px; font-family: monospace;">TICKER</span>
+                        <span id="ams-modal-priority" style="font-size: 11px; font-weight: bold; background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.3); padding: 2px 8px; border-radius: 4px; font-family: monospace;">P3</span>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span id="ams-modal-industry" style="font-size: 13px; font-weight: 600; color: var(--accent-blue);">Industry name</span>
+                        <div style="display: flex; align-items: center; gap: 2px;">
+                            <span id="ams-modal-score" style="font-size: 24px; font-weight: 800; color: var(--accent-orange); font-family: monospace;">88</span>
+                            <i class="fa-regular fa-circle-question" style="font-size: 11px; color: var(--text-secondary); cursor: pointer;" title="AMS Momentum Score"></i>
+                        </div>
+                    </div>
+                    
+                    <span id="ams-modal-company" style="font-size: 11.5px; color: var(--text-secondary);">Company Name</span>
+                </div>
+
+                <!-- Tags Row -->
+                <div id="ams-modal-tags-container" style="display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0;">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <!-- Core Prices Grid -->
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; background: rgba(255,255,255,0.02); padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border-color); text-align: center;">
+                    <div>
+                        <div style="font-size: 9px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;">Entry</div>
+                        <div id="ams-modal-entry-val" style="font-size: 14px; font-weight: 800; color: var(--text-primary); margin-top: 4px; font-family: monospace;">₹0.00</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 9px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;">Stop Loss</div>
+                        <div id="ams-modal-sl-val" style="font-size: 14px; font-weight: 800; color: var(--accent-red); margin-top: 4px; font-family: monospace;">₹0.00</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 9px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;">Risk</div>
+                        <div id="ams-modal-risk-val" style="font-size: 14px; font-weight: 800; color: var(--text-primary); margin-top: 4px; font-family: monospace;">0.00%</div>
+                    </div>
+                </div>
+
+                <!-- Allocation Helper -->
+                <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); padding: 8px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--accent-green); font-weight: 700;">
+                    <i class="fa-solid fa-calculator"></i>
+                    <span id="ams-modal-allocation-text">₹0.0K • 0 shares (Standard sizing)</span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <a id="ams-modal-chart-btn" href="#" target="_blank" style="background: rgba(139, 92, 246, 0.15); border: 1px solid rgba(139, 92, 246, 0.3); color: var(--accent-purple); padding: 10px; border-radius: 6px; text-align: center; text-decoration: none; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease;">
+                        <i class="fa-solid fa-chart-line"></i> Chart
+                    </a>
+                    <button id="ams-modal-add-position-btn" type="button" style="background: var(--accent-purple); border: none; color: #ffffff; padding: 10px; border-radius: 6px; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; transition: all 0.2s ease;">
+                        <i class="fa-solid fa-plus"></i> Add Position
+                    </button>
+                </div>
+
+                <!-- Metadata info bar -->
+                <div style="font-size: 9.5px; color: var(--text-secondary); text-align: center; border-bottom: 1px dashed var(--border-color); padding-bottom: 10px; margin-top: -4px;">
+                    SL: 1xATR • Band: NEUTRAL/WL/SW • Score >= 85 • Hard exit Day 5
+                </div>
+
+                <!-- Quality Metrics Section -->
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <span style="font-size: 11px; font-weight: 800; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px;">Setup Quality (LVP Quality)</span>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 8px; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <!-- Pullback -->
+                        <div style="display: flex; align-items: center; font-size: 11px; justify-content: space-between;">
+                            <span style="color: var(--text-secondary); width: 90px; font-weight: 600;">PULLBACK</span>
+                            <span id="ams-modal-pullback-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-weight: bold; width: 60px; text-align: center;">0.0%</span>
+                            <span id="ams-modal-pullback-desc" style="color: var(--text-primary); flex: 1; margin-left: 12px; text-align: left;">genuine (<= -3% = E +7.5%)</span>
+                        </div>
+                        
+                        <!-- Avg Vol 5D -->
+                        <div style="display: flex; align-items: center; font-size: 11px; justify-content: space-between;">
+                            <span style="color: var(--text-secondary); width: 90px; font-weight: 600;">AVG VOL (5D)</span>
+                            <span id="ams-modal-avgvol-badge" style="background: rgba(245, 158, 11, 0.15); color: var(--accent-orange); border: 1px solid rgba(245, 158, 11, 0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-weight: bold; width: 60px; text-align: center;">1.00x</span>
+                            <span id="ams-modal-avgvol-desc" style="color: var(--text-primary); flex: 1; margin-left: 12px; text-align: left;">quiet (E +1.8%)</span>
+                        </div>
+
+                        <!-- SMA20 Dist -->
+                        <div style="display: flex; align-items: center; font-size: 11px; justify-content: space-between;">
+                            <span style="color: var(--text-secondary); width: 90px; font-weight: 600;">SMA20 DIST</span>
+                            <span id="ams-modal-smadist-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-weight: bold; width: 60px; text-align: center;">0.0%</span>
+                            <span id="ams-modal-smadist-desc" style="color: var(--text-primary); flex: 1; margin-left: 12px; text-align: left;">in zone (WR 58%)</span>
+                        </div>
+
+                        <!-- Day RVOL -->
+                        <div style="display: flex; align-items: center; font-size: 11px; justify-content: space-between;">
+                            <span style="color: var(--text-secondary); width: 90px; font-weight: 600;">DAY RVOL</span>
+                            <span id="ams-modal-rvol-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-weight: bold; width: 60px; text-align: center;">1.00x</span>
+                            <span id="ams-modal-rvol-desc" style="color: var(--text-primary); flex: 1; margin-left: 12px; text-align: left;">sweet spot (E +4.8%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation / Status -->
+                <div style="font-size: 11px; color: var(--text-secondary); text-align: left; background: rgba(255,255,255,0.01); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-color); display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-compass" style="color: var(--accent-blue);"></i>
+                    <span><strong>Algo recommendation:</strong> <span id="ams-modal-algo-desc" style="color: var(--text-primary);">Positional/swing setup coiling near pivot.</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Industry Deep-Dive Modal -->
+        <div class="modal-overlay" id="industry-deep-dive-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); z-index: 1000; justify-content: center; align-items: center; padding: 20px;">
+            <div class="modal-content glass" style="width: 100%; max-width: 800px; max-height: 85vh; padding: 24px; display: flex; flex-direction: column; gap: 16px; border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; position: relative; background: #0f111a; overflow-y: auto;">
+                
+                <!-- Close Button -->
+                <button type="button" class="close-modal-btn" id="close-industry-modal-btn" onclick="document.getElementById('industry-deep-dive-modal').style.display='none'" style="position: absolute; top: 12px; right: 16px; background: none; border: none; color: var(--text-secondary); font-size: 28px; cursor: pointer; line-height: 1; z-index: 100; padding: 4px; display: flex; align-items: center; justify-content: center;">&times;</button>
+                
+                <!-- Header -->
+                <div style="display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-top: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <h3 id="industry-modal-title" style="font-size: 20px; font-weight: 800; color: var(--text-primary); margin: 0; display: flex; align-items: center; gap: 8px;">
+                                Industry Name
+                            </h3>
+                            <span id="industry-modal-sector" style="font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;">Parent Sector</span>
+                        </div>
+                        <div style="display: flex; gap: 8px;">
+                            <span id="industry-modal-zone" style="font-size: 11px; font-weight: bold; padding: 4px 8px; border-radius: 4px; font-family: monospace;">Confirmed Uptrend</span>
+                            <span id="industry-modal-confirmed" style="font-size: 11px; font-weight: bold; background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); padding: 4px 8px; border-radius: 4px; display: none;"><i class="fa-solid fa-check"></i> ✓P Confirmed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Industry Metrics Summary Grid -->
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; background: rgba(255,255,255,0.02); padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border-color); text-align: center;">
+                    <div>
+                        <div style="font-size: 9px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold;">Combined Score</div>
+                        <div id="industry-modal-score" style="font-size: 18px; font-weight: 800; color: var(--accent-orange); margin-top: 4px; font-family: monospace;">--</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 9px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold;">Stack Breadth</div>
+                        <div id="industry-modal-breadth" style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-top: 4px; font-family: monospace;">--%</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 9px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold;">Net Flow Score</div>
+                        <div id="industry-modal-flow" style="font-size: 18px; font-weight: 800; color: var(--accent-green); margin-top: 4px; font-family: monospace;">--</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 9px; color: var(--text-secondary); text-transform: uppercase; font-weight: bold;">Pocket Pivots (5D)</div>
+                        <div id="industry-modal-pp" style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin-top: 4px; font-family: monospace;">--%</div>
+                    </div>
+                </div>
+
+                <!-- Actionable Insights Panel -->
+                <div id="industry-modal-playbook-container" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px; display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 11px; font-weight: 800; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px;">Strategic Playbook & Actionable Insights</span>
+                        <span id="industry-modal-playbook-action" style="font-size: 9.5px; font-weight: 800; padding: 2px 6px; border-radius: 4px; font-family: monospace;">BUY STRENGTH</span>
+                    </div>
+                    <div style="font-size: 12px; line-height: 1.4; color: var(--text-primary);">
+                        <strong id="industry-modal-playbook-title" style="color: var(--accent-green); text-transform: uppercase; font-size: 11.5px; display: block; margin-bottom: 2px;">LEADERSHIP ACCUMULATION</strong>
+                        <span id="industry-modal-playbook-desc">Strong money flow. Focus on constituents showing pocket pivots near pivot lines.</span>
+                    </div>
+                </div>
+
+                <!-- Constituent Stocks Table Container -->
+                <div style="flex: 1; overflow-x: auto; margin-top: 8px; min-height: 250px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px dashed rgba(255, 255, 255, 0.05); padding-bottom: 8px;">
+                        <span style="font-size: 11px; font-weight: 800; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin: 0;">Constituent Stocks (<span id="industry-modal-stock-count">0</span>)</span>
+                        <label style="font-size: 11.5px; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 6px; user-select: none;">
+                            <input type="checkbox" id="industry-modal-filter-strong" checked style="cursor: pointer; accent-color: var(--accent-purple); width: 14px; height: 14px;">
+                            Show Leaders Only
+                        </label>
+                    </div>
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 12px;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--border-color); color: var(--text-secondary); font-weight: 700; font-size: 10.5px; text-transform: uppercase;">
+                                <th style="padding: 8px 12px;">Symbol</th>
+                                <th style="padding: 8px 12px;">Company Name</th>
+                                <th style="padding: 8px 12px; text-align: right;">Score</th>
+                                <th style="padding: 8px 12px; text-align: right;">Price</th>
+                                <th style="padding: 8px 12px; text-align: right;">1D</th>
+                                <th style="padding: 8px 12px; text-align: right;">RS(D)</th>
+                                <th style="padding: 8px 12px; text-align: right;">RS(W)</th>
+                                <th style="padding: 8px 12px; text-align: center;">SMA Flags</th>
+                                <th style="padding: 8px 12px; text-align: right;">From 52W High</th>
+                            </tr>
+                        </thead>
+                        <tbody id="industry-modal-stocks-body" style="color: var(--text-primary);">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TradingView Watchlist Modal -->
+        <div class="modal-overlay" id="tv-watchlist-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); backdrop-filter: blur(8px); z-index: 1000; justify-content: center; align-items: center; padding: 20px;">
+            <div class="modal-content glass" style="width: 100%; max-width: 480px; padding: 24px; display: flex; flex-direction: column; gap: 16px; border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 12px; position: relative; border-left: 5px solid var(--accent-purple); background: #0f111a;">
+                
+                <!-- Close Button -->
+                <button type="button" class="close-modal-btn" id="close-tv-modal-btn" onclick="document.getElementById('tv-watchlist-modal').style.display='none'" style="position: absolute; top: 12px; right: 16px; background: none; border: none; color: var(--text-secondary); font-size: 28px; cursor: pointer; line-height: 1; z-index: 100; padding: 4px; display: flex; align-items: center; justify-content: center;">&times;</button>
+                
+                <!-- Header -->
+                <div style="display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-top: 10px;">
+                    <h3 style="font-size: 18px; font-weight: 800; color: var(--text-primary); margin: 0; display: flex; align-items: center; gap: 8px;">
+                        <img src="https://www.tradingview.com/favicon.ico" style="width: 18px; height: 18px; border-radius: 3px;" alt="TradingView">
+                        TradingView Watchlist Export
+                    </h3>
+                    <span style="font-size: 11px; color: var(--text-secondary);">Export all watchlist stocks with active Trigger and Stop Loss.</span>
+                </div>
+
+                <!-- Main Content -->
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <p style="font-size: 12px; line-height: 1.5; color: var(--text-primary); margin: 0;">
+                        TradingView allows importing tickers instantly. Click <strong>Copy Tickers</strong>, click the <strong>+</strong> icon in your TradingView Watchlist panel, and press <strong>Ctrl+V</strong> to paste them all.
+                    </p>
+                    
+                    <!-- Text Area for Tickers -->
+                    <div style="position: relative; margin-top: 4px;">
+                        <textarea id="tv-tickers-textarea" readonly style="width: 100%; height: 90px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 8px; color: var(--accent-blue); font-family: monospace; font-size: 12px; padding: 10px; resize: none; outline: none; box-sizing: border-box;"></textarea>
+                    </div>
+
+                    <div style="font-size: 11px; color: var(--text-secondary); display: flex; justify-content: space-between;">
+                        <span>Total stocks: <strong id="tv-tickers-count" style="color: var(--text-primary);">0</strong></span>
+                        <span>Exchange: <strong style="color: var(--text-primary);">NSE</strong></span>
+                    </div>
+                </div>
+
+                <!-- Footer Buttons -->
+                <div style="display: flex; gap: 10px; margin-top: 8px;">
+                    <button id="btn-copy-tv-tickers" onclick="copyTradingViewTickersToClipboard()" class="btn" style="flex: 1; background: var(--accent-purple); color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px;">
+                        <i class="fa-solid fa-copy"></i> Copy Tickers
+                    </button>
+                    <button id="btn-download-tv-tickers" onclick="downloadTradingViewWatchlistFile()" class="btn" style="flex: 1; background: rgba(255, 255, 255, 0.05); color: var(--text-primary); border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12px;">
+                        <i class="fa-solid fa-download"></i> Download .txt
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide-out Ticker Detail Drawer -->
+    <div id="ticker-detail-drawer" class="ticker-detail-drawer">
+        <button id="drawer-close-btn" class="drawer-close-btn"><i class="fa-solid fa-xmark"></i></button>
+        <div class="drawer-header">
+            <div class="drawer-title">
+                <h2 id="drawer-symbol">TICKER</h2>
+                <p id="drawer-company-name" style="font-size: 13px; color: var(--text-secondary); margin: 0;">Company Name</p>
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 10px; align-items: center; flex-wrap: wrap;">
+                <span id="drawer-industry-badge" class="industry-badge" style="font-size: 10px; padding: 2px 8px;">Industry</span>
+                <span id="drawer-setup-badge" class="setup-type-label" style="font-size: 10px; padding: 2px 8px;">Setup</span>
+                <span id="drawer-grade-badge" class="table-grade" style="font-size: 10px; padding: 2px 8px;">Grade A</span>
+            </div>
+        </div>
+
+        <!-- Technical Parameters Section -->
+        <div class="drawer-section">
+            <div class="drawer-section-title">Minervini Criteria Check</div>
+            <div class="drawer-grid-2">
+                <div class="drawer-label-value">
+                    <span>RS Rating (D/W)</span>
+                    <strong id="drawer-rs">92 / 89</strong>
+                </div>
+                <div class="drawer-label-value">
+                    <span>Distance from High</span>
+                    <strong id="drawer-dist-high">-2.5%</strong>
+                </div>
+                <div class="drawer-label-value">
+                    <span>Trend Stacked</span>
+                    <strong id="drawer-trend-stacked">YES ✅</strong>
+                </div>
+                <div class="drawer-label-value">
+                    <span>Volume Dry-up (VDU)</span>
+                    <strong id="drawer-vdu">YES ✅</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trade Execution Section -->
+        <div class="drawer-section">
+            <div class="drawer-section-title">Execution Strike Zone</div>
+            <div class="drawer-grid-2">
+                <div class="drawer-label-value">
+                    <span>Current Price</span>
+                    <strong id="drawer-cmp">₹0.00</strong>
+                </div>
+                <div class="drawer-label-value">
+                    <span>Trigger Price</span>
+                    <strong id="drawer-trigger">₹0.00</strong>
+                </div>
+                <div class="drawer-label-value">
+                    <span>Stop Loss</span>
+                    <strong id="drawer-stop">₹0.00</strong>
+                </div>
+                <div class="drawer-label-value">
+                    <span>Risk Percentage</span>
+                    <strong id="drawer-risk" class="table-risk">0.0%</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Corporate Events Section -->
+        <div class="drawer-section">
+            <div class="drawer-section-title">Corporate Events</div>
+            <div class="drawer-label-value">
+                <span>Next Earnings Date</span>
+                <strong id="drawer-earnings">Loading...</strong>
+            </div>
+        </div>
+
+        <!-- Actions Section -->
+        <div class="drawer-section" style="margin-top: auto;">
+            <div class="drawer-section-title">Actions</div>
+            <button id="drawer-add-journal-btn" class="table-log-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; background: var(--accent-purple); color: white; border: none; font-size: 13.5px; border-radius: 8px; font-weight: 700; cursor: pointer;">
+                <i class="fa-solid fa-plus"></i> Add to Trade Journal
+            </button>
+        </div>
+    </div>
+
+    <script src="web/app.js?v=4.9"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "AsOfDate": "2026-08-03",
+  "Index": 49.6,
+  "Change_1D": 4.7,
+  "Change_3D": 2.8,
+  "Change_5D": -0.7,
+  "Status": "Caution",
+  "StatusColor": "caution",
+  "Indicators": {
+    "Above20EMA": 63.1,
+    "Above50SMA": 63.0,
+    "Above200SMA": 60.8,
+    "Stacked": 30.2,
+    "AdvancesDeclines": 75.2,
+    "Near52WH": 23.5,
+    "HighRS": 25.7
+  }
+}

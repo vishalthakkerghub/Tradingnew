@@ -1,0 +1,5627 @@
+{
+  "360ONE": {
+    "Symbol": "360ONE",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "3BBLACKBIO": {
+    "Symbol": "3BBLACKBIO",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "3MINDIA": {
+    "Symbol": "3MINDIA",
+    "Earnings_Date": "2026-08-14",
+    "Days_To_Earnings": -4
+  },
+  "5PAISA": {
+    "Symbol": "5PAISA",
+    "Earnings_Date": "2022-07-11",
+    "Days_To_Earnings": -1499
+  },
+  "AADHARHFC": {
+    "Symbol": "AADHARHFC",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "AARTIDRUGS": {
+    "Symbol": "AARTIDRUGS",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "AARTIIND": {
+    "Symbol": "AARTIIND",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "AAVAS": {
+    "Symbol": "AAVAS",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "ABB": {
+    "Symbol": "ABB",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "ABBOTINDIA": {
+    "Symbol": "ABBOTINDIA",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "ABCAPITAL": {
+    "Symbol": "ABCAPITAL",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "ABDL": {
+    "Symbol": "ABDL",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "ABFRL": {
+    "Symbol": "ABFRL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "ABLBL": {
+    "Symbol": "ABLBL",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "ABREL": {
+    "Symbol": "ABREL",
+    "Earnings_Date": "2026-10-27",
+    "Days_To_Earnings": 70
+  },
+  "ABSLAMC": {
+    "Symbol": "ABSLAMC",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "ACC": {
+    "Symbol": "ACC",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "ACCELYA": {
+    "Symbol": "ACCELYA",
+    "Earnings_Date": "2026-07-29",
+    "Days_To_Earnings": -20
+  },
+  "ACE": {
+    "Symbol": "ACE",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "ACI": {
+    "Symbol": "ACI",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "ACMESOLAR": {
+    "Symbol": "ACMESOLAR",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "ACUTAAS": {
+    "Symbol": "ACUTAAS",
+    "Earnings_Date": "2026-10-19",
+    "Days_To_Earnings": 62
+  },
+  "ADANIENSOL": {
+    "Symbol": "ADANIENSOL",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "ADANIENT": {
+    "Symbol": "ADANIENT",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "ADANIGREEN": {
+    "Symbol": "ADANIGREEN",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "ADANIPORTS": {
+    "Symbol": "ADANIPORTS",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "ADANIPOWER": {
+    "Symbol": "ADANIPOWER",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "ADFFOODS": {
+    "Symbol": "ADFFOODS",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "ADOR": {
+    "Symbol": "ADOR",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "ADSL": {
+    "Symbol": "ADSL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "ADVENZYMES": {
+    "Symbol": "ADVENZYMES",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "AEGISLOG": {
+    "Symbol": "AEGISLOG",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "AEGISVOPAK": {
+    "Symbol": "AEGISVOPAK",
+    "Earnings_Date": "2026-08-05",
+    "Days_To_Earnings": -13
+  },
+  "AEQUS": {
+    "Symbol": "AEQUS",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "AEROFLEX": {
+    "Symbol": "AEROFLEX",
+    "Earnings_Date": "2026-07-27",
+    "Days_To_Earnings": -22
+  },
+  "AETHER": {
+    "Symbol": "AETHER",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "AFCONS": {
+    "Symbol": "AFCONS",
+    "Earnings_Date": "2026-11-23",
+    "Days_To_Earnings": 97
+  },
+  "AFFLE": {
+    "Symbol": "AFFLE",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "AGARWALEYE": {
+    "Symbol": "AGARWALEYE",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "AGI": {
+    "Symbol": "AGI",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "AGSTRA": {
+    "Symbol": "AGSTRA",
+    "Earnings_Date": "2026-08-18",
+    "Days_To_Earnings": 0
+  },
+  "AHLUCONT": {
+    "Symbol": "AHLUCONT",
+    "Earnings_Date": "2026-11-13",
+    "Days_To_Earnings": 87
+  },
+  "AIAENG": {
+    "Symbol": "AIAENG",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "AJANTPHARM": {
+    "Symbol": "AJANTPHARM",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "AJAXENGG": {
+    "Symbol": "AJAXENGG",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "AJMERA": {
+    "Symbol": "AJMERA",
+    "Earnings_Date": "2026-08-04",
+    "Days_To_Earnings": -14
+  },
+  "AKUMS": {
+    "Symbol": "AKUMS",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "ALICON": {
+    "Symbol": "ALICON",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "ALIVUS": {
+    "Symbol": "ALIVUS",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "ALKEM": {
+    "Symbol": "ALKEM",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "ALKYLAMINE": {
+    "Symbol": "ALKYLAMINE",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "ALLCARGO": {
+    "Symbol": "ALLCARGO",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "ALLDIGI": {
+    "Symbol": "ALLDIGI",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "ALPEXSOLAR": {
+    "Symbol": "ALPEXSOLAR",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "AMAGI": {
+    "Symbol": "AMAGI",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "AMBER": {
+    "Symbol": "AMBER",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "AMBUJACEM": {
+    "Symbol": "AMBUJACEM",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "ANANDRATHI": {
+    "Symbol": "ANANDRATHI",
+    "Earnings_Date": "2026-10-08",
+    "Days_To_Earnings": 51
+  },
+  "ANANTRAJ": {
+    "Symbol": "ANANTRAJ",
+    "Earnings_Date": "2026-08-08",
+    "Days_To_Earnings": -10
+  },
+  "ANDHRAPAP": {
+    "Symbol": "ANDHRAPAP",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "ANGELONE": {
+    "Symbol": "ANGELONE",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "ANLON": {
+    "Symbol": "ANLON",
+    "Earnings_Date": "2026-05-26",
+    "Days_To_Earnings": -84
+  },
+  "ANTHEM": {
+    "Symbol": "ANTHEM",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "ANUP": {
+    "Symbol": "ANUP",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "ANURAS": {
+    "Symbol": "ANURAS",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "APARINDS": {
+    "Symbol": "APARINDS",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "APCOTEXIND": {
+    "Symbol": "APCOTEXIND",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "APEX": {
+    "Symbol": "APEX",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "APLAPOLLO": {
+    "Symbol": "APLAPOLLO",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "APLLTD": {
+    "Symbol": "APLLTD",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "APOLLO": {
+    "Symbol": "APOLLO",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "APOLLOHOSP": {
+    "Symbol": "APOLLOHOSP",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "APOLLOPIPE": {
+    "Symbol": "APOLLOPIPE",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "APOLLOTYRE": {
+    "Symbol": "APOLLOTYRE",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "APTUS": {
+    "Symbol": "APTUS",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "ARE&M": {
+    "Symbol": "ARE&M",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "ARIHANTSUP": {
+    "Symbol": "ARIHANTSUP",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "ARTEMISMED": {
+    "Symbol": "ARTEMISMED",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "ARVIND": {
+    "Symbol": "ARVIND",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "ARVINDFASN": {
+    "Symbol": "ARVINDFASN",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "ARVSMART": {
+    "Symbol": "ARVSMART",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "ASAHIINDIA": {
+    "Symbol": "ASAHIINDIA",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "ASALCBR": {
+    "Symbol": "ASALCBR",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "ASHOKA": {
+    "Symbol": "ASHOKA",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "ASHOKLEY": {
+    "Symbol": "ASHOKLEY",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "ASIANENE": {
+    "Symbol": "ASIANENE",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "ASIANPAINT": {
+    "Symbol": "ASIANPAINT",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "ASIANTILES": {
+    "Symbol": "ASIANTILES",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "ASKAUTOLTD": {
+    "Symbol": "ASKAUTOLTD",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "ASTEC": {
+    "Symbol": "ASTEC",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "ASTERDM": {
+    "Symbol": "ASTERDM",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "ASTRAL": {
+    "Symbol": "ASTRAL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "ASTRAMICRO": {
+    "Symbol": "ASTRAMICRO",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "ATGL": {
+    "Symbol": "ATGL",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "ATHERENERG": {
+    "Symbol": "ATHERENERG",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "ATLANTAELE": {
+    "Symbol": "ATLANTAELE",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "ATUL": {
+    "Symbol": "ATUL",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "ATULAUTO": {
+    "Symbol": "ATULAUTO",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "AUBANK": {
+    "Symbol": "AUBANK",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "AURIONPRO": {
+    "Symbol": "AURIONPRO",
+    "Earnings_Date": "2026-10-26",
+    "Days_To_Earnings": 69
+  },
+  "AUROPHARMA": {
+    "Symbol": "AUROPHARMA",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "AURUM": {
+    "Symbol": "AURUM",
+    "Earnings_Date": "2026-10-26",
+    "Days_To_Earnings": 69
+  },
+  "AUTOAXLES": {
+    "Symbol": "AUTOAXLES",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "AVADHSUGAR": {
+    "Symbol": "AVADHSUGAR",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "AVALON": {
+    "Symbol": "AVALON",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "AVANTIFEED": {
+    "Symbol": "AVANTIFEED",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "AVL": {
+    "Symbol": "AVL",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "AWFIS": {
+    "Symbol": "AWFIS",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "AWHCL": {
+    "Symbol": "AWHCL",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "AWL": {
+    "Symbol": "AWL",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "AXISBANK": {
+    "Symbol": "AXISBANK",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "AXISCADES": {
+    "Symbol": "AXISCADES",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "AYE": {
+    "Symbol": "AYE",
+    "Earnings_Date": "2026-07-22",
+    "Days_To_Earnings": -27
+  },
+  "AZAD": {
+    "Symbol": "AZAD",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "BAGMANE.RR": {
+    "Symbol": "BAGMANE.RR",
+    "Earnings_Date": "2026-08-11",
+    "Days_To_Earnings": -7
+  },
+  "BAJAJCON": {
+    "Symbol": "BAJAJCON",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "BAJAJELEC": {
+    "Symbol": "BAJAJELEC",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "BAJAJFINSV": {
+    "Symbol": "BAJAJFINSV",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "BAJAJHFL": {
+    "Symbol": "BAJAJHFL",
+    "Earnings_Date": "2026-10-26",
+    "Days_To_Earnings": 69
+  },
+  "BAJAJHIND": {
+    "Symbol": "BAJAJHIND",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "BAJAJ_AUTO": {
+    "Symbol": "BAJAJ_AUTO",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "BAJEL": {
+    "Symbol": "BAJEL",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "BAJFINANCE": {
+    "Symbol": "BAJFINANCE",
+    "Earnings_Date": "2026-10-27",
+    "Days_To_Earnings": 70
+  },
+  "BALAMINES": {
+    "Symbol": "BALAMINES",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "BALKRISIND": {
+    "Symbol": "BALKRISIND",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "BALRAMCHIN": {
+    "Symbol": "BALRAMCHIN",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "BALUFORGE": {
+    "Symbol": "BALUFORGE",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "BANCOINDIA": {
+    "Symbol": "BANCOINDIA",
+    "Earnings_Date": "2023-05-20",
+    "Days_To_Earnings": -1186
+  },
+  "BANDHANBNK": {
+    "Symbol": "BANDHANBNK",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "BANKBARODA": {
+    "Symbol": "BANKBARODA",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "BANKINDIA": {
+    "Symbol": "BANKINDIA",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "BANSALWIRE": {
+    "Symbol": "BANSALWIRE",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "BASF": {
+    "Symbol": "BASF",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "BATAINDIA": {
+    "Symbol": "BATAINDIA",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "BAYERCROP": {
+    "Symbol": "BAYERCROP",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "BBOX": {
+    "Symbol": "BBOX",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "BCLIND": {
+    "Symbol": "BCLIND",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "BDL": {
+    "Symbol": "BDL",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "BECTORFOOD": {
+    "Symbol": "BECTORFOOD",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "BEL": {
+    "Symbol": "BEL",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "BELRISE": {
+    "Symbol": "BELRISE",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "BEML": {
+    "Symbol": "BEML",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "BERGEPAINT": {
+    "Symbol": "BERGEPAINT",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "BESTAGRO": {
+    "Symbol": "BESTAGRO",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "BETA": {
+    "Symbol": "BETA",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "BHARATFORG": {
+    "Symbol": "BHARATFORG",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "BHARATWIRE": {
+    "Symbol": "BHARATWIRE",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "BHARTIARTL": {
+    "Symbol": "BHARTIARTL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "BHARTIHEXA": {
+    "Symbol": "BHARTIHEXA",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "BHEL": {
+    "Symbol": "BHEL",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "BIKAJI": {
+    "Symbol": "BIKAJI",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "BIOCON": {
+    "Symbol": "BIOCON",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "BIRET.RR": {
+    "Symbol": "BIRET.RR",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "BIRLACORPN": {
+    "Symbol": "BIRLACORPN",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "BIRLANU": {
+    "Symbol": "BIRLANU",
+    "Earnings_Date": "2026-08-06",
+    "Days_To_Earnings": -12
+  },
+  "BLACKBUCK": {
+    "Symbol": "BLACKBUCK",
+    "Earnings_Date": "2026-12-11",
+    "Days_To_Earnings": 115
+  },
+  "BLACKROSE": {
+    "Symbol": "BLACKROSE",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "BLS": {
+    "Symbol": "BLS",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "BLUEDART": {
+    "Symbol": "BLUEDART",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "BLUEJET": {
+    "Symbol": "BLUEJET",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "BLUESTARCO": {
+    "Symbol": "BLUESTARCO",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "BLUESTONE": {
+    "Symbol": "BLUESTONE",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "BODALCHEM": {
+    "Symbol": "BODALCHEM",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "BOROLTD": {
+    "Symbol": "BOROLTD",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "BORORENEW": {
+    "Symbol": "BORORENEW",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "BOSCHLTD": {
+    "Symbol": "BOSCHLTD",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "BOSCH_HCIL": {
+    "Symbol": "BOSCH_HCIL",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "BPCL": {
+    "Symbol": "BPCL",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "BRIGADE": {
+    "Symbol": "BRIGADE",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "BRIGHOTEL": {
+    "Symbol": "BRIGHOTEL",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "BRITANNIA": {
+    "Symbol": "BRITANNIA",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "BSE": {
+    "Symbol": "BSE",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "BSOFT": {
+    "Symbol": "BSOFT",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "BUTTERFLY": {
+    "Symbol": "BUTTERFLY",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "CAMLINFINE": {
+    "Symbol": "CAMLINFINE",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "CAMPUS": {
+    "Symbol": "CAMPUS",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "CAMS": {
+    "Symbol": "CAMS",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "CANBK": {
+    "Symbol": "CANBK",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "CANFINHOME": {
+    "Symbol": "CANFINHOME",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "CANHLIFE": {
+    "Symbol": "CANHLIFE",
+    "Earnings_Date": "2026-07-20",
+    "Days_To_Earnings": -29
+  },
+  "CANTABIL": {
+    "Symbol": "CANTABIL",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "CAPACITE": {
+    "Symbol": "CAPACITE",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "CAPILLARY": {
+    "Symbol": "CAPILLARY",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "CAPITALSFB": {
+    "Symbol": "CAPITALSFB",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "CAPLIPOINT": {
+    "Symbol": "CAPLIPOINT",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "CARBORUNIV": {
+    "Symbol": "CARBORUNIV",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "CARERATING": {
+    "Symbol": "CARERATING",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "CARTRADE": {
+    "Symbol": "CARTRADE",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "CARYSIL": {
+    "Symbol": "CARYSIL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "CASTROLIND": {
+    "Symbol": "CASTROLIND",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "CCAVENUE": {
+    "Symbol": "CCAVENUE",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "CCL": {
+    "Symbol": "CCL",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "CDSL": {
+    "Symbol": "CDSL",
+    "Earnings_Date": "2026-10-26",
+    "Days_To_Earnings": 69
+  },
+  "CEATLTD": {
+    "Symbol": "CEATLTD",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "CEIGALL": {
+    "Symbol": "CEIGALL",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "CEINSYS": {
+    "Symbol": "CEINSYS",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "CELLO": {
+    "Symbol": "CELLO",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "CEMPRO": {
+    "Symbol": "CEMPRO",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "CENTENKA": {
+    "Symbol": "CENTENKA",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "CENTRALBK": {
+    "Symbol": "CENTRALBK",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "CENTUM": {
+    "Symbol": "CENTUM",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "CENTURYPLY": {
+    "Symbol": "CENTURYPLY",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "CERA": {
+    "Symbol": "CERA",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "CESC": {
+    "Symbol": "CESC",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "CGCL": {
+    "Symbol": "CGCL",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "CGPOWER": {
+    "Symbol": "CGPOWER",
+    "Earnings_Date": "2026-11-15",
+    "Days_To_Earnings": 89
+  },
+  "CHALET": {
+    "Symbol": "CHALET",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "CHAMBLFERT": {
+    "Symbol": "CHAMBLFERT",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "CHEMCON": {
+    "Symbol": "CHEMCON",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "CHEMPLASTS": {
+    "Symbol": "CHEMPLASTS",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "CHENNPETRO": {
+    "Symbol": "CHENNPETRO",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "CHOICEIN": {
+    "Symbol": "CHOICEIN",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "CHOLAFIN": {
+    "Symbol": "CHOLAFIN",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "CHOLAHLDNG": {
+    "Symbol": "CHOLAHLDNG",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "CIEINDIA": {
+    "Symbol": "CIEINDIA",
+    "Earnings_Date": "2026-10-20",
+    "Days_To_Earnings": 63
+  },
+  "CIPLA": {
+    "Symbol": "CIPLA",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "CLEAN": {
+    "Symbol": "CLEAN",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "CLEANMAX": {
+    "Symbol": "CLEANMAX",
+    "Earnings_Date": "2026-07-31",
+    "Days_To_Earnings": -18
+  },
+  "CMSINFO": {
+    "Symbol": "CMSINFO",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "COALINDIA": {
+    "Symbol": "COALINDIA",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "COASTCORP": {
+    "Symbol": "COASTCORP",
+    "Earnings_Date": "2022-11-12",
+    "Days_To_Earnings": -1375
+  },
+  "COCHINSHIP": {
+    "Symbol": "COCHINSHIP",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "COFORGE": {
+    "Symbol": "COFORGE",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "COHANCE": {
+    "Symbol": "COHANCE",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "COLPAL": {
+    "Symbol": "COLPAL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "CONCOR": {
+    "Symbol": "CONCOR",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "CONCORDBIO": {
+    "Symbol": "CONCORDBIO",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "CONTROLPR": {
+    "Symbol": "CONTROLPR",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "COROMANDEL": {
+    "Symbol": "COROMANDEL",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "CORONA": {
+    "Symbol": "CORONA",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "CPPLUS": {
+    "Symbol": "CPPLUS",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "CRAFTSMAN": {
+    "Symbol": "CRAFTSMAN",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "CRAMC": {
+    "Symbol": "CRAMC",
+    "Earnings_Date": "2026-07-21",
+    "Days_To_Earnings": -28
+  },
+  "CREDITACC": {
+    "Symbol": "CREDITACC",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "CRISIL": {
+    "Symbol": "CRISIL",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "CRIZAC": {
+    "Symbol": "CRIZAC",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "CROMPTON": {
+    "Symbol": "CROMPTON",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "CSBBANK": {
+    "Symbol": "CSBBANK",
+    "Earnings_Date": "2026-10-26",
+    "Days_To_Earnings": 69
+  },
+  "CUB": {
+    "Symbol": "CUB",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "CUMMINSIND": {
+    "Symbol": "CUMMINSIND",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "CYIENT": {
+    "Symbol": "CYIENT",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "CYIENTDLM": {
+    "Symbol": "CYIENTDLM",
+    "Earnings_Date": "2026-10-20",
+    "Days_To_Earnings": 63
+  },
+  "DABUR": {
+    "Symbol": "DABUR",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "DALBHARAT": {
+    "Symbol": "DALBHARAT",
+    "Earnings_Date": "2026-10-19",
+    "Days_To_Earnings": 62
+  },
+  "DALMIASUG": {
+    "Symbol": "DALMIASUG",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "DATAMATICS": {
+    "Symbol": "DATAMATICS",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "DATAPATTNS": {
+    "Symbol": "DATAPATTNS",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "DBCORP": {
+    "Symbol": "DBCORP",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "DBL": {
+    "Symbol": "DBL",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "DBOL": {
+    "Symbol": "DBOL",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "DCAL": {
+    "Symbol": "DCAL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "DCBBANK": {
+    "Symbol": "DCBBANK",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "DCMSHRIRAM": {
+    "Symbol": "DCMSHRIRAM",
+    "Earnings_Date": "2025-05-05",
+    "Days_To_Earnings": -470
+  },
+  "DCXINDIA": {
+    "Symbol": "DCXINDIA",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "DDEVPLSTIK": {
+    "Symbol": "DDEVPLSTIK",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "DECCANCE": {
+    "Symbol": "DECCANCE",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "DEEDEV": {
+    "Symbol": "DEEDEV",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "DEEPAKFERT": {
+    "Symbol": "DEEPAKFERT",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "DEEPAKNTR": {
+    "Symbol": "DEEPAKNTR",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "DEEPINDS": {
+    "Symbol": "DEEPINDS",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "DELHIVERY": {
+    "Symbol": "DELHIVERY",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "DENTA": {
+    "Symbol": "DENTA",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "DEVYANI": {
+    "Symbol": "DEVYANI",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "DHAMPURSUG": {
+    "Symbol": "DHAMPURSUG",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "DHANUKA": {
+    "Symbol": "DHANUKA",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "DIACABS": {
+    "Symbol": "DIACABS",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "DIAMONDYD": {
+    "Symbol": "DIAMONDYD",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "DISHTV": {
+    "Symbol": "DISHTV",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "DIVGIITTS": {
+    "Symbol": "DIVGIITTS",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "DIVISLAB": {
+    "Symbol": "DIVISLAB",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "DIXON": {
+    "Symbol": "DIXON",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "DLF": {
+    "Symbol": "DLF",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "DMART": {
+    "Symbol": "DMART",
+    "Earnings_Date": "2026-10-12",
+    "Days_To_Earnings": 55
+  },
+  "DODLA": {
+    "Symbol": "DODLA",
+    "Earnings_Date": "2026-10-19",
+    "Days_To_Earnings": 62
+  },
+  "DOLLAR": {
+    "Symbol": "DOLLAR",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "DOMS": {
+    "Symbol": "DOMS",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "DPABHUSHAN": {
+    "Symbol": "DPABHUSHAN",
+    "Earnings_Date": "2022-01-20",
+    "Days_To_Earnings": -1671
+  },
+  "DREAMFOLKS": {
+    "Symbol": "DREAMFOLKS",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "DRREDDY": {
+    "Symbol": "DRREDDY",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "DWARKESH": {
+    "Symbol": "DWARKESH",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "DYNAMATECH": {
+    "Symbol": "DYNAMATECH",
+    "Earnings_Date": "2026-08-07",
+    "Days_To_Earnings": -11
+  },
+  "E2E": {
+    "Symbol": "E2E",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "EASEMYTRIP": {
+    "Symbol": "EASEMYTRIP",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "EBGNG": {
+    "Symbol": "EBGNG",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "ECLERX": {
+    "Symbol": "ECLERX",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "ECOSMOBLTY": {
+    "Symbol": "ECOSMOBLTY",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "EDELWEISS": {
+    "Symbol": "EDELWEISS",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "EFCIL": {
+    "Symbol": "EFCIL",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "EICHERMOT": {
+    "Symbol": "EICHERMOT",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "EIDPARRY": {
+    "Symbol": "EIDPARRY",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "EIEL": {
+    "Symbol": "EIEL",
+    "Earnings_Date": "2026-08-11",
+    "Days_To_Earnings": -7
+  },
+  "EIHOTEL": {
+    "Symbol": "EIHOTEL",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "EIMCOELECO": {
+    "Symbol": "EIMCOELECO",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "EKC": {
+    "Symbol": "EKC",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "ELECON": {
+    "Symbol": "ELECON",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "ELECTCAST": {
+    "Symbol": "ELECTCAST",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "ELGIEQUIP": {
+    "Symbol": "ELGIEQUIP",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "ELIN": {
+    "Symbol": "ELIN",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "ELLEN": {
+    "Symbol": "ELLEN",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "EMAMILTD": {
+    "Symbol": "EMAMILTD",
+    "Earnings_Date": "2026-11-13",
+    "Days_To_Earnings": 87
+  },
+  "EMBASSY.RR": {
+    "Symbol": "EMBASSY.RR",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "EMBDL": {
+    "Symbol": "EMBDL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "EMCURE": {
+    "Symbol": "EMCURE",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "EMIL": {
+    "Symbol": "EMIL",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "EMMBI": {
+    "Symbol": "EMMBI",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "EMMVEE": {
+    "Symbol": "EMMVEE",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "EMSLIMITED": {
+    "Symbol": "EMSLIMITED",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "EMUDHRA": {
+    "Symbol": "EMUDHRA",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "ENDURANCE": {
+    "Symbol": "ENDURANCE",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "ENGINERSIN": {
+    "Symbol": "ENGINERSIN",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "ENIL": {
+    "Symbol": "ENIL",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "ENRIN": {
+    "Symbol": "ENRIN",
+    "Earnings_Date": "2026-11-30",
+    "Days_To_Earnings": 104
+  },
+  "ENTERO": {
+    "Symbol": "ENTERO",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "EPACK": {
+    "Symbol": "EPACK",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "EPACKPEB": {
+    "Symbol": "EPACKPEB",
+    "Earnings_Date": "2026-08-01",
+    "Days_To_Earnings": -17
+  },
+  "EPIGRAL": {
+    "Symbol": "EPIGRAL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "EPL": {
+    "Symbol": "EPL",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "EQUITASBNK": {
+    "Symbol": "EQUITASBNK",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "ERIS": {
+    "Symbol": "ERIS",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "ESABINDIA": {
+    "Symbol": "ESABINDIA",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "ESCORTS": {
+    "Symbol": "ESCORTS",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "ESTER": {
+    "Symbol": "ESTER",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "ETERNAL": {
+    "Symbol": "ETERNAL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "ETHOSLTD": {
+    "Symbol": "ETHOSLTD",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "EUREKAFORB": {
+    "Symbol": "EUREKAFORB",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "EVEREADY": {
+    "Symbol": "EVEREADY",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "EXIDEIND": {
+    "Symbol": "EXIDEIND",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "EXPLEOSOL": {
+    "Symbol": "EXPLEOSOL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "FAZE3Q": {
+    "Symbol": "FAZE3Q",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "FCL": {
+    "Symbol": "FCL",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "FDC": {
+    "Symbol": "FDC",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "FEDERALBNK": {
+    "Symbol": "FEDERALBNK",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "FEDFINA": {
+    "Symbol": "FEDFINA",
+    "Earnings_Date": "2026-12-14",
+    "Days_To_Earnings": 118
+  },
+  "FERMENTA": {
+    "Symbol": "FERMENTA",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "FIEMIND": {
+    "Symbol": "FIEMIND",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "FILATEX": {
+    "Symbol": "FILATEX",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "FINCABLES": {
+    "Symbol": "FINCABLES",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "FINEORG": {
+    "Symbol": "FINEORG",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "FINOPB": {
+    "Symbol": "FINOPB",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "FINPIPE": {
+    "Symbol": "FINPIPE",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "FIRSTCRY": {
+    "Symbol": "FIRSTCRY",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "FIVESTAR": {
+    "Symbol": "FIVESTAR",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "FLAIR": {
+    "Symbol": "FLAIR",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "FLUOROCHEM": {
+    "Symbol": "FLUOROCHEM",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "FOODSIN": {
+    "Symbol": "FOODSIN",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "FORTIS": {
+    "Symbol": "FORTIS",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "FRACTAL": {
+    "Symbol": "FRACTAL",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "FSL": {
+    "Symbol": "FSL",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "FUSION": {
+    "Symbol": "FUSION",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "GABRIEL": {
+    "Symbol": "GABRIEL",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "GAEL": {
+    "Symbol": "GAEL",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "GAIL": {
+    "Symbol": "GAIL",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "GALAXYSURF": {
+    "Symbol": "GALAXYSURF",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "GANECOS": {
+    "Symbol": "GANECOS",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "GARFIBRES": {
+    "Symbol": "GARFIBRES",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "GATEWAY": {
+    "Symbol": "GATEWAY",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "GAYAPROJ": {
+    "Symbol": "GAYAPROJ",
+    "Earnings_Date": "2021-06-14",
+    "Days_To_Earnings": -1891
+  },
+  "GENESYS": {
+    "Symbol": "GENESYS",
+    "Earnings_Date": "2026-05-29",
+    "Days_To_Earnings": -81
+  },
+  "GENUSPOWER": {
+    "Symbol": "GENUSPOWER",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "GEOJITFSL": {
+    "Symbol": "GEOJITFSL",
+    "Earnings_Date": "2021-07-28",
+    "Days_To_Earnings": -1847
+  },
+  "GESHIP": {
+    "Symbol": "GESHIP",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "GFLLIMITED": {
+    "Symbol": "GFLLIMITED",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "GHCL": {
+    "Symbol": "GHCL",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "GICHSGFIN": {
+    "Symbol": "GICHSGFIN",
+    "Earnings_Date": "2021-08-11",
+    "Days_To_Earnings": -1833
+  },
+  "GICRE": {
+    "Symbol": "GICRE",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "GILLETTE": {
+    "Symbol": "GILLETTE",
+    "Earnings_Date": "2026-10-27",
+    "Days_To_Earnings": 70
+  },
+  "GIPCL": {
+    "Symbol": "GIPCL",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "GLAND": {
+    "Symbol": "GLAND",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "GLAXO": {
+    "Symbol": "GLAXO",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "GLENMARK": {
+    "Symbol": "GLENMARK",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "GLOBUSSPR": {
+    "Symbol": "GLOBUSSPR",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "GMDCLTD": {
+    "Symbol": "GMDCLTD",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "GMMPFAUDLR": {
+    "Symbol": "GMMPFAUDLR",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "GMRAIRPORT": {
+    "Symbol": "GMRAIRPORT",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "GMRP&UI": {
+    "Symbol": "GMRP&UI",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "GNA": {
+    "Symbol": "GNA",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "GNFC": {
+    "Symbol": "GNFC",
+    "Earnings_Date": "2022-08-08",
+    "Days_To_Earnings": -1471
+  },
+  "GOCOLORS": {
+    "Symbol": "GOCOLORS",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "GODFRYPHLP": {
+    "Symbol": "GODFRYPHLP",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "GODIGIT": {
+    "Symbol": "GODIGIT",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "GODREJAGRO": {
+    "Symbol": "GODREJAGRO",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "GODREJCP": {
+    "Symbol": "GODREJCP",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "GODREJPROP": {
+    "Symbol": "GODREJPROP",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "GOKEX": {
+    "Symbol": "GOKEX",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "GOLDIAM": {
+    "Symbol": "GOLDIAM",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "GOODLUCK": {
+    "Symbol": "GOODLUCK",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "GOPAL": {
+    "Symbol": "GOPAL",
+    "Earnings_Date": "2026-10-19",
+    "Days_To_Earnings": 62
+  },
+  "GPIL": {
+    "Symbol": "GPIL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "GPPL": {
+    "Symbol": "GPPL",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "GPTHEALTH": {
+    "Symbol": "GPTHEALTH",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "GRANULES": {
+    "Symbol": "GRANULES",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "GRAPHITE": {
+    "Symbol": "GRAPHITE",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "GRASIM": {
+    "Symbol": "GRASIM",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "GRAVITA": {
+    "Symbol": "GRAVITA",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "GREAVESCOT": {
+    "Symbol": "GREAVESCOT",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "GREENLAM": {
+    "Symbol": "GREENLAM",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "GREENPANEL": {
+    "Symbol": "GREENPANEL",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "GREENPLY": {
+    "Symbol": "GREENPLY",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "GRINDWELL": {
+    "Symbol": "GRINDWELL",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "GRINFRA": {
+    "Symbol": "GRINFRA",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "GRMOVER": {
+    "Symbol": "GRMOVER",
+    "Earnings_Date": "2024-05-29",
+    "Days_To_Earnings": -811
+  },
+  "GROWW": {
+    "Symbol": "GROWW",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "GRPLTD": {
+    "Symbol": "GRPLTD",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "GRSE": {
+    "Symbol": "GRSE",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "GRWRHITECH": {
+    "Symbol": "GRWRHITECH",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "GSFC": {
+    "Symbol": "GSFC",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "GTPL": {
+    "Symbol": "GTPL",
+    "Earnings_Date": "2022-01-13",
+    "Days_To_Earnings": -1678
+  },
+  "GUJENERGY": {
+    "Symbol": "GUJENERGY",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "GULFOILLUB": {
+    "Symbol": "GULFOILLUB",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "GULPOLY": {
+    "Symbol": "GULPOLY",
+    "Earnings_Date": "2026-08-06",
+    "Days_To_Earnings": -12
+  },
+  "GVPIL": {
+    "Symbol": "GVPIL",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "GVT&D": {
+    "Symbol": "GVT&D",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "HAL": {
+    "Symbol": "HAL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "HAPPSTMNDS": {
+    "Symbol": "HAPPSTMNDS",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "HAPPYFORGE": {
+    "Symbol": "HAPPYFORGE",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "HARIOMPIPE": {
+    "Symbol": "HARIOMPIPE",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "HARSHA": {
+    "Symbol": "HARSHA",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "HATSUN": {
+    "Symbol": "HATSUN",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "HAVELLS": {
+    "Symbol": "HAVELLS",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "HBLENGINE": {
+    "Symbol": "HBLENGINE",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "HCC": {
+    "Symbol": "HCC",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "HCG": {
+    "Symbol": "HCG",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "HCLTECH": {
+    "Symbol": "HCLTECH",
+    "Earnings_Date": "2026-10-19",
+    "Days_To_Earnings": 62
+  },
+  "HDBFS": {
+    "Symbol": "HDBFS",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "HDFCAMC": {
+    "Symbol": "HDFCAMC",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "HDFCBANK": {
+    "Symbol": "HDFCBANK",
+    "Earnings_Date": "2026-10-19",
+    "Days_To_Earnings": 62
+  },
+  "HDFCLIFE": {
+    "Symbol": "HDFCLIFE",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "HEALTHX": {
+    "Symbol": "HEALTHX",
+    "Earnings_Date": "2025-05-30",
+    "Days_To_Earnings": -445
+  },
+  "HEG": {
+    "Symbol": "HEG",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "HEIDELBERG": {
+    "Symbol": "HEIDELBERG",
+    "Earnings_Date": "2026-10-20",
+    "Days_To_Earnings": 63
+  },
+  "HERANBA": {
+    "Symbol": "HERANBA",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "HERITGFOOD": {
+    "Symbol": "HERITGFOOD",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "HEROMOTOCO": {
+    "Symbol": "HEROMOTOCO",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "HESTERBIO": {
+    "Symbol": "HESTERBIO",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "HEXT": {
+    "Symbol": "HEXT",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "HFCL": {
+    "Symbol": "HFCL",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "HGINFRA": {
+    "Symbol": "HGINFRA",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "HIKAL": {
+    "Symbol": "HIKAL",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "HIMATSEIDE": {
+    "Symbol": "HIMATSEIDE",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "HINDALCO": {
+    "Symbol": "HINDALCO",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "HINDCOPPER": {
+    "Symbol": "HINDCOPPER",
+    "Earnings_Date": "2026-08-10",
+    "Days_To_Earnings": -8
+  },
+  "HINDPETRO": {
+    "Symbol": "HINDPETRO",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "HINDUNILVR": {
+    "Symbol": "HINDUNILVR",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "HINDWAREAP": {
+    "Symbol": "HINDWAREAP",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "HINDZINC": {
+    "Symbol": "HINDZINC",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "HITECH": {
+    "Symbol": "HITECH",
+    "Earnings_Date": "2026-10-26",
+    "Days_To_Earnings": 69
+  },
+  "HLEGLAS": {
+    "Symbol": "HLEGLAS",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "HMVL": {
+    "Symbol": "HMVL",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "HNDFDS": {
+    "Symbol": "HNDFDS",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "HOMEFIRST": {
+    "Symbol": "HOMEFIRST",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "HONASA": {
+    "Symbol": "HONASA",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "HONAUT": {
+    "Symbol": "HONAUT",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "HPL": {
+    "Symbol": "HPL",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "HSCL": {
+    "Symbol": "HSCL",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "HTMEDIA": {
+    "Symbol": "HTMEDIA",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "HUDCO": {
+    "Symbol": "HUDCO",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "HUHTAMAKI": {
+    "Symbol": "HUHTAMAKI",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "HYUNDAI": {
+    "Symbol": "HYUNDAI",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "ICICIAMC": {
+    "Symbol": "ICICIAMC",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "ICICIBANK": {
+    "Symbol": "ICICIBANK",
+    "Earnings_Date": "2026-10-19",
+    "Days_To_Earnings": 62
+  },
+  "ICICIGI": {
+    "Symbol": "ICICIGI",
+    "Earnings_Date": "2026-10-20",
+    "Days_To_Earnings": 63
+  },
+  "ICICIPRULI": {
+    "Symbol": "ICICIPRULI",
+    "Earnings_Date": "2026-10-20",
+    "Days_To_Earnings": 63
+  },
+  "ICIL": {
+    "Symbol": "ICIL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "ICRA": {
+    "Symbol": "ICRA",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "IDBI": {
+    "Symbol": "IDBI",
+    "Earnings_Date": "2022-10-21",
+    "Days_To_Earnings": -1397
+  },
+  "IDEA": {
+    "Symbol": "IDEA",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "IDEAFORGE": {
+    "Symbol": "IDEAFORGE",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "IDFCFIRSTB": {
+    "Symbol": "IDFCFIRSTB",
+    "Earnings_Date": "2026-10-26",
+    "Days_To_Earnings": 69
+  },
+  "IEX": {
+    "Symbol": "IEX",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "IFBIND": {
+    "Symbol": "IFBIND",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "IFGLEXPOR": {
+    "Symbol": "IFGLEXPOR",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "IGIL": {
+    "Symbol": "IGIL",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "IGL": {
+    "Symbol": "IGL",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "IGPL": {
+    "Symbol": "IGPL",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "IIFL": {
+    "Symbol": "IIFL",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "IIFLCAPS": {
+    "Symbol": "IIFLCAPS",
+    "Earnings_Date": "2023-04-24",
+    "Days_To_Earnings": -1212
+  },
+  "IKIO": {
+    "Symbol": "IKIO",
+    "Earnings_Date": "2024-11-08",
+    "Days_To_Earnings": -648
+  },
+  "IKS": {
+    "Symbol": "IKS",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "IMAGICAA": {
+    "Symbol": "IMAGICAA",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "IMFA": {
+    "Symbol": "IMFA",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "INDGN": {
+    "Symbol": "INDGN",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "INDHOTEL": {
+    "Symbol": "INDHOTEL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "INDIACEM": {
+    "Symbol": "INDIACEM",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "INDIAGLYCO": {
+    "Symbol": "INDIAGLYCO",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "INDIAMART": {
+    "Symbol": "INDIAMART",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "INDIANB": {
+    "Symbol": "INDIANB",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "INDIANHUME": {
+    "Symbol": "INDIANHUME",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "INDIASHLTR": {
+    "Symbol": "INDIASHLTR",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "INDIGO": {
+    "Symbol": "INDIGO",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "INDIGOPNTS": {
+    "Symbol": "INDIGOPNTS",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "INDIGRID": {
+    "Symbol": "INDIGRID",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "INDIQUBE": {
+    "Symbol": "INDIQUBE",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "INDOCO": {
+    "Symbol": "INDOCO",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "INDOSTAR": {
+    "Symbol": "INDOSTAR",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "INDRAMEDCO": {
+    "Symbol": "INDRAMEDCO",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "INDUSINDBK": {
+    "Symbol": "INDUSINDBK",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "INDUSTOWER": {
+    "Symbol": "INDUSTOWER",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "INFY": {
+    "Symbol": "INFY",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "INGERRAND": {
+    "Symbol": "INGERRAND",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "INNOVACAP": {
+    "Symbol": "INNOVACAP",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "INOXINDIA": {
+    "Symbol": "INOXINDIA",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "INOXWIND": {
+    "Symbol": "INOXWIND",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "INSECTICID": {
+    "Symbol": "INSECTICID",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "INTELLECT": {
+    "Symbol": "INTELLECT",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "INTERARCH": {
+    "Symbol": "INTERARCH",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "INTLCONV": {
+    "Symbol": "INTLCONV",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "IOB": {
+    "Symbol": "IOB",
+    "Earnings_Date": "2022-02-02",
+    "Days_To_Earnings": -1658
+  },
+  "IOC": {
+    "Symbol": "IOC",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "IOLCP": {
+    "Symbol": "IOLCP",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "IONEXCHANG": {
+    "Symbol": "IONEXCHANG",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "IPCALAB": {
+    "Symbol": "IPCALAB",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "IPL": {
+    "Symbol": "IPL",
+    "Earnings_Date": "2023-11-06",
+    "Days_To_Earnings": -1016
+  },
+  "IRB": {
+    "Symbol": "IRB",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "IRBINVIT": {
+    "Symbol": "IRBINVIT",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "IRCON": {
+    "Symbol": "IRCON",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "IRCTC": {
+    "Symbol": "IRCTC",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "IREDA": {
+    "Symbol": "IREDA",
+    "Earnings_Date": "2026-10-08",
+    "Days_To_Earnings": 51
+  },
+  "IRFC": {
+    "Symbol": "IRFC",
+    "Earnings_Date": "2026-07-30",
+    "Days_To_Earnings": -19
+  },
+  "IRISDOREME": {
+    "Symbol": "IRISDOREME",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "IRMENERGY": {
+    "Symbol": "IRMENERGY",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "ISGEC": {
+    "Symbol": "ISGEC",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "ITC": {
+    "Symbol": "ITC",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "ITCHOTELS": {
+    "Symbol": "ITCHOTELS",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "IVALUE": {
+    "Symbol": "IVALUE",
+    "Earnings_Date": "2026-07-29",
+    "Days_To_Earnings": -20
+  },
+  "IXIGO": {
+    "Symbol": "IXIGO",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "J&KBANK": {
+    "Symbol": "J&KBANK",
+    "Earnings_Date": "2026-05-05",
+    "Days_To_Earnings": -105
+  },
+  "JAGRAN": {
+    "Symbol": "JAGRAN",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "JAIBALAJI": {
+    "Symbol": "JAIBALAJI",
+    "Earnings_Date": "2025-08-08",
+    "Days_To_Earnings": -375
+  },
+  "JAINREC": {
+    "Symbol": "JAINREC",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "JAMNAAUTO": {
+    "Symbol": "JAMNAAUTO",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "JARO": {
+    "Symbol": "JARO",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "JASH": {
+    "Symbol": "JASH",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "JBMA": {
+    "Symbol": "JBMA",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "JGCHEM": {
+    "Symbol": "JGCHEM",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "JINDALSAW": {
+    "Symbol": "JINDALSAW",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "JINDALSTEL": {
+    "Symbol": "JINDALSTEL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "JIOFIN": {
+    "Symbol": "JIOFIN",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "JKCEMENT": {
+    "Symbol": "JKCEMENT",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "JKIL": {
+    "Symbol": "JKIL",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "JKLAKSHMI": {
+    "Symbol": "JKLAKSHMI",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "JKPAPER": {
+    "Symbol": "JKPAPER",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "JKTYRE": {
+    "Symbol": "JKTYRE",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "JLHL": {
+    "Symbol": "JLHL",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "JMFINANCIL": {
+    "Symbol": "JMFINANCIL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "JNKINDIA": {
+    "Symbol": "JNKINDIA",
+    "Earnings_Date": "2026-11-13",
+    "Days_To_Earnings": 87
+  },
+  "JSFB": {
+    "Symbol": "JSFB",
+    "Earnings_Date": "2026-10-26",
+    "Days_To_Earnings": 69
+  },
+  "JSL": {
+    "Symbol": "JSL",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "JSLL": {
+    "Symbol": "JSLL",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "JSWCEMENT": {
+    "Symbol": "JSWCEMENT",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "JSWDULUX": {
+    "Symbol": "JSWDULUX",
+    "Earnings_Date": "2026-11-15",
+    "Days_To_Earnings": 89
+  },
+  "JSWENERGY": {
+    "Symbol": "JSWENERGY",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "JSWINFRA": {
+    "Symbol": "JSWINFRA",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "JSWSTEEL": {
+    "Symbol": "JSWSTEEL",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "JTEKTINDIA": {
+    "Symbol": "JTEKTINDIA",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "JTLIND": {
+    "Symbol": "JTLIND",
+    "Earnings_Date": "2026-10-14",
+    "Days_To_Earnings": 57
+  },
+  "JUBLFOOD": {
+    "Symbol": "JUBLFOOD",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "JUBLINGREA": {
+    "Symbol": "JUBLINGREA",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "JUBLPHARMA": {
+    "Symbol": "JUBLPHARMA",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "JUNIPER": {
+    "Symbol": "JUNIPER",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "JUSTDIAL": {
+    "Symbol": "JUSTDIAL",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "JWL": {
+    "Symbol": "JWL",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "JYOTHYLAB": {
+    "Symbol": "JYOTHYLAB",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "JYOTICNC": {
+    "Symbol": "JYOTICNC",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "JYOTIRES": {
+    "Symbol": "JYOTIRES",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "KAJARIACER": {
+    "Symbol": "KAJARIACER",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "KALAMANDIR": {
+    "Symbol": "KALAMANDIR",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "KALYANKJIL": {
+    "Symbol": "KALYANKJIL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "KANSAINER": {
+    "Symbol": "KANSAINER",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "KARURVYSYA": {
+    "Symbol": "KARURVYSYA",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "KAYNES": {
+    "Symbol": "KAYNES",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "KDDL": {
+    "Symbol": "KDDL",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "KEC": {
+    "Symbol": "KEC",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "KEI": {
+    "Symbol": "KEI",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "KELLTONTEC": {
+    "Symbol": "KELLTONTEC",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "KENNAMET": {
+    "Symbol": "KENNAMET",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "KFINTECH": {
+    "Symbol": "KFINTECH",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "KHADIM": {
+    "Symbol": "KHADIM",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "KIMS": {
+    "Symbol": "KIMS",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "KIRLFER": {
+    "Symbol": "KIRLFER",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "KIRLOSBROS": {
+    "Symbol": "KIRLOSBROS",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "KIRLOSENG": {
+    "Symbol": "KIRLOSENG",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "KISSHT": {
+    "Symbol": "KISSHT",
+    "Earnings_Date": "2026-07-29",
+    "Days_To_Earnings": -20
+  },
+  "KKCL": {
+    "Symbol": "KKCL",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "KLBRENG_B": {
+    "Symbol": "KLBRENG_B",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "KMEW": {
+    "Symbol": "KMEW",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "KNRCON": {
+    "Symbol": "KNRCON",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "KOKUYOCMLN": {
+    "Symbol": "KOKUYOCMLN",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "KOLTEPATIL": {
+    "Symbol": "KOLTEPATIL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "KOTAKBANK": {
+    "Symbol": "KOTAKBANK",
+    "Earnings_Date": "2026-10-19",
+    "Days_To_Earnings": 62
+  },
+  "KPIGREEN": {
+    "Symbol": "KPIGREEN",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "KPIL": {
+    "Symbol": "KPIL",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "KPITTECH": {
+    "Symbol": "KPITTECH",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "KPRMILL": {
+    "Symbol": "KPRMILL",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "KRBL": {
+    "Symbol": "KRBL",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "KRN": {
+    "Symbol": "KRN",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "KRSNAA": {
+    "Symbol": "KRSNAA",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "KRT.RR": {
+    "Symbol": "KRT.RR",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "KRYSTAL": {
+    "Symbol": "KRYSTAL",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "KSB": {
+    "Symbol": "KSB",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "KSCL": {
+    "Symbol": "KSCL",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "KSHINTL": {
+    "Symbol": "KSHINTL",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "KSL": {
+    "Symbol": "KSL",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "KTKBANK": {
+    "Symbol": "KTKBANK",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "KUANTUM": {
+    "Symbol": "KUANTUM",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "KUSUMGAR": {
+    "Symbol": "KUSUMGAR",
+    "Earnings_Date": "2026-08-11",
+    "Days_To_Earnings": -7
+  },
+  "LALPATHLAB": {
+    "Symbol": "LALPATHLAB",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "LANDMARK": {
+    "Symbol": "LANDMARK",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "LAOPALA": {
+    "Symbol": "LAOPALA",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "LATENTVIEW": {
+    "Symbol": "LATENTVIEW",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "LAURUSLABS": {
+    "Symbol": "LAURUSLABS",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "LAXMIDENTL": {
+    "Symbol": "LAXMIDENTL",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "LEMONTREE": {
+    "Symbol": "LEMONTREE",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "LENSKART": {
+    "Symbol": "LENSKART",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "LGBBROSLTD": {
+    "Symbol": "LGBBROSLTD",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "LGEINDIA": {
+    "Symbol": "LGEINDIA",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "LICHSGFIN": {
+    "Symbol": "LICHSGFIN",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "LICI": {
+    "Symbol": "LICI",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "LINC": {
+    "Symbol": "LINC",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "LINDEINDIA": {
+    "Symbol": "LINDEINDIA",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "LLOYDSENGG": {
+    "Symbol": "LLOYDSENGG",
+    "Earnings_Date": "2025-05-07",
+    "Days_To_Earnings": -468
+  },
+  "LLOYDSME": {
+    "Symbol": "LLOYDSME",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "LMW": {
+    "Symbol": "LMW",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "LODHA": {
+    "Symbol": "LODHA",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "LOTUSDEV": {
+    "Symbol": "LOTUSDEV",
+    "Earnings_Date": "2026-08-03",
+    "Days_To_Earnings": -15
+  },
+  "LT": {
+    "Symbol": "LT",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "LTF": {
+    "Symbol": "LTF",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "LTFOODS": {
+    "Symbol": "LTFOODS",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "LTM": {
+    "Symbol": "LTM",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "LTTS": {
+    "Symbol": "LTTS",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "LUMAXIND": {
+    "Symbol": "LUMAXIND",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "LUMAXTECH": {
+    "Symbol": "LUMAXTECH",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "LUPIN": {
+    "Symbol": "LUPIN",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "LUXIND": {
+    "Symbol": "LUXIND",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "LXCHEM": {
+    "Symbol": "LXCHEM",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "M&M": {
+    "Symbol": "M&M",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "M&MFIN": {
+    "Symbol": "M&MFIN",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "MAHABANK": {
+    "Symbol": "MAHABANK",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "MAHLIFE": {
+    "Symbol": "MAHLIFE",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "MAHLOG": {
+    "Symbol": "MAHLOG",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "MAHSEAMLES": {
+    "Symbol": "MAHSEAMLES",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "MALLCOM": {
+    "Symbol": "MALLCOM",
+    "Earnings_Date": "2026-07-30",
+    "Days_To_Earnings": -19
+  },
+  "MANAPPURAM": {
+    "Symbol": "MANAPPURAM",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "MANGLMCEM": {
+    "Symbol": "MANGLMCEM",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "MANINDS": {
+    "Symbol": "MANINDS",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "MANINFRA": {
+    "Symbol": "MANINFRA",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "MANKIND": {
+    "Symbol": "MANKIND",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "MANORAMA": {
+    "Symbol": "MANORAMA",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "MANYAVAR": {
+    "Symbol": "MANYAVAR",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "MAPMYINDIA": {
+    "Symbol": "MAPMYINDIA",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "MARALOVER": {
+    "Symbol": "MARALOVER",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "MARICO": {
+    "Symbol": "MARICO",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "MARKSANS": {
+    "Symbol": "MARKSANS",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "MARUTI": {
+    "Symbol": "MARUTI",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "MASFIN": {
+    "Symbol": "MASFIN",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "MASTEK": {
+    "Symbol": "MASTEK",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "MATRIMONY": {
+    "Symbol": "MATRIMONY",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "MAXESTATES": {
+    "Symbol": "MAXESTATES",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "MAXHEALTH": {
+    "Symbol": "MAXHEALTH",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "MAYURUNIQ": {
+    "Symbol": "MAYURUNIQ",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "MAZDOCK": {
+    "Symbol": "MAZDOCK",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "MBEL": {
+    "Symbol": "MBEL",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "MCX": {
+    "Symbol": "MCX",
+    "Earnings_Date": "2026-10-19",
+    "Days_To_Earnings": 62
+  },
+  "MEDANTA": {
+    "Symbol": "MEDANTA",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "MEDIASSIST": {
+    "Symbol": "MEDIASSIST",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "MEDPLUS": {
+    "Symbol": "MEDPLUS",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "MEESHO": {
+    "Symbol": "MEESHO",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "METROBRAND": {
+    "Symbol": "METROBRAND",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "METROPOLIS": {
+    "Symbol": "METROPOLIS",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "MFSL": {
+    "Symbol": "MFSL",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "MGL": {
+    "Symbol": "MGL",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "MHRIL": {
+    "Symbol": "MHRIL",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "MIDHANI": {
+    "Symbol": "MIDHANI",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "MIDWESTLTD": {
+    "Symbol": "MIDWESTLTD",
+    "Earnings_Date": "2026-08-12",
+    "Days_To_Earnings": -6
+  },
+  "MINDACORP": {
+    "Symbol": "MINDACORP",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "MINDSPACE.RR": {
+    "Symbol": "MINDSPACE.RR",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "MKEXIM": {
+    "Symbol": "MKEXIM",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "MMFL": {
+    "Symbol": "MMFL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "MOBIKWIK": {
+    "Symbol": "MOBIKWIK",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "MOIL": {
+    "Symbol": "MOIL",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "MOL": {
+    "Symbol": "MOL",
+    "Earnings_Date": "2025-05-10",
+    "Days_To_Earnings": -465
+  },
+  "MOLDTECH": {
+    "Symbol": "MOLDTECH",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "MOLDTKPAC": {
+    "Symbol": "MOLDTKPAC",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "MONOLITH": {
+    "Symbol": "MONOLITH",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "MOTHERSON": {
+    "Symbol": "MOTHERSON",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "MOTILALOFS": {
+    "Symbol": "MOTILALOFS",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "MPHASIS": {
+    "Symbol": "MPHASIS",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "MPSLTD": {
+    "Symbol": "MPSLTD",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "MRF": {
+    "Symbol": "MRF",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "MRPL": {
+    "Symbol": "MRPL",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "MSTCLTD": {
+    "Symbol": "MSTCLTD",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "MSUMI": {
+    "Symbol": "MSUMI",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "MTARTECH": {
+    "Symbol": "MTARTECH",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "MUTHOOTCAP": {
+    "Symbol": "MUTHOOTCAP",
+    "Earnings_Date": "2022-11-10",
+    "Days_To_Earnings": -1377
+  },
+  "MUTHOOTFIN": {
+    "Symbol": "MUTHOOTFIN",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "MUTHOOTMF": {
+    "Symbol": "MUTHOOTMF",
+    "Earnings_Date": "2026-05-06",
+    "Days_To_Earnings": -104
+  },
+  "NAM_INDIA": {
+    "Symbol": "NAM_INDIA",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "NATCOPHARM": {
+    "Symbol": "NATCOPHARM",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "NATIONALUM": {
+    "Symbol": "NATIONALUM",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "NAUKRI": {
+    "Symbol": "NAUKRI",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "NAVA": {
+    "Symbol": "NAVA",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "NAVINFLUOR": {
+    "Symbol": "NAVINFLUOR",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "NAVKARCORP": {
+    "Symbol": "NAVKARCORP",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "NAVNETEDUL": {
+    "Symbol": "NAVNETEDUL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "NAZARA": {
+    "Symbol": "NAZARA",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "NBCC": {
+    "Symbol": "NBCC",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "NCC": {
+    "Symbol": "NCC",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "NCLIND": {
+    "Symbol": "NCLIND",
+    "Earnings_Date": "2025-02-12",
+    "Days_To_Earnings": -552
+  },
+  "NEOGEN": {
+    "Symbol": "NEOGEN",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "NEPHROPLUS": {
+    "Symbol": "NEPHROPLUS",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "NESCO": {
+    "Symbol": "NESCO",
+    "Earnings_Date": "2026-07-27",
+    "Days_To_Earnings": -22
+  },
+  "NESTLEIND": {
+    "Symbol": "NESTLEIND",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "NETWEB": {
+    "Symbol": "NETWEB",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "NEULANDLAB": {
+    "Symbol": "NEULANDLAB",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "NEWGEN": {
+    "Symbol": "NEWGEN",
+    "Earnings_Date": "2026-10-20",
+    "Days_To_Earnings": 63
+  },
+  "NH": {
+    "Symbol": "NH",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "NHPC": {
+    "Symbol": "NHPC",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "NIACL": {
+    "Symbol": "NIACL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "NIITLTD": {
+    "Symbol": "NIITLTD",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "NIITMTS": {
+    "Symbol": "NIITMTS",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "NILKAMAL": {
+    "Symbol": "NILKAMAL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "NIRLON": {
+    "Symbol": "NIRLON",
+    "Earnings_Date": "2021-06-24",
+    "Days_To_Earnings": -1881
+  },
+  "NITINSPIN": {
+    "Symbol": "NITINSPIN",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "NIVABUPA": {
+    "Symbol": "NIVABUPA",
+    "Earnings_Date": "2026-11-30",
+    "Days_To_Earnings": 104
+  },
+  "NLCINDIA": {
+    "Symbol": "NLCINDIA",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "NMDC": {
+    "Symbol": "NMDC",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "NOCIL": {
+    "Symbol": "NOCIL",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "NORTHARC": {
+    "Symbol": "NORTHARC",
+    "Earnings_Date": "2026-07-27",
+    "Days_To_Earnings": -22
+  },
+  "NRBBEARING": {
+    "Symbol": "NRBBEARING",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "NTPC": {
+    "Symbol": "NTPC",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "NTPCGREEN": {
+    "Symbol": "NTPCGREEN",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "NUCLEUS": {
+    "Symbol": "NUCLEUS",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "NUVAMA": {
+    "Symbol": "NUVAMA",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "NUVOCO": {
+    "Symbol": "NUVOCO",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "NXST.RR": {
+    "Symbol": "NXST.RR",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "NYKAA": {
+    "Symbol": "NYKAA",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "OBEROIRLTY": {
+    "Symbol": "OBEROIRLTY",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "OBSCP": {
+    "Symbol": "OBSCP",
+    "Earnings_Date": "2026-05-20",
+    "Days_To_Earnings": -90
+  },
+  "OCCLLTD": {
+    "Symbol": "OCCLLTD",
+    "Earnings_Date": "2026-07-30",
+    "Days_To_Earnings": -19
+  },
+  "OFSS": {
+    "Symbol": "OFSS",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "OIL": {
+    "Symbol": "OIL",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "OLAELEC": {
+    "Symbol": "OLAELEC",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "OLECTRA": {
+    "Symbol": "OLECTRA",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "ONESOURCE": {
+    "Symbol": "ONESOURCE",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "ONGC": {
+    "Symbol": "ONGC",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "ONWARDTEC": {
+    "Symbol": "ONWARDTEC",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "ORCHPHARMA": {
+    "Symbol": "ORCHPHARMA",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "ORIENTBELL": {
+    "Symbol": "ORIENTBELL",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "ORIENTCEM": {
+    "Symbol": "ORIENTCEM",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "ORIENTELEC": {
+    "Symbol": "ORIENTELEC",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "ORIENTPPR": {
+    "Symbol": "ORIENTPPR",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "ORKLAINDIA": {
+    "Symbol": "ORKLAINDIA",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "OSWALPUMPS": {
+    "Symbol": "OSWALPUMPS",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "PACEDIGITK": {
+    "Symbol": "PACEDIGITK",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "PAGEIND": {
+    "Symbol": "PAGEIND",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "PAISALO": {
+    "Symbol": "PAISALO",
+    "Earnings_Date": "2023-10-26",
+    "Days_To_Earnings": -1027
+  },
+  "PANAMAPET": {
+    "Symbol": "PANAMAPET",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "PARADEEP": {
+    "Symbol": "PARADEEP",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "PARAGMILK": {
+    "Symbol": "PARAGMILK",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "PARAS": {
+    "Symbol": "PARAS",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "PARKHOSPS": {
+    "Symbol": "PARKHOSPS",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "PARKHOTELS": {
+    "Symbol": "PARKHOTELS",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "PATANJALI": {
+    "Symbol": "PATANJALI",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "PATELENG": {
+    "Symbol": "PATELENG",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "PAYTM": {
+    "Symbol": "PAYTM",
+    "Earnings_Date": "2026-11-23",
+    "Days_To_Earnings": 97
+  },
+  "PCBL": {
+    "Symbol": "PCBL",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "PDSL": {
+    "Symbol": "PDSL",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "PENIND": {
+    "Symbol": "PENIND",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "PERSISTENT": {
+    "Symbol": "PERSISTENT",
+    "Earnings_Date": "2026-10-27",
+    "Days_To_Earnings": 70
+  },
+  "PETRONET": {
+    "Symbol": "PETRONET",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "PFC": {
+    "Symbol": "PFC",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "PFIZER": {
+    "Symbol": "PFIZER",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "PGEL": {
+    "Symbol": "PGEL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "PGHH": {
+    "Symbol": "PGHH",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "PGHL": {
+    "Symbol": "PGHL",
+    "Earnings_Date": "2026-09-02",
+    "Days_To_Earnings": 15
+  },
+  "PGIL": {
+    "Symbol": "PGIL",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "PHOENIXLTD": {
+    "Symbol": "PHOENIXLTD",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "PIDILITIND": {
+    "Symbol": "PIDILITIND",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "PIIND": {
+    "Symbol": "PIIND",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "PINELABS": {
+    "Symbol": "PINELABS",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "PIRAMALFIN": {
+    "Symbol": "PIRAMALFIN",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "PITTIENG": {
+    "Symbol": "PITTIENG",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "PNB": {
+    "Symbol": "PNB",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "PNBHOUSING": {
+    "Symbol": "PNBHOUSING",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "PNCINFRA": {
+    "Symbol": "PNCINFRA",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "PNGJL": {
+    "Symbol": "PNGJL",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "POCL": {
+    "Symbol": "POCL",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "POLICYBZR": {
+    "Symbol": "POLICYBZR",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "POLYCAB": {
+    "Symbol": "POLYCAB",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "POLYMED": {
+    "Symbol": "POLYMED",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "POLYPLEX": {
+    "Symbol": "POLYPLEX",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "POONAWALLA": {
+    "Symbol": "POONAWALLA",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "POWERGRID": {
+    "Symbol": "POWERGRID",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "POWERINDIA": {
+    "Symbol": "POWERINDIA",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "POWERMECH": {
+    "Symbol": "POWERMECH",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "PPLPHARMA": {
+    "Symbol": "PPLPHARMA",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "PRAJIND": {
+    "Symbol": "PRAJIND",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "PRECWIRE": {
+    "Symbol": "PRECWIRE",
+    "Earnings_Date": "2026-08-10",
+    "Days_To_Earnings": -8
+  },
+  "PREMIER": {
+    "Symbol": "PREMIER",
+    "Earnings_Date": "2026-08-13",
+    "Days_To_Earnings": -5
+  },
+  "PREMIERENE": {
+    "Symbol": "PREMIERENE",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "PRESTIGE": {
+    "Symbol": "PRESTIGE",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "PRICOLLTD": {
+    "Symbol": "PRICOLLTD",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "PRINCEPIPE": {
+    "Symbol": "PRINCEPIPE",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "PRIVISCL": {
+    "Symbol": "PRIVISCL",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "PROTEAN": {
+    "Symbol": "PROTEAN",
+    "Earnings_Date": "2026-11-26",
+    "Days_To_Earnings": 100
+  },
+  "PRSMJOHNSN": {
+    "Symbol": "PRSMJOHNSN",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "PRUDENT": {
+    "Symbol": "PRUDENT",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "PSPPROJECT": {
+    "Symbol": "PSPPROJECT",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "PTC": {
+    "Symbol": "PTC",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "PTCIL": {
+    "Symbol": "PTCIL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "PURVA": {
+    "Symbol": "PURVA",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "PVRINOX": {
+    "Symbol": "PVRINOX",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "PWL": {
+    "Symbol": "PWL",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "QPOWER": {
+    "Symbol": "QPOWER",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "QUESS": {
+    "Symbol": "QUESS",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "RADHIKAJWE": {
+    "Symbol": "RADHIKAJWE",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "RADICO": {
+    "Symbol": "RADICO",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "RADIOCITY": {
+    "Symbol": "RADIOCITY",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "RAILTEL": {
+    "Symbol": "RAILTEL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "RAIN": {
+    "Symbol": "RAIN",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "RAINBOW": {
+    "Symbol": "RAINBOW",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "RAJESHEXPO": {
+    "Symbol": "RAJESHEXPO",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "RAJRATAN": {
+    "Symbol": "RAJRATAN",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "RALLIS": {
+    "Symbol": "RALLIS",
+    "Earnings_Date": "2026-10-20",
+    "Days_To_Earnings": 63
+  },
+  "RAMCOCEM": {
+    "Symbol": "RAMCOCEM",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "RAMCOSYS": {
+    "Symbol": "RAMCOSYS",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "RATEGAIN": {
+    "Symbol": "RATEGAIN",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "RATNAMANI": {
+    "Symbol": "RATNAMANI",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "RATNAVEER": {
+    "Symbol": "RATNAVEER",
+    "Earnings_Date": "2024-11-09",
+    "Days_To_Earnings": -647
+  },
+  "RAYMOND": {
+    "Symbol": "RAYMOND",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "RAYMONDLSL": {
+    "Symbol": "RAYMONDLSL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "RAYMONDREL": {
+    "Symbol": "RAYMONDREL",
+    "Earnings_Date": "2026-08-07",
+    "Days_To_Earnings": -11
+  },
+  "RBA": {
+    "Symbol": "RBA",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "RBLBANK": {
+    "Symbol": "RBLBANK",
+    "Earnings_Date": "2026-10-19",
+    "Days_To_Earnings": 62
+  },
+  "RECLTD": {
+    "Symbol": "RECLTD",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "REDINGTON": {
+    "Symbol": "REDINGTON",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "RELAXO": {
+    "Symbol": "RELAXO",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "RELIANCE": {
+    "Symbol": "RELIANCE",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "REPCOHOME": {
+    "Symbol": "REPCOHOME",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "RESPONIND": {
+    "Symbol": "RESPONIND",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "RGL": {
+    "Symbol": "RGL",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "RHIM": {
+    "Symbol": "RHIM",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "RITES": {
+    "Symbol": "RITES",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "RKFORGE": {
+    "Symbol": "RKFORGE",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "ROHLTD": {
+    "Symbol": "ROHLTD",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "ROLEXRINGS": {
+    "Symbol": "ROLEXRINGS",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "ROSSARI": {
+    "Symbol": "ROSSARI",
+    "Earnings_Date": "2026-10-19",
+    "Days_To_Earnings": 62
+  },
+  "ROUTE": {
+    "Symbol": "ROUTE",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "RPSGVENT": {
+    "Symbol": "RPSGVENT",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "RRKABEL": {
+    "Symbol": "RRKABEL",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "RSYSTEMS": {
+    "Symbol": "RSYSTEMS",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "RTNINDIA": {
+    "Symbol": "RTNINDIA",
+    "Earnings_Date": "2023-08-09",
+    "Days_To_Earnings": -1105
+  },
+  "RUBICON": {
+    "Symbol": "RUBICON",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "RUPA": {
+    "Symbol": "RUPA",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "RUSHIL": {
+    "Symbol": "RUSHIL",
+    "Earnings_Date": "2024-01-25",
+    "Days_To_Earnings": -936
+  },
+  "RUSTOMJEE": {
+    "Symbol": "RUSTOMJEE",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "RVNL": {
+    "Symbol": "RVNL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "SAATVIKGL": {
+    "Symbol": "SAATVIKGL",
+    "Earnings_Date": "2026-08-14",
+    "Days_To_Earnings": -4
+  },
+  "SADBHAV": {
+    "Symbol": "SADBHAV",
+    "Earnings_Date": "2026-11-13",
+    "Days_To_Earnings": 87
+  },
+  "SAFARI": {
+    "Symbol": "SAFARI",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "SAGCEM": {
+    "Symbol": "SAGCEM",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "SAGILITY": {
+    "Symbol": "SAGILITY",
+    "Earnings_Date": "2026-11-30",
+    "Days_To_Earnings": 104
+  },
+  "SAIL": {
+    "Symbol": "SAIL",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "SAILIFE": {
+    "Symbol": "SAILIFE",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "SAKSOFT": {
+    "Symbol": "SAKSOFT",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "SALZERELEC": {
+    "Symbol": "SALZERELEC",
+    "Earnings_Date": "2022-05-22",
+    "Days_To_Earnings": -1549
+  },
+  "SAMHI": {
+    "Symbol": "SAMHI",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "SAMMAANCAP": {
+    "Symbol": "SAMMAANCAP",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "SANATHAN": {
+    "Symbol": "SANATHAN",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "SANDHAR": {
+    "Symbol": "SANDHAR",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "SANGHVIMOV": {
+    "Symbol": "SANGHVIMOV",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "SANOFI": {
+    "Symbol": "SANOFI",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "SANOFICONR": {
+    "Symbol": "SANOFICONR",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "SANSERA": {
+    "Symbol": "SANSERA",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "SAPPHIRE": {
+    "Symbol": "SAPPHIRE",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "SAREGAMA": {
+    "Symbol": "SAREGAMA",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "SATIA": {
+    "Symbol": "SATIA",
+    "Earnings_Date": "2026-11-13",
+    "Days_To_Earnings": 87
+  },
+  "SATIN": {
+    "Symbol": "SATIN",
+    "Earnings_Date": "2026-05-11",
+    "Days_To_Earnings": -99
+  },
+  "SBCL": {
+    "Symbol": "SBCL",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "SBFC": {
+    "Symbol": "SBFC",
+    "Earnings_Date": "2026-10-26",
+    "Days_To_Earnings": 69
+  },
+  "SBICARD": {
+    "Symbol": "SBICARD",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "SBIFUNDS": {
+    "Symbol": "SBIFUNDS",
+    "Earnings_Date": "2026-08-03",
+    "Days_To_Earnings": -15
+  },
+  "SBILIFE": {
+    "Symbol": "SBILIFE",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "SBIN": {
+    "Symbol": "SBIN",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "SCHAEFFLER": {
+    "Symbol": "SCHAEFFLER",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "SCHAND": {
+    "Symbol": "SCHAND",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "SCHNEIDER": {
+    "Symbol": "SCHNEIDER",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "SEAMECLTD": {
+    "Symbol": "SEAMECLTD",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "SEDEMAC": {
+    "Symbol": "SEDEMAC",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "SENCO": {
+    "Symbol": "SENCO",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "SENORES": {
+    "Symbol": "SENORES",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "SFL": {
+    "Symbol": "SFL",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "SGFIN": {
+    "Symbol": "SGFIN",
+    "Earnings_Date": "2024-10-15",
+    "Days_To_Earnings": -672
+  },
+  "SGIL": {
+    "Symbol": "SGIL",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "SGMART": {
+    "Symbol": "SGMART",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "SHADOWFAX": {
+    "Symbol": "SHADOWFAX",
+    "Earnings_Date": "2026-09-02",
+    "Days_To_Earnings": 15
+  },
+  "SHAILY": {
+    "Symbol": "SHAILY",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "SHAKTIPUMP": {
+    "Symbol": "SHAKTIPUMP",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "SHALBY": {
+    "Symbol": "SHALBY",
+    "Earnings_Date": "2026-10-20",
+    "Days_To_Earnings": 63
+  },
+  "SHANKARA": {
+    "Symbol": "SHANKARA",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "SHANTIGEAR": {
+    "Symbol": "SHANTIGEAR",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "SHANTIGOLD": {
+    "Symbol": "SHANTIGOLD",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "SHARDACROP": {
+    "Symbol": "SHARDACROP",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "SHILPAMED": {
+    "Symbol": "SHILPAMED",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "SHK": {
+    "Symbol": "SHK",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "SHOPERSTOP": {
+    "Symbol": "SHOPERSTOP",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "SHREDIGCEM": {
+    "Symbol": "SHREDIGCEM",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "SHREECEM": {
+    "Symbol": "SHREECEM",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "SHRINGARMS": {
+    "Symbol": "SHRINGARMS",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "SHRIPISTON": {
+    "Symbol": "SHRIPISTON",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "SHRIRAMFIN": {
+    "Symbol": "SHRIRAMFIN",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "SHYAMMETL": {
+    "Symbol": "SHYAMMETL",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "SIEMENS": {
+    "Symbol": "SIEMENS",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "SIGACHI": {
+    "Symbol": "SIGACHI",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "SIGNATURE": {
+    "Symbol": "SIGNATURE",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "SIKA": {
+    "Symbol": "SIKA",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "SIRCA": {
+    "Symbol": "SIRCA",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "SIS": {
+    "Symbol": "SIS",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "SIYSIL": {
+    "Symbol": "SIYSIL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "SJS": {
+    "Symbol": "SJS",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "SJVN": {
+    "Symbol": "SJVN",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "SKFINDIA": {
+    "Symbol": "SKFINDIA",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "SKFINDUS": {
+    "Symbol": "SKFINDUS",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "SKIPPER": {
+    "Symbol": "SKIPPER",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "SKYGOLD": {
+    "Symbol": "SKYGOLD",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "SMARTWORKS": {
+    "Symbol": "SMARTWORKS",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "SMLMAH": {
+    "Symbol": "SMLMAH",
+    "Earnings_Date": "2024-02-09",
+    "Days_To_Earnings": -921
+  },
+  "SNOWMAN": {
+    "Symbol": "SNOWMAN",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "SOBHA": {
+    "Symbol": "SOBHA",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "SOLARA": {
+    "Symbol": "SOLARA",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "SOLARINDS": {
+    "Symbol": "SOLARINDS",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "SOMANYCERA": {
+    "Symbol": "SOMANYCERA",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "SONACOMS": {
+    "Symbol": "SONACOMS",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "SONATSOFTW": {
+    "Symbol": "SONATSOFTW",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "SOUTHBANK": {
+    "Symbol": "SOUTHBANK",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "SPAL": {
+    "Symbol": "SPAL",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "SPANDANA": {
+    "Symbol": "SPANDANA",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "SPENCERS": {
+    "Symbol": "SPENCERS",
+    "Earnings_Date": "2025-01-16",
+    "Days_To_Earnings": -579
+  },
+  "SPLPETRO": {
+    "Symbol": "SPLPETRO",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "SPMLINFRA": {
+    "Symbol": "SPMLINFRA",
+    "Earnings_Date": "2025-02-13",
+    "Days_To_Earnings": -551
+  },
+  "SRF": {
+    "Symbol": "SRF",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "SSFLPP.E1": {
+    "Symbol": "SSFLPP.E1",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "SSWL": {
+    "Symbol": "SSWL",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "STAR": {
+    "Symbol": "STAR",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "STARCEMENT": {
+    "Symbol": "STARCEMENT",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "STARHEALTH": {
+    "Symbol": "STARHEALTH",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "STERTOOLS": {
+    "Symbol": "STERTOOLS",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "STLTECH": {
+    "Symbol": "STLTECH",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "STOVEKRAFT": {
+    "Symbol": "STOVEKRAFT",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "STUDDS": {
+    "Symbol": "STUDDS",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "STYLAMIND": {
+    "Symbol": "STYLAMIND",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "STYLEBAAZA": {
+    "Symbol": "STYLEBAAZA",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "STYRENIX": {
+    "Symbol": "STYRENIX",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "SUBROS": {
+    "Symbol": "SUBROS",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "SUDARSCHEM": {
+    "Symbol": "SUDARSCHEM",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "SUDEEPPHRM": {
+    "Symbol": "SUDEEPPHRM",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "SUKHJITS": {
+    "Symbol": "SUKHJITS",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "SULA": {
+    "Symbol": "SULA",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "SUMICHEM": {
+    "Symbol": "SUMICHEM",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "SUNCLAY": {
+    "Symbol": "SUNCLAY",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "SUNDARMFIN": {
+    "Symbol": "SUNDARMFIN",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "SUNDRMFAST": {
+    "Symbol": "SUNDRMFAST",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "SUNDROP": {
+    "Symbol": "SUNDROP",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "SUNPHARMA": {
+    "Symbol": "SUNPHARMA",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "SUNTECK": {
+    "Symbol": "SUNTECK",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "SUNTV": {
+    "Symbol": "SUNTV",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "SUPRAJIT": {
+    "Symbol": "SUPRAJIT",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "SUPREMEIND": {
+    "Symbol": "SUPREMEIND",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "SUPRIYA": {
+    "Symbol": "SUPRIYA",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "SURAJEST": {
+    "Symbol": "SURAJEST",
+    "Earnings_Date": "2026-10-27",
+    "Days_To_Earnings": 70
+  },
+  "SURAKSHA": {
+    "Symbol": "SURAKSHA",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "SURYAROSNI": {
+    "Symbol": "SURYAROSNI",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "SURYODAY": {
+    "Symbol": "SURYODAY",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "SUZLON": {
+    "Symbol": "SUZLON",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "SWANCORP": {
+    "Symbol": "SWANCORP",
+    "Earnings_Date": "2024-01-31",
+    "Days_To_Earnings": -930
+  },
+  "SWARAJENG": {
+    "Symbol": "SWARAJENG",
+    "Earnings_Date": "2026-10-26",
+    "Days_To_Earnings": 69
+  },
+  "SWIGGY": {
+    "Symbol": "SWIGGY",
+    "Earnings_Date": "2026-12-08",
+    "Days_To_Earnings": 112
+  },
+  "SWSOLAR": {
+    "Symbol": "SWSOLAR",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "SYMPHONY": {
+    "Symbol": "SYMPHONY",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "SYNGENE": {
+    "Symbol": "SYNGENE",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "SYRMA": {
+    "Symbol": "SYRMA",
+    "Earnings_Date": "2026-11-16",
+    "Days_To_Earnings": 90
+  },
+  "TALBROAUTO": {
+    "Symbol": "TALBROAUTO",
+    "Earnings_Date": "2023-08-08",
+    "Days_To_Earnings": -1106
+  },
+  "TANLA": {
+    "Symbol": "TANLA",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "TARC": {
+    "Symbol": "TARC",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "TARIL": {
+    "Symbol": "TARIL",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "TARSONS": {
+    "Symbol": "TARSONS",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "TATACAP": {
+    "Symbol": "TATACAP",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "TATACHEM": {
+    "Symbol": "TATACHEM",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "TATACOMM": {
+    "Symbol": "TATACOMM",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "TATACONSUM": {
+    "Symbol": "TATACONSUM",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "TATAELXSI": {
+    "Symbol": "TATAELXSI",
+    "Earnings_Date": "2026-10-08",
+    "Days_To_Earnings": 51
+  },
+  "TATAPOWER": {
+    "Symbol": "TATAPOWER",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "TATASTEEL": {
+    "Symbol": "TATASTEEL",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "TATATECH": {
+    "Symbol": "TATATECH",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "TATVA": {
+    "Symbol": "TATVA",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "TBOTEK": {
+    "Symbol": "TBOTEK",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "TCI": {
+    "Symbol": "TCI",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "TCIEXP": {
+    "Symbol": "TCIEXP",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "TCPLPACK": {
+    "Symbol": "TCPLPACK",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "TCS": {
+    "Symbol": "TCS",
+    "Earnings_Date": "2026-10-14",
+    "Days_To_Earnings": 57
+  },
+  "TDPOWERSYS": {
+    "Symbol": "TDPOWERSYS",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "TEAMLEASE": {
+    "Symbol": "TEAMLEASE",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "TECHM": {
+    "Symbol": "TECHM",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "TECHNOE": {
+    "Symbol": "TECHNOE",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "TEGA": {
+    "Symbol": "TEGA",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "TEJASNET": {
+    "Symbol": "TEJASNET",
+    "Earnings_Date": "2026-10-16",
+    "Days_To_Earnings": 59
+  },
+  "TENNIND": {
+    "Symbol": "TENNIND",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "TEXRAIL": {
+    "Symbol": "TEXRAIL",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "THANGAMAYL": {
+    "Symbol": "THANGAMAYL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "THELEELA": {
+    "Symbol": "THELEELA",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "THERMAX": {
+    "Symbol": "THERMAX",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "THOMASCOOK": {
+    "Symbol": "THOMASCOOK",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "THYROCARE": {
+    "Symbol": "THYROCARE",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "TI": {
+    "Symbol": "TI",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "TIIL": {
+    "Symbol": "TIIL",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "TIINDIA": {
+    "Symbol": "TIINDIA",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "TIMETECHNO": {
+    "Symbol": "TIMETECHNO",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "TIMKEN": {
+    "Symbol": "TIMKEN",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "TIPSMUSIC": {
+    "Symbol": "TIPSMUSIC",
+    "Earnings_Date": "2026-10-21",
+    "Days_To_Earnings": 64
+  },
+  "TITAGARH": {
+    "Symbol": "TITAGARH",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "TITAN": {
+    "Symbol": "TITAN",
+    "Earnings_Date": "2026-10-30",
+    "Days_To_Earnings": 73
+  },
+  "TMCV": {
+    "Symbol": "TMCV",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "TMPV": {
+    "Symbol": "TMPV",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "TORNTPHARM": {
+    "Symbol": "TORNTPHARM",
+    "Earnings_Date": "2026-10-28",
+    "Days_To_Earnings": 71
+  },
+  "TORNTPOWER": {
+    "Symbol": "TORNTPOWER",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "TRANSPEK": {
+    "Symbol": "TRANSPEK",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "TRANSRAILL": {
+    "Symbol": "TRANSRAILL",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "TRAVELFOOD": {
+    "Symbol": "TRAVELFOOD",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "TRENT": {
+    "Symbol": "TRENT",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "TRIDENT": {
+    "Symbol": "TRIDENT",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "TRITURBINE": {
+    "Symbol": "TRITURBINE",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "TRIVENI": {
+    "Symbol": "TRIVENI",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "TRUALT": {
+    "Symbol": "TRUALT",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "TTKPRESTIG": {
+    "Symbol": "TTKPRESTIG",
+    "Earnings_Date": "2026-11-15",
+    "Days_To_Earnings": 89
+  },
+  "TVSMOTOR": {
+    "Symbol": "TVSMOTOR",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "TVSSCS": {
+    "Symbol": "TVSSCS",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "TVSSRICHAK": {
+    "Symbol": "TVSSRICHAK",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "TVTODAY": {
+    "Symbol": "TVTODAY",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "UBL": {
+    "Symbol": "UBL",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "UDS": {
+    "Symbol": "UDS",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "UFBL": {
+    "Symbol": "UFBL",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "UGROCAP": {
+    "Symbol": "UGROCAP",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "UJJIVANSFB": {
+    "Symbol": "UJJIVANSFB",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "ULTRACEMCO": {
+    "Symbol": "ULTRACEMCO",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "ULTRAMAR": {
+    "Symbol": "ULTRAMAR",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "UNIECOM": {
+    "Symbol": "UNIECOM",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "UNIMECH": {
+    "Symbol": "UNIMECH",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "UNIONBANK": {
+    "Symbol": "UNIONBANK",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "UNIPARTS": {
+    "Symbol": "UNIPARTS",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "UNITDSPR": {
+    "Symbol": "UNITDSPR",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "UNOMINDA": {
+    "Symbol": "UNOMINDA",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "UPL": {
+    "Symbol": "UPL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "URBANCO": {
+    "Symbol": "URBANCO",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "USHAMART": {
+    "Symbol": "USHAMART",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "UTIAMC": {
+    "Symbol": "UTIAMC",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "UTKARSHBNK": {
+    "Symbol": "UTKARSHBNK",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "UTLSOLAR": {
+    "Symbol": "UTLSOLAR",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "V2RETAIL": {
+    "Symbol": "V2RETAIL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "VAIBHAVGBL": {
+    "Symbol": "VAIBHAVGBL",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "VAKRANGEE": {
+    "Symbol": "VAKRANGEE",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "VAML": {
+    "Symbol": "VAML",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "VARROC": {
+    "Symbol": "VARROC",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "VBL": {
+    "Symbol": "VBL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "VEDL": {
+    "Symbol": "VEDL",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "VENKEYS": {
+    "Symbol": "VENKEYS",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "VENTIVE": {
+    "Symbol": "VENTIVE",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "VENUSPIPES": {
+    "Symbol": "VENUSPIPES",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "VESUVIUS": {
+    "Symbol": "VESUVIUS",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "VGUARD": {
+    "Symbol": "VGUARD",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "VIDYAWIRES": {
+    "Symbol": "VIDYAWIRES",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "VIJAYA": {
+    "Symbol": "VIJAYA",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "VIKRAMSOLR": {
+    "Symbol": "VIKRAMSOLR",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "VIKRAN": {
+    "Symbol": "VIKRAN",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "VIMTALABS": {
+    "Symbol": "VIMTALABS",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "VINATIORGA": {
+    "Symbol": "VINATIORGA",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "VINCOFE": {
+    "Symbol": "VINCOFE",
+    "Earnings_Date": "2026-07-29",
+    "Days_To_Earnings": -20
+  },
+  "VIPCLOTHNG": {
+    "Symbol": "VIPCLOTHNG",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "VIPIND": {
+    "Symbol": "VIPIND",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "VIRINCHI": {
+    "Symbol": "VIRINCHI",
+    "Earnings_Date": "2026-02-04",
+    "Days_To_Earnings": -195
+  },
+  "VISAKAIND": {
+    "Symbol": "VISAKAIND",
+    "Earnings_Date": "2023-08-09",
+    "Days_To_Earnings": -1105
+  },
+  "VISHNU": {
+    "Symbol": "VISHNU",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "VIYASH": {
+    "Symbol": "VIYASH",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "VMART": {
+    "Symbol": "VMART",
+    "Earnings_Date": "2026-11-09",
+    "Days_To_Earnings": 83
+  },
+  "VMM": {
+    "Symbol": "VMM",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "VOLTAMP": {
+    "Symbol": "VOLTAMP",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "VOLTAS": {
+    "Symbol": "VOLTAS",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "VPRPL": {
+    "Symbol": "VPRPL",
+    "Earnings_Date": "2026-08-13",
+    "Days_To_Earnings": -5
+  },
+  "VRLLOG": {
+    "Symbol": "VRLLOG",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "VSSL": {
+    "Symbol": "VSSL",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "VSTIND": {
+    "Symbol": "VSTIND",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "VSTTILLERS": {
+    "Symbol": "VSTTILLERS",
+    "Earnings_Date": "2026-11-10",
+    "Days_To_Earnings": 84
+  },
+  "VTL": {
+    "Symbol": "VTL",
+    "Earnings_Date": "2026-10-23",
+    "Days_To_Earnings": 66
+  },
+  "WAAREEENER": {
+    "Symbol": "WAAREEENER",
+    "Earnings_Date": "2026-11-23",
+    "Days_To_Earnings": 97
+  },
+  "WAAREERTL": {
+    "Symbol": "WAAREERTL",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "WABAG": {
+    "Symbol": "WABAG",
+    "Earnings_Date": "2026-11-06",
+    "Days_To_Earnings": 80
+  },
+  "WAKEFIT": {
+    "Symbol": "WAKEFIT",
+    "Earnings_Date": "2026-08-06",
+    "Days_To_Earnings": -12
+  },
+  "WANBURY": {
+    "Symbol": "WANBURY",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "WEBELSOLAR": {
+    "Symbol": "WEBELSOLAR",
+    "Earnings_Date": "2026-11-03",
+    "Days_To_Earnings": 77
+  },
+  "WELCORP": {
+    "Symbol": "WELCORP",
+    "Earnings_Date": "2026-10-29",
+    "Days_To_Earnings": 72
+  },
+  "WELENT": {
+    "Symbol": "WELENT",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "WELSPLSOL": {
+    "Symbol": "WELSPLSOL",
+    "Earnings_Date": "2026-11-02",
+    "Days_To_Earnings": 76
+  },
+  "WELSPUNLIV": {
+    "Symbol": "WELSPUNLIV",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "WESTLIFE": {
+    "Symbol": "WESTLIFE",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "WEWORK": {
+    "Symbol": "WEWORK",
+    "Earnings_Date": "2026-12-02",
+    "Days_To_Earnings": 106
+  },
+  "WHIRLPOOL": {
+    "Symbol": "WHIRLPOOL",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "WIPRO": {
+    "Symbol": "WIPRO",
+    "Earnings_Date": "2026-10-15",
+    "Days_To_Earnings": 58
+  },
+  "WONDERLA": {
+    "Symbol": "WONDERLA",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "WPIL": {
+    "Symbol": "WPIL",
+    "Earnings_Date": "2026-11-04",
+    "Days_To_Earnings": 78
+  },
+  "WSTCSTPAPR": {
+    "Symbol": "WSTCSTPAPR",
+    "Earnings_Date": "2026-11-12",
+    "Days_To_Earnings": 86
+  },
+  "YASHO": {
+    "Symbol": "YASHO",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "YATHARTH": {
+    "Symbol": "YATHARTH",
+    "Earnings_Date": "2026-11-11",
+    "Days_To_Earnings": 85
+  },
+  "YATRA": {
+    "Symbol": "YATRA",
+    "Earnings_Date": "2026-11-17",
+    "Days_To_Earnings": 91
+  },
+  "YESBANK": {
+    "Symbol": "YESBANK",
+    "Earnings_Date": "2026-10-19",
+    "Days_To_Earnings": 62
+  },
+  "ZAGGLE": {
+    "Symbol": "ZAGGLE",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "ZEEL": {
+    "Symbol": "ZEEL",
+    "Earnings_Date": "2026-11-05",
+    "Days_To_Earnings": 79
+  },
+  "ZENSARTECH": {
+    "Symbol": "ZENSARTECH",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "ZENTEC": {
+    "Symbol": "ZENTEC",
+    "Earnings_Date": "2026-10-26",
+    "Days_To_Earnings": 69
+  },
+  "ZFCVINDIA": {
+    "Symbol": "ZFCVINDIA",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "ZOTA": {
+    "Symbol": "ZOTA",
+    "Earnings_Date": "2026-11-18",
+    "Days_To_Earnings": 92
+  },
+  "ZYDUSLIFE": {
+    "Symbol": "ZYDUSLIFE",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "ZYDUSWELL": {
+    "Symbol": "ZYDUSWELL",
+    "Earnings_Date": "2026-11-14",
+    "Days_To_Earnings": 88
+  },
+  "GANESHBE": {
+    "Symbol": "GANESHBE",
+    "Earnings_Date": "2026-08-11",
+    "Days_To_Earnings": -7
+  },
+  "GANDHAR": {
+    "Symbol": "GANDHAR",
+    "Earnings_Date": "2026-10-22",
+    "Days_To_Earnings": 65
+  },
+  "THEJO": {
+    "Symbol": "THEJO",
+    "Earnings_Date": "2026-08-10",
+    "Days_To_Earnings": -8
+  },
+  "INDNIPPON": {
+    "Symbol": "INDNIPPON",
+    "Earnings_Date": "2026-08-07",
+    "Days_To_Earnings": -11
+  },
+  "FMGOETZE": {
+    "Symbol": "FMGOETZE",
+    "Earnings_Date": "2026-08-12",
+    "Days_To_Earnings": -6
+  }
+}

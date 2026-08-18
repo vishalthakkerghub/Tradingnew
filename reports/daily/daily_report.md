@@ -1,0 +1,493 @@
+STRICT WATCHLIST
+
+1. JINDRILL
+Score: 92
+
+2. GOLDIAM
+Score: 91
+
+3. LLOYDSENGG
+Score: 73
+
+4. CARTRADE
+Score: 69
+
+5. TMB
+Score: 67
+
+6. BHEL
+Score: 53
+
+
+FLEX WATCHLIST
+
+1. PPL
+Score: 81
+
+2. INOXINDIA
+Score: 72
+
+3. NRL
+Score: 69
+
+4. HSCL
+Score: 68
+
+5. CHOICEIN
+Score: 64
+
+6. EVEREADY
+Score: 64
+
+7. GUFICBIO
+Score: 63
+
+8. SUPRAJIT
+Score: 62
+
+9. KARURVYSYA
+Score: 61
+
+10. ANANDRATHI
+Score: 59
+
+11. SSWL
+Score: 58
+
+12. ALKYLAMINE
+Score: 55
+
+13. BLSE
+Score: 53
+
+14. TALBROAUTO
+Score: 48
+
+
+MINI WATCHLIST
+
+1. BEPL
+Score: 86
+
+2. KIRLOSBROS
+Score: 75
+
+3. REDINGTON
+Score: 61
+
+
+FLAG WATCHLIST
+
+1. BEPL
+Score: 86
+
+2. TMB
+Score: 82
+
+3. KARURVYSYA
+Score: 81
+
+4. NRL
+Score: 79
+
+5. LLOYDSENGG
+Score: 78
+
+6. SANGAMIND
+Score: 75
+
+7. MOTHERSON
+Score: 75
+
+8. DIVISLAB
+Score: 75
+
+9. RKFORGE
+Score: 75
+
+10. SUNDRMFAST
+Score: 74
+
+11. ALIVUS
+Score: 74
+
+12. SONACOMS
+Score: 74
+
+13. KTKBANK
+Score: 74
+
+14. NAZARA
+Score: 74
+
+15. BAJAJ-AUTO
+Score: 74
+
+16. UJJIVANSFB
+Score: 74
+
+17. SAILIFE
+Score: 74
+
+18. MPSLTD
+Score: 73
+
+19. NAUKRI
+Score: 73
+
+20. NAVINFLUOR
+Score: 73
+
+21. MAPMYINDIA
+Score: 72
+
+22. GABRIEL
+Score: 72
+
+23. GULFOILLUB
+Score: 72
+
+24. TVSMOTOR
+Score: 71
+
+25. INDGN
+Score: 70
+
+26. MOTILALOFS
+Score: 69
+
+27. KRISHANA
+Score: 69
+
+28. CRISIL
+Score: 69
+
+29. SSWL
+Score: 68
+
+30. HSCL
+Score: 68
+
+31. GRAPHITE
+Score: 68
+
+32. STARHEALTH
+Score: 67
+
+33. SUMICHEM
+Score: 67
+
+34. ARIHANTCAP
+Score: 66
+
+35. WESTLIFE
+Score: 65
+
+36. SHOPERSTOP
+Score: 65
+
+37. RADICO
+Score: 65
+
+38. IRISDOREME
+Score: 65
+
+39. WELCORP
+Score: 65
+
+40. UNIPARTS
+Score: 64
+
+41. KEI
+Score: 64
+
+42. RRKABEL
+Score: 64
+
+43. LAURUSLABS
+Score: 64
+
+44. IPCALAB
+Score: 64
+
+45. JLHL
+Score: 62
+
+46. LLOYDSME
+Score: 61
+
+47. 20MICRONS
+Score: 61
+
+48. EIMCOELECO
+Score: 61
+
+49. KIMS
+Score: 61
+
+50. AFFLE
+Score: 60
+
+51. SMCGLOBAL
+Score: 60
+
+52. ANANDRATHI
+Score: 59
+
+53. ENDURANCE
+Score: 59
+
+54. SHILPAMED
+Score: 59
+
+55. DIACABS
+Score: 59
+
+56. MUFIN
+Score: 59
+
+57. ANANTRAJ
+Score: 59
+
+58. AUROPHARMA
+Score: 58
+
+59. BLSE
+Score: 58
+
+60. BHEL
+Score: 58
+
+61. TALBROAUTO
+Score: 58
+
+62. DEEPAKNTR
+Score: 57
+
+63. SAKAR
+Score: 56
+
+64. INDUSINDBK
+Score: 56
+
+65. RPTECH
+Score: 56
+
+66. BEPL
+Score: 56
+
+67. HCG
+Score: 55
+
+68. KIRLOSBROS
+Score: 55
+
+69. DEVYANI
+Score: 55
+
+70. JETFREIGHT
+Score: 55
+
+71. SMCGLOBAL
+Score: 55
+
+72. AURUM
+Score: 54
+
+73. SHYAMMETL
+Score: 54
+
+74. HUHTAMAKI
+Score: 53
+
+75. JKPAPER
+Score: 53
+
+76. TITAN
+Score: 53
+
+77. GARFIBRES
+Score: 51
+
+78. GODREJPROP
+Score: 51
+
+79. PPL
+Score: 51
+
+80. HIKAL
+Score: 51
+
+81. SHOPERSTOP
+Score: 50
+
+82. AVG
+Score: 50
+
+83. MANYAVAR
+Score: 50
+
+84. CRAFTSMAN
+Score: 50
+
+85. UNIVCABLES
+Score: 49
+
+86. EPL
+Score: 49
+
+87. SHILPAMED
+Score: 49
+
+88. NEULANDLAB
+Score: 49
+
+89. ADOR
+Score: 49
+
+90. TFCILTD
+Score: 49
+
+91. BOSCH-HCIL
+Score: 49
+
+92. EMIL
+Score: 49
+
+93. TBOTEK
+Score: 49
+
+94. PPLPHARMA
+Score: 49
+
+95. HINDALCO
+Score: 48
+
+96. PVRINOX
+Score: 48
+
+97. BHEL
+Score: 48
+
+98. GUFICBIO
+Score: 48
+
+99. LLOYDSENT
+Score: 47
+
+100. FCL
+Score: 47
+
+101. VIPULLTD
+Score: 47
+
+102. RAMRAT
+Score: 47
+
+103. ESAFSFB
+Score: 47
+
+104. IGPL
+Score: 46
+
+105. STYLAMIND
+Score: 46
+
+106. BCLIND
+Score: 46
+
+107. VENUSREM
+Score: 46
+
+108. APCOTEXIND
+Score: 46
+
+109. SOTL
+Score: 45
+
+110. DYCL
+Score: 45
+
+111. COSMOFIRST
+Score: 44
+
+112. PCBL
+Score: 41
+
+113. ACE
+Score: 40
+
+114. DEEPINDS
+Score: 40
+
+115. KOTHARIPET
+Score: 40
+
+116. FILATEX
+Score: 40
+
+117. SIYSIL
+Score: 40
+
+118. HNDFDS
+Score: 40
+
+119. STEELCAS
+Score: 40
+
+120. JGCHEM
+Score: 40
+
+121. HEG
+Score: 39
+
+122. SETL
+Score: 39
+
+123. PRICOLLTD
+Score: 39
+
+124. KCPSUGIND
+Score: 39
+
+125. KABRAEXTRU
+Score: 39
+
+126. UNIMECH
+Score: 39
+
+127. GANDHAR
+Score: 39
+
+128. JSFB
+Score: 39
+
+129. GNA
+Score: 39
+
+130. COMSYN
+Score: 38
+
+131. SPORTKING
+Score: 35
+
+132. AZAD
+Score: 33
+
+133. KFINTECH
+Score: 33
+
+134. MANORAMA
+Score: 32
+
+135. SMLMAH
+Score: 30
+
+136. EMUDHRA
+Score: 26
+
+137. E2E
+Score: 23
+
+138. TINNARUBR
+Score: 17

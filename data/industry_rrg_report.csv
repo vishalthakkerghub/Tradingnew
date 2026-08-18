@@ -1,0 +1,154 @@
+Industry,Sector,ActiveStocks,MarketCap_Cr,CurrentRatio,CurrentMomentum,CurrentQuadrant,SectorQuadrant,LeadingDays,ImprovingDays,LaggingDays,Flips,MomentumChange5d,W1_EMA20,W2_EMA20,W3_EMA20,W3_EMA50,W3_ADNet,Category,IsSmallCap
+Engineering & Construction,Industrials,3,29360.8,106.01,101.42,Leading,Leading,17,0,0,1,-1.05,73.3,73.3,83.3,80.0,1.0,Leading,False
+Specialty Industrial Machinery,Industrials,1,2126.6,103.01,102.09,Leading,Leading,6,12,6,3,-0.47,80.0,100.0,100.0,100.0,0.2,Neutral,False
+Steel,Basic Materials,1,1521.6,104.96,103.04,Leading,Leading,10,4,7,4,-0.65,100.0,50.0,100.0,100.0,0.4,Neutral,False
+Electronics & Computer Distribution,Technology,1,1126.3,102.88,100.92,Leading,Leading,12,2,12,4,-1.24,90.0,20.0,100.0,100.0,0.2,Neutral,False
+Real Estate - Development,Real Estate,1,6399.1,102.7,100.05,Leading,Leading,12,1,10,4,-1.37,100.0,100.0,100.0,100.0,0.0,Neutral,False
+Airports & Air Services,Industrials,1,114564.9,103.84,101.92,Leading,Leading,8,10,8,4,-2.25,30.0,80.0,100.0,100.0,0.2,Neutral,False
+Photographic Products,Financial Services,1,1156.4,101.3,100.25,Leading,Leading,7,12,11,4,-1.47,0.0,10.0,100.0,100.0,0.4,Neutral,False
+IT Networking Equipment,Technology,2,1867.6,104.72,103.37,Leading,Leading,7,9,8,3,-0.73,60.0,90.0,95.0,100.0,1.0,Neutral,False
+Fibres & Plastics,Fibres & Plastics,1,0.0,101.93,101.09,Leading,Leading,10,2,6,3,-1.87,100.0,100.0,90.0,100.0,0.0,Neutral,True
+Non-alcoholic Beverages,Non-alcoholic Beverages,1,0.0,100.62,101.68,Leading,Leading,4,9,11,7,-1.59,100.0,100.0,90.0,100.0,0.0,Neutral,True
+Telecom Equipment,Technology,5,36992.1,104.34,102.06,Leading,Leading,15,4,6,4,-0.14,66.0,90.0,84.0,96.0,0.7,Neutral,False
+Banks,Financial Services,41,3626213.3,102.44,102.58,Leading,Leading,5,12,8,5,-1.59,34.6,55.1,81.0,75.1,5.3,Neutral,False
+Oil & Gas Equipment & Services,Energy,1,26356.9,102.45,102.48,Leading,Leading,6,6,14,6,-1.48,70.0,40.0,80.0,80.0,0.6,Neutral,False
+Petrochemicals,Basic Materials,6,2197.6,103.16,101.59,Leading,Leading,8,10,8,4,-2.22,58.3,56.7,80.0,78.3,-0.4,Neutral,False
+Auto Manufacturers,Consumer Cyclical,1,37277.7,100.49,98.43,Weakening,Leading,8,6,6,4,-3.3,60.0,90.0,80.0,100.0,-0.2,Neutral,False
+Electronic Components,Technology,5,12943.6,103.74,101.56,Leading,Leading,15,1,6,7,-0.87,76.0,82.0,76.0,90.0,0.8,Neutral,False
+IT Training Services,Consumer Defensive,4,751.2,104.35,100.65,Leading,Improving,13,2,8,3,-2.0,40.0,80.0,75.0,80.0,-0.6,Neutral,True
+Houseware,Consumer Cyclical,5,11191.4,103.19,102.66,Leading,Leading,7,11,8,4,-1.01,48.0,56.0,74.0,68.0,1.7,Neutral,False
+Healthcare Facilities,Healthcare,16,250694.8,101.05,102.05,Leading,Leading,7,6,12,4,-1.82,85.6,68.8,73.8,91.2,1.9,Neutral,False
+Oil Marketing & Distribution,Energy,8,266068.0,104.56,101.54,Leading,Leading,11,7,7,3,-2.0,32.5,62.5,72.5,78.8,1.2,Neutral,False
+Asset Management Cos.,Financial Services,5,150840.3,102.12,102.86,Leading,Leading,5,11,10,8,-1.19,44.0,52.0,72.0,72.0,1.2,Neutral,False
+Refineries/Petro-Products,Energy,9,233206.7,103.97,101.44,Leading,Leading,10,6,9,6,-1.34,48.9,61.1,71.1,70.0,0.4,Neutral,False
+Non-Durable Household Prod.,Consumer Defensive,3,2729.8,101.73,103.01,Leading,Improving,5,8,11,8,-0.83,66.7,60.0,70.0,83.3,0.2,Neutral,False
+Electrical Equipment & Parts,Industrials,2,22640.4,100.77,100.97,Leading,Leading,6,10,10,5,-1.33,25.0,45.0,70.0,85.0,0.0,Neutral,False
+Transport Related Services,Technology,7,10750.4,104.44,102.11,Leading,Leading,10,9,7,4,-2.69,40.0,50.0,70.0,62.9,1.7,Neutral,False
+Computer Hardware,Industrials,3,1409.0,102.7,104.33,Leading,Leading,3,14,8,3,-0.02,36.7,43.3,70.0,63.3,0.4,Neutral,False
+Health Information Services,Healthcare,1,28044.2,99.71,101.77,Improving,Leading,1,14,8,6,-1.88,80.0,90.0,70.0,100.0,-0.2,Neutral,False
+Defence,Industrials,14,717808.5,104.22,102.85,Leading,Leading,8,8,9,6,0.13,60.7,62.1,68.6,75.7,3.0,Neutral,False
+Other Electrical Equipment/Products,Industrials,29,215919.9,103.04,103.08,Leading,Leading,7,9,9,6,-0.31,65.9,66.9,68.3,73.4,4.8,Neutral,False
+Telecom Services,Communication Services,5,1322905.6,101.44,102.13,Leading,Leading,4,11,10,8,-0.57,44.0,62.0,68.0,70.0,-0.2,Neutral,False
+Biotechnology,Basic Materials,6,85813.8,101.85,100.64,Leading,Leading,8,3,9,3,-2.0,88.3,73.3,65.0,81.7,1.4,Neutral,False
+Auto Parts,Consumer Cyclical,2,24567.8,101.24,103.13,Leading,Leading,5,9,12,6,-0.55,55.0,60.0,65.0,60.0,0.4,Neutral,False
+Auto Parts & Equipment,Industrials,75,360351.6,102.07,103.21,Leading,Leading,6,9,11,8,-0.99,51.7,54.1,64.0,64.0,8.4,Neutral,False
+Telecom Cables,Technology,3,32075.9,105.51,102.61,Leading,Leading,14,0,0,4,1.9,66.7,83.3,63.3,66.7,0.2,Neutral,False
+Other Industrial Products,Consumer Cyclical,25,178270.7,103.38,102.79,Leading,Leading,8,9,9,6,-1.0,62.0,68.8,61.6,78.8,1.6,Neutral,False
+Pharmaceuticals,Healthcare,88,1064473.0,102.17,101.96,Leading,Leading,7,7,10,6,-1.75,71.1,60.8,61.5,68.4,1.7,Neutral,False
+Holding Companies,Financial Services,14,531482.0,101.2,103.33,Leading,Leading,4,10,12,6,-0.66,39.3,42.9,61.4,54.3,2.4,Neutral,False
+Packaged Foods,Consumer Defensive,18,205777.5,102.24,103.34,Leading,Improving,4,11,10,7,-0.8,45.6,43.3,61.1,57.8,2.4,Neutral,False
+Heavy Electrical Equipment,Industrials,23,464628.0,101.74,103.45,Leading,Leading,4,10,11,8,1.05,58.3,70.4,60.0,76.1,3.0,Neutral,False
+Marine Port & Services,Industrials,5,469089.1,100.74,103.6,Leading,Leading,2,9,12,3,-0.12,54.0,56.0,60.0,54.0,0.4,Neutral,False
+Building Products & Equipment,Industrials,1,1073.7,99.99,102.56,Improving,Leading,2,8,16,7,0.39,30.0,0.0,60.0,40.0,0.0,Neutral,False
+Jute & Jute Products,Consumer Cyclical,2,1416.8,100.3,104.39,Leading,Leading,1,9,11,5,-0.14,90.0,50.0,60.0,55.0,0.4,Neutral,False
+Cars & Utility Vehicles,Consumer Cyclical,4,185457.7,99.72,102.46,Improving,Leading,2,16,12,6,-1.4,25.0,32.5,60.0,50.0,-0.2,Neutral,False
+Cigarettes-Tobacco Products,Consumer Defensive,3,403960.9,99.24,103.34,Improving,Improving,0,11,12,2,-1.04,86.7,33.3,60.0,63.3,0.4,Neutral,False
+Pharmaceutical Retailers,Healthcare,1,1011.6,101.76,103.13,Leading,Leading,5,8,12,8,2.19,90.0,100.0,60.0,70.0,0.0,Neutral,False
+Resorts & Casinos,Consumer Cyclical,1,36285.4,101.06,103.9,Leading,Leading,1,11,15,5,-0.05,10.0,20.0,60.0,50.0,0.2,Neutral,False
+Industrial Gases,Industrial Gases,2,0.0,102.51,103.46,Leading,Leading,3,13,8,5,1.84,70.0,50.0,60.0,60.0,0.4,Neutral,True
+Carbon Black,Carbon Black,1,0.0,101.75,102.91,Leading,Leading,3,10,12,9,-0.7,40.0,90.0,60.0,70.0,0.4,Neutral,True
+Travel Support Services,Industrials,8,64398.2,101.45,102.28,Leading,Leading,4,11,14,5,-1.85,17.5,27.5,58.8,47.5,1.6,Neutral,False
+Department Stores,Consumer Cyclical,7,287710.9,101.86,103.54,Leading,Leading,4,7,13,8,-0.02,62.9,68.6,58.6,71.4,0.8,Neutral,False
+Misc. Commercial Services,Industrials,16,7691.2,102.07,102.48,Leading,Leading,6,12,8,4,-1.8,45.6,48.8,58.1,55.0,0.6,Neutral,False
+Capital Markets,Financial Services,25,103648.0,100.8,103.21,Leading,Leading,3,11,12,10,-0.88,48.0,46.4,58.0,60.4,2.9,Neutral,False
+Housing Finance ,Financial Services,15,197119.7,100.43,103.31,Leading,Leading,2,11,13,6,-0.93,41.3,22.7,58.0,64.0,1.0,Neutral,False
+Auto Tyres & Rubber Products,Basic Materials,15,89146.8,100.49,103.14,Leading,Leading,1,15,10,7,-0.62,30.0,42.7,57.3,49.3,0.6,Neutral,False
+Transportation - Logistics,Industrials,18,52365.7,100.92,103.1,Leading,Leading,3,13,10,8,-1.21,36.1,29.4,56.7,54.4,1.9,Neutral,False
+Utilities:Non-Electrical,Utilities,12,264200.6,101.02,103.95,Leading,Leading,2,13,10,5,0.3,35.0,55.8,56.7,65.0,0.0,Neutral,False
+Surface Transportation,Industrials,3,253.2,97.28,102.23,Improving,Leading,0,13,13,4,1.09,46.7,73.3,56.7,50.0,0.4,Neutral,True
+Financial Institutions,Financial Services,6,189300.9,101.77,102.07,Leading,Leading,4,13,8,3,-1.51,31.7,30.0,56.7,61.7,0.0,Neutral,False
+Specialty Chemicals,Basic Materials,58,263145.7,101.68,103.13,Leading,Leading,5,9,11,8,-1.06,56.4,50.4,56.6,60.7,1.7,Neutral,False
+Internet & Catalogue Retail,Consumer Cyclical,5,22933.3,102.54,101.96,Leading,Leading,5,12,9,5,-1.66,58.0,44.0,56.0,54.0,-0.4,Neutral,False
+Industrial Machinery,Industrials,39,434824.8,101.48,103.84,Leading,Leading,3,11,12,6,-0.27,39.0,42.1,55.9,55.9,3.9,Neutral,False
+Iron & Steel Products,Industrials,34,83802.9,101.9,103.04,Leading,Leading,5,9,11,10,-1.18,48.8,47.9,55.0,61.8,3.2,Neutral,False
+Containers & Packaging,Consumer Cyclical,28,38451.2,101.96,103.25,Leading,Leading,4,11,10,6,-0.77,50.7,48.2,55.0,63.9,2.9,Neutral,False
+2/3 Wheelers,Consumer Cyclical,6,592524.7,100.5,101.1,Leading,Leading,7,13,8,4,-2.42,51.7,45.0,55.0,45.0,-0.6,Neutral,False
+Fertilizers,Basic Materials,17,151327.8,100.45,103.41,Leading,Leading,1,15,10,7,-0.47,36.1,41.8,54.7,55.9,2.1,Neutral,False
+IT Software Products,Technology,9,16442.3,101.69,102.98,Leading,Leading,4,11,11,6,-0.52,40.0,45.6,54.4,45.6,0.2,Neutral,False
+Textiles,Consumer Cyclical,81,61514.8,101.21,103.4,Leading,Leading,3,13,10,8,-0.51,47.2,54.3,53.6,56.4,0.0,Neutral,False
+Plastic Products,Industrials,21,54695.0,100.46,103.09,Leading,Leading,2,15,10,6,-0.58,37.6,51.4,53.3,53.3,1.9,Neutral,False
+Household Products,Consumer Cyclical,3,13268.3,101.99,102.77,Leading,Leading,3,15,8,5,0.22,43.3,63.3,53.3,66.7,0.6,Neutral,False
+Commodity Trading  & Distribution,Basic Materials,22,417334.2,102.85,103.59,Leading,Leading,5,12,9,6,-0.6,48.7,55.7,53.1,58.6,2.5,Neutral,False
+Footwear,Consumer Cyclical,10,16832.1,100.98,103.85,Leading,Leading,2,14,11,7,0.68,40.0,54.0,53.0,48.0,-0.2,Neutral,False
+Finance (including NBFCs),Financial Services,53,867648.5,101.0,103.67,Leading,Leading,3,10,12,6,-0.63,42.6,38.9,52.6,46.2,5.5,Neutral,False
+Furniture-Furnishing-Paints,Consumer Cyclical,23,349177.1,100.48,103.15,Leading,Leading,3,10,13,6,-0.68,57.4,46.1,52.6,62.2,3.3,Neutral,False
+Special Consumer Services,Industrials,4,2408.0,99.79,102.64,Improving,Leading,1,14,13,6,-1.05,20.0,42.5,52.5,40.0,0.2,Neutral,False
+Forest Products,Consumer Cyclical,8,23037.5,101.95,102.47,Leading,Leading,5,9,10,7,-2.01,46.2,40.0,52.5,52.5,-0.7,Neutral,False
+Movies & Entertainment,Communication Services,12,476.3,101.97,102.73,Leading,Leading,5,13,8,3,-1.09,40.8,59.2,52.5,52.5,-0.3,Neutral,True
+Publishing,Communication Services,12,6281.9,100.13,103.32,Leading,Leading,1,14,11,9,-0.26,45.0,45.8,50.8,46.7,1.9,Neutral,False
+Consumer Electronics,Consumer Cyclical,13,153850.1,100.28,104.27,Leading,Leading,1,11,14,7,-0.03,33.1,20.8,50.0,40.8,1.8,Neutral,False
+Utilities - Regulated Water,Utilities,1,725.2,101.67,104.36,Leading,Leading,2,16,11,5,0.64,0.0,0.0,50.0,40.0,0.4,Neutral,True
+Credit Services,Financial Services,1,1016.7,99.15,104.25,Improving,Leading,2,12,12,5,0.78,30.0,0.0,50.0,0.0,0.2,Neutral,False
+Internet Retail,Consumer Cyclical,1,242580.8,101.07,103.3,Leading,Leading,2,15,11,5,1.23,20.0,80.0,50.0,50.0,0.2,Neutral,False
+Other Precious Metals & Mining,Basic Materials,1,15389.2,98.45,98.97,Lagging,Leading,0,17,11,5,-3.12,30.0,100.0,50.0,100.0,-0.2,Neutral,False
+Medical Equipment,Medical Equipment,1,0.0,102.33,103.66,Leading,Leading,4,10,11,6,1.05,50.0,40.0,50.0,50.0,0.0,Neutral,True
+Gems & Jewellery,Consumer Cyclical,20,7462.7,102.31,102.15,Leading,Leading,6,13,7,4,-2.46,23.5,36.5,49.5,46.0,-2.6,Neutral,False
+Other Apparels & Accessories,Consumer Cyclical,31,13136.4,100.56,104.04,Leading,Leading,1,13,12,7,1.35,34.5,51.9,49.0,49.7,2.5,Neutral,False
+Construction & Engineering,Industrials,51,67597.1,100.53,103.7,Leading,Leading,2,11,13,6,-0.08,35.5,39.2,48.6,46.5,2.7,Neutral,False
+Specialty Retail,Consumer Cyclical,10,19383.8,99.94,104.19,Improving,Leading,0,16,10,6,0.54,40.0,37.0,48.0,45.0,-0.2,Neutral,False
+Hotels,Consumer Cyclical,25,151196.5,99.88,103.45,Improving,Leading,0,16,11,6,-0.04,30.0,38.0,47.6,38.4,2.0,Neutral,False
+Other Financial Services,Financial Services,29,159771.2,99.92,103.71,Improving,Leading,0,16,11,6,-0.38,38.3,36.6,47.2,43.1,4.0,Neutral,False
+Shipping,Industrials,7,56304.1,98.36,103.05,Improving,Leading,0,10,15,4,-0.16,45.7,42.9,47.1,58.6,0.0,Neutral,False
+Broadcasting & Cable TV,Communication Services,18,6182.9,99.8,103.35,Improving,Leading,0,17,9,4,0.14,32.2,43.3,46.7,45.6,0.6,Neutral,False
+Realty,Realty,59,283939.1,99.98,103.7,Improving,Improving,1,12,13,5,-0.33,37.8,36.2,46.1,44.2,3.1,Neutral,False
+Other Food Products,Consumer Defensive,15,29077.5,99.41,102.93,Improving,Improving,2,13,12,9,-0.8,50.0,40.7,45.3,44.0,-1.2,Neutral,False
+Airlines,Industrials,2,194405.4,100.67,103.24,Leading,Leading,2,14,13,5,-0.17,15.0,55.0,45.0,45.0,0.0,Neutral,False
+IT Consulting & Software,Technology,63,862737.4,100.84,103.07,Leading,Leading,4,11,12,6,0.18,42.5,56.0,44.1,47.8,-4.7,Neutral,False
+Consulting Services,Industrials,3,14107.3,96.77,103.54,Improving,Leading,0,16,9,2,0.87,50.0,36.7,43.3,33.3,-0.1,Neutral,False
+Commercial Vehicles,Industrials,7,137872.8,101.17,104.14,Leading,Leading,3,12,11,10,0.35,22.9,37.1,42.9,45.7,0.6,Neutral,False
+Construction Materials,Industrials,5,41.2,100.46,103.78,Leading,Leading,1,17,8,3,0.27,26.0,36.0,42.0,42.0,-0.2,Neutral,True
+Internet Software & Services,Communication Services,17,44297.0,98.65,103.82,Improving,Leading,1,15,11,8,1.2,42.9,38.2,41.8,42.9,-0.4,Neutral,False
+Personal Products,Consumer Defensive,14,838938.6,101.26,102.88,Leading,Improving,4,11,10,6,-1.34,45.7,34.3,41.4,37.1,1.7,Neutral,False
+Breweries & Distilleries,Consumer Defensive,11,24103.8,99.45,103.54,Improving,Improving,0,13,13,4,-0.26,30.9,29.1,40.0,26.4,1.0,Neutral,False
+Distributors,Energy,1,69.1,100.12,103.41,Leading,Leading,1,14,12,5,0.7,20.0,0.0,40.0,40.0,-0.2,Neutral,True
+Gift Articles-Toys & Cards ,Consumer Cyclical,1,50.1,99.45,104.34,Improving,Leading,1,11,13,5,1.54,30.0,40.0,40.0,30.0,0.4,Neutral,True
+Software - Infrastructure,Technology,1,5256.3,100.84,103.91,Leading,Leading,1,17,12,5,1.78,0.0,30.0,40.0,40.0,0.0,Neutral,False
+Advertising & Media,Communication Services,4,190.4,94.97,100.27,Improving,Leading,2,11,14,5,-2.18,47.5,45.0,40.0,30.0,-0.5,Neutral,True
+Commodity Printing/Stationery,Industrials,5,16809.1,98.79,104.19,Improving,Leading,1,16,9,5,-0.29,46.0,12.0,40.0,30.0,1.0,Neutral,False
+Life Insurance,Financial Services,5,201935.6,99.73,103.86,Improving,Leading,2,13,14,5,1.05,40.0,32.0,40.0,16.0,0.6,Neutral,False
+Sugar,Consumer Defensive,22,25569.4,98.47,102.89,Improving,Improving,0,16,9,4,-1.35,29.1,21.8,39.1,43.6,-2.2,Neutral,False
+Electric Utilities,Utilities,35,963077.6,99.28,103.59,Improving,Leading,0,13,12,6,0.46,39.7,44.6,36.6,48.3,-1.9,Neutral,False
+Cement & Cement Products,Basic Materials,31,410770.4,98.83,103.65,Improving,Leading,1,12,13,5,-0.08,37.7,31.3,34.8,22.6,-1.8,Neutral,False
+Education,Consumer Defensive,5,552.2,98.76,104.34,Improving,Improving,0,17,10,4,1.39,30.0,26.0,30.0,22.0,0.5,Neutral,True
+Other Leisure Facilities,Consumer Cyclical,3,4297.8,98.37,103.11,Improving,Leading,0,13,13,4,0.29,26.7,30.0,26.7,6.7,-0.5,Neutral,False
+Other Industrial Goods,Industrials,13,79821.2,101.73,102.72,Leading,Leading,5,9,11,6,-0.61,62.3,59.2,53.8,52.3,0.5,Weak,False
+Data Processing Services,Technology,3,20450.8,101.51,102.83,Leading,Leading,4,8,13,6,-0.52,80.0,70.0,53.3,56.7,0.2,Weak,False
+Healthcare Services,Healthcare,9,4761.3,100.46,103.53,Leading,Leading,3,9,11,6,-0.73,74.4,52.2,53.3,62.2,0.9,Weak,False
+Oil & Gas E&P,Energy,1,2735.6,99.42,98.17,Lagging,Leading,11,0,5,7,-0.62,100.0,90.0,50.0,100.0,-0.4,Weak,False
+Other Non-Ferrous Metals,Industrials,3,12615.4,99.81,104.47,Improving,Leading,0,9,13,2,0.58,66.7,43.3,50.0,63.3,0.6,Weak,False
+BPO/KPO,Industrials,7,41694.1,99.89,102.42,Improving,Leading,2,10,12,3,-1.02,71.4,57.1,48.6,64.3,1.0,Weak,False
+Other Telecom Services,Communication Services,6,183004.6,100.52,103.84,Leading,Leading,1,13,11,5,0.39,70.0,55.0,48.3,46.7,-0.1,Weak,False
+Restaurants,Consumer Cyclical,6,14424.2,100.08,104.43,Leading,Leading,1,13,11,5,0.78,58.3,43.3,48.3,48.3,1.0,Weak,False
+Investment Companies,Financial Services,5,62.0,99.19,103.26,Improving,Leading,2,11,14,5,0.05,58.0,58.0,48.0,48.0,0.1,Weak,True
+Commodity Chemicals,Basic Materials,25,78249.4,100.16,102.95,Leading,Leading,2,11,11,6,-1.11,64.4,44.8,45.2,52.8,-1.0,Weak,False
+General Insurance,Financial Services,6,187121.7,100.54,104.53,Leading,Leading,1,14,11,5,0.7,56.7,53.3,45.0,50.0,0.8,Weak,False
+Mining,Basic Materials,9,7489.1,98.9,101.73,Improving,Leading,0,14,11,4,0.18,58.9,73.3,43.3,68.9,-1.0,Weak,False
+Iron & Steel/Interm.Products,Industrials,37,56490.8,99.69,103.56,Improving,Leading,1,14,10,7,0.01,54.3,49.7,41.6,51.1,-1.1,Weak,False
+Packaging & Containers,Consumer Cyclical,1,244.0,100.89,104.0,Leading,Leading,1,9,11,3,0.55,100.0,60.0,40.0,100.0,0.0,Weak,True
+Drug Manufacturers - Specialty & Generic,Healthcare,3,32920.3,96.64,99.93,Lagging,Leading,0,15,8,5,-3.1,50.0,53.3,40.0,86.7,-0.4,Weak,False
+Agrochemicals,Basic Materials,20,38313.5,98.82,103.07,Improving,Leading,1,11,14,5,-0.55,52.5,38.5,38.0,40.0,-2.0,Weak,False
+Tea & Coffee,Consumer Defensive,11,16196.9,97.7,102.75,Improving,Improving,1,14,10,5,-1.34,45.9,27.3,36.4,33.6,-1.3,Weak,False
+Oil Equipment & Services,Energy,4,6615.6,97.62,100.81,Improving,Leading,0,20,7,2,-1.6,60.0,52.5,35.0,52.5,-0.7,Weak,False
+Warehousing and Logistics,Industrials,2,35883.6,98.55,104.73,Improving,Leading,0,16,8,2,-0.71,70.0,15.0,35.0,40.0,0.3,Weak,False
+Household Appliances,Consumer Cyclical,7,30824.8,99.37,103.77,Improving,Leading,1,10,14,7,-0.18,51.4,35.7,34.3,34.3,-0.8,Weak,False
+Edible Oils,Consumer Defensive,9,32070.5,98.39,102.47,Improving,Improving,0,16,9,4,-1.76,58.9,35.6,33.3,44.4,-1.0,Weak,False
+Roads & Highways,Industrials,9,45855.3,98.81,103.87,Improving,Leading,1,14,12,7,0.3,43.3,31.1,31.1,30.0,0.3,Weak,False
+Other Agricultural Products,Basic Materials,14,23133.2,96.34,102.69,Improving,Leading,0,11,14,4,-0.52,41.4,41.4,30.7,37.9,1.3,Weak,False
+Leisure,Consumer Cyclical,1,65.0,98.51,101.69,Improving,Leading,0,18,10,2,-0.46,40.0,30.0,30.0,80.0,0.0,Weak,True
+"Furnishings, Fixtures & Appliances",Consumer Cyclical,1,21113.6,97.08,102.24,Improving,Leading,0,12,12,4,0.63,50.0,60.0,30.0,30.0,0.0,Weak,False
+Exchange,Financial Services,3,174415.0,97.78,101.93,Improving,Leading,2,9,9,5,-0.96,80.0,50.0,30.0,36.7,0.4,Weak,False
+Healthcare Supplies,Healthcare Supplies,3,0.0,99.02,103.23,Improving,Improving,1,11,12,3,-1.13,70.0,26.7,30.0,30.0,0.0,Weak,True
+Storage Media & Peripherals,Storage Media & Peripherals,1,0.0,99.89,103.76,Improving,Improving,2,10,13,7,2.46,50.0,90.0,30.0,70.0,-0.2,Weak,True
+Diversified,Industrials,5,56785.5,98.78,104.13,Improving,Leading,1,8,15,3,0.7,46.0,40.0,24.0,48.0,0.2,Weak,False
+Aluminium and Aluminium Products,Basic Materials,8,227385.0,97.19,102.06,Improving,Leading,0,18,10,4,-0.66,48.8,56.2,23.8,33.8,-1.0,Weak,False
+Paper & Paper Products,Real Estate,20,16376.4,97.04,103.19,Improving,Leading,1,12,14,5,-0.13,32.5,27.0,23.5,18.5,0.0,Weak,False
+Farm & Heavy Construction Machinery,Industrials,3,7778.1,98.21,103.81,Improving,Leading,0,12,13,6,1.41,43.3,40.0,23.3,43.3,0.2,Weak,False
+Software - Application,Technology,1,84.2,97.31,101.63,Improving,Leading,0,21,9,4,-1.19,30.0,0.0,20.0,10.0,0.0,Weak,True
+Information Technology Services,Technology,2,30509.0,95.69,100.74,Improving,Leading,4,5,16,5,1.08,100.0,90.0,15.0,45.0,-0.4,Weak,False
+Exploration & Production,Energy,4,2167.5,93.86,100.4,Improving,Leading,1,9,12,6,0.91,87.5,52.5,15.0,42.5,-1.0,Weak,False
+Medical Instruments & Supplies,Healthcare,1,14852.2,97.49,103.01,Improving,Leading,0,12,14,4,1.94,70.0,70.0,10.0,10.0,0.0,Weak,False
+Broadcasting,Communication Services,1,1232.6,95.32,97.86,Lagging,Leading,10,0,10,4,-1.19,80.0,90.0,10.0,0.0,-0.4,Weak,False
+Coal,Energy,2,298073.2,95.66,102.24,Improving,Leading,0,15,11,4,1.29,35.0,60.0,5.0,10.0,-0.4,Weak,False
+Textile Manufacturing,Consumer Cyclical,1,832.5,95.04,99.83,Lagging,Leading,0,15,15,4,-2.11,0.0,20.0,0.0,0.0,-0.4,Weak,True
+Copper,Basic Materials,4,49698.3,95.71,102.44,Improving,Leading,1,12,12,5,-0.3,67.5,7.5,0.0,0.0,-0.6,Weak,False
+Zinc,Basic Materials,1,238075.6,96.33,102.6,Improving,Leading,0,7,14,2,0.21,100.0,50.0,0.0,0.0,0.0,Weak,False

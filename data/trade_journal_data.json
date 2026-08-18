@@ -1,0 +1,1560 @@
+[
+  {
+    "id": "1785943222295",
+    "symbol": "JINDRILL",
+    "name": "JINDRILL",
+    "entry_date": "2026-08-05",
+    "exit_date": "2026-08-10",
+    "days_active": 5,
+    "entry_price": 619,
+    "invested_amount": 61900,
+    "target_1": 660,
+    "target_2": 690,
+    "stop_loss": 600,
+    "risk_pct": 3.1,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Pattern: STRICT Setup (Grade A)\nMinervini Score: 70/100 (Trend: 16, RS: 7, SmartMoney: 6)\nContractions: T1: 10.0% | T2: 5.0%\nVolume Dry Up (VDU): 20.0%\nDelivery %: 0%\nPocket Pivot: No\nIndustry Strength: Oil Drilling & Exploration [Rank N/A, Confirmed Uptrend]\nExecution Readiness: 100/100 (Recommended Size: 6.0% Allocation (Half Size))",
+    "comments": "pinbar entry with volume contraction... sl hit",
+    "exits": [
+      {
+        "date": "2026-08-10",
+        "qty": 100,
+        "price": 600,
+        "pnl": -1900
+      }
+    ]
+  },
+  {
+    "id": "1786268172061",
+    "symbol": "KOLTEPATIL",
+    "name": "Kolte",
+    "entry_date": "2026-08-05",
+    "exit_date": "2026-08-07",
+    "days_active": 2,
+    "entry_price": 403,
+    "invested_amount": 80600,
+    "target_1": 429,
+    "target_2": 434,
+    "stop_loss": 390,
+    "risk_pct": 3.2,
+    "total_qty": 200,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "",
+    "comments": "breakout candidate + news about the company getting huge order",
+    "exits": [
+      {
+        "date": "2026-08-06",
+        "qty": 100,
+        "price": 429,
+        "pnl": 2600
+      },
+      {
+        "date": "2026-08-07",
+        "qty": 100,
+        "price": 434,
+        "pnl": 3100
+      }
+    ]
+  },
+  {
+    "id": "1786268652113",
+    "symbol": "IKIO",
+    "name": "IKIO",
+    "entry_date": "2026-08-04",
+    "exit_date": "2026-08-10",
+    "days_active": 6,
+    "entry_price": 208,
+    "invested_amount": 166400,
+    "target_1": 231.6,
+    "target_2": 249.3,
+    "stop_loss": 196.2,
+    "risk_pct": 5.6,
+    "total_qty": 800,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Pattern: FLAG Setup (Grade B)\nMinervini Score: 66/100 (Trend: 15, RS: 10, SmartMoney: 8)\nContractions: T1: 6.0%\nVolume Dry Up (VDU): 8.4%\nDelivery %: 0%\nPocket Pivot: No\nIndustry Strength: Capital Goods - Electric General [Rank N/A, Avoid]\nExecution Readiness: 80/100 (Recommended Size: 6.0% Allocation (Half Size))",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-08-10",
+        "qty": 800,
+        "price": 196.2,
+        "pnl": -9440.00000000001
+      }
+    ]
+  },
+  {
+    "id": "1785699149919",
+    "symbol": "ANTELOPUS",
+    "name": "antelopus",
+    "entry_date": "2026-07-31",
+    "exit_date": "2026-08-05",
+    "days_active": 5,
+    "entry_price": 827,
+    "invested_amount": 82700,
+    "target_1": 915,
+    "target_2": null,
+    "stop_loss": 790,
+    "risk_pct": 4.5,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "EMA 20-50 pullback entry after amazing results. sector is in postivie money flowing. oil exploration industry",
+    "comments": "I had moved my SL to Cost once the stock gave 5% run. then stock corrected same day. the next day the stock returned to yesterdays price hit my sl just .5rs and then turned positiive.",
+    "exits": [
+      {
+        "date": "2026-08-05",
+        "qty": 50,
+        "price": 828,
+        "pnl": 50
+      },
+      {
+        "date": "2026-08-05",
+        "qty": 50,
+        "price": 875,
+        "pnl": 2400
+      }
+    ]
+  },
+  {
+    "id": "1785736405941",
+    "symbol": "GANDHAR",
+    "name": "gandhar",
+    "entry_date": "2026-07-31",
+    "exit_date": null,
+    "days_active": 4,
+    "entry_price": 236,
+    "invested_amount": 70800,
+    "target_1": 280,
+    "target_2": null,
+    "stop_loss": 225,
+    "risk_pct": 4.7,
+    "total_qty": 300,
+    "open_qty": 300,
+    "status": "OPEN",
+    "technical_desc": "",
+    "comments": "",
+    "exits": [],
+    "MS_Score": 64,
+    "Tier": "Tier 4",
+    "MS_Rating": "\u2605\u2605\u2606\u2606\u2606",
+    "MS_Status": "Neutral / Base Building",
+    "MS_Breakdown": {
+      "Trend": 23,
+      "Momentum": 8,
+      "Volume": 10,
+      "RS": 10,
+      "SmartMoney": 6,
+      "VCP": 7
+    }
+  },
+  {
+    "id": "1785699308865",
+    "symbol": "GANESHBE",
+    "name": "GANESHBE",
+    "entry_date": "2026-07-30",
+    "exit_date": "2026-08-12",
+    "days_active": 13,
+    "entry_price": 123,
+    "invested_amount": 61500,
+    "target_1": 132,
+    "target_2": null,
+    "stop_loss": 114,
+    "risk_pct": 7.3,
+    "total_qty": 500,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-08-12",
+        "qty": 500,
+        "price": 114,
+        "pnl": -4500
+      }
+    ]
+  },
+  {
+    "id": "1785334779397",
+    "symbol": "ANTELOPUS",
+    "name": "Antelopus",
+    "entry_date": "2026-07-29",
+    "exit_date": "2026-07-29",
+    "days_active": 0,
+    "entry_price": 811,
+    "invested_amount": 81100,
+    "target_1": 849,
+    "target_2": 900,
+    "stop_loss": 798,
+    "risk_pct": 1.6,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-07-29",
+        "qty": 100,
+        "price": 798,
+        "pnl": -1300
+      }
+    ]
+  },
+  {
+    "id": "1785187287794",
+    "symbol": "JINDRILL",
+    "name": "JINDRILL",
+    "entry_date": "2026-07-27",
+    "exit_date": "2026-07-29",
+    "days_active": 2,
+    "entry_price": 594.01,
+    "invested_amount": 59401,
+    "target_1": 623.71,
+    "target_2": 653.41,
+    "stop_loss": 579.66,
+    "risk_pct": 2.4,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "STRICT Setup (Grade A). Contractions: None. Delivery: undefined%.",
+    "comments": "Took initial position. low risk high reward trade as sl was very small",
+    "exits": [
+      {
+        "date": "2026-07-29",
+        "qty": 100,
+        "price": 578,
+        "pnl": -1600.999999999999
+      }
+    ]
+  },
+  {
+    "id": "1785334659569",
+    "symbol": "SAREGAMA",
+    "name": "Saregama",
+    "entry_date": "2026-07-24",
+    "exit_date": "2026-08-03",
+    "days_active": 10,
+    "entry_price": 479,
+    "invested_amount": 95800,
+    "target_1": 490,
+    "target_2": 530,
+    "stop_loss": 514,
+    "risk_pct": -7.3,
+    "total_qty": 200,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Retest near EMA 20, forming higher highs. money is flowing in the sector.",
+    "comments": "2nd lot sl hit",
+    "exits": [
+      {
+        "date": "2026-07-24",
+        "qty": 100,
+        "price": 490,
+        "pnl": 1100
+      },
+      {
+        "date": "2026-08-03",
+        "qty": 100,
+        "price": 514,
+        "pnl": 3500
+      }
+    ]
+  },
+  {
+    "id": "1784817381155",
+    "symbol": "RGL",
+    "name": "RGL",
+    "entry_date": "2026-07-21",
+    "exit_date": "2026-07-23",
+    "days_active": 2,
+    "entry_price": 121.8,
+    "invested_amount": 48720,
+    "target_1": 130,
+    "target_2": null,
+    "stop_loss": 116.95,
+    "risk_pct": 4,
+    "total_qty": 400,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-07-23",
+        "qty": 400,
+        "price": 116.95,
+        "pnl": -1939.9999999999977
+      }
+    ]
+  },
+  {
+    "id": "1783614225115",
+    "symbol": "ASTERDM",
+    "name": "ASTERDM",
+    "entry_date": "2026-07-09",
+    "exit_date": "2026-08-03",
+    "days_active": 25,
+    "entry_price": 806,
+    "invested_amount": 80600,
+    "target_1": 866.1,
+    "target_2": 913.42,
+    "stop_loss": 808,
+    "risk_pct": -0.2,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "FLEX Setup (Grade C). Contractions: T1: 6.4% | T2: 8.4% | T3: 9.0% | T4: 8.5%. Delivery: 61.14%.",
+    "comments": "pocket pivot in volume - purple. moved sl to price",
+    "exits": [
+      {
+        "date": "2026-08-03",
+        "qty": 100,
+        "price": 809,
+        "pnl": 300
+      }
+    ]
+  },
+  {
+    "id": "1783614549191",
+    "symbol": "APOLLO",
+    "name": "Apollo Micro",
+    "entry_date": "2026-07-09",
+    "exit_date": null,
+    "days_active": 1,
+    "entry_price": 397,
+    "invested_amount": 119100,
+    "target_1": 460,
+    "target_2": 480,
+    "stop_loss": 386,
+    "risk_pct": 2.8,
+    "total_qty": 300,
+    "open_qty": 300,
+    "status": "OPEN",
+    "technical_desc": "EMA 50 Pullback, near support. They announced preferntial issue at 416.",
+    "comments": "",
+    "exits": [],
+    "MS_Score": 52,
+    "MS_Rating": "\u2605\u2606\u2606\u2606\u2606",
+    "MS_Status": "Distribution / Sell Pressure",
+    "MS_Breakdown": {
+      "Trend": 22,
+      "Momentum": 3,
+      "Volume": 8,
+      "RS": 5,
+      "SmartMoney": 5,
+      "VCP": 9
+    },
+    "Tier": "Tier 4"
+  },
+  {
+    "id": "1783614796884",
+    "symbol": "EIEL",
+    "name": "Enviro Infra",
+    "entry_date": "2026-07-09",
+    "exit_date": "2026-07-23",
+    "days_active": 14,
+    "entry_price": 230,
+    "invested_amount": 69000,
+    "target_1": null,
+    "target_2": null,
+    "stop_loss": 220,
+    "risk_pct": 4.3,
+    "total_qty": 300,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "pin bar retest entry near EMA 10.",
+    "comments": "enviro infra recently announced some new orders also. SL hit",
+    "exits": [
+      {
+        "date": "2026-07-23",
+        "qty": 300,
+        "price": 220,
+        "pnl": -3000
+      }
+    ]
+  },
+  {
+    "id": "1783614912514",
+    "symbol": "KAJARIACER",
+    "name": "KAJARIACER",
+    "entry_date": "2026-07-09",
+    "exit_date": "2026-07-23",
+    "days_active": 14,
+    "entry_price": 1224,
+    "invested_amount": 122400,
+    "target_1": 1302.8,
+    "target_2": 1361.45,
+    "stop_loss": 1209,
+    "risk_pct": 1.2,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "STRICT Setup (Grade B). Contractions: T1: 15.8% | T2: 7.5% | T3: 5.8%. Delivery: 53.03%.",
+    "comments": "SL Hit",
+    "exits": [
+      {
+        "date": "2026-07-23",
+        "qty": 100,
+        "price": 1209,
+        "pnl": -1500
+      }
+    ]
+  },
+  {
+    "id": "1783076294775",
+    "symbol": "LAXMIDENTL",
+    "name": "LAXMIDENTL",
+    "entry_date": "2026-07-03",
+    "exit_date": "2026-07-08",
+    "days_active": 5,
+    "entry_price": 226.59,
+    "invested_amount": 45318,
+    "target_1": 237.92,
+    "target_2": 249.25,
+    "stop_loss": 218,
+    "risk_pct": 3.8,
+    "total_qty": 200,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "FLAG Setup (Grade A). Contractions: T1: 2.4%. Delivery: 56.47%.",
+    "comments": "SL Hit",
+    "exits": [
+      {
+        "date": "2026-07-08",
+        "qty": 200,
+        "price": 218,
+        "pnl": -1718.0000000000007
+      }
+    ]
+  },
+  {
+    "id": "1783076391086",
+    "symbol": "NRBBEARING",
+    "name": "NRB BEARINGS LTD.",
+    "entry_date": "2026-07-03",
+    "exit_date": "2026-08-10",
+    "days_active": 38,
+    "entry_price": 417,
+    "invested_amount": 41700,
+    "target_1": 445,
+    "target_2": 460,
+    "stop_loss": 410,
+    "risk_pct": 1.7,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-08-10",
+        "qty": 50,
+        "price": 468.6,
+        "pnl": 2580.000000000001
+      },
+      {
+        "date": "2026-08-10",
+        "qty": 50,
+        "price": 464,
+        "pnl": 2350
+      }
+    ]
+  },
+  {
+    "id": "1782996587060",
+    "symbol": "JAMNAAUTO",
+    "name": "JAMNAAUTO",
+    "entry_date": "2026-07-02",
+    "exit_date": "2026-07-28",
+    "days_active": 26,
+    "entry_price": 135.6,
+    "invested_amount": 108480,
+    "target_1": 146.98,
+    "target_2": 155.89,
+    "stop_loss": 129.16,
+    "risk_pct": 4.7,
+    "total_qty": 800,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "FLAG Setup (Grade A). Contractions: T1: 4.6%. Delivery: 40.29%.",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-07-28",
+        "qty": 800,
+        "price": 129,
+        "pnl": -5279.999999999995
+      }
+    ]
+  },
+  {
+    "id": "1783521387907",
+    "symbol": "AZAD",
+    "name": "azad engineering",
+    "entry_date": "2026-07-02",
+    "exit_date": "2026-07-08",
+    "days_active": 6,
+    "entry_price": 2063,
+    "invested_amount": 206300,
+    "target_1": 2150,
+    "target_2": 2300,
+    "stop_loss": 1990,
+    "risk_pct": 3.5,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Pullback trade this was near EMA 20",
+    "comments": "the stock reached near my target and corrected. Market went down due to US, Iran ceasefire break and corrected more than 100rs hence i existed to lock my gains",
+    "exits": [
+      {
+        "date": "2026-07-08",
+        "qty": 100,
+        "price": 2234,
+        "pnl": 17100
+      }
+    ]
+  },
+  {
+    "id": "1782931015192",
+    "symbol": "PAISALO",
+    "name": "PAISALO",
+    "entry_date": "2026-07-01",
+    "exit_date": "2026-07-01",
+    "days_active": 0,
+    "entry_price": 60.7,
+    "invested_amount": 60700,
+    "target_1": 65.4,
+    "target_2": 68.93,
+    "stop_loss": 58.35,
+    "risk_pct": 3.8,
+    "total_qty": 1000,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "FLAG Setup (Grade A). Contractions: T1: 4.0%. Delivery: 56.72%.",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-07-01",
+        "qty": 1000,
+        "price": 65.4,
+        "pnl": 4700.000000000003
+      }
+    ]
+  },
+  {
+    "id": "1782466933835",
+    "symbol": "HONASA",
+    "name": "HONASA",
+    "entry_date": "2026-06-22",
+    "exit_date": "2026-06-25",
+    "days_active": 3,
+    "entry_price": 406,
+    "invested_amount": 121800,
+    "target_1": 425.62,
+    "target_2": 445.89,
+    "stop_loss": 398.2,
+    "risk_pct": 1.9,
+    "total_qty": 300,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "FLEX Setup (Grade B). Contractions: T1: 6.2% | T2: 6.6% | T3: 6.8% | T4: 4.2%. Delivery: 52.18%.",
+    "comments": "the trade was looking good. on 25th it opened gap upand then started moving down in mins till the time i put on sell it already came down a lot. after me seliing it came to 401. markets was sideways so instead of loosing i booked profit. sideways market does not give huge conviction.",
+    "exits": [
+      {
+        "date": "2026-06-24",
+        "qty": 150,
+        "price": 419,
+        "pnl": 1950
+      },
+      {
+        "date": "2026-06-25",
+        "qty": 150,
+        "price": 409,
+        "pnl": 450
+      }
+    ]
+  },
+  {
+    "id": "1",
+    "symbol": "STARHEALTH",
+    "name": "Star Health and Allied Insuran",
+    "entry_date": "2026-06-17",
+    "exit_date": "2026-06-24",
+    "days_active": 7,
+    "entry_price": 543,
+    "invested_amount": 54300,
+    "target_1": 565,
+    "target_2": 590,
+    "stop_loss": 525,
+    "risk_pct": 3.3,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Bullish Engulfing pattern at 520 support with Open=Low signal and high delivery (64.5%) indicates strong institutional accumulation.",
+    "comments": "the stcok after a fall yesterday gave a good recovery and about to break the box since 20 days. volume was low still price held until breakout but closed lower inside the box only near 532.",
+    "exits": [
+      {
+        "date": "2026-06-24",
+        "qty": 100,
+        "price": 581,
+        "pnl": 3800
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "symbol": "CGPOWER",
+    "name": "CG Power and Industrial Soluti",
+    "entry_date": "2026-06-16",
+    "exit_date": "2026-07-13",
+    "days_active": 27,
+    "entry_price": 954,
+    "invested_amount": 95400,
+    "target_1": 1005,
+    "target_2": 1040,
+    "stop_loss": 935,
+    "risk_pct": 2,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "ATH breakout with 54% delivery percentage and volume surge indicates strong institutional accumulation in a leading capital goods stock.",
+    "comments": "ATH breakout with strong closing at 963",
+    "exits": [
+      {
+        "date": "2026-07-13",
+        "qty": 100,
+        "price": 894.75,
+        "pnl": -5925
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "symbol": "NRBBEARING",
+    "name": "NRB BEARINGS LTD.",
+    "entry_date": "2026-06-15",
+    "exit_date": "2026-08-10",
+    "days_active": 56,
+    "entry_price": 426,
+    "invested_amount": 127800,
+    "target_1": 445,
+    "target_2": 460,
+    "stop_loss": 410,
+    "risk_pct": 3.8,
+    "total_qty": 300,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Price testing major 50-DMA support at 417 following a healthy pullback from 431 highs.",
+    "comments": "Flag pattern it formed and tight consolidation. volume is drying up. Fundamentally there is news of promoters reducing pledge and new chapter of the company is expected to start soon.",
+    "exits": [
+      {
+        "date": "2026-06-30",
+        "qty": 100,
+        "price": 453,
+        "pnl": 2700
+      },
+      {
+        "date": "2026-06-30",
+        "qty": 100,
+        "price": 458,
+        "pnl": 3200
+      },
+      {
+        "date": "2026-08-10",
+        "qty": 100,
+        "price": 468.6,
+        "pnl": 4260.000000000002
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "symbol": "STARHEALTH",
+    "name": "Star Health and Allied Insuran",
+    "entry_date": "2026-06-02",
+    "exit_date": "2026-06-13",
+    "days_active": 11,
+    "entry_price": 541,
+    "invested_amount": 54100,
+    "target_1": 565,
+    "target_2": 585,
+    "stop_loss": 515,
+    "risk_pct": 4.8,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "A classic Hammer candle formed after a sharp intraday dip, indicating strong institutional buying and price rejection at lower levels.",
+    "comments": "hidden pivot showing accumulation taking place during dryness. awaiting confirmation with huge rvol for breakout. The stock showed no major upside in 10 days. This is one of my new filter that if stock doesnot perform in 10 days I will not keep holding if its a swing trade.",
+    "exits": [
+      {
+        "date": "2026-06-13",
+        "qty": 100,
+        "price": 584,
+        "pnl": 4300
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "symbol": "VIYASH",
+    "name": "VIYASH SCIENTIFIC LIMITED",
+    "entry_date": "2026-05-27",
+    "exit_date": "2026-07-07",
+    "days_active": 41,
+    "entry_price": 268.18,
+    "invested_amount": 107272,
+    "target_1": 268,
+    "target_2": 280,
+    "stop_loss": 260,
+    "risk_pct": 3.1,
+    "total_qty": 400,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Extreme intraday shakeout at 52W high with 50%+ delivery suggests institutional absorption; price holding major support at 250.",
+    "comments": "it showed huge volume, above breakout suggesting institutional entry. correcting from 268 to 250 showed distribution or accumulation is a question",
+    "exits": [
+      {
+        "date": "2026-07-01",
+        "qty": 200,
+        "price": 288.25,
+        "pnl": 4013.9999999999986
+      },
+      {
+        "date": "2026-07-03",
+        "qty": 140,
+        "price": 293.97,
+        "pnl": 3610.600000000003
+      },
+      {
+        "date": "2026-07-07",
+        "qty": 60,
+        "price": 284,
+        "pnl": 949.1999999999996
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "symbol": "JAGSNPHARM",
+    "name": "JAGSONPAL PHARMACEUTICALS LTD.",
+    "entry_date": "2026-05-25",
+    "exit_date": "2026-06-11",
+    "days_active": 17,
+    "entry_price": 210,
+    "invested_amount": 42000,
+    "target_1": 226,
+    "target_2": 235,
+    "stop_loss": 199,
+    "risk_pct": 5.2,
+    "total_qty": 200,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Bullish Hammer-like rejection at 203 support with high delivery accumulation near session highs.",
+    "comments": "SL hit 199 . its creating a tight range on the charts between 203-213 from past 4 days. volume is now coming ",
+    "exits": [
+      {
+        "date": "2026-06-11",
+        "qty": 200,
+        "price": 199,
+        "pnl": -2200
+      }
+    ]
+  },
+  {
+    "id": "9",
+    "symbol": "ICEMAKE",
+    "name": "ICEMAKE",
+    "entry_date": "2026-05-25",
+    "exit_date": "2026-05-29",
+    "days_active": 4,
+    "entry_price": 797,
+    "invested_amount": 79700,
+    "target_1": 975,
+    "target_2": 1030,
+    "stop_loss": 855,
+    "risk_pct": -7.3,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Stock is nearing a 52-week high breakout at 920 with a massive volume spike and bullish engulfing candle on the daily chart.",
+    "comments": "my scanner was showing me that it will explode strength was volume 10times, strong base, it was about to breakput on weekly timeframe as well. 855 stop loss hit and it was a day of results so exited gracefully",
+    "exits": [
+      {
+        "date": "2026-05-26",
+        "qty": 30,
+        "price": 863,
+        "pnl": 1980
+      },
+      {
+        "date": "2026-05-29",
+        "qty": 70,
+        "price": 855,
+        "pnl": 4060
+      }
+    ]
+  },
+  {
+    "id": "10",
+    "symbol": "DELTACORP",
+    "name": "DELTA CORP LTD.",
+    "entry_date": "2026-05-19",
+    "exit_date": "2026-05-21",
+    "days_active": 2,
+    "entry_price": 68.62,
+    "invested_amount": 68620,
+    "target_1": 75.5,
+    "target_2": 79.5,
+    "stop_loss": 65,
+    "risk_pct": 5.3,
+    "total_qty": 1000,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Strong bullish candle breakout above 50-day EMA and 26-day EMA with a potential Bullish Flag structure.",
+    "comments": "the company has declared a demerger. the business is doing well but stock is hovering low due to casino business govt policies. ",
+    "exits": [
+      {
+        "date": "2026-05-21",
+        "qty": 1000,
+        "price": 71.78,
+        "pnl": 3160
+      }
+    ]
+  },
+  {
+    "id": "11",
+    "symbol": "APCOTEXIND",
+    "name": "APCOTEX INDUSTRIES LTD.",
+    "entry_date": "2026-05-18",
+    "exit_date": "2026-06-24",
+    "days_active": 37,
+    "entry_price": 485,
+    "invested_amount": 48500,
+    "target_1": 535,
+    "target_2": 560,
+    "stop_loss": 456,
+    "risk_pct": 6,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Price is consolidating in a Bull Flag structure with strong support at the 50-DMA and a bullish recovery from intraday lows.",
+    "comments": "trade from chartink scanner flag pole. chemical sector this week is performing well. stock is range bound but not hit my SL so continue to hold",
+    "exits": [
+      {
+        "date": "2026-06-09",
+        "qty": 50,
+        "price": 532,
+        "pnl": 2350
+      },
+      {
+        "date": "2026-06-24",
+        "qty": 50,
+        "price": 531,
+        "pnl": 2300
+      }
+    ]
+  },
+  {
+    "id": "12",
+    "symbol": "MANORG",
+    "name": "MANGALAM ORGANICS LIMITED",
+    "entry_date": "2026-05-17",
+    "exit_date": "2026-05-27",
+    "days_active": 10,
+    "entry_price": 576,
+    "invested_amount": 86400,
+    "target_1": 625,
+    "target_2": 640,
+    "stop_loss": 556,
+    "risk_pct": 3.5,
+    "total_qty": 150,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "High delivery accumulation (59%) at the 600 psychological level despite a minor dip, indicating institutional interest post-earnings.",
+    "comments": "its showed me in my flag scanner. the movement was wild with very low volumes. on 27 may the volume was very high. 600 was a resistence + results were coming on 29th. I have burnt myself in holding many stocks on result day. ",
+    "exits": [
+      {
+        "date": "2026-05-21",
+        "qty": 136,
+        "price": 591,
+        "pnl": 2040
+      },
+      {
+        "date": "2026-05-27",
+        "qty": 14,
+        "price": 600,
+        "pnl": 336
+      }
+    ]
+  },
+  {
+    "id": "14",
+    "symbol": "KPGEL",
+    "name": "KP GREEN ENGINEERING LIMITED",
+    "entry_date": "2026-05-12",
+    "exit_date": "2026-05-14",
+    "days_active": 2,
+    "entry_price": 424,
+    "invested_amount": 106000,
+    "target_1": 445,
+    "target_2": null,
+    "stop_loss": 415,
+    "risk_pct": 2.1,
+    "total_qty": 250,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Strong bullish reversal on high delivery after Q4 results; reclaimed 20 EMA with price action signaling accumulation.",
+    "comments": "nifty moved 300 points but this stock movement was not too much. the stock even after results did not show much strength. ",
+    "exits": [
+      {
+        "date": "2026-05-14",
+        "qty": 250,
+        "price": 437,
+        "pnl": 3250
+      }
+    ]
+  },
+  {
+    "id": "16",
+    "symbol": "DALBHARAT",
+    "name": "DALMIA BHARAT LIMITED",
+    "entry_date": "2026-05-12",
+    "exit_date": "2026-07-08",
+    "days_active": 57,
+    "entry_price": 1770,
+    "invested_amount": 177000,
+    "target_1": 1835,
+    "target_2": 1875,
+    "stop_loss": 1718,
+    "risk_pct": 2.9,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Price reversal from 52-week low support (1760) with a Bullish Piercing pattern and high institutional delivery.",
+    "comments": "1760 was a strong base and in 15min and 30 min saw huge volume near the base. it was also strong support of weekly support. This is a learning not to buy any stock at random when my system gives the trade. exiting a trade in 3-10 days i did not follow which made me hold the stock for 60days. Lesson learnt the hard way.",
+    "exits": [
+      {
+        "date": "2026-07-08",
+        "qty": 100,
+        "price": 1718,
+        "pnl": -5200
+      }
+    ]
+  },
+  {
+    "id": "17",
+    "symbol": "ASTRAMICRO",
+    "name": "ASTRA MICROWAVE PRODUCTS LTD.",
+    "entry_date": "2026-05-08",
+    "exit_date": "2026-05-12",
+    "days_active": 4,
+    "entry_price": 1150,
+    "invested_amount": 115000,
+    "target_1": 1225,
+    "target_2": 1285,
+    "stop_loss": 1120,
+    "risk_pct": 2.6,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Strong bullish Marubozu on high delivery (46.9%) suggests a breakout above the 52-week high is imminent.",
+    "comments": "SL got hit ",
+    "exits": [
+      {
+        "date": "2026-05-12",
+        "qty": 100,
+        "price": 1120,
+        "pnl": -3000
+      }
+    ]
+  },
+  {
+    "id": "18",
+    "symbol": "INOXINDIA",
+    "name": "INOX India Limited",
+    "entry_date": "2026-05-08",
+    "exit_date": "2026-05-11",
+    "days_active": 3,
+    "entry_price": 1424,
+    "invested_amount": 142400,
+    "target_1": 1630,
+    "target_2": 1680,
+    "stop_loss": 1448,
+    "risk_pct": -1.7,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Strong bullish candle closing near day's high with 1500 support base.",
+    "comments": "I saw it massively 8-9% down and found it near support plus this 8-9% candle was with low volume so i took entry. the stock carried till 1495 so i increased my sl to last big candle. If the price falls on Monday and hits my SL - I still make 2500. so now this is a zero risk trade for me. If it moves 20-30 rs up I can sell partial and move my sL further to 1470-80. Capital 100% protected. ",
+    "exits": [
+      {
+        "date": "2026-05-11",
+        "qty": 100,
+        "price": 1448,
+        "pnl": 2400
+      }
+    ]
+  },
+  {
+    "id": "19",
+    "symbol": "GOLDIAM",
+    "name": "GOLDIAM INTERNATIONAL LTD.",
+    "entry_date": "2026-05-06",
+    "exit_date": "2026-05-12",
+    "days_active": 6,
+    "entry_price": 404.6,
+    "invested_amount": 121380,
+    "target_1": 425,
+    "target_2": null,
+    "stop_loss": 391,
+    "risk_pct": 3.4,
+    "total_qty": 300,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Price broke above 400 psychological level with a strong bullish close near day high, signaling trend continuation.",
+    "comments": "some announcement about launch of 3d ring builder . sold partial and moved sl to buy price 404.6. no risk trade now. cant loose capital . SL got hit on today. 12/5",
+    "exits": [
+      {
+        "date": "2026-05-08",
+        "qty": 150,
+        "price": 432,
+        "pnl": 4110
+      },
+      {
+        "date": "2026-05-12",
+        "qty": 150,
+        "price": 404.6,
+        "pnl": 0
+      }
+    ]
+  },
+  {
+    "id": "20",
+    "symbol": "RAILTEL",
+    "name": "RailTel Corporation of India L",
+    "entry_date": "2026-05-06",
+    "exit_date": "2026-05-11",
+    "days_active": 5,
+    "entry_price": 341.8,
+    "invested_amount": 170900,
+    "target_1": 358,
+    "target_2": null,
+    "stop_loss": 329,
+    "risk_pct": 3.7,
+    "total_qty": 500,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Strong breakout above 336 resistance with a bullish close at 340.5 and volume expansion.",
+    "comments": "some fundamental news of a large order ",
+    "exits": [
+      {
+        "date": "2026-05-11",
+        "qty": 500,
+        "price": 336.1,
+        "pnl": -2850
+      }
+    ]
+  },
+  {
+    "id": "21",
+    "symbol": "ALUFLUOR",
+    "name": "ALUFLUORIDE LTD.",
+    "entry_date": "2026-05-06",
+    "exit_date": "2026-05-11",
+    "days_active": 5,
+    "entry_price": 575,
+    "invested_amount": 172500,
+    "target_1": 615,
+    "target_2": null,
+    "stop_loss": 558,
+    "risk_pct": 3,
+    "total_qty": 300,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Bullish Pin-bar recovery from 563 support zone near 52-week highs indicates strong institutional absorption.",
+    "comments": "results will be in 7-10 days so pre rally for a good result can come soon",
+    "exits": [
+      {
+        "date": "2026-05-11",
+        "qty": 300,
+        "price": 556.25,
+        "pnl": -5625
+      }
+    ]
+  },
+  {
+    "id": "22",
+    "symbol": "ACCORDTS",
+    "name": "ACCORD TRANSFORMER & SWITCHGEA",
+    "entry_date": "2026-05-04",
+    "exit_date": "2026-05-06",
+    "days_active": 2,
+    "entry_price": 69,
+    "invested_amount": 207000,
+    "target_1": 72,
+    "target_2": null,
+    "stop_loss": 63.5,
+    "risk_pct": 8,
+    "total_qty": 3000,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Bullish expansion with open-low similarity; seeking momentum continuation after absorbing the supply at 73.68.",
+    "comments": "fundamental news about stress testing opens major opportunities and shows execution quality hence i took entry. I sold as RSI was 74 and when i tried to sell at 80-79 there were no buyers then i sold at 78.1 and found a buyer after which the stock did not reach 78.1 even ",
+    "exits": [
+      {
+        "date": "2026-05-06",
+        "qty": 3000,
+        "price": 78.1,
+        "pnl": 27300
+      }
+    ]
+  },
+  {
+    "id": "23",
+    "symbol": "VEDL",
+    "name": "VEDANTA LIMITED",
+    "entry_date": "2026-04-30",
+    "exit_date": "2026-05-05",
+    "days_active": 5,
+    "entry_price": 275,
+    "invested_amount": 275000,
+    "target_1": 310,
+    "target_2": null,
+    "stop_loss": 282,
+    "risk_pct": -2.5,
+    "total_qty": 1000,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Strong bullish engulfing candle with a significant gap-up breakout and high-conviction closing near intraday highs.",
+    "comments": "purely based on fundamentals+ good results + demerger (HZL + semiconductiors and metals remain in vedanta. ",
+    "exits": [
+      {
+        "date": "2026-05-04",
+        "qty": 500,
+        "price": 293,
+        "pnl": 9000
+      },
+      {
+        "date": "2026-05-05",
+        "qty": 500,
+        "price": 303,
+        "pnl": 14000
+      }
+    ]
+  },
+  {
+    "id": "24",
+    "symbol": "HEG",
+    "name": "HEG LTD.",
+    "entry_date": "2026-04-29",
+    "exit_date": "2026-04-30",
+    "days_active": 1,
+    "entry_price": 666,
+    "invested_amount": 133200,
+    "target_1": 695,
+    "target_2": null,
+    "stop_loss": 648,
+    "risk_pct": 2.7,
+    "total_qty": 200,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Bullish bounce potential near 61.8% Fibonacci level and 50DMA support after a brief corrective phase.",
+    "comments": "muted results. and the stock opened 10% gap down . i thought the stock is trading neear highs so result will be very good but it was not the case . ",
+    "exits": [
+      {
+        "date": "2026-04-30",
+        "qty": 200,
+        "price": 588,
+        "pnl": -15600
+      }
+    ]
+  },
+  {
+    "id": "25",
+    "symbol": "SHILPAMED",
+    "name": "SHILPA MEDICARE LTD.",
+    "entry_date": "2026-04-27",
+    "exit_date": "2026-05-11",
+    "days_active": 14,
+    "entry_price": 420,
+    "invested_amount": 189000,
+    "target_1": 428,
+    "target_2": null,
+    "stop_loss": 408,
+    "risk_pct": 2.9,
+    "total_qty": 450,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Inverted Hammer at support suggests price bottoming; entry on breakout above closing cluster.",
+    "comments": "again boring stock. the moment is happening very slow from my buy price as my buy price is in between the 400-425 range and my buy is 420. morning the stock reaches it high by 10 am and then doesnt touch that level in the day. gave a breakout of 8% today so locked full gains at 476",
+    "exits": [
+      {
+        "date": "2026-05-05",
+        "qty": 100,
+        "price": 435,
+        "pnl": 1500
+      },
+      {
+        "date": "2026-05-06",
+        "qty": 100,
+        "price": 438.9,
+        "pnl": 1890
+      },
+      {
+        "date": "2026-05-06",
+        "qty": 100,
+        "price": 445.6,
+        "pnl": 2560
+      },
+      {
+        "date": "2026-05-11",
+        "qty": 150,
+        "price": 476,
+        "pnl": 8400
+      }
+    ]
+  },
+  {
+    "id": "26",
+    "symbol": "GANESHBE",
+    "name": "GANESH BENZOPLAST LTD.",
+    "entry_date": "2026-04-27",
+    "exit_date": "2026-05-08",
+    "days_active": 11,
+    "entry_price": 102.8,
+    "invested_amount": 123360,
+    "target_1": 110,
+    "target_2": null,
+    "stop_loss": 98.4,
+    "risk_pct": 4.3,
+    "total_qty": 1200,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Strong close above previous resistance at 99 with a bullish price structure indicating follow-through momentum.",
+    "comments": "this is not moving and the stock is getting boring. amount is blocked due to very less moment. SL hit today and then the stock went upto 96 so it saved me some amount after getting sold",
+    "exits": [
+      {
+        "date": "2026-05-08",
+        "qty": 1200,
+        "price": 98.8,
+        "pnl": -4800
+      }
+    ]
+  },
+  {
+    "id": "27",
+    "symbol": "BAJAJCON",
+    "name": "BAJAJ CONSUMER CARE LIMITED",
+    "entry_date": "2026-04-27",
+    "exit_date": "2026-05-05",
+    "days_active": 8,
+    "entry_price": 455,
+    "invested_amount": 136500,
+    "target_1": 496,
+    "target_2": null,
+    "stop_loss": 432,
+    "risk_pct": 5.1,
+    "total_qty": 300,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Stock is forming a Bull Flag pattern after a 52-week high breakout, currently retesting support near the 38.2% Fibonacci level.",
+    "comments": "pretrade conditions were met for 30mins staying above 450 with good volume. then thru out the day it stayed less than 450",
+    "exits": [
+      {
+        "date": "2026-05-05",
+        "qty": 150,
+        "price": 477,
+        "pnl": 3300
+      },
+      {
+        "date": "2026-05-05",
+        "qty": 150,
+        "price": 487,
+        "pnl": 4800
+      }
+    ]
+  },
+  {
+    "id": "28",
+    "symbol": "GTV",
+    "name": "GTV Engineering Limited",
+    "entry_date": "2026-04-24",
+    "exit_date": "2026-05-14",
+    "days_active": 20,
+    "entry_price": 61.2,
+    "invested_amount": 122400,
+    "target_1": 68,
+    "target_2": null,
+    "stop_loss": 58,
+    "risk_pct": 5.2,
+    "total_qty": 2000,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Price holding critical 200-DMA support with recent Bullish Engulfing and Three Inside Up signals on rising volume.",
+    "comments": "Huge volumes and price did not go in negative when markets tanked. It was about to give breakout 3x volumes . looking for a breakout on monday if markets reverse",
+    "exits": [
+      {
+        "date": "2026-04-29",
+        "qty": 500,
+        "price": 67.4,
+        "pnl": 3100
+      },
+      {
+        "date": "2026-04-30",
+        "qty": 500,
+        "price": 69.4,
+        "pnl": 4100
+      },
+      {
+        "date": "2026-05-14",
+        "qty": 1000,
+        "price": 77,
+        "pnl": 15800
+      }
+    ]
+  },
+  {
+    "id": "29",
+    "symbol": "SPARC",
+    "name": "SUN PHARMA ADVANCED RESEARCH C",
+    "entry_date": "2026-04-23",
+    "exit_date": "2026-04-24",
+    "days_active": 1,
+    "entry_price": 143.75,
+    "invested_amount": 71875,
+    "target_1": 159,
+    "target_2": null,
+    "stop_loss": 141,
+    "risk_pct": 1.9,
+    "total_qty": 500,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Price forming a classic Bullish Flag pattern after a 30% rally, holding the 38.2% Fibonacci retracement level with decreasing sell volume.",
+    "comments": "It hit my SL and then reversed I sold at 139.5. Huge volume but no price moving up ",
+    "exits": [
+      {
+        "date": "2026-04-24",
+        "qty": 500,
+        "price": 139.5,
+        "pnl": -2125
+      }
+    ]
+  },
+  {
+    "id": "30",
+    "symbol": "SHILPAMED",
+    "name": "SHILPA MEDICARE LTD.",
+    "entry_date": "2026-04-23",
+    "exit_date": "2026-04-24",
+    "days_active": 1,
+    "entry_price": 419,
+    "invested_amount": 125700,
+    "target_1": 448,
+    "target_2": null,
+    "stop_loss": 402,
+    "risk_pct": 4.1,
+    "total_qty": 300,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Price is breaking out of a 10-day consolidation flag with RSI sustaining in the bullish zone above 70.",
+    "comments": "on 24th Market was deep red and so was Pharma index. Shilpa was holding in the morning but soon it started falling. Volumes were there and markets were not holding. It went to 420 and then 425 i sold. I did not wait for my SL to be hit which I should have. ",
+    "exits": [
+      {
+        "date": "2026-04-23",
+        "qty": 150,
+        "price": 427,
+        "pnl": 1200
+      },
+      {
+        "date": "2026-04-24",
+        "qty": 150,
+        "price": 425,
+        "pnl": 900
+      }
+    ]
+  },
+  {
+    "id": "31",
+    "symbol": "BEACON",
+    "name": "BEACON",
+    "entry_date": "2026-04-23",
+    "exit_date": "2026-04-23",
+    "days_active": 0,
+    "entry_price": 99.1,
+    "invested_amount": 99100,
+    "target_1": 124.5,
+    "target_2": null,
+    "stop_loss": 97.5,
+    "risk_pct": 1.6,
+    "total_qty": 1000,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Stock cleared a multi-week resistance of 98-100 with a Marubozu candle and massive volume, signaling a trend continuation.",
+    "comments": "i saw 2 green marubozu and saw 20% is circuit limit. + news about Gift city they got approval so i took the trade and sold in 20mins in UC",
+    "exits": [
+      {
+        "date": "2026-04-23",
+        "qty": 1000,
+        "price": 108.1,
+        "pnl": 9000
+      }
+    ]
+  },
+  {
+    "id": "32",
+    "symbol": "SAKAR",
+    "name": "SAKAR",
+    "entry_date": "2026-04-21",
+    "exit_date": "2026-04-24",
+    "days_active": 3,
+    "entry_price": 613.5,
+    "invested_amount": 184050,
+    "target_1": 665,
+    "target_2": null,
+    "stop_loss": 582.5,
+    "risk_pct": 5.1,
+    "total_qty": 300,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Bullish Flag breakout on daily charts with rising volume and support at the 50 DMA as of 2026-04-20.",
+    "comments": "it was moving as per expected for 1 day. volume was less even when nifty was down the pharma index was up hence it performed well. just in one day markets went down. my SL was not hit but I sold just to get some profit. then it reversed also. it also came near 615 but i waited and sold at 620 end of the week. ",
+    "exits": [
+      {
+        "date": "2026-04-24",
+        "qty": 300,
+        "price": 620,
+        "pnl": 1950
+      }
+    ]
+  },
+  {
+    "id": "33",
+    "symbol": "DMCC",
+    "name": "DMCC",
+    "entry_date": "2026-04-21",
+    "exit_date": "2026-04-21",
+    "days_active": 0,
+    "entry_price": 288.4,
+    "invested_amount": 173040,
+    "target_1": 310.5,
+    "target_2": null,
+    "stop_loss": 276,
+    "risk_pct": 4.3,
+    "total_qty": 600,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "As of 2026-04-20, DMCC shows a Bullish Flag breakout above 287.5 with a Hammer confirmation and strong volume support.",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-04-21",
+        "qty": 600,
+        "price": 278,
+        "pnl": -6240
+      }
+    ]
+  },
+  {
+    "id": "34",
+    "symbol": "ZENTEC",
+    "name": "ZENTEC",
+    "entry_date": "2026-04-17",
+    "exit_date": "2026-04-20",
+    "days_active": 3,
+    "entry_price": 1540,
+    "invested_amount": 154000,
+    "target_1": 1655,
+    "target_2": null,
+    "stop_loss": null,
+    "risk_pct": 0,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Bullish flag breakout confirmation above 1542 resistance supported by strong 200-DMA base and zero-debt fundamentals.",
+    "comments": "if i would have held this for one more day it would have given me 15k more. my sl was not hit but i sold as i saw its coming down. there was a fundamental trigger about new license but it did not react same day but reacted the next day after i sold it. i thought that sellers are selling on news ",
+    "exits": [
+      {
+        "date": "2026-04-20",
+        "qty": 50,
+        "price": 1660,
+        "pnl": 6000
+      },
+      {
+        "date": "2026-04-20",
+        "qty": 50,
+        "price": 1650,
+        "pnl": 5500
+      }
+    ]
+  },
+  {
+    "id": "35",
+    "symbol": "BHARATCOAL",
+    "name": "RailTel Corporation of India L",
+    "entry_date": "2026-04-16",
+    "exit_date": "2026-04-23",
+    "days_active": 7,
+    "entry_price": 33.9,
+    "invested_amount": 169500,
+    "target_1": null,
+    "target_2": null,
+    "stop_loss": null,
+    "risk_pct": 0,
+    "total_qty": 5000,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Bullish hammer reversal from 52-week low support with a volume surge and RSI divergence.",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-04-20",
+        "qty": 3000,
+        "price": 35.74,
+        "pnl": 5520
+      },
+      {
+        "date": "2026-04-23",
+        "qty": 2000,
+        "price": 34,
+        "pnl": 200
+      }
+    ]
+  },
+  {
+    "id": "36",
+    "symbol": "ALUFLUOR",
+    "name": "ALUFLUORIDE LTD.",
+    "entry_date": "2026-04-16",
+    "exit_date": "2026-04-20",
+    "days_active": 4,
+    "entry_price": 484,
+    "invested_amount": 96800,
+    "target_1": null,
+    "target_2": null,
+    "stop_loss": null,
+    "risk_pct": 0,
+    "total_qty": 200,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Price cleared major multi-month resistance at 473 with a 73% delivery volume, signaling strong accumulation.",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-04-17",
+        "qty": 100,
+        "price": 527,
+        "pnl": 4300
+      },
+      {
+        "date": "2026-04-20",
+        "qty": 100,
+        "price": 575,
+        "pnl": 9100
+      }
+    ]
+  }
+]
