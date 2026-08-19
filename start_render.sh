@@ -1,18 +1,4 @@
 #!/usr/bin/env bash
-
-# Auto-detect and link to persistent volume at /data if present
-if [ -d "/data" ] && [ ! -L "data" ]; then
-  echo "Found persistent volume mounted at /data. Linking /app/data -> /data..."
-  # If /data is empty, initialize it with repository defaults
-  if [ ! -f "/data/market_caps.json" ]; then
-    echo "Initializing /data volume with repository defaults..."
-    cp -r data/* /data/ 2>/dev/null || true
-  fi
-  rm -rf data
-  ln -s /data data
-  echo "Persistent symlink /app/data -> /data created!"
-fi
-
 # Create directories on the persistent disk volume if they don't exist
 mkdir -p data/reports
 mkdir -p data/cache
