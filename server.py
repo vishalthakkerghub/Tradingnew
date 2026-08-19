@@ -2541,7 +2541,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             try:
                 import urllib.request
                 import urllib.error
-                import json
 
                 enabled = os.environ.get("EMAIL_ENABLED", "false").lower() == "true"
                 api_key = os.environ.get("RESEND_API_KEY", "")
