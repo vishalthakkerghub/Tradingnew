@@ -138,7 +138,16 @@ class DataIngestionEngine:
         # 2. Attempt yfinance download
         try:
             logger.info(f"Downloading historical data from yfinance for ticker: {yf_ticker}")
-            ticker_obj = yf.Ticker(yf_ticker)
+            session = None
+            try:
+                import requests
+                session = requests.Session()
+                session.headers.update({
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                })
+            except Exception:
+                pass
+            ticker_obj = yf.Ticker(yf_ticker, session=session)
             # Fetch slightly more than lookback_days to allow indicator calculations (e.g. 200 SMA needs 200 prior bars)
             df = ticker_obj.history(period="2y")
             
@@ -205,16 +214,26 @@ class DataIngestionEngine:
         batch_size = 100
         results = {}
         
+        session = None
+        try:
+            import requests
+            session = requests.Session()
+            session.headers.update({
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            })
+        except Exception:
+            pass
+
         for i in range(0, len(tickers_list), batch_size):
             batch = tickers_list[i:i+batch_size]
             logger.info(f"Downloading batch {i//batch_size + 1} ({len(batch)} tickers)...")
             try:
                 # Download using multithreading
-                data = yf.download(batch, period="2y", group_by="ticker", threads=True, progress=False)
+                data = yf.download(batch, period="2y", group_by="ticker", threads=True, progress=False, session=session)
                 
                 # Download latest 1d data to patch potential yfinance NaN issues for the latest date
                 try:
-                    latest_data = yf.download(batch, period="1d", group_by="ticker", threads=True, progress=False)
+                    latest_data = yf.download(batch, period="1d", group_by="ticker", threads=True, progress=False, session=session)
                 except Exception as latest_e:
                     logger.warning(f"Failed to download bulk 1d patch data: {latest_e}")
                     latest_data = pd.DataFrame()
