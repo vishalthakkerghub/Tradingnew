@@ -272,8 +272,14 @@ def get_latest_watchlist_data(date_str=None):
     cache_key = (date_str, vcp_mtime, flag_mtime)
 
     if cache_key in _watchlist_cache:
-        print(f"[CACHE HIT] date_str={date_str} (vcp_mtime={vcp_mtime}, flag_mtime={flag_mtime})")
-        return _watchlist_cache[cache_key]
+        cached_val = _watchlist_cache[cache_key]
+        nifty_file = "data/cache/NIFTY_50.csv"
+        # If cached close was 0.0 but index CSV is now populated, bypass cache to self-heal
+        if cached_val.get("nifty_close", 0.0) == 0.0 and os.path.exists(nifty_file) and os.path.getsize(nifty_file) > 100:
+            print(f"[CACHE BYPASS - SELF HEALING] date_str={date_str} - Index file is now populated.")
+        else:
+            print(f"[CACHE HIT] date_str={date_str} (vcp_mtime={vcp_mtime}, flag_mtime={flag_mtime})")
+            return cached_val
 
     print(f"[CACHE MISS] date_str={date_str} (vcp_mtime={vcp_mtime}, flag_mtime={flag_mtime})")
     data = _get_latest_watchlist_data_uncached(date_str)
