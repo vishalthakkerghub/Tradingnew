@@ -1,4 +1,18 @@
 #!/usr/bin/env bash
+
+# Auto-detect and link to persistent volume if mounted at Render path
+if [ -d "/opt/render/project/src/data" ] && [ ! -L "data" ]; then
+  echo "Found persistent volume mounted at /opt/render/project/src/data. Linking /app/data -> /opt/render/project/src/data..."
+  # If the volume is empty, copy repository defaults
+  if [ ! -f "/opt/render/project/src/data/market_caps.json" ]; then
+    echo "Initializing volume with repository defaults..."
+    cp -r data/* /opt/render/project/src/data/ 2>/dev/null || true
+  fi
+  rm -rf data
+  ln -s /opt/render/project/src/data data
+  echo "Persistent symlink created successfully!"
+fi
+
 # Create directories on the persistent disk volume if they don't exist
 mkdir -p data/reports
 mkdir -p data/cache
