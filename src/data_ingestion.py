@@ -319,9 +319,9 @@ class DataIngestionEngine:
             return s
         if s == "GANESH BENZO" or s == "GANESH_BENZO":
             return "GANESHBE.NS"
-        # Special case index benchmark name (Yahoo Finance ticker has no underscore)
+        # Special case index benchmark name (Map to active yfinance midcap ticker ^NSEMDCP50)
         if s == "NIFTY_MIDSML400" or s == "NIFTYMIDSML400":
-            return "NIFTYMIDSML400.NS"
+            return "^NSEMDCP50"
         if s == "NIFTY_50" or s == "NIFTY50":
             return "^NSEI"
         return f"{s}.NS"

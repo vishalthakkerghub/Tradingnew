@@ -27,7 +27,7 @@ class TestDataIngestionEngine(unittest.TestCase):
         """
         self.assertEqual(self.engine._format_nse_ticker("RELIANCE"), "RELIANCE.NS")
         self.assertEqual(self.engine._format_nse_ticker("RELIANCE.NS"), "RELIANCE.NS")
-        self.assertEqual(self.engine._format_nse_ticker("NIFTY_MIDSML400"), "NIFTYMIDSML400.NS")
+        self.assertEqual(self.engine._format_nse_ticker("NIFTY_MIDSML400"), "^NSEMDCP50")
         self.assertEqual(self.engine._format_nse_ticker("^NSEI"), "^NSEI")
 
     def test_validate_data_valid(self):
