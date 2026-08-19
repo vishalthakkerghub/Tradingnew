@@ -2496,44 +2496,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"status": "error", "message": f"Failed to fix days: {str(e)}"}).encode("utf-8"))
             return
 
-        # REST API: Inspect Cloud Files for Diagnosis
-        if path == "/api/inspect_files":
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
-            self.end_headers()
-            try:
-                import glob
-                cache_dir = "data/cache"
-                if not os.path.exists(cache_dir):
-                    cache_dir = os.path.join("minervini_os", cache_dir)
-                
-                info = {}
-                info["cache_dir_exists"] = os.path.exists(cache_dir)
-                if os.path.exists(cache_dir):
-                    files = os.listdir(cache_dir)
-                    info["total_files"] = len(files)
-                    info["sample_files"] = files[:10]
-                    
-                    # Inspect specific files
-                    for filename in ["GANDHAR.csv", "APOLLO.csv", "NIFTY_50.csv"]:
-                        filepath = os.path.join(cache_dir, filename)
-                        file_info = {"exists": os.path.exists(filepath)}
-                        if os.path.exists(filepath):
-                            file_info["size"] = os.path.getsize(filepath)
-                            file_info["mtime"] = datetime.fromtimestamp(os.path.getmtime(filepath)).strftime("%Y-%m-%d %H:%M:%S")
-                            try:
-                                df = pd.read_csv(filepath)
-                                file_info["rows"] = len(df)
-                                if not df.empty:
-                                    file_info["last_rows"] = df[["Date", "Close"]].tail(3).to_dict(orient="records")
-                            except Exception as ex:
-                                file_info["error"] = str(ex)
-                        info[filename] = file_info
-                self.wfile.write(json.dumps(info, indent=2).encode("utf-8"))
-            except Exception as e:
-                self.wfile.write(json.dumps({"status": "error", "message": f"Failed to inspect: {str(e)}"}).encode("utf-8"))
-            return
-
         # REST API: Update GANDHAR Journal Entry
         if path == "/api/update_gandhar":
             self.send_response(200)
