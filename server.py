@@ -573,6 +573,21 @@ def _get_latest_watchlist_data_uncached(date_str=None):
     market_posture = breakup["posture"]
     market_score = breakup["score"]
     
+    # Enforce strict MBI-based posture limits (Layer 1 of trading framework)
+    if mbi_score < 45.0:
+        market_posture = "RED"
+        market_score = min(market_score, 4)
+        breakup["posture"] = "RED"
+        breakup["score"] = min(breakup["score"], 4)
+        breakup["recommendation"] = "Weak Market Breadth: Suspend breakout trading, focus on capital preservation, and prefer Type C support plays only."
+    elif mbi_score < 55.0:
+        # Caution zone: Cap posture score to 6/10 to avoid full green "Aggressive Buying"
+        market_score = min(market_score, 6)
+        breakup["score"] = min(breakup["score"], 6)
+        if market_score < 5:
+            market_posture = "RED"
+            breakup["posture"] = "RED"
+
     if mbi_score >= 60.0:
         market_status = "Favorable"
         pos_sizing = "Normal position sizing, all signals trusted"
