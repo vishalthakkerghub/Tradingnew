@@ -19,6 +19,43 @@ from src.flag_engine import FlagEngine
 
 logger = logging.getLogger("Orchestrator")
 
+def check_ingestion_freshness(scan_date_str: str) -> tuple:
+    """
+    Checks if the scan_date_str represents the expected latest trading session date.
+    Returns (is_stale, expected_date_str).
+    Converts UTC to IST to calculate the expected date dynamically.
+    """
+    import datetime
+    try:
+        now_utc = datetime.datetime.now(datetime.timezone.utc)
+        # Convert to IST (UTC + 5:30)
+        ist_offset = datetime.timedelta(hours=5, minutes=30)
+        now_ist = now_utc + ist_offset
+        
+        weekday = now_ist.weekday()  # 0=Monday, 6=Sunday
+        time_ist = now_ist.time()
+        
+        if weekday == 5:  # Saturday
+            expected_date = (now_ist - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
+        elif weekday == 6:  # Sunday
+            expected_date = (now_ist - datetime.timedelta(days=2)).strftime("%Y-%m-%d")
+        else:  # Monday - Friday
+            # If before 4:30 PM IST (16:30), the expected date is the previous trading session
+            if time_ist < datetime.time(16, 30):
+                if weekday == 0:  # Monday
+                    expected_date = (now_ist - datetime.timedelta(days=3)).strftime("%Y-%m-%d")
+                else:
+                    expected_date = (now_ist - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
+            else:
+                expected_date = now_ist.strftime("%Y-%m-%d")
+                
+        # If the scan date is older than the expected date, it is stale
+        is_stale = scan_date_str < expected_date
+        return is_stale, expected_date
+    except Exception as e:
+        logger.warning(f"Error checking ingestion freshness: {e}")
+        return False, scan_date_str
+
 def run_daily_scan():
     """
     Main daily scan loop executing the Minervini OS workflow.
@@ -901,11 +938,14 @@ def run_daily_scan():
         
         logger.info("Paper Trading Engines lifecycle updates completed.")
         
-        # Send Email Notification if enabled
+        # Send Email Notification if enabled (only if data is fresh)
         try:
             from src.notifier import EmailNotifier
             email_notifier = EmailNotifier(config)
-            if email_notifier.enabled:
+            is_stale, expected_date = check_ingestion_freshness(scan_date_str)
+            if is_stale:
+                logger.warning(f"Ingestion was stale (expected: {expected_date}, got: {scan_date_str}). Email notification skipped to prevent duplicate/stale reports.")
+            elif email_notifier.enabled:
                 logger.info("Email notifier is enabled. Compiling HTML report...")
                 html_lines = []
                 html_lines.append(f"<h2>Daily Minervini Scanner Report - {scan_date_str}</h2>")
@@ -987,8 +1027,8 @@ def run_daily_scan():
         except Exception as email_err:
             logger.error(f"Failed to compile and send email notification: {email_err}")
             
-        # Send Telegram Notification if enabled
-        if notifier.enabled:
+        # Send Telegram Notification if enabled (only if data is fresh)
+        if notifier.enabled and not is_stale:
             try:
                 logger.info("Telegram notifier is enabled. Dispatching daily scan report...")
                 notifier.send_daily_scan_report(
@@ -1195,11 +1235,21 @@ def main():
         try:
             from datetime import datetime
             os.makedirs("data", exist_ok=True)
+            
+            # Check ingestion freshness
+            is_stale, expected_date = check_ingestion_freshness(scan_date_str)
+            if is_stale:
+                status_msg = f"Scan completed, but EOD data ingestion is pending/stale (expected: {expected_date}, got: {scan_date_str}). Dashboard shows last available session."
+                status_val = "stale"
+            else:
+                status_msg = "Data Ingestion & EOD Scan completed successfully. Watchlist and dashboard are updated with today's closing prices."
+                status_val = "success"
+                
             with open(status_file, "w", encoding="utf-8") as f:
                 json.dump({
                     "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                    "status": "success",
-                    "message": "Data Ingestion & EOD Scan completed successfully. Watchlist and dashboard are updated with today's closing prices."
+                    "status": status_val,
+                    "message": status_msg
                 }, f, indent=2)
             logger.info("Saved scan status file successfully.")
         except Exception as status_err:
