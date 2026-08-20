@@ -11257,7 +11257,7 @@ window.openTradingViewWatchlistFilterModal = function() {
     const symbols = new Set();
     const rows = document.querySelectorAll("#filtered-watchlist-table-body tr");
     rows.forEach(row => {
-        const symbolCell = row.querySelector("td:nth-child(2) span.stock-symbol");
+        const symbolCell = row.querySelector("span.stock-symbol");
         if (symbolCell) {
             const symText = symbolCell.textContent.trim().toUpperCase();
             if (symText) {
