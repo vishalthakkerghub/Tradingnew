@@ -850,6 +850,21 @@ def run_daily_scan():
     except Exception as e:
         logger.error(f"Failed to update delivery percentages in cache files: {e}")
 
+    # 6A-2. Compute fresh today's MBI index and reload posture/health_score from it
+    try:
+        logger.info("Recalculating fresh today's MBI-based market health score and posture...")
+        from src.industry_analysis import analyze_participation
+        # Pass today's scan date so it aligns calculations with this session
+        analyze_participation(scan_date_str)
+        
+        # Reload fresh MBI-derived score and posture from market conditions engine
+        health_score = market_engine.compute_market_health_score(index_df)
+        posture = market_engine.get_market_posture(health_score)
+        logger.info(f"Unified MBI-Derived Posture evaluated: {posture} (Score: {health_score}/10)")
+    except Exception as mbi_ex:
+        logger.error(f"Failed to compute EOD MBI-derived market posture: {mbi_ex}")
+
+
     # 6B. Run Paper Trading Engine Lifecycle for both VCP and FLAG
     try:
         logger.info("Initializing Paper Trading Engines...")
@@ -1116,14 +1131,9 @@ def main():
         run_daily_scan()
         logger.info("Minervini AI OS daily scanner execution completed successfully.")
         
-        # Run Industry Participation & Trend Analysis daily
-        logger.info("Running Industry Participation & Trend Analysis...")
-        try:
-            from src.industry_analysis import analyze_participation
-            analyze_participation()
-            logger.info("Industry participation analysis completed successfully.")
-        except Exception as ex:
-            logger.error(f"Failed to run industry participation analysis: {ex}")
+        # Industry Participation & MBI calculations are now run inside run_daily_scan()
+        # prior to paper trading and notifications to ensure a single source of truth.
+
             
         # Update Earnings Calendar daily
         logger.info("Updating Corporate Earnings Calendar...")

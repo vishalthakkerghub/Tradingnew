@@ -41,60 +41,98 @@ class MarketConditionsEngine:
                 
         return distribution_days
 
-    def get_detailed_breakup(self, index_df: pd.DataFrame, breakout_success_rate: float = 0.70) -> dict:
+    def get_detailed_breakup(self, index_df: pd.DataFrame, breakout_success_rate: float = 0.70, date_str: str = None) -> dict:
         """
         Returns a dictionary containing the detailed health score breakup, posture, and recommendation.
+        Posture and score are derived directly from the MBI (Market Breadth Index).
+        Index SMA alignment and distribution days are computed for informational purposes.
         """
-        if index_df.empty or len(index_df) == 0:
-            return {
-                "score": 0,
-                "posture": "RED",
-                "recommendation": "Cash / Protection Mode: Suspend all new buying, raise stop losses, and hold cash to protect capital.",
-                "breakdown": {
-                    "above_200_sma": {"status": False, "value": 0.0, "sma": 0.0, "points": 0},
-                    "above_50_sma": {"status": False, "value": 0.0, "sma": 0.0, "points": 0},
-                    "sma_50_above_200": {"status": False, "sma_50": 0.0, "sma_200": 0.0, "points": 0},
-                    "distribution_days": {"status": False, "count": 0, "points": 0},
-                    "breakout_success": {"status": False, "rate": 0.0, "points": 0}
-                }
-            }
-        
-        close_series = index_df["Close"]
-        latest_close = float(close_series.iloc[-1])
-        
-        # Calculate 50 SMA
-        if len(close_series) >= 50:
-            sma_50 = float(close_series.rolling(window=50).mean().iloc[-1])
+        # 1. Resolve and Load MBI Score
+        mbi_score = 50.0
+        mb_file = "data/market_breadth.json"
+        if date_str:
+            cleaned_date = date_str.replace("-", "")
+            dated_mb = f"data/market_breadth_{cleaned_date}.json"
+            if os.path.exists(dated_mb):
+                mb_file = dated_mb
+            elif os.path.exists(os.path.join("minervini_os", dated_mb)):
+                mb_file = os.path.join("minervini_os", dated_mb)
+
+        if not os.path.exists(mb_file) and os.path.exists(os.path.join("minervini_os", mb_file)):
+            mb_file = os.path.join("minervini_os", mb_file)
+
+        if os.path.exists(mb_file):
+            try:
+                with open(mb_file, "r", encoding="utf-8") as f_mb:
+                    mb_data = json.load(f_mb)
+                    mbi_score = float(mb_data.get("Index", 50.0))
+            except Exception as mb_ex:
+                logger.error(f"Error loading market breadth file {mb_file} inside posture engine: {mb_ex}")
+
+        # Derive Posture, Score, and Recommendation from MBI
+        if mbi_score >= 65.0:
+            posture = "GREEN"
+            total_score = min(10, max(8, round(mbi_score / 10.0)))
+            recommendation = f"Favorable Market Breadth (MBI: {mbi_score:.1f}%): Fully fund new long positions, focus on high-conviction breakouts, and pyramid working trades."
+        elif mbi_score >= 45.0:
+            posture = "YELLOW"
+            if mbi_score >= 55.0:
+                total_score = 6 if mbi_score < 60.0 else 7
+            else:
+                total_score = 5
+            recommendation = f"Caution / Defensive Mode (MBI: {mbi_score:.1f}%): Keep position sizes small, tighten stop losses, and buy only the absolute strongest leaders."
         else:
-            sma_50 = float(close_series.mean())
+            posture = "RED"
+            total_score = min(4, max(0, round(mbi_score / 10.0)))
+            recommendation = f"Weak Market Breadth (MBI: {mbi_score:.1f}%): Suspend all new buying, raise stop losses, and hold cash to protect capital."
+
+        # Compute index informational metrics
+        above_200 = False
+        above_50 = False
+        sma_50_above_200 = False
+        latest_close = 0.0
+        sma_50 = 0.0
+        sma_200 = 0.0
+        dist_days = 0
+        dist_days_ok = False
+        pts_200 = 0
+        pts_50 = 0
+        pts_50_200 = 0
+        pts_dist = 0
+
+        if index_df is not None and not index_df.empty:
+            close_series = index_df["Close"]
+            latest_close = float(close_series.iloc[-1])
             
-        # Calculate 200 SMA
-        if len(close_series) >= 200:
-            sma_200 = float(close_series.rolling(window=200).mean().iloc[-1])
-        else:
-            sma_200 = float(close_series.mean())
+            # Calculate 50 SMA
+            if len(close_series) >= 50:
+                sma_50 = float(close_series.rolling(window=50).mean().iloc[-1])
+            else:
+                sma_50 = float(close_series.mean())
+                
+            # Calculate 200 SMA
+            if len(close_series) >= 200:
+                sma_200 = float(close_series.rolling(window=200).mean().iloc[-1])
+            else:
+                sma_200 = float(close_series.mean())
+                
+            above_200 = latest_close > sma_200
+            pts_200 = 2 if above_200 else 0
             
-        # 1. Index above 200 SMA (2 pts)
-        above_200 = latest_close > sma_200
-        pts_200 = 2 if above_200 else 0
-        
-        # 2. Index above 50 SMA (2 pts)
-        above_50 = latest_close > sma_50
-        pts_50 = 2 if above_50 else 0
-        
-        # 3. 50 SMA > 200 SMA (2 pts)
-        sma_50_above_200 = sma_50 > sma_200
-        pts_50_200 = 2 if sma_50_above_200 else 0
-        
-        # 4. Distribution days <= 4 (2 pts)
-        dist_days = self.track_distribution_days(index_df)
-        dist_days_ok = dist_days <= 4
-        pts_dist = 2 if dist_days_ok else 0
-        
-        # 5. Leadership success rate >= 70% (2 pts)
+            above_50 = latest_close > sma_50
+            pts_50 = 2 if above_50 else 0
+            
+            sma_50_above_200 = sma_50 > sma_200
+            pts_50_200 = 2 if sma_50_above_200 else 0
+            
+            dist_days = self.track_distribution_days(index_df)
+            dist_days_ok = dist_days <= 4
+            pts_dist = 2 if dist_days_ok else 0
+
         success_rate = breakout_success_rate
-        # Fetch actual feedback journal results if available
         feedback_file = "data/trade_feedback.json"
+        if not os.path.exists(feedback_file) and os.path.exists(os.path.join("minervini_os", feedback_file)):
+            feedback_file = os.path.join("minervini_os", feedback_file)
         if os.path.exists(feedback_file):
             try:
                 with open(feedback_file, "r") as f:
@@ -107,22 +145,12 @@ class MarketConditionsEngine:
                 
         success_ok = success_rate >= 0.70
         pts_lead = 2 if success_ok else 0
-        
-        total_score = pts_200 + pts_50 + pts_50_200 + pts_dist + pts_lead
-        posture = self.get_market_posture(total_score)
-        
-        # One-line recommendation
-        if total_score >= 8:
-            recommendation = "Aggressive Buying: Fully fund new long positions, focus on high-conviction breakouts, and pyramid working trades."
-        elif total_score >= 5:
-            recommendation = "Caution / Defensive Mode: Keep position sizes small, tighten stop losses, and buy only the absolute strongest leaders."
-        else:
-            recommendation = "Cash / Protection Mode: Suspend all new buying, raise stop losses, and hold cash to protect capital."
-            
+
         return {
             "score": total_score,
             "posture": posture,
             "recommendation": recommendation,
+            "mbi_score": mbi_score,
             "breakdown": {
                 "above_200_sma": {"status": bool(above_200), "value": float(latest_close), "sma": float(sma_200), "points": pts_200},
                 "above_50_sma": {"status": bool(above_50), "value": float(latest_close), "sma": float(sma_50), "points": pts_50},
@@ -131,6 +159,7 @@ class MarketConditionsEngine:
                 "breakout_success": {"status": bool(success_ok), "rate": float(success_rate), "points": pts_lead}
             }
         }
+
 
     def compute_market_health_score(self, index_df: pd.DataFrame, breakout_success_rate: float = 0.70) -> int:
         """

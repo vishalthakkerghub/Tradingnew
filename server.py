@@ -548,45 +548,15 @@ def _get_latest_watchlist_data_uncached(date_str=None):
                     except Exception:
                         pass
                 
-                breakup = market_engine.get_detailed_breakup(pidf_filtered, success_rate)
+                breakup = market_engine.get_detailed_breakup(pidf_filtered, success_rate, date_str=date_str)
         except Exception as ex:
             print(f"Error computing dynamic posture details: {ex}")
             
-    # Load MBI index to determine PDF Regime Label
-    mbi_score = 50.0
-    mb_file = "data/market_breadth.json"
-    if date_str:
-        cleaned_date = date_str.replace("-", "")
-        dated_mb = f"data/market_breadth_{cleaned_date}.json"
-        if os.path.exists(dated_mb):
-            mb_file = dated_mb
-            
-    if os.path.exists(mb_file):
-        try:
-            with open(mb_file, "r", encoding="utf-8") as f_mb:
-                mb_data = json.load(f_mb)
-                mbi_score = float(mb_data.get("Index", 50.0))
-        except Exception:
-            pass
-
-    # Phase 1: Market Health Setup (aligned with MBI index from PDF)
+    # Phase 1: Market Health Setup (derived directly from MBI index inside the engine)
+    mbi_score = breakup.get("mbi_score", 50.0)
     market_posture = breakup["posture"]
     market_score = breakup["score"]
-    
-    # Enforce strict MBI-based posture limits (Layer 1 of trading framework)
-    if mbi_score < 45.0:
-        market_posture = "RED"
-        market_score = min(market_score, 4)
-        breakup["posture"] = "RED"
-        breakup["score"] = min(breakup["score"], 4)
-        breakup["recommendation"] = "Weak Market Breadth: Suspend breakout trading, focus on capital preservation, and prefer Type C support plays only."
-    elif mbi_score < 55.0:
-        # Caution zone: Cap posture score to 6/10 to avoid full green "Aggressive Buying"
-        market_score = min(market_score, 6)
-        breakup["score"] = min(breakup["score"], 6)
-        if market_score < 5:
-            market_posture = "RED"
-            breakup["posture"] = "RED"
+
 
     if mbi_score >= 60.0:
         market_status = "Favorable"

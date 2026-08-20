@@ -3,3 +3,5 @@ numpy
 yfinance
 pyyaml
 openpyxl
+nselib
+requests

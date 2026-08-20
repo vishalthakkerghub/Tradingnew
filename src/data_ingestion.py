@@ -135,6 +135,18 @@ class DataIngestionEngine:
             else:
                 logger.info(f"No cache found for {symbol}. Initiating download.")
 
+        # 2a. Special path: fetch NIFTY MidSmallCap 400 directly from NSE via nselib
+        #     nselib calls NSE's own API, bypassing yfinance entirely for this index.
+        #     This is more accurate (correct series) and not subject to Yahoo bot-blocking.
+        if symbol.upper() in ("NIFTY_MIDSML400", "NIFTYMIDSML400"):
+            logger.info(f"Attempting NSE direct fetch for {symbol} via nselib...")
+            nse_df = self._fetch_nse_index_via_nselib(lookback_days)
+            if nse_df is not None and not nse_df.empty:
+                self._save_cache_file(nse_df, cache_file)
+                logger.info(f"NSE direct fetch successful for {symbol}. Rows: {len(nse_df)}")
+                return nse_df.tail(lookback_days)
+            logger.warning(f"NSE direct fetch failed for {symbol}. Falling back to yfinance.")
+
         # 2. Attempt yfinance download
         try:
             logger.info(f"Downloading historical data from yfinance for ticker: {yf_ticker}")
@@ -338,12 +350,93 @@ class DataIngestionEngine:
             return s
         if s == "GANESH BENZO" or s == "GANESH_BENZO":
             return "GANESHBE.NS"
-        # Special case index benchmark name (Map to active yfinance midcap ticker ^NSEMDCP50)
+        # NIFTY MidSmallCap 400: primary fetch is via nselib (NSE direct API).
+        # This yfinance ticker (^NSEMDCP50 = Nifty Midcap 50) is kept as a fallback only.
         if s == "NIFTY_MIDSML400" or s == "NIFTYMIDSML400":
             return "^NSEMDCP50"
         if s == "NIFTY_50" or s == "NIFTY50":
             return "^NSEI"
         return f"{s}.NS"
+
+    def _fetch_nse_index_via_nselib(self, lookback_days: int = 260) -> pd.DataFrame:
+        """
+        Fetches NIFTY MidSmallCap 400 historical OHLCV directly from NSE via nselib.
+        Returns a normalized DataFrame identical in structure to yfinance output,
+        with columns: Open, High, Low, Close, Volume.
+        Date index is string 'YYYY-MM-DD' sorted ascending.
+        Falls back gracefully (returns None) if nselib is unavailable or the API fails.
+        """
+        try:
+            from nselib.capital_market import index_data
+            from datetime import datetime, timedelta
+
+            end_date = datetime.now()
+            # NSE publishes index data only for completed sessions.
+            # Use yesterday as to_date so we don't get an empty response when today's data isn't available yet.
+            # After the 6PM scan window, today's session is complete, so we try today first and fall back to yesterday.
+            nse_to_date = end_date
+            nse_from_date = end_date - timedelta(days=int(lookback_days * 1.6))
+
+            df = index_data(
+                "NIFTY MIDSML 400",
+                from_date=nse_from_date.strftime("%d-%m-%Y"),
+                to_date=nse_to_date.strftime("%d-%m-%Y")
+            )
+
+            # If today's data isn't published yet, retry with yesterday as to_date
+            if (df is None or df.empty):
+                logger.info("nselib returned empty for today. Retrying with yesterday as to_date...")
+                nse_to_date = end_date - timedelta(days=1)
+                df = index_data(
+                    "NIFTY MIDSML 400",
+                    from_date=nse_from_date.strftime("%d-%m-%Y"),
+                    to_date=nse_to_date.strftime("%d-%m-%Y")
+                )
+
+
+            if df is None or df.empty:
+                logger.warning("nselib returned empty DataFrame for NIFTY MIDSML 400.")
+                return None
+
+            # Rename columns to standard OHLCV
+            df = df.rename(columns={
+                "OPEN_INDEX_VAL": "Open",
+                "HIGH_INDEX_VAL": "High",
+                "LOW_INDEX_VAL": "Low",
+                "CLOSE_INDEX_VAL": "Close",
+                "TRADED_QTY": "Volume"
+            })
+
+            # Parse and normalize date index
+            df["Date"] = pd.to_datetime(df["TIMESTAMP"], format="%d-%b-%Y", errors="coerce")
+            df = df.dropna(subset=["Date"])
+            df["Date"] = df["Date"].dt.strftime("%Y-%m-%d")
+            df = df.set_index("Date")
+            df = df[["Open", "High", "Low", "Close", "Volume"]].copy()
+
+            # Ensure numeric types
+            for col in ["Open", "High", "Low", "Close", "Volume"]:
+                df[col] = pd.to_numeric(df[col], errors="coerce")
+
+            # Drop rows with zero/null prices
+            df = df.dropna(subset=["Open", "High", "Low", "Close"])
+            df = df[df["Close"] > 0]
+
+            # Add Delivery_Pct column (not applicable for index, set to 0)
+            df["Delivery_Pct"] = 0.0
+
+            # Sort ascending by date
+            df = df.sort_index()
+
+            logger.info(f"nselib fetch OK: NIFTY MIDSML 400 — {len(df)} rows, latest: {df.index[-1]}, close: {df['Close'].iloc[-1]:.2f}")
+            return df
+
+        except ImportError:
+            logger.warning("nselib not installed. Cannot fetch NIFTY MidSmallCap 400 from NSE directly. Add 'nselib' to requirements.txt.")
+            return None
+        except Exception as e:
+            logger.warning(f"nselib NSE fetch failed for NIFTY MIDSML 400: {e}")
+            return None
 
     def _normalize_columns(self, df: pd.DataFrame, symbol: str = None) -> pd.DataFrame:
         """
