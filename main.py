@@ -947,9 +947,35 @@ def run_daily_scan():
                 logger.warning(f"Ingestion was stale (expected: {expected_date}, got: {scan_date_str}). Email notification skipped to prevent duplicate/stale reports.")
             elif email_notifier.enabled:
                 logger.info("Email notifier is enabled. Compiling HTML report...")
+                
+                email_compile_time = datetime.now()
+                duration_seconds = int((email_compile_time - start_time).total_seconds())
+                
+                try:
+                    import datetime as dt
+                    # If the server's timezone is UTC, adjust start/end times to IST
+                    is_utc = abs((dt.datetime.now() - dt.datetime.utcnow()).total_seconds()) < 60
+                    if is_utc:
+                        start_time_ist = (start_time + dt.timedelta(hours=5, minutes=30)).strftime("%H:%M:%S")
+                        end_time_ist = (email_compile_time + dt.timedelta(hours=5, minutes=30)).strftime("%H:%M:%S")
+                    else:
+                        start_time_ist = start_time.strftime("%H:%M:%S")
+                        end_time_ist = email_compile_time.strftime("%H:%M:%S")
+                except Exception:
+                    start_time_ist = start_time.strftime("%H:%M:%S")
+                    end_time_ist = email_compile_time.strftime("%H:%M:%S")
+                
+                posture_colors = {"GREEN": "#10b981", "YELLOW": "#f59e0b", "RED": "#ef4444"}
+                posture_color = posture_colors.get(posture, "#718096")
+                
                 html_lines = []
                 html_lines.append(f"<h2>Daily Minervini Scanner Report - {scan_date_str}</h2>")
-                html_lines.append(f"<p><strong>Market Posture:</strong> {posture} (Score: {health_score}/10)</p>")
+                html_lines.append("<div style='background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-family: Arial, sans-serif;'>")
+                html_lines.append(f"<p style='margin: 4px 0; font-size: 14px;'><strong>Data Ingestion Started:</strong> {start_time_ist} IST</p>")
+                html_lines.append(f"<p style='margin: 4px 0; font-size: 14px;'><strong>Data Ingestion Completed:</strong> {end_time_ist} IST &nbsp;({duration_seconds} seconds)</p>")
+                html_lines.append(f"<p style='margin: 4px 0; font-size: 14px;'><strong>Market Posture:</strong> <span style='color: {posture_color}; font-weight: bold;'>{posture}</span> &nbsp;(Score: {health_score}/10)</p>")
+                html_lines.append(f"<p style='margin: 12px 0 4px 0; font-size: 14px;'><strong>Dashboard Link:</strong> <a href='https://minervini-os-dashboard-production.up.railway.app/' style='color: #2b6cb0; text-decoration: underline; font-weight: bold;'>Open Dashboard</a></p>")
+                html_lines.append("</div>")
                 
                 # Focus Gates Warning check
                 has_candidates = bool(strict_list or flex_list or mini_list or flag_candidates_detailed)
