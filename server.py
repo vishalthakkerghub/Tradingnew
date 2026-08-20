@@ -2556,7 +2556,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                     <body style="font-family: Arial, sans-serif; background-color: #0f172a; color: #f8fafc; padding: 20px; border-radius: 8px;">
                         <h2 style="color: #6366f1;">Minervini OS Resend API Connection Test</h2>
                         <p>Congratulations! Your Railway environment variables and Resend API Key are configured correctly.</p>
-                        <p>The daily scan HTML reports will now be sent to this email address every weekday at 6:00 PM IST.</p>
+                        <p>The daily scan HTML reports will now be sent to this email address every weekday at 6:30 PM IST.</p>
                         <hr style="border: 0; border-top: 1px solid #334155; margin: 20px 0;"/>
                         <small style="color: #94a3b8;">Sent automatically by your Railway deployment via Resend API.</small>
                     </body>
