@@ -157,7 +157,23 @@ def run_daily_scan():
     # 4c. Set up scan benchmark dates
     latest_date_str = index_df.index[-1] if not index_df.empty else datetime.now().strftime("%Y-%m-%d")
     scan_date_clean = latest_date_str.replace("-", "")
+
+    # 4d. Compute today's fresh MBI index and sector categories BEFORE candidate scanning
+    try:
+        logger.info("Recalculating fresh today's MBI-based market health score and posture...")
+        from src.industry_analysis import analyze_participation
+        analyze_participation(latest_date_str)
         
+        # Reload fresh MBI-derived score and posture from market conditions engine
+        health_score = market_engine.compute_market_health_score(index_df)
+        posture = market_engine.get_market_posture(health_score)
+        logger.info(f"Unified MBI-Derived Posture evaluated: {posture} (Score: {health_score}/10)")
+    except Exception as mbi_ex:
+        logger.error(f"Failed to compute EOD MBI-derived market posture: {mbi_ex}")
+        # Fallback values if it fails
+        health_score = market_engine.compute_market_health_score(index_df)
+        posture = market_engine.get_market_posture(health_score)
+
     # 5. Execute Scan Loop
     # Regenerate industry_mapping.json dynamically from Excel source of truth to align spelling
     xlsx_path = "data/industry stockname mapping.xlsx"
@@ -919,19 +935,7 @@ def run_daily_scan():
     except Exception as e:
         logger.error(f"Failed to update delivery percentages in cache files: {e}")
 
-    # 6A-2. Compute fresh today's MBI index and reload posture/health_score from it
-    try:
-        logger.info("Recalculating fresh today's MBI-based market health score and posture...")
-        from src.industry_analysis import analyze_participation
-        # Pass today's scan date so it aligns calculations with this session
-        analyze_participation(scan_date_str)
-        
-        # Reload fresh MBI-derived score and posture from market conditions engine
-        health_score = market_engine.compute_market_health_score(index_df)
-        posture = market_engine.get_market_posture(health_score)
-        logger.info(f"Unified MBI-Derived Posture evaluated: {posture} (Score: {health_score}/10)")
-    except Exception as mbi_ex:
-        logger.error(f"Failed to compute EOD MBI-derived market posture: {mbi_ex}")
+    # Note: 6A-2 (Compute fresh today's MBI index) has been moved to the start of the scan pipeline.
 
 
     # 6B. Run Paper Trading Engine Lifecycle for both VCP and FLAG
