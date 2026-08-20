@@ -1,8 +1,8 @@
 # Performance Analytics Report
 
-- **Generated At:** 2026-08-18 20:04:04
+- **Generated At:** 2026-08-20 23:43:32
 - **Current Balance (Cash):** Rs.82,450.91
-- **Current Account Equity:** Rs.1,170,204.48
+- **Current Account Equity:** Rs.1,180,218.29
 
 ## Core Performance Metrics
 
@@ -22,15 +22,15 @@
 
 | Symbol | Entry Date | Entry Price | Current Stop | Initial Shares | Shares Remaining | P&L Net | R-Multiple |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **FEDERALBNK** | 2026-07-17 | Rs.333.45 | Rs.333.45 | 749 | 375 | Rs.+22810.31 | +2.91R |
-| **KDDL** | 2026-08-03 | Rs.3324.70 | Rs.3324.70 | 37 | 37 | Rs.+28445.60 | +2.89R |
-| **HAPPYFORGE** | 2026-08-04 | Rs.1676.60 | Rs.1676.60 | 103 | 52 | Rs.+39721.41 | +3.98R |
-| **UFBL** | 2026-08-04 | Rs.728.40 | Rs.728.40 | 171 | 171 | Rs.+8883.44 | +0.89R |
-| **AARTIIND** | 2026-08-12 | Rs.510.00 | Rs.469.20 | 245 | 245 | Rs.+4924.49 | +0.49R |
-| **MANALIPETC** | 2026-08-13 | Rs.68.00 | Rs.62.56 | 1838 | 1838 | Rs.+5624.28 | +0.56R |
-| **MINDACORP** | 2026-08-13 | Rs.744.35 | Rs.684.80 | 167 | 167 | Rs.+150.30 | +0.02R |
-| **PARAS** | 2026-08-18 | Rs.1385.00 | Rs.1385.00 | 90 | 45 | Rs.+6403.50 | +0.64R |
-| **BOSCHLTD** | 2026-08-18 | Rs.47010.00 | Rs.47010.00 | 2 | 2 | Rs.+3440.00 | +0.46R |
+| **FEDERALBNK** | 2026-07-17 | Rs.333.45 | Rs.333.45 | 749 | 375 | Rs.+21872.81 | +2.79R |
+| **KDDL** | 2026-08-03 | Rs.3324.70 | Rs.3324.70 | 37 | 37 | Rs.+22866.00 | +2.32R |
+| **HAPPYFORGE** | 2026-08-04 | Rs.1676.60 | Rs.1676.60 | 103 | 52 | Rs.+43236.60 | +4.33R |
+| **UFBL** | 2026-08-04 | Rs.728.40 | Rs.728.40 | 171 | 171 | Rs.+13526.10 | +1.36R |
+| **AARTIIND** | 2026-08-12 | Rs.510.00 | Rs.469.20 | 245 | 245 | Rs.+2462.25 | +0.25R |
+| **MANALIPETC** | 2026-08-13 | Rs.68.00 | Rs.68.00 | 1838 | 1838 | Rs.+17883.75 | +1.79R |
+| **MINDACORP** | 2026-08-13 | Rs.744.35 | Rs.684.80 | 167 | 167 | Rs.-175.35 | -0.02R |
+| **PARAS** | 2026-08-18 | Rs.1385.00 | Rs.1385.00 | 90 | 45 | Rs.+5265.00 | +0.53R |
+| **BOSCHLTD** | 2026-08-18 | Rs.47010.00 | Rs.47010.00 | 2 | 2 | Rs.+3480.00 | +0.46R |
 ## Historical Trade Journal
 
 | Symbol | Entry Date | Exit Date | Entry Price | Exit Price | Initial Shares | P&L Net | R-Multiple | Exit Reason |

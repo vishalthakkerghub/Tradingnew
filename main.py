@@ -159,6 +159,38 @@ def run_daily_scan():
     scan_date_clean = latest_date_str.replace("-", "")
         
     # 5. Execute Scan Loop
+    # Regenerate industry_mapping.json dynamically from Excel source of truth to align spelling
+    xlsx_path = "data/industry stockname mapping.xlsx"
+    if not os.path.exists(xlsx_path):
+        xlsx_path = os.path.join("minervini_os", xlsx_path)
+    if os.path.exists(xlsx_path):
+        try:
+            import pandas as pd
+            df_excel = pd.read_excel(xlsx_path)
+            df_excel['Symbol'] = df_excel['NSEcode'].astype(str).str.strip().str.upper()
+            dynamic_mapping = {}
+            for _, row in df_excel.iterrows():
+                sym = str(row['Symbol']).strip()
+                if not sym or sym == "NAN" or pd.isna(row['NSEcode']):
+                    continue
+                ind = row.get('Industry', row.get('Industry Name'))
+                sec = row.get('Sector', 'Others')
+                name = row.get('Stock Name', sym)
+                if pd.isna(ind) or str(ind).strip() == "":
+                    ind = "Others"
+                if pd.isna(sec) or str(sec).strip() == "":
+                    sec = 'Others'
+                dynamic_mapping[sym] = {
+                    "industry": str(ind).strip(),
+                    "sector": str(sec).strip(),
+                    "name": str(name).strip()
+                }
+            with open("data/industry_mapping.json", "w", encoding="utf-8") as f_out:
+                json.dump(dynamic_mapping, f_out, indent=2)
+            logger.info("Regenerated data/industry_mapping.json from Excel source of truth successfully.")
+        except Exception as e_reg:
+            logger.warning(f"Failed to regenerate industry mapping from Excel: {e_reg}")
+
     # Load industry mapping & strong industries for EMA 20 Pullback check
     industry_mapping = {}
     if os.path.exists("data/industry_mapping.json"):
@@ -1292,9 +1324,9 @@ def main():
             os.makedirs("data", exist_ok=True)
             
             # Check ingestion freshness
-            is_stale, expected_date = check_ingestion_freshness(scan_date_str)
+            is_stale, expected_date = check_ingestion_freshness(cur_date)
             if is_stale:
-                status_msg = f"Scan completed, but EOD data ingestion is pending/stale (expected: {expected_date}, got: {scan_date_str}). Dashboard shows last available session."
+                status_msg = f"Scan completed, but EOD data ingestion is pending/stale (expected: {expected_date}, got: {cur_date}). Dashboard shows last available session."
                 status_val = "stale"
             else:
                 status_msg = "Data Ingestion & EOD Scan completed successfully. Watchlist and dashboard are updated with today's closing prices."

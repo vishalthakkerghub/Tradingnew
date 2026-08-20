@@ -1,20 +1,5 @@
 {
   "watchlist": {
-    "SANGHVIMOV": {
-      "symbol": "SANGHVIMOV",
-      "pivot_price": 442.6000061035156,
-      "contraction_low": 407.1920056152344,
-      "score": 62,
-      "grade": "Grade B",
-      "engine_type": "FLEX_VCP",
-      "date_added": "2026-07-08",
-      "vdu_ratio": 0.672,
-      "entry_category": "EMA_PULLBACK",
-      "trigger_price": 456.5,
-      "stop_price": 436.0,
-      "target_1": 497.50000000000006,
-      "target_2": 528.25
-    },
     "METROPOLIS": {
       "symbol": "METROPOLIS",
       "pivot_price": 563.5,
@@ -659,21 +644,6 @@
       "stop_price": 958.108522141294,
       "target_1": 1028.8950256347655,
       "target_2": 1077.8900268554687
-    },
-    "INDOAMIN": {
-      "symbol": "INDOAMIN",
-      "pivot_price": 130.99000549316406,
-      "contraction_low": 120.51080505371094,
-      "score": 51,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK",
-      "date_added": "2026-07-29",
-      "vdu_ratio": 0.17600000000000002,
-      "entry_category": "EMA_PULLBACK",
-      "trigger_price": 130.99000549316406,
-      "stop_price": 126.98763859683055,
-      "target_1": 138.9947392858311,
-      "target_2": 144.99828963033136
     },
     "WINDLAS": {
       "symbol": "WINDLAS",
@@ -1650,21 +1620,6 @@
       "target_1": 602.3999633789062,
       "target_2": 637.3499450683594
     },
-    "INDNIPPON": {
-      "symbol": "INDNIPPON",
-      "pivot_price": 1160.5999755859375,
-      "contraction_low": 1114.5683220896565,
-      "score": 61,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK",
-      "date_added": "2026-07-30",
-      "vdu_ratio": 0.305,
-      "entry_category": "HIGH_RISK_ENTRY",
-      "trigger_price": 1160.5999755859375,
-      "stop_price": 1114.5683220896565,
-      "target_1": 1252.6632825784995,
-      "target_2": 1321.7107628229212
-    },
     "SKYGOLD": {
       "symbol": "SKYGOLD",
       "pivot_price": 638.25,
@@ -2055,21 +2010,6 @@
       "target_1": 250.43239929199217,
       "target_2": 276.33919921874997
     },
-    "3MINDIA": {
-      "symbol": "3MINDIA",
-      "pivot_price": 34615.0,
-      "contraction_low": 33576.549999999996,
-      "score": 49,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK",
-      "date_added": "2026-07-31",
-      "vdu_ratio": 0.52,
-      "entry_category": "HIGH_RISK_ENTRY",
-      "trigger_price": 34615.0,
-      "stop_price": 33576.549999999996,
-      "target_1": 36691.90000000001,
-      "target_2": 38249.57500000001
-    },
     "ENDURANCE": {
       "symbol": "ENDURANCE",
       "pivot_price": 2758.300048828125,
@@ -2084,21 +2024,6 @@
       "stop_price": 2701.675338427008,
       "target_1": 3043.467449807456,
       "target_2": 3214.36350549768
-    },
-    "HSCL": {
-      "symbol": "HSCL",
-      "pivot_price": 750.6500244140625,
-      "contraction_low": 716.6791849877577,
-      "score": 57,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK",
-      "date_added": "2026-07-31",
-      "vdu_ratio": 0.519,
-      "entry_category": "HIGH_RISK_ENTRY",
-      "trigger_price": 750.6500244140625,
-      "stop_price": 716.6791849877577,
-      "target_1": 818.5917032666721,
-      "target_2": 869.5479624061293
     },
     "PANACHE": {
       "symbol": "PANACHE",
@@ -2219,21 +2144,6 @@
       "stop_price": 494.9909881591797,
       "target_1": 540.9179870605469,
       "target_2": 563.8814865112306
-    },
-    "NDRAUTO": {
-      "symbol": "NDRAUTO",
-      "pivot_price": 817.5499877929688,
-      "contraction_low": 793.0234881591797,
-      "score": 47,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK",
-      "date_added": "2026-07-31",
-      "vdu_ratio": 0.418,
-      "entry_category": "EMA_PULLBACK",
-      "trigger_price": 815.0,
-      "stop_price": 812.6189191650639,
-      "target_1": 855.75,
-      "target_2": 896.5000000000001
     },
     "PANAMAPET": {
       "symbol": "PANAMAPET",
@@ -2504,21 +2414,6 @@
       "stop_price": 2360.8816613617164,
       "target_1": 2583.236677276567,
       "target_2": 2694.414185233992
-    },
-    "ABDL": {
-      "symbol": "ABDL",
-      "pivot_price": 619.5,
-      "contraction_low": 595.6204846174136,
-      "score": 45,
-      "grade": "Grade B",
-      "engine_type": "PULLBACK_EMA50",
-      "date_added": "2026-07-31",
-      "vdu_ratio": 0.6409999999999999,
-      "entry_category": "HIGH_RISK_ENTRY",
-      "trigger_price": 619.5,
-      "stop_price": 595.6204846174136,
-      "target_1": 667.2590307651728,
-      "target_2": 703.0783038390524
     },
     "VLSFINANCE": {
       "symbol": "VLSFINANCE",
@@ -3165,21 +3060,6 @@
       "target_1": 346.7537269686824,
       "target_2": 362.0190267728309
     },
-    "BORANA": {
-      "symbol": "BORANA",
-      "pivot_price": 324.6499938964844,
-      "contraction_low": 314.91049407958985,
-      "score": 41,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA10",
-      "date_added": "2026-07-31",
-      "vdu_ratio": 0.5329999999999999,
-      "entry_category": "EMA_PULLBACK",
-      "trigger_price": 329.8999938964844,
-      "stop_price": 320.0,
-      "target_1": 349.6999816894532,
-      "target_2": 364.5499725341797
-    },
     "OLECTRA": {
       "symbol": "OLECTRA",
       "pivot_price": 1324.199951171875,
@@ -3239,21 +3119,6 @@
       "stop_price": 1414.5876878334218,
       "target_1": 1557.7247708175314,
       "target_2": 1629.2933123095863
-    },
-    "AADHARHFC": {
-      "symbol": "AADHARHFC",
-      "pivot_price": 496.7000122070313,
-      "contraction_low": 481.79901184082036,
-      "score": 46,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA50",
-      "date_added": "2026-07-31",
-      "vdu_ratio": 0.523,
-      "entry_category": "HIGH_RISK_ENTRY",
-      "trigger_price": 496.7000122070313,
-      "stop_price": 481.79901184082036,
-      "target_1": 526.5020129394533,
-      "target_2": 548.8535134887696
     },
     "KPIL": {
       "symbol": "KPIL",
@@ -3389,21 +3254,6 @@
       "stop_price": 201.8097725493773,
       "target_1": 211.3229942321778,
       "target_2": 221.38599395751962
-    },
-    "THEMISMED": {
-      "symbol": "THEMISMED",
-      "pivot_price": 107.05999755859376,
-      "contraction_low": 103.84819763183594,
-      "score": 70,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA50",
-      "date_added": "2026-08-03",
-      "vdu_ratio": 0.08800000000000001,
-      "entry_category": "HIGH_RISK_ENTRY",
-      "trigger_price": 107.05999755859376,
-      "stop_price": 103.84819763183594,
-      "target_1": 113.48359741210939,
-      "target_2": 118.30129730224613
     },
     "MONARCH": {
       "symbol": "MONARCH",
@@ -4035,21 +3885,6 @@
       "target_1": 847.0994251739937,
       "target_2": 900.911512365036
     },
-    "PPAP": {
-      "symbol": "PPAP",
-      "pivot_price": 282.8999938964844,
-      "contraction_low": 274.41299407958985,
-      "score": 70,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA20",
-      "date_added": "2026-08-04",
-      "vdu_ratio": 0.069,
-      "entry_category": "HIGH_RISK_ENTRY",
-      "trigger_price": 282.8999938964844,
-      "stop_price": 274.41299407958985,
-      "target_1": 299.8739935302735,
-      "target_2": 312.60449325561524
-    },
     "JKPAPER": {
       "symbol": "JKPAPER",
       "pivot_price": 382.75,
@@ -4110,21 +3945,6 @@
       "target_1": 2156.04,
       "target_2": 2247.57
     },
-    "POKARNA": {
-      "symbol": "POKARNA",
-      "pivot_price": 930.9000244140624,
-      "contraction_low": 902.9730236816405,
-      "score": 55,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA50",
-      "date_added": "2026-08-04",
-      "vdu_ratio": 0.287,
-      "entry_category": "HIGH_RISK_ENTRY",
-      "trigger_price": 930.9000244140624,
-      "stop_price": 902.9730236816405,
-      "target_1": 986.7540258789062,
-      "target_2": 1028.644526977539
-    },
     "SHAHALLOYS": {
       "symbol": "SHAHALLOYS",
       "pivot_price": 70.26000213623047,
@@ -4184,36 +4004,6 @@
       "stop_price": 31.719000740051268,
       "target_1": 34.662000808715824,
       "target_2": 36.133500843048104
-    },
-    "JSWENERGY": {
-      "symbol": "JSWENERGY",
-      "pivot_price": 566.0,
-      "contraction_low": 544.4132929493223,
-      "score": 51,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA10",
-      "date_added": "2026-08-05",
-      "vdu_ratio": 0.5720000000000001,
-      "entry_category": "EMA_PULLBACK",
-      "trigger_price": 571.0,
-      "stop_price": 557.3499755859375,
-      "target_1": 599.5500000000001,
-      "target_2": 628.1
-    },
-    "AVG": {
-      "symbol": "AVG",
-      "pivot_price": 202.8000030517578,
-      "contraction_low": 196.71600296020506,
-      "score": 64,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA10",
-      "date_added": "2026-08-05",
-      "vdu_ratio": 0.11199999999999999,
-      "entry_category": "EMA_PULLBACK",
-      "trigger_price": 208.0800018310547,
-      "stop_price": 201.0500030517578,
-      "target_1": 222.13999938964844,
-      "target_2": 232.68499755859378
     },
     "DHARMAJ": {
       "symbol": "DHARMAJ",
@@ -4394,21 +4184,6 @@
       "stop_price": 26.01000022888184,
       "target_1": 28.02000045776366,
       "target_2": 29.34800033569336
-    },
-    "TIMKEN": {
-      "symbol": "TIMKEN",
-      "pivot_price": 3309.39990234375,
-      "contraction_low": 3210.1179052734374,
-      "score": 24,
-      "grade": "Grade C",
-      "engine_type": "PULLBACK_EMA50",
-      "date_added": "2026-08-05",
-      "vdu_ratio": 0.986,
-      "entry_category": "HIGH_RISK_ENTRY",
-      "trigger_price": 3309.39990234375,
-      "stop_price": 3210.1179052734374,
-      "target_1": 3507.9638964843753,
-      "target_2": 3656.8868920898444
     },
     "GLAXO": {
       "symbol": "GLAXO",
@@ -4634,21 +4409,6 @@
       "stop_price": 336.6499938964844,
       "target_1": 375.80004882812494,
       "target_2": 395.3750762939453
-    },
-    "TATVA": {
-      "symbol": "TATVA",
-      "pivot_price": 1720.800048828125,
-      "contraction_low": 1669.0567471745014,
-      "score": 57,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA10",
-      "date_added": "2026-08-05",
-      "vdu_ratio": 0.58,
-      "entry_category": "EMA_PULLBACK",
-      "trigger_price": 1797.699951171875,
-      "stop_price": 1710.0999755859375,
-      "target_1": 1972.8999023437498,
-      "target_2": 2104.2998657226562
     },
     "CIPLA": {
       "symbol": "CIPLA",
@@ -5535,21 +5295,6 @@
       "target_1": 272.3200225830078,
       "target_2": 292.46503448486334
     },
-    "LAMBODHARA": {
-      "symbol": "LAMBODHARA",
-      "pivot_price": 113.4800033569336,
-      "contraction_low": 110.07560325622558,
-      "score": 50,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA10",
-      "date_added": "2026-08-10",
-      "vdu_ratio": 0.413,
-      "entry_category": "EMA_PULLBACK",
-      "trigger_price": 119.4499969482422,
-      "stop_price": 112.23924781870979,
-      "target_1": 133.87149520730705,
-      "target_2": 144.68761890160567
-    },
     "SHYAMMETL": {
       "symbol": "SHYAMMETL",
       "pivot_price": 1003.0999755859376,
@@ -5579,21 +5324,6 @@
       "stop_price": 209.57496876316756,
       "target_1": 231.97004233206331,
       "target_2": 243.1675791165112
-    },
-    "OLAELEC": {
-      "symbol": "OLAELEC",
-      "pivot_price": 39.29999923706055,
-      "contraction_low": 38.12099925994873,
-      "score": 40,
-      "grade": "Grade B",
-      "engine_type": "PULLBACK_EMA50",
-      "date_added": "2026-08-10",
-      "vdu_ratio": 0.735,
-      "entry_category": "HIGH_RISK_ENTRY",
-      "trigger_price": 39.29999923706055,
-      "stop_price": 38.12099925994873,
-      "target_1": 41.657999191284176,
-      "target_2": 43.4264991569519
     },
     "ESABINDIA": {
       "symbol": "ESABINDIA",
@@ -5775,21 +5505,6 @@
       "target_1": 939.3500366210939,
       "target_2": 981.1450134277344
     },
-    "FIVESTAR": {
-      "symbol": "FIVESTAR",
-      "pivot_price": 546.5499877929688,
-      "contraction_low": 530.1534881591797,
-      "score": 63,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA10",
-      "date_added": "2026-08-10",
-      "vdu_ratio": 0.217,
-      "entry_category": "TIGHT_CHEAT_VCP",
-      "trigger_price": 555.75,
-      "stop_price": 541.5499877929688,
-      "target_1": 584.1500244140625,
-      "target_2": 611.325
-    },
     "AGI": {
       "symbol": "AGI",
       "pivot_price": 718.2000122070312,
@@ -5910,36 +5625,6 @@
       "target_1": 3003.24,
       "target_2": 3313.9199999999996
     },
-    "TEJASNET": {
-      "symbol": "TEJASNET",
-      "pivot_price": 533.5999755859375,
-      "contraction_low": 517.1256835110071,
-      "score": 63,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA50",
-      "date_added": "2026-08-11",
-      "vdu_ratio": 0.23,
-      "entry_category": "EMA_PULLBACK",
-      "trigger_price": 525.5999755859375,
-      "stop_price": 522.5084493817178,
-      "target_1": 551.8799743652344,
-      "target_2": 578.1599731445312
-    },
-    "M&MFIN": {
-      "symbol": "M&MFIN",
-      "pivot_price": 398.7999877929688,
-      "contraction_low": 384.37026001042034,
-      "score": 58,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA10",
-      "date_added": "2026-08-11",
-      "vdu_ratio": 0.55,
-      "entry_category": "EMA_PULLBACK",
-      "trigger_price": 415.0,
-      "stop_price": 386.8500061035156,
-      "target_1": 471.2999877929687,
-      "target_2": 513.5249786376953
-    },
     "GRPLTD": {
       "symbol": "GRPLTD",
       "pivot_price": 1925.9000244140625,
@@ -5999,21 +5684,6 @@
       "stop_price": 188.00999450683597,
       "target_1": 208.67999267578128,
       "target_2": 219.01499176025393
-    },
-    "BORORENEW": {
-      "symbol": "BORORENEW",
-      "pivot_price": 562.5,
-      "contraction_low": 545.625,
-      "score": 51,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA50",
-      "date_added": "2026-08-11",
-      "vdu_ratio": 0.413,
-      "entry_category": "EMA_PULLBACK",
-      "trigger_price": 567.7999877929688,
-      "stop_price": 565.8278762339703,
-      "target_1": 596.1899871826172,
-      "target_2": 624.5799865722656
     },
     "RAJRATAN": {
       "symbol": "RAJRATAN",
@@ -6795,21 +6465,6 @@
       "target_1": 2146.500122070313,
       "target_2": 2248.290026855469
     },
-    "OAL": {
-      "symbol": "OAL",
-      "pivot_price": 356.6499938964844,
-      "contraction_low": 340.95179575754656,
-      "score": 56,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA50",
-      "date_added": "2026-08-13",
-      "vdu_ratio": 0.535,
-      "entry_category": "HIGH_RISK_ENTRY",
-      "trigger_price": 356.6499938964844,
-      "stop_price": 340.95179575754656,
-      "target_1": 388.04639017436,
-      "target_2": 411.59368738276675
-    },
     "MGL": {
       "symbol": "MGL",
       "pivot_price": 1125.800048828125,
@@ -7035,21 +6690,6 @@
       "target_1": 52.34930506793043,
       "target_2": 55.401284784405576
     },
-    "ATUL": {
-      "symbol": "ATUL",
-      "pivot_price": 6729.0,
-      "contraction_low": 6522.208877673569,
-      "score": 30,
-      "grade": "Grade C",
-      "engine_type": "PULLBACK_EMA20",
-      "date_added": "2026-08-14",
-      "vdu_ratio": 0.9,
-      "entry_category": "EMA_PULLBACK",
-      "trigger_price": 6990.0,
-      "stop_price": 6712.0,
-      "target_1": 7546.0,
-      "target_2": 7963.000000000001
-    },
     "GOKULAGRO": {
       "symbol": "GOKULAGRO",
       "pivot_price": 231.6499938964844,
@@ -7185,21 +6825,6 @@
       "target_1": 219.0383993530273,
       "target_2": 228.33719932556153
     },
-    "CUMMINSIND": {
-      "symbol": "CUMMINSIND",
-      "pivot_price": 5400.0,
-      "contraction_low": 5238.0,
-      "score": 31,
-      "grade": "Grade C",
-      "engine_type": "PULLBACK_EMA50",
-      "date_added": "2026-08-14",
-      "vdu_ratio": 0.838,
-      "entry_category": "TIGHT_CHEAT_VCP",
-      "trigger_price": 5447.0,
-      "stop_price": 5315.0,
-      "target_1": 5719.35,
-      "target_2": 5991.700000000001
-    },
     "LALPATHLAB": {
       "symbol": "LALPATHLAB",
       "pivot_price": 1916.300048828125,
@@ -7304,21 +6929,6 @@
       "stop_price": 79.25,
       "target_1": 92.20999908447266,
       "target_2": 98.68999862670898
-    },
-    "RELAXO": {
-      "symbol": "RELAXO",
-      "pivot_price": 396.25,
-      "contraction_low": 379.0847373955087,
-      "score": 65,
-      "grade": "Grade A",
-      "engine_type": "PULLBACK_EMA50",
-      "date_added": "2026-08-14",
-      "vdu_ratio": 0.18899999999999997,
-      "entry_category": "HIGH_RISK_ENTRY",
-      "trigger_price": 396.25,
-      "stop_price": 379.0847373955087,
-      "target_1": 430.58052520898264,
-      "target_2": 456.3284191157196
     },
     "INDORAMA": {
       "symbol": "INDORAMA",
@@ -7515,21 +7125,6 @@
       "target_1": 519.452987060547,
       "target_2": 541.5052365112306
     },
-    "INDIGO": {
-      "symbol": "INDIGO",
-      "pivot_price": 5508.0,
-      "contraction_low": 5217.5,
-      "score": 68,
-      "grade": "Grade B",
-      "engine_type": "FLEX_VCP",
-      "date_added": "2026-08-14",
-      "vdu_ratio": 0.28300000000000003,
-      "entry_category": "TIGHT_CHEAT_VCP",
-      "trigger_price": 5370.0,
-      "stop_price": 5217.5,
-      "target_1": 5674.999999999999,
-      "target_2": 5907.000000000001
-    },
     "GEECEE": {
       "symbol": "GEECEE",
       "pivot_price": 371.6000061035156,
@@ -7664,6 +7259,21 @@
       "stop_price": 324.0,
       "target_1": 384.0,
       "target_2": 414.0
+    },
+    "ARE&M": {
+      "symbol": "ARE&M",
+      "pivot_price": 957.0,
+      "contraction_low": 891.9000244140625,
+      "score": 53,
+      "grade": "Grade C",
+      "engine_type": "FLEX_VCP",
+      "date_added": "2026-08-20",
+      "vdu_ratio": 0.38299999999999995,
+      "entry_category": "TIGHT_CHEAT_VCP",
+      "trigger_price": 952.7999877929688,
+      "stop_price": 925.7999877929688,
+      "target_1": 1006.7999877929686,
+      "target_2": 1048.0799865722656
     }
   },
   "active_trades": {
@@ -7678,7 +7288,7 @@
       "partial_exit_taken": true,
       "partial_exit_price": 370.0250549316406,
       "partial_exit_date": "2026-08-03",
-      "days_active": 69,
+      "days_active": 70,
       "max_high_reached": 371.7000122070313,
       "target_1": 354.35003662109375,
       "target_2": 370.0250549316406,
@@ -7700,7 +7310,7 @@
       "partial_exit_taken": false,
       "partial_exit_price": 0.0,
       "partial_exit_date": null,
-      "days_active": 25,
+      "days_active": 26,
       "max_high_reached": 4155.5,
       "target_1": 3856.651943359375,
       "target_2": 4255.6159375,
@@ -7722,8 +7332,8 @@
       "partial_exit_taken": true,
       "partial_exit_price": 1860.0,
       "partial_exit_date": "2026-08-06",
-      "days_active": 24,
-      "max_high_reached": 2296.699951171875,
+      "days_active": 25,
+      "max_high_reached": 2339.39990234375,
       "target_1": 1748.60009765625,
       "target_2": 1833.0501708984375,
       "vdu_ratio": 0.39299999999999996,
@@ -7744,7 +7354,7 @@
       "partial_exit_taken": false,
       "partial_exit_price": 0.0,
       "partial_exit_date": null,
-      "days_active": 24,
+      "days_active": 25,
       "max_high_reached": 845.0,
       "target_1": 844.9440283203126,
       "target_2": 932.35203125,
@@ -7766,7 +7376,7 @@
       "partial_exit_taken": false,
       "partial_exit_price": 0.0,
       "partial_exit_date": null,
-      "days_active": 9,
+      "days_active": 10,
       "max_high_reached": 541.7000122070312,
       "target_1": 578.9000244140624,
       "target_2": 637.3250427246091,
@@ -7782,14 +7392,14 @@
       "entry_date": "2026-08-13",
       "entry_price": 68.0,
       "initial_stop": 62.56,
-      "current_stop": 62.56,
+      "current_stop": 68.0,
       "initial_shares": 1838,
       "shares_remaining": 1838,
       "partial_exit_taken": false,
       "partial_exit_price": 0.0,
       "partial_exit_date": null,
-      "days_active": 8,
-      "max_high_reached": 74.44999694824219,
+      "days_active": 9,
+      "max_high_reached": 78.5,
       "target_1": 76.67599822998046,
       "target_2": 84.60799804687498,
       "vdu_ratio": 0.281,
@@ -7810,7 +7420,7 @@
       "partial_exit_taken": false,
       "partial_exit_price": 0.0,
       "partial_exit_date": null,
-      "days_active": 7,
+      "days_active": 8,
       "max_high_reached": 769.0,
       "target_1": 794.6999511718751,
       "target_2": 857.0999145507812,
@@ -7832,8 +7442,8 @@
       "partial_exit_taken": true,
       "partial_exit_price": 1385.0,
       "partial_exit_date": "2026-08-18",
-      "days_active": 1,
-      "max_high_reached": 1527.300048828125,
+      "days_active": 2,
+      "max_high_reached": 1536.4000244140625,
       "target_1": 1290.3450256347658,
       "target_2": 1351.7900268554688,
       "vdu_ratio": 0.221,
@@ -7854,7 +7464,7 @@
       "partial_exit_taken": false,
       "partial_exit_price": 0.0,
       "partial_exit_date": null,
-      "days_active": 1,
+      "days_active": 2,
       "max_high_reached": 48940.0,
       "target_1": 46249.698557836724,
       "target_2": 49658.22247621425,
@@ -8611,6 +8221,7 @@
     "2026-08-13": 1129427.659540468,
     "2026-08-14": 1136445.80908423,
     "2026-08-17": 1141883.293726259,
-    "2026-08-18": 1170204.4790289933
+    "2026-08-18": 1170204.4790289933,
+    "2026-08-20": 1180218.2931922013
   }
 }

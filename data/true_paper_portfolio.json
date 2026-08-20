@@ -5,7 +5,7 @@
     "last_updated": "2026-08-09",
     "version": "1.0"
   },
-  "cash": 42478.34,
+  "cash": 50763.86,
   "open_trades": [
     {
       "id": "POLYCAB_2026-08-10",
@@ -33,10 +33,10 @@
         "SL Band"
       ],
       "phase": "PRE-T1",
-      "cmp": 9139.0,
-      "unrealized_pnl": -158.0,
-      "unrealized_r": -0.28,
-      "days_active": 1,
+      "cmp": 9125.0,
+      "unrealized_pnl": -186.0,
+      "unrealized_r": -0.33,
+      "days_active": 2,
       "t1_hit": false,
       "t2_hit": false,
       "sl_hit": false,
@@ -69,15 +69,15 @@
         "SL Band"
       ],
       "phase": "PRE-T1",
-      "cmp": 497.8999938964844,
-      "unrealized_pnl": 703.8,
-      "unrealized_r": 0.82,
-      "days_active": 1,
+      "cmp": 494.0499877929688,
+      "unrealized_pnl": 507.45,
+      "unrealized_r": 0.59,
+      "days_active": 2,
       "t1_hit": false,
       "t2_hit": false,
       "sl_hit": false,
       "partial_exits": [],
-      "max_high_reached": 504.9500122070313
+      "max_high_reached": 506.0
     },
     {
       "id": "BALRAMCHIN_2026-08-17",
@@ -86,11 +86,11 @@
       "entry_price": 624.85,
       "trigger_price": 624.85,
       "stop_loss": 606.1,
-      "trailing_sl": 624.85,
+      "trailing_sl": 741.9,
       "t1": 662.34,
       "t2": 690.46,
       "initial_qty": 40,
-      "open_qty": 24,
+      "open_qty": 12,
       "invested": 24994.0,
       "risk_per_share": 18.75,
       "risk_amount": 750.0,
@@ -105,12 +105,12 @@
         "SL Band"
       ],
       "phase": "PRE-T1",
-      "cmp": 653.25,
-      "unrealized_pnl": 1281.44,
-      "unrealized_r": 1.71,
-      "days_active": 1,
+      "cmp": 767.0999755859375,
+      "unrealized_pnl": 3094.16,
+      "unrealized_r": 4.13,
+      "days_active": 2,
       "t1_hit": true,
-      "t2_hit": false,
+      "t2_hit": true,
       "sl_hit": false,
       "partial_exits": [
         {
@@ -119,9 +119,16 @@
           "price": 662.34,
           "pnl": 599.8400000000001,
           "target": "T1"
+        },
+        {
+          "date": "2026-08-20",
+          "qty": 12,
+          "price": 690.46,
+          "pnl": 787.3200000000002,
+          "target": "T2"
         }
       ],
-      "max_high_reached": 669.4000244140625
+      "max_high_reached": 780.9500122070312
     }
   ],
   "closed_trades": [],
@@ -173,6 +180,12 @@
       "open_value": 59348.9,
       "equity": 101827.24,
       "open_positions": 3
+    },
+    "2026-08-20": {
+      "cash": 50763.86,
+      "open_value": 52651.75,
+      "equity": 103415.61,
+      "open_positions": 3
     }
   },
   "process_log": [
@@ -204,6 +217,10 @@
     "[2026-08-18] EOD Ingestion completed. MBI: 44.0 (Allowed Grades: C)",
     "[2026-08-18] Loading watchlist from previous session: 2026-08-14",
     "[2026-08-18] PARTIAL EXIT: BALRAMCHIN hit T1 (\u20b9662.34). Sold 16 shares. SL trailed to entry \u20b9624.85.",
-    "[2026-08-18] Daily Snapshot: Cash = \u20b942478.34 | Positions Value = \u20b959348.90 | Total Equity = \u20b9101827.24"
+    "[2026-08-18] Daily Snapshot: Cash = \u20b942478.34 | Positions Value = \u20b959348.90 | Total Equity = \u20b9101827.24",
+    "[2026-08-20] EOD Ingestion completed. MBI: 46.3 (Allowed Grades: B, C)",
+    "[2026-08-20] Loading watchlist from previous session: 2026-08-19",
+    "[2026-08-20] PARTIAL EXIT: BALRAMCHIN hit T2 (\u20b9690.46). Sold 12 shares. Active runner trailing SL started.",
+    "[2026-08-20] Daily Snapshot: Cash = \u20b950763.86 | Positions Value = \u20b952651.75 | Total Equity = \u20b9103415.61"
   ]
 }

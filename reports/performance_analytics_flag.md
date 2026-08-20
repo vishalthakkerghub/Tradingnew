@@ -1,39 +1,40 @@
 # Performance Analytics Report
 
-- **Generated At:** 2026-08-18 20:04:04
-- **Current Balance (Cash):** Rs.181,325.23
-- **Current Account Equity:** Rs.1,054,375.98
+- **Generated At:** 2026-08-20 23:43:33
+- **Current Balance (Cash):** Rs.303,350.87
+- **Current Account Equity:** Rs.1,052,162.15
 
 ## Core Performance Metrics
 
 | Metric | Value |
 | :--- | :--- |
-| **Total Closed Trades** | 82 |
+| **Total Closed Trades** | 84 |
 | **Winning Trades** | 33 |
-| **Losing Trades** | 49 |
-| **Win Rate (%)** | 40.24% |
-| **Profit Factor** | 0.82 |
-| **Total R-Multiple** | -8.26R |
+| **Losing Trades** | 51 |
+| **Win Rate (%)** | 39.29% |
+| **Profit Factor** | 0.81 |
+| **Total R-Multiple** | -8.59R |
 | **Average Win** | Rs.5,408.87 |
-| **Average Loss** | Rs.-4,441.25 |
+| **Average Loss** | Rs.-4,333.00 |
 | **Max Drawdown** | 5.61% |
 
 ## Active Holdings
 
 | Symbol | Entry Date | Entry Price | Current Stop | Initial Shares | Shares Remaining | P&L Net | R-Multiple |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **RRKABEL** | 2026-07-22 | Rs.2399.90 | Rs.2399.90 | 52 | 52 | Rs.+20020.00 | +2.01R |
-| **CYIENTDLM** | 2026-07-22 | Rs.623.00 | Rs.623.00 | 200 | 100 | Rs.+11310.00 | +1.13R |
-| **VARROC** | 2026-07-31 | Rs.669.50 | Rs.669.50 | 186 | 93 | Rs.+31420.06 | +3.15R |
-| **PRICOLLTD** | 2026-08-03 | Rs.715.00 | Rs.715.00 | 174 | 87 | Rs.+12786.82 | +1.28R |
-| **SENORES** | 2026-08-10 | Rs.1347.70 | Rs.1347.70 | 106 | 106 | Rs.+20118.81 | +2.02R |
-| **KAJARIACER** | 2026-08-12 | Rs.1232.90 | Rs.1155.30 | 128 | 128 | Rs.-908.80 | -0.09R |
-| **VISAKAIND** | 2026-08-17 | Rs.96.60 | Rs.96.60 | 1293 | 1293 | Rs.-1422.30 | -0.14R |
-| **CHENNPETRO** | 2026-08-18 | Rs.1400.00 | Rs.1400.00 | 89 | 45 | Rs.+180.00 | +0.02R |
+| **RRKABEL** | 2026-07-22 | Rs.2399.90 | Rs.2399.90 | 52 | 52 | Rs.+25703.60 | +2.57R |
+| **CYIENTDLM** | 2026-07-22 | Rs.623.00 | Rs.623.00 | 200 | 100 | Rs.+10725.00 | +1.08R |
+| **VARROC** | 2026-07-31 | Rs.669.50 | Rs.669.50 | 186 | 93 | Rs.+29592.60 | +2.97R |
+| **PRICOLLTD** | 2026-08-03 | Rs.715.00 | Rs.715.00 | 174 | 87 | Rs.+13100.03 | +1.32R |
+| **SENORES** | 2026-08-10 | Rs.1347.70 | Rs.1347.70 | 106 | 106 | Rs.+17553.61 | +1.76R |
+| **KAJARIACER** | 2026-08-12 | Rs.1232.90 | Rs.1155.30 | 128 | 128 | Rs.-1561.61 | -0.16R |
+| **IRISDOREME** | 2026-08-20 | Rs.59.71 | Rs.59.71 | 2093 | 1047 | Rs.-460.68 | -0.05R |
 ## Historical Trade Journal
 
 | Symbol | Entry Date | Exit Date | Entry Price | Exit Price | Initial Shares | P&L Net | R-Multiple | Exit Reason |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **CHENNPETRO** | 2026-08-18 | 2026-08-20 | Rs.1400.00 | Rs.1400.00 | 89 | Rs.+0.00 | +0.00R | Stop loss hit |
+| **VISAKAIND** | 2026-08-17 | 2026-08-20 | Rs.96.60 | Rs.94.00 | 1293 | Rs.-3,361.80 | -0.34R | Stop loss hit |
 | **MMFL** | 2026-08-17 | 2026-08-17 | Rs.590.00 | Rs.590.00 | 211 | Rs.+0.00 | +0.00R | Stop loss hit |
 | **APOLLOTYRE** | 2026-08-07 | 2026-08-17 | Rs.444.50 | Rs.436.70 | 383 | Rs.-2,987.40 | -0.30R | Closed below EMA20 trailing stop |
 | **PRESTIGE** | 2026-08-11 | 2026-08-14 | Rs.1607.90 | Rs.1592.50 | 87 | Rs.-1,339.80 | -0.13R | Closed below EMA20 trailing stop |
