@@ -2524,6 +2524,32 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"status": "error", "message": f"Failed to update GANDHAR: {str(e)}"}).encode("utf-8"))
             return
 
+        # REST API: Debug Watchlist
+        if path == "/api/debug_watchlist":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            try:
+                import pandas as pd
+                vcp_file = "reports/daily/vcp_candidates.csv"
+                out = []
+                if os.path.exists(vcp_file):
+                    df = pd.read_csv(vcp_file)
+                    stock_to_industry, _ = get_stock_industry_details()
+                    for _, r in df.iterrows():
+                        sym = r["Symbol"]
+                        stock_info = stock_to_industry.get(sym, {})
+                        ind_name = stock_info.get("industry", "Others")
+                        out.append({
+                            "Symbol": sym,
+                            "CSV_Engine": r.get("Engine_Type"),
+                            "Mapped_Industry": ind_name
+                        })
+                self.wfile.write(json.dumps(out).encode("utf-8"))
+            except Exception as e_dbg:
+                self.wfile.write(json.dumps({"error": str(e_dbg)}).encode("utf-8"))
+            return
+
         # REST API: Send Test Email
         if path == "/api/test_email":
             self.send_response(200)
