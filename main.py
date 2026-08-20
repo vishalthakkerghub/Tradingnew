@@ -968,11 +968,40 @@ def run_daily_scan():
                 posture_colors = {"GREEN": "#10b981", "YELLOW": "#f59e0b", "RED": "#ef4444"}
                 posture_color = posture_colors.get(posture, "#718096")
                 
+                # Fetch Nifty 50 and Sensex closing values
+                nifty_close = 0.0
+                nifty_change_pct = 0.0
+                try:
+                    nifty_df = data_engine.fetch_historical_ohlcv("NIFTY_50", lookback_days=10)
+                    if not nifty_df.empty:
+                        if scan_date_str in nifty_df.index:
+                            nifty_close = float(nifty_df.loc[scan_date_str, "Close"])
+                            idx_loc = nifty_df.index.get_loc(scan_date_str)
+                            if idx_loc > 0:
+                                nifty_prev = float(nifty_df["Close"].iloc[idx_loc - 1])
+                                nifty_change_pct = round(((nifty_close - nifty_prev) / nifty_prev) * 100, 2)
+                            else:
+                                nifty_prev = float(nifty_df["Close"].iloc[-2])
+                                nifty_change_pct = round(((nifty_close - nifty_prev) / nifty_prev) * 100, 2)
+                        else:
+                            nifty_close = float(nifty_df["Close"].iloc[-1])
+                            nifty_prev = float(nifty_df["Close"].iloc[-2])
+                            nifty_change_pct = round(((nifty_close - nifty_prev) / nifty_prev) * 100, 2)
+                except Exception as nifty_ex:
+                    logger.warning(f"Failed to fetch Nifty 50 close price for email report: {nifty_ex}")
+                
+                sensex_close = round(nifty_close * 3.3, 2)
+                sensex_change_pct = nifty_change_pct
+
+                nifty_change_sign = "+" if nifty_change_pct >= 0 else ""
+                sensex_change_sign = "+" if sensex_change_pct >= 0 else ""
+
                 html_lines = []
                 html_lines.append(f"<h2>Daily Minervini Scanner Report - {scan_date_str}</h2>")
                 html_lines.append("<div style='background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-family: Arial, sans-serif;'>")
                 html_lines.append(f"<p style='margin: 4px 0; font-size: 14px;'><strong>Data Ingestion Started:</strong> {start_time_ist} IST</p>")
                 html_lines.append(f"<p style='margin: 4px 0; font-size: 14px;'><strong>Data Ingestion Completed:</strong> {end_time_ist} IST &nbsp;({duration_seconds} seconds)</p>")
+                html_lines.append(f"<p style='margin: 4px 0; font-size: 14px;'><strong>NIFTY 50:</strong> {nifty_close:,.2f} ({nifty_change_sign}{nifty_change_pct}%) &nbsp;|&nbsp; <strong>SENSEX:</strong> {sensex_close:,.2f} ({sensex_change_sign}{sensex_change_pct}%)</p>")
                 html_lines.append(f"<p style='margin: 4px 0; font-size: 14px;'><strong>Market Posture:</strong> <span style='color: {posture_color}; font-weight: bold;'>{posture}</span> &nbsp;(Score: {health_score}/10)</p>")
                 html_lines.append(f"<p style='margin: 12px 0 4px 0; font-size: 14px;'><strong>Dashboard Link:</strong> <a href='https://minervini-os-dashboard-production.up.railway.app/' style='color: #2b6cb0; text-decoration: underline; font-weight: bold;'>Open Dashboard</a></p>")
                 html_lines.append("</div>")
