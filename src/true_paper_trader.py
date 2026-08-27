@@ -106,7 +106,7 @@ class TruePaperTrader:
         for t in self.state["closed_trades"]:
             if t["exit_date"] == date_str:
                 # Restore to open trades
-                init_risk = t["initial_qty"] * (t["entry_price"] - t["stop_loss"])
+                init_risk = t["initial_qty"] * (t["entry_price"] - t.get("stop_loss", 0.0))
                 open_trade = {
                     "id": f"{t['symbol']}_{t['entry_date']}",
                     "symbol": t["symbol"],
@@ -487,7 +487,13 @@ class TruePaperTrader:
                     "r_multiple": round(r_mult, 2),
                     "status": "CLOSED",
                     "exit_reason": exit_reason,
-                    "partial_exits": t["partial_exits"]
+                    "partial_exits": t["partial_exits"],
+                    "stop_loss": t.get("stop_loss", 0.0),
+                    "trigger_price": t.get("trigger_price", t["entry_price"]),
+                    "t1": t.get("t1", 0.0),
+                    "t2": t.get("t2", 0.0),
+                    "sector": t.get("sector", "Neutral"),
+                    "sector_zone": t.get("sector_zone", "Neutral")
                 }
                 self.state["closed_trades"].append(closed_trade)
                 exited_symbols.append(sym)

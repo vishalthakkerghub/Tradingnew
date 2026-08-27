@@ -1,22 +1,22 @@
 # Performance Analytics Report
 
-- **Generated At:** 2026-08-27 18:23:48
-- **Current Balance (Cash):** Rs.140,279.86
-- **Current Account Equity:** Rs.1,147,717.07
+- **Generated At:** 2026-08-28 00:28:50
+- **Current Balance (Cash):** Rs.140,997.86
+- **Current Account Equity:** Rs.1,151,807.67
 
 ## Core Performance Metrics
 
 | Metric | Value |
 | :--- | :--- |
-| **Total Closed Trades** | 57 |
+| **Total Closed Trades** | 58 |
 | **Winning Trades** | 23 |
-| **Losing Trades** | 34 |
-| **Win Rate (%)** | 40.35% |
+| **Losing Trades** | 35 |
+| **Win Rate (%)** | 39.66% |
 | **Profit Factor** | 1.41 |
 | **Total R-Multiple** | +7.97R |
 | **Average Win** | Rs.8,767.07 |
-| **Average Loss** | Rs.-4,202.18 |
-| **Max Drawdown** | 2.75% |
+| **Average Loss** | Rs.-4,082.11 |
+| **Max Drawdown** | 2.41% |
 
 ## Active Holdings
 
@@ -30,11 +30,12 @@
 | **BOSCHLTD** | 2026-08-18 | Rs.47010.00 | Rs.47010.00 | 2 | 2 | Rs.+3540.00 | +0.47R |
 | **INOXINDIA** | 2026-08-27 | Rs.2034.00 | Rs.1871.28 | 61 | 61 | Rs.+8777.89 | +0.88R |
 | **JSWSTEEL** | 2026-08-27 | Rs.1351.00 | Rs.1242.92 | 92 | 92 | Rs.-1242.00 | -0.12R |
-| **PITTIENG** | 2026-08-27 | Rs.1125.00 | Rs.1125.00 | 111 | 56 | Rs.+260.40 | +0.03R |
+| **ENTERO** | 2026-08-27 | Rs.1639.00 | Rs.1639.00 | 76 | 38 | Rs.+4351.00 | +0.44R |
 ## Historical Trade Journal
 
 | Symbol | Entry Date | Exit Date | Entry Price | Exit Price | Initial Shares | P&L Net | R-Multiple | Exit Reason |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **PITTIENG** | 2026-08-27 | 2026-08-27 | Rs.1125.00 | Rs.1125.00 | 111 | Rs.+0.00 | +0.00R | Stop loss hit |
 | **MINDACORP** | 2026-08-13 | 2026-08-27 | Rs.744.35 | Rs.690.65 | 167 | Rs.-8,967.89 | -0.90R | Closed below EMA20 trailing stop |
 | **UFBL** | 2026-08-04 | 2026-08-27 | Rs.728.40 | Rs.728.40 | 171 | Rs.+0.00 | +0.00R | Stop loss hit |
 | **FEDERALBNK** | 2026-07-17 | 2026-08-27 | Rs.333.45 | Rs.344.80 | 749 | Rs.+17,935.31 | +2.29R | Closed below EMA20 trailing stop |

@@ -1,8 +1,8 @@
 # Performance Analytics Report
 
-- **Generated At:** 2026-08-27 18:23:48
-- **Current Balance (Cash):** Rs.268,278.94
-- **Current Account Equity:** Rs.1,047,855.49
+- **Generated At:** 2026-08-28 00:28:51
+- **Current Balance (Cash):** Rs.80,890.85
+- **Current Account Equity:** Rs.1,051,027.16
 
 ## Core Performance Metrics
 
@@ -29,6 +29,8 @@
 | **SENORES** | 2026-08-10 | Rs.1347.70 | Rs.1347.70 | 106 | 106 | Rs.+13451.40 | +1.35R |
 | **INOXINDIA** | 2026-08-27 | Rs.2034.00 | Rs.1871.28 | 61 | 61 | Rs.+8777.89 | +0.88R |
 | **MANAPPURAM** | 2026-08-27 | Rs.365.40 | Rs.336.17 | 342 | 342 | Rs.-5950.80 | -0.60R |
+| **ATALREAL** | 2026-08-27 | Rs.34.60 | Rs.34.60 | 3612 | 3612 | Rs.+1914.37 | +0.19R |
+| **LAURUSLABS** | 2026-08-27 | Rs.1891.30 | Rs.1891.30 | 66 | 33 | Rs.+1257.30 | +0.13R |
 ## Historical Trade Journal
 
 | Symbol | Entry Date | Exit Date | Entry Price | Exit Price | Initial Shares | P&L Net | R-Multiple | Exit Reason |
