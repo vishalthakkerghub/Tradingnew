@@ -2529,6 +2529,49 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"status": "error", "message": f"Failed to update GANDHAR: {str(e)}"}).encode("utf-8"))
             return
 
+        # REST API: Dump Candidates
+        if path == "/api/dump_candidates":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            try:
+                import os, csv
+                out = {}
+                vcp_dir = "reports/daily"
+                if not os.path.exists(vcp_dir):
+                    vcp_dir = os.path.join("minervini_os", vcp_dir)
+                
+                vcp_26 = os.path.join(vcp_dir, "vcp_candidates_20260826.csv")
+                if os.path.exists(vcp_26):
+                    with open(vcp_26, "r", encoding="utf-8") as f:
+                        rdr = csv.DictReader(f)
+                        out["vcp_20260826"] = [row for row in rdr if row.get("Symbol") == "KALYANKJIL"]
+                
+                flag_26 = os.path.join(vcp_dir, "flag_candidates_20260826.csv")
+                if os.path.exists(flag_26):
+                    with open(flag_26, "r", encoding="utf-8") as f:
+                        rdr = csv.DictReader(f)
+                        out["flag_20260826"] = [row for row in rdr if row.get("Symbol") == "KALYANKJIL"]
+                        
+                vcp_active = "reports/daily/vcp_candidates.csv"
+                if not os.path.exists(vcp_active):
+                    vcp_active = os.path.join("minervini_os", vcp_active)
+                if os.path.exists(vcp_active):
+                    with open(vcp_active, "r", encoding="utf-8") as f:
+                        rdr = csv.DictReader(f)
+                        out["vcp_active"] = [row for row in rdr if row.get("Symbol") == "KALYANKJIL"]
+                        
+                flag_active = "reports/daily/flag_candidates.csv"
+                if not os.path.exists(flag_active):
+                    flag_active = os.path.join("minervini_os", flag_active)
+                if os.path.exists(flag_active):
+                    with open(flag_active, "r", encoding="utf-8") as f:
+                        rdr = csv.DictReader(f)
+                        out["flag_active"] = [row for row in rdr if row.get("Symbol") == "KALYANKJIL"]
+                self.wfile.write(json.dumps(out).encode("utf-8"))
+            except Exception as e:
+                self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+            return
 
         # REST API: Send Test Email
         if path == "/api/test_email":
