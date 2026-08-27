@@ -2536,13 +2536,28 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             try:
                 import os, json
-                p_path = "data/true_paper_portfolio.json"
-                if not os.path.exists(p_path):
-                    p_path = os.path.join("minervini_os", p_path)
-                out = {"exists": os.path.exists(p_path)}
-                if os.path.exists(p_path):
-                    out["size"] = os.path.getsize(p_path)
-                    with open(p_path, "r", encoding="utf-8") as f:
+                out = {}
+                
+                # Search for true_paper_portfolio.json files
+                found_files = []
+                for root, dirs, files in os.walk("."):
+                    for file in files:
+                        if file == "true_paper_portfolio.json":
+                            full_p = os.path.join(root, file)
+                            found_files.append({
+                                "path": full_p,
+                                "size": os.path.getsize(full_p),
+                                "mtime": os.path.getmtime(full_p)
+                            })
+                out["found_portfolio_files"] = found_files
+                
+                # Read from the most recently modified portfolio file
+                if found_files:
+                    # Sort by mtime descending
+                    found_files.sort(key=lambda x: x["mtime"], reverse=True)
+                    target = found_files[0]["path"]
+                    out["selected_target"] = target
+                    with open(target, "r", encoding="utf-8") as f:
                         raw = f.read()
                         out["raw_len"] = len(raw)
                         out["raw_start"] = raw[:500]
@@ -2550,6 +2565,8 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                             out["parsed"] = json.loads(raw)
                         except Exception as parse_ex:
                             out["parse_error"] = str(parse_ex)
+                else:
+                    out["error_msg"] = "No portfolio files found on filesystem"
                 
                 # Also include last scan log or status if it exists
                 status_path = "data/last_scan_status.json"
@@ -2803,20 +2820,22 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             pf_file = "data/true_paper_portfolio.json"
-            data = {}
             if not os.path.exists(pf_file):
+                pf_file = os.path.join("minervini_os", pf_file)
+            data = {}
+            if os.path.exists(pf_file):
+                try:
+                    with open(pf_file, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                except Exception as e:
+                    print("Error reading true paper portfolio:", e)
+            else:
                 try:
                     from src.true_paper_trader import TruePaperTrader
                     trader = TruePaperTrader()
                     data = trader.state
                 except Exception as e:
                     print("Error initializing true paper trader:", e)
-            else:
-                try:
-                    with open(pf_file, "r", encoding="utf-8") as f:
-                        data = json.load(f)
-                except Exception as e:
-                    print("Error reading true paper portfolio:", e)
             self.wfile.write(json.dumps(data).encode("utf-8"))
             return
 
