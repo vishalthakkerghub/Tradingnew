@@ -1,40 +1,43 @@
 # Performance Analytics Report
 
-- **Generated At:** 2026-08-20 23:43:32
-- **Current Balance (Cash):** Rs.82,450.91
-- **Current Account Equity:** Rs.1,180,218.29
+- **Generated At:** 2026-08-27 18:23:48
+- **Current Balance (Cash):** Rs.140,279.86
+- **Current Account Equity:** Rs.1,147,717.07
 
 ## Core Performance Metrics
 
 | Metric | Value |
 | :--- | :--- |
-| **Total Closed Trades** | 54 |
-| **Winning Trades** | 22 |
-| **Losing Trades** | 32 |
-| **Win Rate (%)** | 40.74% |
-| **Profit Factor** | 1.37 |
-| **Total R-Multiple** | +6.58R |
-| **Average Win** | Rs.8,350.33 |
-| **Average Loss** | Rs.-4,184.57 |
-| **Max Drawdown** | 2.12% |
+| **Total Closed Trades** | 57 |
+| **Winning Trades** | 23 |
+| **Losing Trades** | 34 |
+| **Win Rate (%)** | 40.35% |
+| **Profit Factor** | 1.41 |
+| **Total R-Multiple** | +7.97R |
+| **Average Win** | Rs.8,767.07 |
+| **Average Loss** | Rs.-4,202.18 |
+| **Max Drawdown** | 2.75% |
 
 ## Active Holdings
 
 | Symbol | Entry Date | Entry Price | Current Stop | Initial Shares | Shares Remaining | P&L Net | R-Multiple |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **FEDERALBNK** | 2026-07-17 | Rs.333.45 | Rs.333.45 | 749 | 375 | Rs.+21872.81 | +2.79R |
-| **KDDL** | 2026-08-03 | Rs.3324.70 | Rs.3324.70 | 37 | 37 | Rs.+22866.00 | +2.32R |
-| **HAPPYFORGE** | 2026-08-04 | Rs.1676.60 | Rs.1676.60 | 103 | 52 | Rs.+43236.60 | +4.33R |
-| **UFBL** | 2026-08-04 | Rs.728.40 | Rs.728.40 | 171 | 171 | Rs.+13526.10 | +1.36R |
-| **AARTIIND** | 2026-08-12 | Rs.510.00 | Rs.469.20 | 245 | 245 | Rs.+2462.25 | +0.25R |
-| **MANALIPETC** | 2026-08-13 | Rs.68.00 | Rs.68.00 | 1838 | 1838 | Rs.+17883.75 | +1.79R |
-| **MINDACORP** | 2026-08-13 | Rs.744.35 | Rs.684.80 | 167 | 167 | Rs.-175.35 | -0.02R |
-| **PARAS** | 2026-08-18 | Rs.1385.00 | Rs.1385.00 | 90 | 45 | Rs.+5265.00 | +0.53R |
-| **BOSCHLTD** | 2026-08-18 | Rs.47010.00 | Rs.47010.00 | 2 | 2 | Rs.+3480.00 | +0.46R |
+| **KDDL** | 2026-08-03 | Rs.3324.70 | Rs.3324.70 | 37 | 37 | Rs.+23032.50 | +2.34R |
+| **HAPPYFORGE** | 2026-08-04 | Rs.1676.60 | Rs.1676.60 | 103 | 52 | Rs.+39211.81 | +3.93R |
+| **AARTIIND** | 2026-08-12 | Rs.510.00 | Rs.469.20 | 245 | 245 | Rs.+7080.51 | +0.71R |
+| **MANALIPETC** | 2026-08-13 | Rs.68.00 | Rs.68.00 | 1838 | 1838 | Rs.+5146.41 | +0.51R |
+| **PARAS** | 2026-08-18 | Rs.1385.00 | Rs.1385.00 | 90 | 45 | Rs.+3141.00 | +0.31R |
+| **BOSCHLTD** | 2026-08-18 | Rs.47010.00 | Rs.47010.00 | 2 | 2 | Rs.+3540.00 | +0.47R |
+| **INOXINDIA** | 2026-08-27 | Rs.2034.00 | Rs.1871.28 | 61 | 61 | Rs.+8777.89 | +0.88R |
+| **JSWSTEEL** | 2026-08-27 | Rs.1351.00 | Rs.1242.92 | 92 | 92 | Rs.-1242.00 | -0.12R |
+| **PITTIENG** | 2026-08-27 | Rs.1125.00 | Rs.1125.00 | 111 | 56 | Rs.+260.40 | +0.03R |
 ## Historical Trade Journal
 
 | Symbol | Entry Date | Exit Date | Entry Price | Exit Price | Initial Shares | P&L Net | R-Multiple | Exit Reason |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **MINDACORP** | 2026-08-13 | 2026-08-27 | Rs.744.35 | Rs.690.65 | 167 | Rs.-8,967.89 | -0.90R | Closed below EMA20 trailing stop |
+| **UFBL** | 2026-08-04 | 2026-08-27 | Rs.728.40 | Rs.728.40 | 171 | Rs.+0.00 | +0.00R | Stop loss hit |
+| **FEDERALBNK** | 2026-07-17 | 2026-08-27 | Rs.333.45 | Rs.344.80 | 749 | Rs.+17,935.31 | +2.29R | Closed below EMA20 trailing stop |
 | **LLOYDSENGG** | 2026-08-07 | 2026-08-17 | Rs.91.00 | Rs.91.21 | 1865 | Rs.+391.65 | +0.04R | Sluggish breakout time stop (failed to reach Target 1 in 3 weeks) |
 | **CENTENKA** | 2026-07-28 | 2026-08-13 | Rs.581.00 | Rs.581.00 | 215 | Rs.+0.00 | +0.00R | Stop loss hit |
 | **GOLDIAM** | 2026-08-11 | 2026-08-12 | Rs.375.00 | Rs.375.00 | 333 | Rs.+0.00 | +0.00R | Stop loss hit |

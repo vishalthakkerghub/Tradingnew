@@ -256,17 +256,43 @@ def get_stock_industry_details(date_str=None):
 
 _watchlist_cache = {}
 
-def get_latest_watchlist_data(date_str=None):
+def resolve_candidates_files(date_str=None):
     vcp_file = "reports/daily/vcp_candidates.csv"
     flag_file = "reports/daily/flag_candidates.csv"
+    scan_date = None
+    
     if date_str:
         cleaned_date = date_str.replace("-", "")
-        dated_vcp = f"reports/daily/vcp_candidates_{cleaned_date}.csv"
-        dated_flag = f"reports/daily/flag_candidates_{cleaned_date}.csv"
-        if os.path.exists(dated_vcp):
-            vcp_file = dated_vcp
-            flag_file = dated_flag
+        # Find the latest available dated file that is <= cleaned_date
+        vcp_dir = "reports/daily"
+        if not os.path.exists(vcp_dir):
+            vcp_dir = os.path.join("minervini_os", vcp_dir)
+            
+        if os.path.exists(vcp_dir):
+            try:
+                files = sorted([f for f in os.listdir(vcp_dir) if f.startswith("vcp_candidates_") and f.endswith(".csv")])
+                # Filter files <= cleaned_date
+                files = [f for f in files if f.replace("vcp_candidates_", "").replace(".csv", "") <= cleaned_date]
+                if files:
+                    last_file = files[-1]
+                    target_date_str = last_file.replace("vcp_candidates_", "").replace(".csv", "")
+                    vcp_file = os.path.join(vcp_dir, last_file)
+                    flag_file = os.path.join(vcp_dir, f"flag_candidates_{target_date_str}.csv")
+                    scan_date = f"{target_date_str[:4]}-{target_date_str[4:6]}-{target_date_str[6:]}"
+            except Exception as ex_resolve:
+                print(f"[ERROR RESOLVING DATED FILES] {ex_resolve}")
+                
+    if not scan_date:
+        if os.path.exists(vcp_file):
+            mtime = os.path.getmtime(vcp_file)
+            scan_date = datetime.fromtimestamp(mtime).strftime("%Y-%m-%d")
+        else:
+            scan_date = datetime.now().strftime("%Y-%m-%d")
+            
+    return vcp_file, flag_file, scan_date
 
+def get_latest_watchlist_data(date_str=None):
+    vcp_file, flag_file, scan_date = resolve_candidates_files(date_str)
     vcp_mtime = os.path.getmtime(vcp_file) if os.path.exists(vcp_file) else 0.0
     flag_mtime = os.path.getmtime(flag_file) if os.path.exists(flag_file) else 0.0
     cache_key = (date_str, vcp_mtime, flag_mtime)
@@ -290,25 +316,7 @@ def _get_latest_watchlist_data_uncached(date_str=None):
     """
     Parses the daily candidate files and index health to return JSON data.
     """
-    vcp_file = "reports/daily/vcp_candidates.csv"
-    flag_file = "reports/daily/flag_candidates.csv"
-    scan_date = datetime.now().strftime("%Y-%m-%d")
-    
-    if date_str:
-        # Check if dated files exist
-        cleaned_date = date_str.replace("-", "")
-        dated_vcp = f"reports/daily/vcp_candidates_{cleaned_date}.csv"
-        dated_flag = f"reports/daily/flag_candidates_{cleaned_date}.csv"
-        if os.path.exists(dated_vcp):
-            vcp_file = dated_vcp
-            flag_file = dated_flag
-            scan_date = date_str
-    else:
-        # Get scan date from file modification time or current date
-        if os.path.exists(vcp_file):
-            mtime = os.path.getmtime(vcp_file)
-            scan_date = datetime.fromtimestamp(mtime).strftime("%Y-%m-%d")
-        
+    vcp_file, flag_file, scan_date = resolve_candidates_files(date_str)
     stock_to_industry, industry_details = get_stock_industry_details(date_str)
     
     # Calculate Nifty index stats from NIFTY_50 cache
@@ -2202,9 +2210,9 @@ You are protecting your ego instead of your capital. If the stock creates anothe
     res += f"To enable internet search, stock market briefs, and smart reasoning, add `gemini_api_key: \"YOUR_GEMINI_KEY\"` to your `config/config.yaml` file, or set the `GEMINI_API_KEY` environment variable."
     return res
 
-def get_stock_detail(symbol):
+def get_stock_detail(symbol, date_str=None):
     symbol = symbol.strip().upper()
-    stock_to_industry, industry_details = get_stock_industry_details()
+    stock_to_industry, industry_details = get_stock_industry_details(date_str)
     ind_info = stock_to_industry.get(symbol, {})
     industry = ind_info.get("industry", "Others")
     company_name = ind_info.get("name", symbol)
@@ -2212,9 +2220,7 @@ def get_stock_detail(symbol):
     # 1. Fetch industry category and rank
     category = "Neutral"
     industry_rank = "N/A"
-    report_path = "data/industry_participation_report.json"
-    if not os.path.exists(report_path):
-        report_path = os.path.join("minervini_os", report_path)
+    report_path = get_dated_industry_report_path(date_str)
     if os.path.exists(report_path):
         try:
             with open(report_path, "r", encoding="utf-8") as f:
@@ -2236,8 +2242,7 @@ def get_stock_detail(symbol):
     ams_data = ams_engine.calculate_ams(symbol)
     
     # 3. Read from reports/daily/vcp_candidates.csv or flag_candidates.csv
-    vcp_file = "reports/daily/vcp_candidates.csv"
-    flag_file = "reports/daily/flag_candidates.csv"
+    vcp_file, flag_file, _ = resolve_candidates_files(date_str)
     
     found_row = None
     setup_type = "PULLBACK"
@@ -2795,6 +2800,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
         # REST API: Get Stock Detail Data
         if path == "/api/stock_detail":
             symbol = query_params.get("symbol", [None])[0]
+            date_str = query_params.get("date", [None])[0]
             if not symbol:
                 self.send_response(400)
                 self.end_headers()
@@ -2804,7 +2810,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            data = get_stock_detail(symbol)
+            data = get_stock_detail(symbol, date_str)
             self.wfile.write(json.dumps(data).encode("utf-8"))
             return
             

@@ -1,18 +1,18 @@
 {
-  "AsOfDate": "2026-08-20",
-  "Index": 46.3,
-  "Change_1D": 5.5,
-  "Change_3D": 2.5,
-  "Change_5D": 0.4,
+  "AsOfDate": "2026-08-27",
+  "Index": 40.9,
+  "Change_1D": -5.4,
+  "Change_3D": -2.4,
+  "Change_5D": -5.4,
   "Status": "Caution",
   "StatusColor": "caution",
   "Indicators": {
-    "Above20EMA": 45.3,
-    "Above50SMA": 49.9,
-    "Above200SMA": 59.4,
-    "Stacked": 27.0,
-    "AdvancesDeclines": 57.9,
-    "Near52WH": 25.2,
-    "HighRS": 39.0
+    "Above20EMA": 43.7,
+    "Above50SMA": 48.4,
+    "Above200SMA": 59.7,
+    "Stacked": 26.9,
+    "AdvancesDeclines": 33.0,
+    "Near52WH": 24.5,
+    "HighRS": 38.8
   }
 }
