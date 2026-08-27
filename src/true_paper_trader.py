@@ -298,26 +298,50 @@ class TruePaperTrader:
         # Run rollback first to ensure idempotency (clean slate for date_str)
         self.rollback_day(date_str)
 
-        # ── 1. Load MBI ────────────────────────────────────────────────────────
-        mbi_file = "data/market_breadth.json"
-        mbi_idx = 50.0
-        if os.path.exists(mbi_file):
-            try:
-                mbi_data = json.load(open(mbi_file, "r", encoding="utf-8"))
-                mbi_idx = float(mbi_data.get("Index", 50.0))
-            except Exception as e:
-                logger.error(f"Failed to load MBI for paper trading: {e}")
-        
-        mbi_allowed = get_mbi_allowed_grades(mbi_idx)
-        self.add_log(date_str, f"EOD Ingestion completed. MBI: {mbi_idx:.1f} (Allowed Grades: {', '.join(mbi_allowed)})")
-
-        # ── 2. Load Watchlist and Sector Map ──────────────────────────────────
-        # Load previous trading date's watchlist to avoid lookahead bias
+        # ── 1. Calculate Previous Trading Date ─────────────────────────
         prev_date = self.get_previous_trading_date(date_str)
         if not prev_date:
             logger.warning(f"No previous trading date found for {date_str}. Using current date as fallback.")
             prev_date = date_str
-            
+
+        # ── 2. Load Prevailing MBI (from previous session) ─────────────
+        # During the session of date_str, the active MBI in force was the EOD MBI of prev_date.
+        # We load that prevailing MBI to evaluate today's entries correctly without lookahead bias.
+        mbi_idx = 50.0
+        cleaned_prev = prev_date.replace("-", "")
+        mbi_file = f"data/market_breadth_{cleaned_prev}.json"
+        
+        # Fallback: search backward for latest MBI file <= prev_date if exact file is missing
+        if not os.path.exists(mbi_file):
+            data_dir = "data"
+            if not os.path.exists(data_dir):
+                data_dir = os.path.join("minervini_os", data_dir)
+            if os.path.exists(data_dir):
+                try:
+                    mbi_files = sorted([f for f in os.listdir(data_dir) if f.startswith("market_breadth_") and f.endswith(".json")])
+                    mbi_files = [f for f in mbi_files if f.replace("market_breadth_", "").replace(".json", "") <= cleaned_prev]
+                    if mbi_files:
+                        mbi_file = os.path.join(data_dir, mbi_files[-1])
+                except Exception as ex_mbi_dir:
+                    logger.error(f"Failed listing MBI files: {ex_mbi_dir}")
+                    
+        if not os.path.exists(mbi_file):
+            mbi_file = "data/market_breadth.json"
+            if not os.path.exists(mbi_file):
+                mbi_file = os.path.join("minervini_os", mbi_file)
+                
+        if os.path.exists(mbi_file):
+            try:
+                mbi_data = json.load(open(mbi_file, "r", encoding="utf-8"))
+                mbi_idx = float(mbi_data.get("Index", 50.0))
+                logger.info(f"Loaded MBI for paper trading from {mbi_file}: {mbi_idx:.1f}")
+            except Exception as e:
+                logger.error(f"Failed to load MBI for paper trading: {e}")
+                
+        mbi_allowed = get_mbi_allowed_grades(mbi_idx)
+        self.add_log(date_str, f"EOD Ingestion completed. Prevailing MBI from {prev_date}: {mbi_idx:.1f} (Allowed Grades: {', '.join(mbi_allowed)})")
+
+        # ── 3. Load Watchlist and Sector Map ──────────────────────────────────
         self.add_log(date_str, f"Loading watchlist from previous session: {prev_date}")
         try:
             import server
