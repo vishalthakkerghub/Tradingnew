@@ -2572,12 +2572,16 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 if os.path.exists(cache_dir):
                     out["cache_files"] = [f for f in os.listdir(cache_dir) if "KRSNA" in f or "KALYAN" in f]
                 
-                # Check data/ directory for market breadth files
+                # Check data/ directory for market breadth files and scan status
                 data_dir = "data"
                 if not os.path.exists(data_dir):
                     data_dir = os.path.join("minervini_os", data_dir)
                 if os.path.exists(data_dir):
                     out["mbi_files"] = sorted([f for f in os.listdir(data_dir) if "market_breadth" in f])
+                    status_f = os.path.join(data_dir, "last_scan_status.json")
+                    if os.path.exists(status_f):
+                        with open(status_f, "r", encoding="utf-8") as fs:
+                            out["scan_status"] = json.load(fs)
             except Exception as e_dbg:
                 out = {"error": str(e_dbg)}
             self.wfile.write(json.dumps(out).encode("utf-8"))
