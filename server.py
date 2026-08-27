@@ -2541,6 +2541,10 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 # Check for query parameter
                 req_file = query_params.get("file", [""])[0]
                 out["listdir"] = os.listdir(".")
+                try:
+                    out["listdir_config"] = os.listdir("config")
+                except Exception as list_ex:
+                    out["listdir_config"] = [str(list_ex)]
                 if req_file:
                     out["requested_file"] = req_file
                     if os.path.exists(req_file):
