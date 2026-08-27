@@ -2529,63 +2529,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"status": "error", "message": f"Failed to update GANDHAR: {str(e)}"}).encode("utf-8"))
             return
 
-        # REST API: Debug Files
-        if path == "/api/debug_files":
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json")
-            self.end_headers()
-            try:
-                import os, csv
-                out = {}
-                vcp_dir = "reports/daily"
-                if not os.path.exists(vcp_dir):
-                    vcp_dir = os.path.join("minervini_os", vcp_dir)
-                if os.path.exists(vcp_dir):
-                    out["files"] = sorted(os.listdir(vcp_dir))
-                    # Check 20260826 candidates
-                    vcp_26 = os.path.join(vcp_dir, "vcp_candidates_20260826.csv")
-                    if os.path.exists(vcp_26):
-                        with open(vcp_26, "r", encoding="utf-8") as f:
-                            reader = csv.DictReader(f)
-                            out["vcp_20260826"] = [r for r in reader if "KALYAN" in r.get("Symbol", "") or "KRSNA" in r.get("Symbol", "") or "KRISHNA" in r.get("Symbol", "")]
-                    flag_26 = os.path.join(vcp_dir, "flag_candidates_20260826.csv")
-                    if os.path.exists(flag_26):
-                        with open(flag_26, "r", encoding="utf-8") as f:
-                            reader = csv.DictReader(f)
-                            out["flag_20260826"] = [r for r in reader if "KALYAN" in r.get("Symbol", "") or "KRSNA" in r.get("Symbol", "") or "KRISHNA" in r.get("Symbol", "")]
-                
-                # Check data/true_paper_portfolio.json
-                p_file = "data/true_paper_portfolio.json"
-                if not os.path.exists(p_file):
-                    p_file = os.path.join("minervini_os", p_file)
-                if os.path.exists(p_file):
-                    out["portfolio_size"] = os.path.getsize(p_file)
-                    with open(p_file, "r", encoding="utf-8") as f_p:
-                        out["portfolio_content"] = json.load(f_p)
-                else:
-                    out["portfolio_size"] = -1
-                
-                # Check data/cache
-                cache_dir = "data/cache"
-                if not os.path.exists(cache_dir):
-                    cache_dir = os.path.join("minervini_os", cache_dir)
-                if os.path.exists(cache_dir):
-                    out["cache_files"] = [f for f in os.listdir(cache_dir) if "KRSNA" in f or "KALYAN" in f]
-                
-                # Check data/ directory for market breadth files and scan status
-                data_dir = "data"
-                if not os.path.exists(data_dir):
-                    data_dir = os.path.join("minervini_os", data_dir)
-                if os.path.exists(data_dir):
-                    out["mbi_files"] = sorted([f for f in os.listdir(data_dir) if "market_breadth" in f])
-                    status_f = os.path.join(data_dir, "last_scan_status.json")
-                    if os.path.exists(status_f):
-                        with open(status_f, "r", encoding="utf-8") as fs:
-                            out["scan_status"] = json.load(fs)
-            except Exception as e_dbg:
-                out = {"error": str(e_dbg)}
-            self.wfile.write(json.dumps(out).encode("utf-8"))
-            return
 
         # REST API: Send Test Email
         if path == "/api/test_email":
