@@ -2838,10 +2838,31 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             try:
-                import os, json, traceback
+                import os, json, traceback, shutil
                 pf_file = "data/true_paper_portfolio.json"
                 if not os.path.exists(pf_file):
                     pf_file = os.path.join("minervini_os", pf_file)
+                    
+                default_pf = "config/true_paper_portfolio_default.json"
+                if not os.path.exists(default_pf):
+                    default_pf = os.path.join("minervini_os", default_pf)
+                
+                is_corrupted = False
+                if os.path.exists(pf_file):
+                    try:
+                        with open(pf_file, "r", encoding="utf-8") as f:
+                            json.load(f)
+                    except Exception:
+                        is_corrupted = True
+                
+                if not os.path.exists(pf_file) or is_corrupted:
+                    if os.path.exists(default_pf):
+                        try:
+                            os.makedirs(os.path.dirname(pf_file), exist_ok=True)
+                            shutil.copy(default_pf, pf_file)
+                        except Exception as copy_ex:
+                            print("Error copying default portfolio:", copy_ex)
+                
                 data = {}
                 if os.path.exists(pf_file):
                     try:

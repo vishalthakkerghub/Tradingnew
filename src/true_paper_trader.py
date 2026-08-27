@@ -60,6 +60,31 @@ class TruePaperTrader:
         self.load_state()
 
     def load_state(self):
+        import shutil
+        default_pf = "config/true_paper_portfolio_default.json"
+        if not os.path.exists(default_pf):
+            default_pf = os.path.join("minervini_os", default_pf)
+            
+        # Check if the file is missing or corrupted
+        is_corrupted = False
+        if os.path.exists(self.state_file):
+            try:
+                with open(self.state_file, "r", encoding="utf-8") as f:
+                    json.load(f)
+            except Exception:
+                is_corrupted = True
+                
+        if not os.path.exists(self.state_file) or is_corrupted:
+            if os.path.exists(default_pf):
+                try:
+                    os.makedirs(os.path.dirname(self.state_file), exist_ok=True)
+                    shutil.copy(default_pf, self.state_file)
+                    logger.info("Healed True Paper Portfolio file from default backup config.")
+                except Exception as copy_ex:
+                    logger.error(f"Failed to copy default portfolio config: {copy_ex}")
+            else:
+                logger.warning("Portfolio missing/corrupt, and default backup config is not found.")
+                
         if os.path.exists(self.state_file):
             try:
                 with open(self.state_file, "r", encoding="utf-8") as f:
