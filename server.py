@@ -2819,24 +2819,29 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            pf_file = "data/true_paper_portfolio.json"
-            if not os.path.exists(pf_file):
-                pf_file = os.path.join("minervini_os", pf_file)
-            data = {}
-            if os.path.exists(pf_file):
-                try:
-                    with open(pf_file, "r", encoding="utf-8") as f:
-                        data = json.load(f)
-                except Exception as e:
-                    print("Error reading true paper portfolio:", e)
-            else:
-                try:
-                    from src.true_paper_trader import TruePaperTrader
-                    trader = TruePaperTrader()
-                    data = trader.state
-                except Exception as e:
-                    print("Error initializing true paper trader:", e)
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            try:
+                import os, json, traceback
+                pf_file = "data/true_paper_portfolio.json"
+                if not os.path.exists(pf_file):
+                    pf_file = os.path.join("minervini_os", pf_file)
+                data = {}
+                if os.path.exists(pf_file):
+                    try:
+                        with open(pf_file, "r", encoding="utf-8") as f:
+                            data = json.load(f)
+                    except Exception as e:
+                        data = {"error": f"JSON Load Error: {str(e)}", "traceback": traceback.format_exc()}
+                else:
+                    try:
+                        from src.true_paper_trader import TruePaperTrader
+                        trader = TruePaperTrader()
+                        data = trader.state
+                    except Exception as e:
+                        data = {"error": f"Trader Init Error: {str(e)}", "traceback": traceback.format_exc()}
+                self.wfile.write(json.dumps(data).encode("utf-8"))
+            except Exception as outer_e:
+                import traceback
+                self.wfile.write(json.dumps({"outer_error": str(outer_e), "traceback": traceback.format_exc()}).encode("utf-8"))
             return
 
         # REST API: Get Closed Trades Data
