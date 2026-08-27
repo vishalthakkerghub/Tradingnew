@@ -2556,11 +2556,11 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                     else:
                         out["exists"] = False
                 else:
-                    # Search for true_paper_portfolio.json files
+                    # Search for portfolio files
                     found_files = []
                     for root, dirs, files in os.walk("."):
                         for file in files:
-                            if file == "true_paper_portfolio.json":
+                            if file in ["true_paper_portfolio.json", "true_paper_portfolio_default.json"]:
                                 full_p = os.path.join(root, file)
                                 found_files.append({
                                     "path": full_p,
@@ -2570,10 +2570,11 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                     out["found_portfolio_files"] = found_files
                     
                     # Read from the most recently modified portfolio file
-                    if found_files:
+                    actual_pfs = [f for f in found_files if "true_paper_portfolio.json" in f["path"]]
+                    if actual_pfs:
                         # Sort by mtime descending
-                        found_files.sort(key=lambda x: x["mtime"], reverse=True)
-                        target = found_files[0]["path"]
+                        actual_pfs.sort(key=lambda x: x["mtime"], reverse=True)
+                        target = actual_pfs[0]["path"]
                         out["selected_target"] = target
                         with open(target, "r", encoding="utf-8") as f:
                             raw = f.read()
