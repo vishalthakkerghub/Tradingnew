@@ -158,8 +158,8 @@ class TruePaperTrader:
                 else:
                     open_trade["trailing_sl"] = open_trade["stop_loss"]
 
-                # Subtract today's exit proceeds from cash
-                exit_proceeds = t["open_qty"] * t["exit_price"]
+                exited_qty = t.get("open_qty", t["initial_qty"] - sum(pe["qty"] for pe in t.get("partial_exits", [])))
+                exit_proceeds = exited_qty * t["exit_price"]
                 self.state["cash"] -= exit_proceeds
                 self.state["open_trades"].append(open_trade)
                 logger.info(f"Rollback: Restored closed trade {t['symbol']} back to open positions.")
@@ -466,8 +466,9 @@ class TruePaperTrader:
             # Finalize exited position
             if sl_hit:
                 # Realize remaining
-                pnl = t["open_qty"] * (exit_price - t["entry_price"])
-                self.state["cash"] += t["open_qty"] * exit_price
+                exited_qty = t["open_qty"]
+                pnl = exited_qty * (exit_price - t["entry_price"])
+                self.state["cash"] += exited_qty * exit_price
                 t["open_qty"] = 0
                 
                 # Calculate total net P&L across exits
@@ -483,6 +484,7 @@ class TruePaperTrader:
                     "entry_price": t["entry_price"],
                     "exit_price": exit_price,
                     "initial_qty": t["initial_qty"],
+                    "open_qty": exited_qty,
                     "pnl_net": round(total_realized_pnl, 2),
                     "r_multiple": round(r_mult, 2),
                     "status": "CLOSED",

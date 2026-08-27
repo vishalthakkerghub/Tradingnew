@@ -2529,8 +2529,51 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps({"status": "error", "message": f"Failed to update GANDHAR: {str(e)}"}).encode("utf-8"))
             return
 
-
-        # REST API: Send Test Email
+        # REST API: Inspect JSON
+        if path == "/api/inspect_json":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            try:
+                import os, json
+                p_path = "data/true_paper_portfolio.json"
+                if not os.path.exists(p_path):
+                    p_path = os.path.join("minervini_os", p_path)
+                out = {"exists": os.path.exists(p_path)}
+                if os.path.exists(p_path):
+                    out["size"] = os.path.getsize(p_path)
+                    with open(p_path, "r", encoding="utf-8") as f:
+                        raw = f.read()
+                        out["raw_len"] = len(raw)
+                        out["raw_start"] = raw[:500]
+                        try:
+                            out["parsed"] = json.loads(raw)
+                        except Exception as parse_ex:
+                            out["parse_error"] = str(parse_ex)
+                
+                # Also include last scan log or status if it exists
+                status_path = "data/last_scan_status.json"
+                if not os.path.exists(status_path):
+                    status_path = os.path.join("minervini_os", status_path)
+                if os.path.exists(status_path):
+                    with open(status_path, "r", encoding="utf-8") as f_st:
+                        out["scan_status"] = json.load(f_st)
+                
+                # Add last 100 lines of logs/system.log
+                log_path = "logs/system.log"
+                if not os.path.exists(log_path):
+                    log_path = os.path.join("minervini_os", log_path)
+                if os.path.exists(log_path):
+                    with open(log_path, "r", encoding="utf-8") as f_log:
+                        lines = f_log.readlines()
+                        out["system_log_tail"] = lines[-100:]
+                else:
+                    out["system_log_tail"] = ["system.log not found"]
+                
+                self.wfile.write(json.dumps(out).encode("utf-8"))
+            except Exception as e:
+                self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+            return
         if path == "/api/test_email":
             self.send_response(200)
             self.send_header("Content-Type", "application/json")

@@ -1,22 +1,22 @@
 # Performance Analytics Report
 
-- **Generated At:** 2026-08-28 00:28:50
-- **Current Balance (Cash):** Rs.140,997.86
-- **Current Account Equity:** Rs.1,151,807.67
+- **Generated At:** 2026-08-28 00:35:28
+- **Current Balance (Cash):** Rs.335,310.37
+- **Current Account Equity:** Rs.1,147,456.67
 
 ## Core Performance Metrics
 
 | Metric | Value |
 | :--- | :--- |
-| **Total Closed Trades** | 58 |
-| **Winning Trades** | 23 |
-| **Losing Trades** | 35 |
-| **Win Rate (%)** | 39.66% |
-| **Profit Factor** | 1.41 |
-| **Total R-Multiple** | +7.97R |
-| **Average Win** | Rs.8,767.07 |
-| **Average Loss** | Rs.-4,082.11 |
-| **Max Drawdown** | 2.41% |
+| **Total Closed Trades** | 61 |
+| **Winning Trades** | 24 |
+| **Losing Trades** | 37 |
+| **Win Rate (%)** | 39.34% |
+| **Profit Factor** | 1.46 |
+| **Total R-Multiple** | +8.68R |
+| **Average Win** | Rs.8,696.79 |
+| **Average Loss** | Rs.-3,861.46 |
+| **Max Drawdown** | 2.78% |
 
 ## Active Holdings
 
@@ -24,17 +24,18 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **KDDL** | 2026-08-03 | Rs.3324.70 | Rs.3324.70 | 37 | 37 | Rs.+23032.50 | +2.34R |
 | **HAPPYFORGE** | 2026-08-04 | Rs.1676.60 | Rs.1676.60 | 103 | 52 | Rs.+39211.81 | +3.93R |
-| **AARTIIND** | 2026-08-12 | Rs.510.00 | Rs.469.20 | 245 | 245 | Rs.+7080.51 | +0.71R |
 | **MANALIPETC** | 2026-08-13 | Rs.68.00 | Rs.68.00 | 1838 | 1838 | Rs.+5146.41 | +0.51R |
 | **PARAS** | 2026-08-18 | Rs.1385.00 | Rs.1385.00 | 90 | 45 | Rs.+3141.00 | +0.31R |
 | **BOSCHLTD** | 2026-08-18 | Rs.47010.00 | Rs.47010.00 | 2 | 2 | Rs.+3540.00 | +0.47R |
 | **INOXINDIA** | 2026-08-27 | Rs.2034.00 | Rs.1871.28 | 61 | 61 | Rs.+8777.89 | +0.88R |
 | **JSWSTEEL** | 2026-08-27 | Rs.1351.00 | Rs.1242.92 | 92 | 92 | Rs.-1242.00 | -0.12R |
-| **ENTERO** | 2026-08-27 | Rs.1639.00 | Rs.1639.00 | 76 | 38 | Rs.+4351.00 | +0.44R |
 ## Historical Trade Journal
 
 | Symbol | Entry Date | Exit Date | Entry Price | Exit Price | Initial Shares | P&L Net | R-Multiple | Exit Reason |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **ORIENTBELL** | 2026-08-27 | 2026-08-27 | Rs.379.10 | Rs.379.10 | 329 | Rs.+0.00 | +0.00R | Stop loss hit |
+| **AARTIIND** | 2026-08-12 | 2026-08-27 | Rs.510.00 | Rs.538.90 | 245 | Rs.+7,080.51 | +0.71R | Sluggish breakout time stop (failed to reach Target 1 in 3 weeks) |
+| **ENTERO** | 2026-08-27 | 2026-08-27 | Rs.1639.00 | Rs.1639.00 | 76 | Rs.+0.00 | +0.00R | Stop loss hit |
 | **PITTIENG** | 2026-08-27 | 2026-08-27 | Rs.1125.00 | Rs.1125.00 | 111 | Rs.+0.00 | +0.00R | Stop loss hit |
 | **MINDACORP** | 2026-08-13 | 2026-08-27 | Rs.744.35 | Rs.690.65 | 167 | Rs.-8,967.89 | -0.90R | Closed below EMA20 trailing stop |
 | **UFBL** | 2026-08-04 | 2026-08-27 | Rs.728.40 | Rs.728.40 | 171 | Rs.+0.00 | +0.00R | Stop loss hit |
