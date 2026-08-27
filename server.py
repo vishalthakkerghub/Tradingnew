@@ -2571,6 +2571,30 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.wfile.write(json.dumps(out).encode("utf-8"))
             except Exception as e:
                 self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+        # REST API: Inspect JSON
+        if path == "/api/inspect_json":
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            try:
+                import os, json
+                p_path = "data/true_paper_portfolio.json"
+                if not os.path.exists(p_path):
+                    p_path = os.path.join("minervini_os", p_path)
+                out = {"exists": os.path.exists(p_path)}
+                if os.path.exists(p_path):
+                    out["size"] = os.path.getsize(p_path)
+                    with open(p_path, "r", encoding="utf-8") as f:
+                        raw = f.read()
+                        out["raw_len"] = len(raw)
+                        out["raw_start"] = raw[:500]
+                        try:
+                            out["parsed"] = json.loads(raw)
+                        except Exception as parse_ex:
+                            out["parse_error"] = str(parse_ex)
+                self.wfile.write(json.dumps(out).encode("utf-8"))
+            except Exception as e:
+                self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
             return
 
         # REST API: Send Test Email
