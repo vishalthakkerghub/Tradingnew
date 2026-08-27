@@ -2538,35 +2538,53 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 import os, json
                 out = {}
                 
-                # Search for true_paper_portfolio.json files
-                found_files = []
-                for root, dirs, files in os.walk("."):
-                    for file in files:
-                        if file == "true_paper_portfolio.json":
-                            full_p = os.path.join(root, file)
-                            found_files.append({
-                                "path": full_p,
-                                "size": os.path.getsize(full_p),
-                                "mtime": os.path.getmtime(full_p)
-                            })
-                out["found_portfolio_files"] = found_files
-                
-                # Read from the most recently modified portfolio file
-                if found_files:
-                    # Sort by mtime descending
-                    found_files.sort(key=lambda x: x["mtime"], reverse=True)
-                    target = found_files[0]["path"]
-                    out["selected_target"] = target
-                    with open(target, "r", encoding="utf-8") as f:
-                        raw = f.read()
-                        out["raw_len"] = len(raw)
-                        out["raw_start"] = raw[:500]
-                        try:
-                            out["parsed"] = json.loads(raw)
-                        except Exception as parse_ex:
-                            out["parse_error"] = str(parse_ex)
+                # Check for query parameter
+                req_file = query_params.get("file", [""])[0]
+                if req_file:
+                    out["requested_file"] = req_file
+                    if os.path.exists(req_file):
+                        out["exists"] = True
+                        out["size"] = os.path.getsize(req_file)
+                        with open(req_file, "r", encoding="utf-8") as f:
+                            raw = f.read()
+                            out["raw_len"] = len(raw)
+                            out["raw_start"] = raw[:800]
+                            try:
+                                out["parsed"] = json.loads(raw)
+                            except Exception as parse_ex:
+                                out["parse_error"] = str(parse_ex)
+                    else:
+                        out["exists"] = False
                 else:
-                    out["error_msg"] = "No portfolio files found on filesystem"
+                    # Search for true_paper_portfolio.json files
+                    found_files = []
+                    for root, dirs, files in os.walk("."):
+                        for file in files:
+                            if file == "true_paper_portfolio.json":
+                                full_p = os.path.join(root, file)
+                                found_files.append({
+                                    "path": full_p,
+                                    "size": os.path.getsize(full_p),
+                                    "mtime": os.path.getmtime(full_p)
+                                })
+                    out["found_portfolio_files"] = found_files
+                    
+                    # Read from the most recently modified portfolio file
+                    if found_files:
+                        # Sort by mtime descending
+                        found_files.sort(key=lambda x: x["mtime"], reverse=True)
+                        target = found_files[0]["path"]
+                        out["selected_target"] = target
+                        with open(target, "r", encoding="utf-8") as f:
+                            raw = f.read()
+                            out["raw_len"] = len(raw)
+                            out["raw_start"] = raw[:500]
+                            try:
+                                out["parsed"] = json.loads(raw)
+                            except Exception as parse_ex:
+                                out["parse_error"] = str(parse_ex)
+                    else:
+                        out["error_msg"] = "No portfolio files found on filesystem"
                 
                 # Also include last scan log or status if it exists
                 status_path = "data/last_scan_status.json"
