@@ -2553,6 +2553,18 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                         with open(flag_27, "r", encoding="utf-8") as f:
                             reader = csv.DictReader(f)
                             out["flag_20260827"] = list(reader)
+                
+                # Check data/cache
+                cache_dir = "data/cache"
+                if not os.path.exists(cache_dir):
+                    cache_dir = os.path.join("minervini_os", cache_dir)
+                if os.path.exists(cache_dir):
+                    out["cache_files"] = [f for f in os.listdir(cache_dir) if "KRSNA" in f]
+                    for cf in out["cache_files"]:
+                        cf_path = os.path.join(cache_dir, cf)
+                        with open(cf_path, "r", encoding="utf-8") as f_cf:
+                            lines = f_cf.readlines()
+                            out[f"cache_tail_{cf}"] = [l.strip() for l in lines[-3:]]
                 self.wfile.write(json.dumps(out).encode("utf-8"))
             except Exception as e_dbg:
                 self.wfile.write(json.dumps({"error": str(e_dbg)}).encode("utf-8"))
