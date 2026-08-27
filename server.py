@@ -2571,6 +2571,13 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                     cache_dir = os.path.join("minervini_os", cache_dir)
                 if os.path.exists(cache_dir):
                     out["cache_files"] = [f for f in os.listdir(cache_dir) if "KRSNA" in f or "KALYAN" in f]
+                
+                # Check data/ directory for market breadth files
+                data_dir = "data"
+                if not os.path.exists(data_dir):
+                    data_dir = os.path.join("minervini_os", data_dir)
+                if os.path.exists(data_dir):
+                    out["mbi_files"] = sorted([f for f in os.listdir(data_dir) if "market_breadth" in f])
             except Exception as e_dbg:
                 out = {"error": str(e_dbg)}
             self.wfile.write(json.dumps(out).encode("utf-8"))
