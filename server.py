@@ -2789,13 +2789,14 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             if not os.path.exists(report_file):
                 report_file = os.path.join("minervini_os", report_file)
                 
-            data = []
-            if os.path.exists(report_file):
-                try:
+            try:
+                data = []
+                if os.path.exists(report_file):
                     with open(report_file, "r", encoding="utf-8") as f:
                         data = json.load(f)
-                except Exception as e:
-                    print("Error reading industry participation report JSON:", e)
+            except Exception as e:
+                import traceback
+                data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
@@ -2804,7 +2805,11 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            data = get_sector_rotation_history()
+            try:
+                data = get_sector_rotation_history()
+            except Exception as e:
+                import traceback
+                data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
@@ -2813,7 +2818,11 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            data = get_rrg_data()
+            try:
+                data = get_rrg_data()
+            except Exception as e:
+                import traceback
+                data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
@@ -2822,7 +2831,11 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            data = get_market_breadth_history()
+            try:
+                data = get_market_breadth_history()
+            except Exception as e:
+                import traceback
+                data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
@@ -2845,13 +2858,14 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             if not os.path.exists(mb_file):
                 mb_file = os.path.join("minervini_os", mb_file)
                 
-            data = {}
-            if os.path.exists(mb_file):
-                try:
+            try:
+                data = {}
+                if os.path.exists(mb_file):
                     with open(mb_file, "r", encoding="utf-8") as f:
                         data = json.load(f)
-                except Exception as e:
-                    print("Error reading market breadth JSON:", e)
+            except Exception as e:
+                import traceback
+                data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
