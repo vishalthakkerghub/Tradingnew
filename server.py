@@ -2556,7 +2556,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             try:
-                import os, json
+                import json
                 out = {}
                 
                 # Check for query parameter
@@ -2893,7 +2893,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             try:
-                import os, json, traceback, shutil
+                import json, traceback, shutil
                 pf_file = "data/true_paper_portfolio.json"
                 if not os.path.exists(pf_file):
                     pf_file = os.path.join("minervini_os", pf_file)
