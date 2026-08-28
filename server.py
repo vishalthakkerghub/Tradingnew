@@ -2887,6 +2887,17 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                         data = trader.state
                     except Exception as e:
                         data = {"error": f"Trader Init Error: {str(e)}", "traceback": traceback.format_exc()}
+                
+                # Add diagnostics to the response
+                data["_diagnostics"] = {
+                    "pf_file": pf_file,
+                    "default_pf": default_pf,
+                    "pf_exists": os.path.exists(pf_file),
+                    "default_exists": os.path.exists(default_pf),
+                    "force_reset_val": force_reset,
+                    "query_params": str(query_params),
+                    "is_corrupted": is_corrupted
+                }
                 self.wfile.write(json.dumps(data).encode("utf-8"))
             except Exception as outer_e:
                 import traceback
