@@ -2569,15 +2569,25 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                     out["requested_file"] = req_file
                     if os.path.exists(req_file):
                         out["exists"] = True
-                        out["size"] = os.path.getsize(req_file)
-                        with open(req_file, "r", encoding="utf-8") as f:
-                            raw = f.read()
-                            out["raw_len"] = len(raw)
-                            out["raw_start"] = raw[:800]
+                        if os.path.isdir(req_file):
+                            out["is_dir"] = True
                             try:
-                                out["parsed"] = json.loads(raw)
-                            except Exception as parse_ex:
-                                out["parse_error"] = str(parse_ex)
+                                out["listdir_req"] = os.listdir(req_file)
+                            except Exception as dir_ex:
+                                out["listdir_req_error"] = str(dir_ex)
+                        else:
+                            out["size"] = os.path.getsize(req_file)
+                            try:
+                                with open(req_file, "r", encoding="utf-8") as f:
+                                    raw = f.read()
+                                    out["raw_len"] = len(raw)
+                                    out["raw_start"] = raw[:800]
+                                    try:
+                                        out["parsed"] = json.loads(raw)
+                                    except Exception as parse_ex:
+                                        out["parse_error"] = str(parse_ex)
+                            except Exception as read_ex:
+                                out["read_error"] = str(read_ex)
                     else:
                         out["exists"] = False
                 else:
