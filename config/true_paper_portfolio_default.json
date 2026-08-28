@@ -127,7 +127,7 @@
       "pnl_net": 4066.84,
       "r_multiple": 5.42,
       "status": "CLOSED",
-      "exit_reason": "Trailing SL hit",
+      "exit_reason": "T1(16-662.34), T2 Trail(24-741.9)",
       "partial_exits": [
         {
           "date": "2026-08-18",
