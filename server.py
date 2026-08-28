@@ -2582,7 +2582,9 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                                 with open(req_file, "r", encoding="utf-8") as f:
                                     raw = f.read()
                                     out["raw_len"] = len(raw)
-                                    out["raw_start"] = raw[:800]
+                                    offset = int(query_params.get("offset", ["0"])[0])
+                                    length = int(query_params.get("length", ["800"])[0])
+                                    out["raw_start"] = raw[offset:offset+length]
                                     try:
                                         out["parsed"] = json.loads(raw)
                                     except Exception as parse_ex:
