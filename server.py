@@ -11,6 +11,8 @@ from src.utils import load_config
 from src.market_conditions import MarketConditionsEngine
 from src.momentum_score import AntigravityMomentumEngine
 import glob
+import traceback
+import shutil
 
 class CustomJSONEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -2556,7 +2558,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             try:
-                import json
                 out = {}
                 
                 # Check for query parameter
@@ -2735,7 +2736,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             try:
                 data = get_active_portfolio()
             except Exception as e:
-                import traceback
                 data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
@@ -2796,7 +2796,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                     with open(report_file, "r", encoding="utf-8") as f:
                         data = json.load(f)
             except Exception as e:
-                import traceback
                 data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
@@ -2809,7 +2808,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             try:
                 data = get_sector_rotation_history()
             except Exception as e:
-                import traceback
                 data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
@@ -2822,7 +2820,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             try:
                 data = get_rrg_data()
             except Exception as e:
-                import traceback
                 data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
@@ -2835,7 +2832,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             try:
                 data = get_market_breadth_history()
             except Exception as e:
-                import traceback
                 data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
@@ -2864,7 +2860,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                     with open(mb_file, "r", encoding="utf-8") as f:
                         data = json.load(f)
             except Exception as e:
-                import traceback
                 data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
@@ -2893,7 +2888,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             try:
-                import json, traceback, shutil
                 pf_file = "data/true_paper_portfolio.json"
                 if not os.path.exists(pf_file):
                     pf_file = os.path.join("minervini_os", pf_file)
@@ -2938,7 +2932,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                         data = {"error": f"Trader Init Error: {str(e)}", "traceback": traceback.format_exc()}
                 self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             except Exception as outer_e:
-                import traceback
                 self.wfile.write(json.dumps({"outer_error": str(outer_e), "traceback": traceback.format_exc()}).encode("utf-8"))
             return
 
@@ -2950,7 +2943,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             try:
                 data = get_closed_trades()
             except Exception as e:
-                import traceback
                 data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
@@ -2965,7 +2957,6 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 date_val = query_params.get("date", [None])[0]
                 data = get_latest_watchlist_data(date_val)
             except Exception as e:
-                import traceback
                 data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
