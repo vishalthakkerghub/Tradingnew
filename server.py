@@ -2699,7 +2699,11 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            data = get_active_portfolio()
+            try:
+                data = get_active_portfolio()
+            except Exception as e:
+                import traceback
+                data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(json.dumps(data).encode("utf-8"))
             return
 
@@ -2898,7 +2902,11 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            data = get_closed_trades()
+            try:
+                data = get_closed_trades()
+            except Exception as e:
+                import traceback
+                data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(json.dumps(data).encode("utf-8"))
             return
 
@@ -2907,10 +2915,13 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            
-            # Extract date query param
-            date_val = query_params.get("date", [None])[0]
-            data = get_latest_watchlist_data(date_val)
+            try:
+                # Extract date query param
+                date_val = query_params.get("date", [None])[0]
+                data = get_latest_watchlist_data(date_val)
+            except Exception as e:
+                import traceback
+                data = {"error": str(e), "traceback": traceback.format_exc()}
             self.wfile.write(json.dumps(data).encode("utf-8"))
             return
 
