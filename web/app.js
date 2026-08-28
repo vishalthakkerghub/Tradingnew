@@ -1389,6 +1389,17 @@ async function loadDashboardData(dateStr = "") {
             appState.portfolioManagement = null;
         }
 
+        // Fetch True Paper Portfolio data on startup/refresh
+        try {
+            const pfRes = await fetch("/api/true_paper_portfolio");
+            if (pfRes.ok) {
+                const pfData = await pfRes.json();
+                appState.truePaperOpenTrades = pfData.open_trades || [];
+            }
+        } catch (pfErr) {
+            console.error("Failed to load true paper portfolio in loadDashboardData:", pfErr);
+        }
+
         await loadTradeJournalData();
 
         // Update UI
@@ -7476,68 +7487,57 @@ function showToast(message, type = "success") {
 }
 
 function addCandidateToJournal(symbol) {
-
-    const candidate = appState.vcpCandidates.find(c => c.Symbol === symbol) || 
-
-                      appState.flag_candidates.find(c => c.Symbol === symbol) ||
-
-                      (appState.allScannedCandidates && appState.allScannedCandidates.find(c => c.Symbol === symbol)) ||
-
-                      (appState.strategicWatchlist && appState.strategicWatchlist.find(c => c.Symbol === symbol)) ||
-
-                      (appState.dailyFocusWatchlist && appState.dailyFocusWatchlist.find(c => c.Symbol === symbol)) ||
-
-                      appState.lowRiskTrades.find(c => c.Symbol === symbol) ||
-
-                      appState.highRiskTrades.find(c => c.Symbol === symbol);
+    const cleanSym = (symbol || "").toUpperCase().trim();
+    const candidate = (appState.vcpCandidates || []).find(c => (c.Symbol || "").toUpperCase().trim() === cleanSym) || 
+                      (appState.flag_candidates || []).find(c => (c.Symbol || "").toUpperCase().trim() === cleanSym) ||
+                      (appState.allScannedCandidates && appState.allScannedCandidates.find(c => (c.Symbol || "").toUpperCase().trim() === cleanSym)) ||
+                      (appState.strategicWatchlist && appState.strategicWatchlist.find(c => (c.Symbol || "").toUpperCase().trim() === cleanSym)) ||
+                      (appState.dailyFocusWatchlist && appState.dailyFocusWatchlist.find(c => (c.Symbol || "").toUpperCase().trim() === cleanSym)) ||
+                      (appState.lowRiskTrades || []).find(c => (c.Symbol || "").toUpperCase().trim() === cleanSym) ||
+                      (appState.highRiskTrades || []).find(c => (c.Symbol || "").toUpperCase().trim() === cleanSym);
 
     if (!candidate) {
-
         showToast("Candidate data not found", "error");
-
         return;
-
     }
-
-    
 
     let name = candidate.Symbol;
-
-    const existing = appState.tradeJournal.find(t => t.symbol === candidate.Symbol);
-
+    const existing = appState.tradeJournal.find(t => t.symbol.toUpperCase() === cleanSym);
     if (existing) {
-
         name = existing.name;
-
     }
 
-    
-
     openTradeModal();
-
     
-
     document.getElementById("modal-title").textContent = "Add Trade from Candidate";
-
     document.getElementById("trade-symbol").value = candidate.Symbol;
-
     document.getElementById("trade-name").value = name;
-
     
-
-    const entryPrice = candidate.Trigger || candidate.Entry || candidate.Entry_Price || candidate.CMP || 0;
-
-    const stopLoss = candidate.Stop_Loss || 0;
-
+    // Check if there is an active paper trade to copy actual targets/stop loss from
+    const openPaperTrade = appState.truePaperOpenTrades && appState.truePaperOpenTrades.find(t => t.symbol.toUpperCase() === cleanSym);
     
-
+    let entryPrice = 0;
+    let stopLoss = 0;
+    let target1 = "";
+    let target2 = "";
+    
+    if (openPaperTrade) {
+        entryPrice = openPaperTrade.entry_price || openPaperTrade.trigger_price || 0;
+        stopLoss = openPaperTrade.stop_loss || 0;
+        target1 = openPaperTrade.t1 || "";
+        target2 = openPaperTrade.t2 || "";
+        console.log("Matched open paper trade for targets sync:", openPaperTrade);
+    } else {
+        entryPrice = candidate.Trigger || candidate.Entry || candidate.Entry_Price || candidate.CMP || 0;
+        stopLoss = candidate.Stop_Loss || candidate.stop_loss || 0;
+        target1 = candidate.Target_1 || candidate.target_1 || candidate.Target1 || "";
+        target2 = candidate.Target_2 || candidate.target_2 || candidate.Target2 || "";
+    }
+    
     document.getElementById("trade-entry-price").value = entryPrice || "";
-
     document.getElementById("trade-sl").value = stopLoss || "";
-
-    document.getElementById("trade-t1").value = candidate.Target_1 || "";
-
-    document.getElementById("trade-t2").value = candidate.Target_2 || "";
+    document.getElementById("trade-t1").value = target1 || "";
+    document.getElementById("trade-t2").value = target2 || "";
 
     
 
@@ -12985,6 +12985,7 @@ async function loadTruePaperPortfolio() {
         // 1. Overview metrics
         const cash = parseFloat(data.cash) || 0.0;
         const openTrades = data.open_trades || [];
+        appState.truePaperOpenTrades = openTrades;
         const closedTrades = data.closed_trades || [];
         const logs = data.process_log || [];
 
