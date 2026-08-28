@@ -10,7 +10,27 @@ from datetime import datetime
 from src.utils import load_config
 from src.market_conditions import MarketConditionsEngine
 from src.momentum_score import AntigravityMomentumEngine
-import glob
+
+class CustomJSONEncoder(json.JSONEncoder):
+    def default(self, obj):
+        import numpy as np
+        import pandas as pd
+        from datetime import datetime, date
+        if isinstance(obj, (np.integer, np.int64, np.int32, np.int16, np.int8)):
+            return int(obj)
+        elif isinstance(obj, (np.floating, np.float64, np.float32)):
+            return float(obj) if not np.isnan(obj) else None
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        elif isinstance(obj, (pd.Timestamp, datetime, date)):
+            return obj.strftime("%Y-%m-%d")
+        elif isinstance(obj, float) and np.isnan(obj):
+            return None
+        return super().default(obj)
+
+def safe_json_dumps(data):
+    return json.dumps(data, cls=CustomJSONEncoder)
+
 
 # Load configuration and initialize market conditions engine
 config = load_config("config/config.yaml")
@@ -2704,7 +2724,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 import traceback
                 data = {"error": str(e), "traceback": traceback.format_exc()}
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
         # REST API: Get Portfolio Management Report
@@ -2720,7 +2740,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 print("Error calculating trade management report:", e)
                 data = {"trades": [], "summary": f"Error: {e}"}
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
         # REST API: Get Portfolio Management History Report
@@ -2736,7 +2756,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 print("Error calculating trade management history:", e)
                 data = {"positions": [], "summary": f"Error: {e}"}
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
         # REST API: Get Sector Rotation Data
@@ -2765,7 +2785,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                         data = json.load(f)
                 except Exception as e:
                     print("Error reading industry participation report JSON:", e)
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
         # REST API: Get Sector Rotation History Log
@@ -2774,7 +2794,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             data = get_sector_rotation_history()
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
         # REST API: Get RRG Sector Rotation Data
@@ -2783,7 +2803,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             data = get_rrg_data()
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
         # REST API: Get Market Breadth History Log
@@ -2792,7 +2812,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             data = get_market_breadth_history()
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
         # REST API: Get Market Breadth Data
@@ -2821,7 +2841,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                         data = json.load(f)
                 except Exception as e:
                     print("Error reading market breadth JSON:", e)
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
         # REST API: Get Earnings Calendar
@@ -2839,7 +2859,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                         data = json.load(f)
                 except Exception as e:
                     print("Error reading earnings calendar JSON:", e)
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
         # REST API: Get True Paper Portfolio
@@ -2891,7 +2911,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                         data = trader.state
                     except Exception as e:
                         data = {"error": f"Trader Init Error: {str(e)}", "traceback": traceback.format_exc()}
-                self.wfile.write(json.dumps(data).encode("utf-8"))
+                self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             except Exception as outer_e:
                 import traceback
                 self.wfile.write(json.dumps({"outer_error": str(outer_e), "traceback": traceback.format_exc()}).encode("utf-8"))
@@ -2907,7 +2927,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 import traceback
                 data = {"error": str(e), "traceback": traceback.format_exc()}
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
         # REST API: Get Watchlist Data
@@ -2922,7 +2942,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 import traceback
                 data = {"error": str(e), "traceback": traceback.format_exc()}
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
         # REST API: Get Stock Detail Data
@@ -2939,7 +2959,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             data = get_stock_detail(symbol, date_str)
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
             
         # REST API: Get Scan Dates List
@@ -2948,7 +2968,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             dates = get_available_scan_dates()
-            self.wfile.write(json.dumps(dates).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(dates).encode("utf-8"))
             return
 
         # REST API: Get Discipline History List
@@ -2957,7 +2977,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             data = get_discipline_history_report()
-            self.wfile.write(json.dumps(data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
 
         # REST API: Get Scan Status
@@ -2974,7 +2994,7 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                         status_data = json.load(f)
                 except Exception:
                     pass
-            self.wfile.write(json.dumps(status_data).encode("utf-8"))
+            self.wfile.write(safe_json_dumps(status_data).encode("utf-8"))
             return
 
         # REST API: Get Gemini key configuration status
