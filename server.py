@@ -2775,21 +2775,20 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            
-            date_val = query_params.get("date", [None])[0]
-            report_file = "data/industry_participation_report.json"
-            if date_val:
-                cleaned_date = date_val.replace("-", "")
-                dated_file = f"data/industry_participation_report_{cleaned_date}.json"
-                if os.path.exists(dated_file):
-                    report_file = dated_file
-                elif os.path.exists(os.path.join("minervini_os", dated_file)):
-                    report_file = os.path.join("minervini_os", dated_file)
-            
-            if not os.path.exists(report_file):
-                report_file = os.path.join("minervini_os", report_file)
-                
             try:
+                date_val = query_params.get("date", [None])[0]
+                report_file = "data/industry_participation_report.json"
+                if date_val:
+                    cleaned_date = date_val.replace("-", "")
+                    dated_file = f"data/industry_participation_report_{cleaned_date}.json"
+                    if os.path.exists(dated_file):
+                        report_file = dated_file
+                    elif os.path.exists(os.path.join("minervini_os", dated_file)):
+                        report_file = os.path.join("minervini_os", dated_file)
+                
+                if not os.path.exists(report_file):
+                    report_file = os.path.join("minervini_os", report_file)
+                    
                 data = []
                 if os.path.exists(report_file):
                     with open(report_file, "r", encoding="utf-8") as f:
@@ -2844,21 +2843,20 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
-            
-            date_val = query_params.get("date", [None])[0]
-            mb_file = "data/market_breadth.json"
-            if date_val:
-                cleaned_date = date_val.replace("-", "")
-                dated_file = f"data/market_breadth_{cleaned_date}.json"
-                if os.path.exists(dated_file):
-                    mb_file = dated_file
-                elif os.path.exists(os.path.join("minervini_os", dated_file)):
-                    mb_file = os.path.join("minervini_os", dated_file)
-            
-            if not os.path.exists(mb_file):
-                mb_file = os.path.join("minervini_os", mb_file)
-                
             try:
+                date_val = query_params.get("date", [None])[0]
+                mb_file = "data/market_breadth.json"
+                if date_val:
+                    cleaned_date = date_val.replace("-", "")
+                    dated_file = f"data/market_breadth_{cleaned_date}.json"
+                    if os.path.exists(dated_file):
+                        mb_file = dated_file
+                    elif os.path.exists(os.path.join("minervini_os", dated_file)):
+                        mb_file = os.path.join("minervini_os", dated_file)
+                
+                if not os.path.exists(mb_file):
+                    mb_file = os.path.join("minervini_os", mb_file)
+                    
                 data = {}
                 if os.path.exists(mb_file):
                     with open(mb_file, "r", encoding="utf-8") as f:
