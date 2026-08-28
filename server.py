@@ -2861,11 +2861,15 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                     except Exception:
                         is_corrupted = True
                 
-                if not os.path.exists(pf_file) or is_corrupted:
+                # Check for forced reset query parameter
+                force_reset = query_params.get("action", [""])[0] == "reset"
+                
+                if not os.path.exists(pf_file) or is_corrupted or force_reset:
                     if os.path.exists(default_pf):
                         try:
                             os.makedirs(os.path.dirname(pf_file), exist_ok=True)
                             shutil.copy(default_pf, pf_file)
+                            print("Forced reset or healed portfolio from config backup.")
                         except Exception as copy_ex:
                             print("Error copying default portfolio:", copy_ex)
                 
