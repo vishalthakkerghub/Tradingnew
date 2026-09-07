@@ -30,8 +30,6 @@ let appState = {
 
     tradeJournal: [],
 
-    screenerScope: "curated",
-
     allScannedCandidates: [],
 
     selectedSectorCategory: "ALL",
@@ -10580,35 +10578,9 @@ function populateFilterIndustries(candidates) {
     }
 }
 
-window.setScreenerScope = function(scope) {
-    appState.screenerScope = scope;
-    
-    const btnCurated = document.getElementById("scope-curated");
-    const btnAll = document.getElementById("scope-all");
-    
-    if (btnCurated && btnAll) {
-        if (scope === "all") {
-            btnAll.style.background = "var(--accent-purple)";
-            btnAll.style.color = "white";
-            btnAll.style.border = "none";
-            
-            btnCurated.style.background = "rgba(255,255,255,0.05)";
-            btnCurated.style.color = "var(--text-secondary)";
-            btnCurated.style.border = "1px solid var(--border-color)";
-        } else {
-            btnCurated.style.background = "var(--accent-purple)";
-            btnCurated.style.color = "white";
-            btnCurated.style.border = "none";
-            
-            btnAll.style.background = "rgba(255,255,255,0.05)";
-            btnAll.style.color = "var(--text-secondary)";
-            btnAll.style.border = "1px solid var(--border-color)";
-        }
-    }
-    
-    renderFilteredWatchlist();
-    showToast(`Switched scope to ${scope === 'all' ? 'All Scanned Candidates' : 'Curated Watchlist'}.`, "info");
-};
+// setScreenerScope removed 2026-09-07 (Step: Stocks Filter redesign) - the
+// Curated/All-Scanned toggle it drove is gone; the screener always shows the
+// full scanned pool now. See memory: minervini-os-fix-plan.
 
 // ─── MBI PRIORITY ENGINE ────────────────────────────────────────────────────
 function classifySetupType(engineType, grade, entryCategory, score) {
@@ -10762,42 +10734,12 @@ function renderFilteredWatchlist() {
     const _mb = appState.marketBreadth || {};
     const _mbiRules = getMBIPriorityRules(_mb.Index);
 
-    let sourceCandidates = [];
-
-    if (appState.screenerScope === "all") {
-        sourceCandidates = appState.allScannedCandidates || [];
-    } else {
-        const seen = new Set();
-        const srcList1 = appState.strategicWatchlist || [];
-        srcList1.forEach(item => {
-            const sym = (item.Symbol || "").trim().toUpperCase();
-            if (sym && !seen.has(sym)) {
-                seen.add(sym);
-                sourceCandidates.push({
-                    ...item,
-                    Entry: item.Trigger || item.Entry || item.Entry_Price || 0.0,
-                    Setup_Type: item.Setup_Type || item.Engine_Type || "VCP",
-                    Setup_Grade: item.Grade || item.Setup_Grade || "Grade C",
-                    Overall_Rank: item.Overall_Rank || "N/A"
-                });
-            }
-        });
-        
-        const srcList2 = appState.dailyFocusWatchlist || [];
-        srcList2.forEach(item => {
-            const sym = (item.Symbol || "").trim().toUpperCase();
-            if (sym && !seen.has(sym)) {
-                seen.add(sym);
-                sourceCandidates.push({
-                    ...item,
-                    Entry: item.Trigger || item.Entry_Price || item.Entry || 0.0,
-                    Setup_Type: item.Setup_Type || item.Engine_Type || "VCP",
-                    Setup_Grade: item.Grade || item.Setup_Grade || "Grade C",
-                    Overall_Rank: item.Overall_Rank || "N/A"
-                });
-            }
-        });
-    }
+    // Always the full scanned pool (2026-09-07 redesign): a 7-week backtest found
+    // the Curated pool (strategic_watchlist + daily_focus_watchlist) underperforming
+    // the unfiltered pool (+0.17R vs +0.25R avg) - its meets_filter_criteria() near-
+    // 52-week-high requirement was excluding early-stage VCP setups that outperformed
+    // the ones it kept. See memory: minervini-os-fix-plan.
+    let sourceCandidates = appState.allScannedCandidates || [];
 
     populateFilterIndustries(sourceCandidates);
 
@@ -10809,8 +10751,6 @@ function renderFilteredWatchlist() {
     const filterIb = document.getElementById("filter-ib")?.checked ?? true;
     const filterPp = document.getElementById("filter-pp")?.checked ?? true;
     
-    const filterLeading = document.getElementById("filter-leading-sectors")?.checked ?? true;
-    const filterOther = document.getElementById("filter-other-sectors")?.checked ?? true;
     const filterCircuit20 = document.getElementById("filter-circuit-20")?.checked ?? true;
     const filterCircuit10 = document.getElementById("filter-circuit-10")?.checked ?? true;
     const filterCircuit5 = document.getElementById("filter-circuit-5")?.checked ?? true;
@@ -10818,11 +10758,6 @@ function renderFilteredWatchlist() {
     const filterCircuitNoBand = document.getElementById("filter-circuit-noband")?.checked ?? true;
     const selectedInd = document.getElementById("filter-industry-select")?.value ?? "ALL";
     const searchQuery = document.getElementById("watchlist-search")?.value.trim().toUpperCase() || "";
-
-    const filterFocusTop3Conf = document.getElementById("filter-focus-top3conf")?.checked ?? true;
-    const filterFocusTop5Conf = document.getElementById("filter-focus-top5conf")?.checked ?? true;
-    const filterFocusTop3Early = document.getElementById("filter-focus-top3early")?.checked ?? true;
-    const filterFocusTop5Early = document.getElementById("filter-focus-top5early")?.checked ?? true;
 
     const filterGradeA = document.getElementById("filter-grade-a")?.checked ?? true;
     const filterGradeB = document.getElementById("filter-grade-b")?.checked ?? true;
@@ -10907,19 +10842,6 @@ function renderFilteredWatchlist() {
         
         if (!matchesPattern) return false;
 
-        const category = s.Industry_Category || "Avoid";
-        const isLeadingCat = ["Confirmed Uptrend", "Early Uptrend", "Running Hot", "The Sweet Spot", "Sector Waking Up", "Leading Sector", "Leading"].includes(category);
-        
-        let matchesCategory = false;
-        if (filterLeading && isLeadingCat) {
-            matchesCategory = true;
-        }
-        if (filterOther && !isLeadingCat) {
-            matchesCategory = true;
-        }
-        
-        if (!matchesCategory) return false;
-
         // Circuit Filter check
         const bandVal = String(s.Band || "No Band").trim();
         let matchesCircuit = false;
@@ -10943,27 +10865,6 @@ function renderFilteredWatchlist() {
 
         if (selectedInd !== "ALL" && s.Industry !== selectedInd) {
             return false;
-        }
-
-        // Focus Leaderboard check
-        const anyFocusChecked = filterFocusTop3Conf || filterFocusTop5Conf || filterFocusTop3Early || filterFocusTop5Early;
-        const allFocusChecked = filterFocusTop3Conf && filterFocusTop5Conf && filterFocusTop3Early && filterFocusTop5Early;
-        
-        if (anyFocusChecked && !allFocusChecked) {
-            let matchesFocus = false;
-            if (filterFocusTop3Conf && topConfirmedInds.slice(0, 3).includes(s.Industry)) {
-                matchesFocus = true;
-            }
-            if (filterFocusTop5Conf && topConfirmedInds.slice(0, 5).includes(s.Industry)) {
-                matchesFocus = true;
-            }
-            if (filterFocusTop3Early && topEarlyInds.slice(0, 3).includes(s.Industry)) {
-                matchesFocus = true;
-            }
-            if (filterFocusTop5Early && topEarlyInds.slice(0, 5).includes(s.Industry)) {
-                matchesFocus = true;
-            }
-            if (!matchesFocus) return false;
         }
 
         // Grade check
@@ -10990,9 +10891,7 @@ function renderFilteredWatchlist() {
         return true;
     });
 
-    // Valid-only filter
-    const filterValidOnly = document.getElementById('filter-valid-only')?.checked ?? false;
-    const displayList = filterValidOnly ? filtered.filter(s => s._gates && s._gates.allPass) : filtered;
+    const displayList = filtered;
 
     // Apply sorting — default to priority score (gate-pass stocks float to top via pScore)
     const col = appState.screenerSortColumn || "_priorityScore";
@@ -11036,9 +10935,8 @@ function renderFilteredWatchlist() {
 
     updateScreenerHeaderSortIcons();
 
-    const validCount = filtered.filter(s => s._gates?.allPass).length;
     if (countSpan) {
-        countSpan.innerHTML = `${displayList.length} <span style="font-size:9.5px;color:var(--text-muted);">candidates</span>&nbsp;<span style="font-size:10px;background:rgba(16,185,129,0.12);color:#10b981;font-weight:700;padding:2px 8px;border-radius:8px;border:1px solid rgba(16,185,129,0.3);">&#10003; ${validCount} ready</span>`;
+        countSpan.innerHTML = `${displayList.length} <span style="font-size:9.5px;color:var(--text-muted);">candidates</span>`;
     }
 
     if (displayList.length === 0) {

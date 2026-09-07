@@ -578,14 +578,18 @@
                         <i class="fa-solid fa-filter" style="color: var(--accent-purple);"></i> Strategic Stocks Screener & Filter
                     </h2>
                     <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
-                        Filter scan candidates dynamically by Setup/Pattern, leading Sectors, and focus Industries to identify optimal entry points.
+                        Every scanned candidate, ranked by priority score. Gate badges (MBI / Sector / Pattern / SL Band) are shown per row for context but no longer hide anything — see memory: minervini-os-fix-plan, Step 3.
                     </p>
                 </div>
 
-                <!-- Filters Console -->
-                <div class="filters-console glass" style="padding: 24px; border-radius: 16px; border: 1px solid var(--border-color); margin-bottom: 24px; display: flex; flex-direction: column; gap: 20px;">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                        <!-- Column 1: Setup Types -->
+                <!-- Filters Console (simplified 2026-09-07: removed Industry Group Status, Leaderboard
+                     Focus, and the Curated/All-Scanned scope toggle - all three were re-expressions of
+                     the Sector Category system shown to flip 52% of day-to-day transitions and, for
+                     Curated specifically, to underperform the unfiltered pool (+0.17R vs +0.25R avg,
+                     7-week backtest). Kept: the filters with a clear, non-alpha-claiming purpose. -->
+                <div class="filters-console glass" style="padding: 20px; border-radius: 16px; border: 1px solid var(--border-color); margin-bottom: 24px; display: flex; flex-direction: column; gap: 16px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                        <!-- Setup / Pattern -->
                         <div style="display: flex; flex-direction: column; gap: 10px;">
                             <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Setup / Pattern</label>
                             <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
@@ -613,45 +617,10 @@
                             </div>
                         </div>
 
-                        <!-- Column 2: Sectors -->
+                        <!-- Setup Grade -->
                         <div style="display: flex; flex-direction: column; gap: 10px;">
-                            <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Industry Group Status</label>
+                            <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Setup Grade</label>
                             <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
-                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
-                                    <input type="checkbox" id="filter-leading-sectors" class="filter-checkbox" checked> Focus Groups (Confirmed & Early Uptrend)
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
-                                    <input type="checkbox" id="filter-other-sectors" class="filter-checkbox" checked> Other Groups (Consolidation, Warning, Avoid)
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Column 3: Focus Industry Dropdown -->
-                        <div style="display: flex; flex-direction: column; gap: 10px;">
-                            <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;" for="filter-industry-select">Industry Filter</label>
-                            <select id="filter-industry-select" class="date-picker-select" style="width: 100%; padding: 10px; margin-top: 4px; border-radius: 8px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: var(--text-primary); outline: none; font-size: 13px;">
-                                <option value="ALL">Show All Industries</option>
-                                <!-- Populated dynamically -->
-                            </select>
-                                             <!-- Column 4: Focus & Grade Leaderboard Filter -->
-                        <div style="display: flex; flex-direction: column; gap: 10px;">
-                            <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Focus & Grade Filter</label>
-                            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
-                                <span style="font-size: 10px; font-weight: bold; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">Leaderboard Focus</span>
-                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
-                                    <input type="checkbox" id="filter-focus-top3conf" class="filter-checkbox" checked> Top 3 Confirmed
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
-                                    <input type="checkbox" id="filter-focus-top5conf" class="filter-checkbox" checked> Top 5 Confirmed
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
-                                    <input type="checkbox" id="filter-focus-top3early" class="filter-checkbox" checked> Top 3 Early
-                                </label>
-                                <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
-                                    <input type="checkbox" id="filter-focus-top5early" class="filter-checkbox" checked> Top 5 Early
-                                </label>
-                                
-                                <span style="font-size: 10px; font-weight: bold; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 6px; margin-bottom: 2px;">Setup Grades</span>
                                 <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); cursor: pointer;">
                                     <input type="checkbox" id="filter-grade-a" class="filter-checkbox" checked> Grade A
                                 </label>
@@ -664,7 +633,16 @@
                             </div>
                         </div>
 
-                        <!-- Column 5: Circuit Limit Checkboxes -->
+                        <!-- Industry Filter -->
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;" for="filter-industry-select">Industry Filter</label>
+                            <select id="filter-industry-select" class="date-picker-select" style="width: 100%; padding: 10px; margin-top: 4px; border-radius: 8px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: var(--text-primary); outline: none; font-size: 13px;">
+                                <option value="ALL">Show All Industries</option>
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <!-- Circuit Filter -->
                         <div style="display: flex; flex-direction: column; gap: 10px;">
                             <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Circuit Filter</label>
                             <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
@@ -685,18 +663,9 @@
                                 </label>
                             </div>
                         </div>
-
-                        <!-- Column 4: Screener Scope -->
-                        <div style="display: flex; flex-direction: column; gap: 10px;">
-                            <label style="font-size: 12px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.5px;">Screener Scope</label>
-                            <div style="display: flex; gap: 8px; margin-top: 4px;">
-                                <button id="scope-curated" onclick="setScreenerScope('curated')" class="btn" style="flex: 1; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: bold; background: var(--accent-purple); color: white; border: none; cursor: pointer; text-align: center; transition: all 0.2s ease;">Curated Watchlist</button>
-                                <button id="scope-all" onclick="setScreenerScope('all')" class="btn" style="flex: 1; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: bold; background: rgba(255,255,255,0.05); color: var(--text-secondary); border: 1px solid var(--border-color); cursor: pointer; text-align: center; transition: all 0.2s ease;">All Scanned (230+)</button>
-                            </div>
-                        </div>
                     </div>
 
-                    <div style="display: flex; gap: 12px; margin-top: 10px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+                    <div style="display: flex; gap: 12px; margin-top: 4px; border-top: 1px solid var(--border-color); padding-top: 16px;">
                         <button id="btn-apply-filters" onclick="applyStocksFilters()" class="btn" style="background: var(--accent-purple); color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; outline: none; border: none; font-size: 13px;">
                             <i class="fa-solid fa-circle-check"></i> Apply Filters
                         </button>
@@ -712,7 +681,7 @@
                         <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                             <h2 style="margin: 0;"><i class="fa-solid fa-gem" style="color: var(--accent-blue);"></i> Watchlist Setup Candidates</h2>
                             <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: var(--accent-blue);" id="filtered-stocks-count">0 candidates</span>
-                            
+
                             <!-- Search Ticker/Industry Box -->
                             <div style="position: relative; width: 100%; max-width: 240px; margin-left: 12px;">
                                 <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); font-size: 12px;"></i>
@@ -727,13 +696,9 @@
                     <!-- MBI Command Bar: auto-rendered by renderMBICommandBar() -->
                     <div id="mbi-command-bar"></div>
 
-                    <!-- Valid-Only filter row -->
+                    <!-- Gates legend (informational only - gates no longer filter the list) -->
                     <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px;padding:8px 14px;background:rgba(255,255,255,0.03);border:1px solid var(--border-color);border-radius:8px;flex-wrap:wrap;">
-                        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;font-weight:600;color:var(--text-primary);user-select:none;">
-                            <input type="checkbox" id="filter-valid-only" class="filter-checkbox" onchange="renderFilteredWatchlist()" style="accent-color:#10b981;width:14px;height:14px;">
-                            <span style="color:#10b981;">&#10003;</span> Show only <strong>all-gates pass</strong> stocks
-                        </label>
-                        <span style="font-size:10.5px;color:var(--text-muted);">Hides blocked setups (failed MBI / Sector / Pattern / SL band)</span>
+                        <span style="font-size:11px;color:var(--text-secondary);">Sorted by priority score (reflects gate status as a small tie-breaker, not a filter)</span>
                         <span style="margin-left:auto;font-size:10px;color:var(--text-secondary);">
                             Gates: <span style="color:#10b981;">&#9646; MBI</span>&nbsp;
                             <span style="color:#3b82f6;">&#9646; Sector</span>&nbsp;
@@ -1744,6 +1709,6 @@
         </div>
     </div>
 
-    <script src="web/app.js?v=5.5"></script>
+    <script src="web/app.js?v=5.6"></script>
 </body>
 </html>
