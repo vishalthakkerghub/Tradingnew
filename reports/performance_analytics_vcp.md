@@ -1,38 +1,46 @@
 # Performance Analytics Report
 
-- **Generated At:** 2026-08-28 00:35:28
-- **Current Balance (Cash):** Rs.335,310.37
-- **Current Account Equity:** Rs.1,147,456.67
+- **Generated At:** 2026-09-07 20:20:59
+- **Current Balance (Cash):** Rs.217,156.56
+- **Current Account Equity:** Rs.1,179,221.34
 
 ## Core Performance Metrics
 
 | Metric | Value |
 | :--- | :--- |
-| **Total Closed Trades** | 61 |
-| **Winning Trades** | 24 |
-| **Losing Trades** | 37 |
-| **Win Rate (%)** | 39.34% |
-| **Profit Factor** | 1.46 |
-| **Total R-Multiple** | +8.68R |
-| **Average Win** | Rs.8,696.79 |
-| **Average Loss** | Rs.-3,861.46 |
+| **Total Closed Trades** | 69 |
+| **Winning Trades** | 26 |
+| **Losing Trades** | 43 |
+| **Win Rate (%)** | 37.68% |
+| **Profit Factor** | 1.44 |
+| **Total R-Multiple** | +8.70R |
+| **Average Win** | Rs.8,177.07 |
+| **Average Loss** | Rs.-3,427.49 |
 | **Max Drawdown** | 2.78% |
 
 ## Active Holdings
 
 | Symbol | Entry Date | Entry Price | Current Stop | Initial Shares | Shares Remaining | P&L Net | R-Multiple |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **KDDL** | 2026-08-03 | Rs.3324.70 | Rs.3324.70 | 37 | 37 | Rs.+23032.50 | +2.34R |
-| **HAPPYFORGE** | 2026-08-04 | Rs.1676.60 | Rs.1676.60 | 103 | 52 | Rs.+39211.81 | +3.93R |
-| **MANALIPETC** | 2026-08-13 | Rs.68.00 | Rs.68.00 | 1838 | 1838 | Rs.+5146.41 | +0.51R |
-| **PARAS** | 2026-08-18 | Rs.1385.00 | Rs.1385.00 | 90 | 45 | Rs.+3141.00 | +0.31R |
-| **BOSCHLTD** | 2026-08-18 | Rs.47010.00 | Rs.47010.00 | 2 | 2 | Rs.+3540.00 | +0.47R |
-| **INOXINDIA** | 2026-08-27 | Rs.2034.00 | Rs.1871.28 | 61 | 61 | Rs.+8777.89 | +0.88R |
-| **JSWSTEEL** | 2026-08-27 | Rs.1351.00 | Rs.1242.92 | 92 | 92 | Rs.-1242.00 | -0.12R |
+| **KDDL** | 2026-08-03 | Rs.3324.70 | Rs.3324.70 | 37 | 37 | Rs.+24686.40 | +2.51R |
+| **HAPPYFORGE** | 2026-08-04 | Rs.1676.60 | Rs.1676.60 | 103 | 52 | Rs.+38203.00 | +3.83R |
+| **MANALIPETC** | 2026-08-13 | Rs.68.00 | Rs.68.00 | 1838 | 919 | Rs.+31951.79 | +3.20R |
+| **INOXINDIA** | 2026-08-27 | Rs.2034.00 | Rs.1871.28 | 61 | 61 | Rs.+12041.39 | +1.21R |
+| **DMCC** | 2026-08-28 | Rs.277.75 | Rs.277.75 | 617 | 617 | Rs.+9594.34 | +0.96R |
+| **KAJARIACER** | 2026-09-02 | Rs.1230.20 | Rs.1161.74 | 146 | 146 | Rs.-1416.19 | -0.14R |
+| **STEELCAS** | 2026-09-03 | Rs.329.65 | Rs.329.65 | 379 | 379 | Rs.-1061.20 | -0.11R |
 ## Historical Trade Journal
 
 | Symbol | Entry Date | Exit Date | Entry Price | Exit Price | Initial Shares | P&L Net | R-Multiple | Exit Reason |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **JSWSTEEL** | 2026-08-27 | 2026-09-07 | Rs.1351.00 | Rs.1302.00 | 92 | Rs.-4,508.00 | -0.45R | Closed below EMA20 trailing stop |
+| **DEEPAKNTR** | 2026-09-01 | 2026-09-02 | Rs.1751.60 | Rs.1751.60 | 95 | Rs.+0.00 | +0.00R | Stop loss hit |
+| **BOSCHLTD** | 2026-08-18 | 2026-09-02 | Rs.47010.00 | Rs.47010.00 | 2 | Rs.+2,648.22 | +0.35R | Stop loss hit |
+| **INNOVACAP** | 2026-08-31 | 2026-09-01 | Rs.1057.00 | Rs.1057.00 | 118 | Rs.+1,232.51 | +0.12R | Stop loss hit |
+| **PARAS** | 2026-08-18 | 2026-09-01 | Rs.1385.00 | Rs.1385.00 | 90 | Rs.+0.00 | +0.00R | Stop loss hit |
+| **MOREPENLAB** | 2026-08-28 | 2026-08-28 | Rs.96.74 | Rs.96.74 | 1292 | Rs.+0.00 | +0.00R | Stop loss hit |
+| **PTCIL** | 2026-08-28 | 2026-08-28 | Rs.20625.00 | Rs.20625.00 | 6 | Rs.+0.00 | +0.00R | Stop loss hit |
+| **UNIPARTS** | 2026-08-28 | 2026-08-28 | Rs.817.40 | Rs.817.40 | 152 | Rs.+0.00 | +0.00R | Stop loss hit |
 | **ORIENTBELL** | 2026-08-27 | 2026-08-27 | Rs.379.10 | Rs.379.10 | 329 | Rs.+0.00 | +0.00R | Stop loss hit |
 | **AARTIIND** | 2026-08-12 | 2026-08-27 | Rs.510.00 | Rs.538.90 | 245 | Rs.+7,080.51 | +0.71R | Sluggish breakout time stop (failed to reach Target 1 in 3 weeks) |
 | **ENTERO** | 2026-08-27 | 2026-08-27 | Rs.1639.00 | Rs.1639.00 | 76 | Rs.+0.00 | +0.00R | Stop loss hit |

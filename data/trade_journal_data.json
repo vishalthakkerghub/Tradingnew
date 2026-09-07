@@ -1,5 +1,172 @@
 [
   {
+    "id": "1787887077432",
+    "symbol": "KALYANKJIL",
+    "name": "KALYANKJIL",
+    "entry_date": "2026-08-27",
+    "exit_date": null,
+    "days_active": 2,
+    "entry_price": 614,
+    "invested_amount": 122800,
+    "target_1": 676,
+    "target_2": 709.8,
+    "stop_loss": 602,
+    "risk_pct": 2,
+    "total_qty": 200,
+    "open_qty": 200,
+    "status": "OPEN",
+    "technical_desc": "Pattern: FLAG Setup (Grade B)\nMinervini Score: 80/100 (Trend: 18, RS: 10, SmartMoney: 8)\nContractions: T1: 5.7%\nVolume Dry Up (VDU): 26.4%\nDelivery %: 0%\nPocket Pivot: No\nIndustry Strength: Gems & Jewellery [Rank N/A, Confirmed Uptrend]\nExecution Readiness: 80/100 (Recommended Size: 6.0% Allocation (Half Size))",
+    "comments": "",
+    "exits": [],
+    "MS_Score": 64,
+    "Tier": "Tier 4",
+    "MS_Rating": "\u2605\u2605\u2606\u2606\u2606",
+    "MS_Status": "High Volatility Consolidation",
+    "MS_Breakdown": {
+      "Trend": 18,
+      "Momentum": 5,
+      "Volume": 18,
+      "RS": 10,
+      "SmartMoney": 6,
+      "VCP": 7
+    }
+  },
+  {
+    "id": "1787887799048",
+    "symbol": "SBI FUND",
+    "name": "SBIFund",
+    "entry_date": "2026-08-26",
+    "exit_date": null,
+    "days_active": 10,
+    "entry_price": 557,
+    "invested_amount": 111400,
+    "target_1": 574,
+    "target_2": 593,
+    "stop_loss": 552,
+    "risk_pct": 0.9,
+    "total_qty": 200,
+    "open_qty": 100,
+    "status": "OPEN",
+    "technical_desc": "ipo showing recovery in 2 days and big candles near support giving good entry.",
+    "comments": "[\ud83d\udea8 RISK BYPASS: RULE 3 \u2014 TRADING IS NOT INVESTING bypassed] [\ud83d\udea8 RISK BYPASS: RULE 3 \u2014 TRADING IS NOT INVESTING bypassed]",
+    "exits": [
+      {
+        "date": "2026-09-03",
+        "qty": 100,
+        "price": 563,
+        "pnl": 600
+      }
+    ]
+  },
+  {
+    "id": "1787887533917",
+    "symbol": "KOLTEPATIL",
+    "name": "Kolte",
+    "entry_date": "2026-08-25",
+    "exit_date": "2026-09-02",
+    "days_active": 8,
+    "entry_price": 458,
+    "invested_amount": 91600,
+    "target_1": 474.83,
+    "target_2": 494.98,
+    "stop_loss": 440,
+    "risk_pct": 3.9,
+    "total_qty": 200,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "Pattern: PULLBACK_EMA20 Setup (Grade A)\nMinervini Score: 54/100 (Trend: 14, RS: 10, SmartMoney: 6)\nContractions: PB: 3.0% Risk\nVolume Dry Up (VDU): 32.1%\nDelivery %: 41.99%\nPocket Pivot: No\nIndustry Strength: Realty [Rank N/A, Confirmed Uptrend]\nExecution Readiness: 90/100 (Recommended Size: 6.0% Allocation (Half Size))",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-09-02",
+        "qty": 200,
+        "price": 440,
+        "pnl": -3600
+      }
+    ]
+  },
+  {
+    "id": "1787887991603",
+    "symbol": "TCS",
+    "name": "TCS",
+    "entry_date": "2026-08-25",
+    "exit_date": "2026-08-25",
+    "days_active": 0,
+    "entry_price": 2305,
+    "invested_amount": 230500,
+    "target_1": 2500,
+    "target_2": null,
+    "stop_loss": 2289,
+    "risk_pct": 0.7,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-08-25",
+        "qty": 100,
+        "price": 2289,
+        "pnl": -1600
+      }
+    ]
+  },
+  {
+    "id": "1787324217742",
+    "symbol": "SBI FUNDS",
+    "name": "Sbi fund",
+    "entry_date": "2026-08-20",
+    "exit_date": "2026-08-21",
+    "days_active": 1,
+    "entry_price": 558,
+    "invested_amount": 55800,
+    "target_1": 580,
+    "target_2": 600,
+    "stop_loss": 549.8,
+    "risk_pct": 1.5,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "It was reversing from support on a 30min timeframe after multiple days of downside. Nifty was trending the day I bought.",
+    "comments": "Sl hit",
+    "exits": [
+      {
+        "date": "2026-08-21",
+        "qty": 100,
+        "price": 549.8,
+        "pnl": -820.0000000000045
+      }
+    ]
+  },
+  {
+    "id": "1787324537038",
+    "symbol": "TECHNOCRAFT",
+    "name": "Technocraft",
+    "entry_date": "2026-08-18",
+    "exit_date": "2026-08-21",
+    "days_active": 3,
+    "entry_price": 304,
+    "invested_amount": 30400,
+    "target_1": 315,
+    "target_2": 335,
+    "stop_loss": 302,
+    "risk_pct": 0.7,
+    "total_qty": 100,
+    "open_qty": 0,
+    "status": "CLOSED",
+    "technical_desc": "On a 1hr timeframe it was tight consolidation after some upside signalling a pullback in the day. It was the 2nd day of new IPO.",
+    "comments": "",
+    "exits": [
+      {
+        "date": "2026-08-21",
+        "qty": 100,
+        "price": 334.5,
+        "pnl": 3050
+      }
+    ]
+  },
+  {
     "id": "1785943222295",
     "symbol": "JINDRILL",
     "name": "JINDRILL",
@@ -124,32 +291,33 @@
     "symbol": "GANDHAR",
     "name": "gandhar",
     "entry_date": "2026-07-31",
-    "exit_date": null,
-    "days_active": 4,
+    "exit_date": "2026-08-27",
+    "days_active": 27,
     "entry_price": 242,
     "invested_amount": 121000,
     "target_1": 280,
     "target_2": null,
     "stop_loss": 230,
-    "risk_pct": 4.96,
+    "risk_pct": 4.9,
     "total_qty": 500,
-    "open_qty": 500,
-    "status": "OPEN",
+    "open_qty": 0,
+    "status": "CLOSED",
     "technical_desc": "",
     "comments": "",
-    "exits": [],
-    "MS_Score": 64,
-    "Tier": "Tier 4",
-    "MS_Rating": "\u2605\u2605\u2606\u2606\u2606",
-    "MS_Status": "Neutral / Base Building",
-    "MS_Breakdown": {
-      "Trend": 23,
-      "Momentum": 8,
-      "Volume": 10,
-      "RS": 10,
-      "SmartMoney": 6,
-      "VCP": 7
-    }
+    "exits": [
+      {
+        "date": "2026-08-24",
+        "qty": 200,
+        "price": 258,
+        "pnl": 3200
+      },
+      {
+        "date": "2026-08-27",
+        "qty": 300,
+        "price": 253,
+        "pnl": 3300
+      }
+    ]
   },
   {
     "id": "1785699308865",
@@ -338,16 +506,16 @@
     "technical_desc": "EMA 50 Pullback, near support. They announced preferntial issue at 416.",
     "comments": "",
     "exits": [],
-    "MS_Score": 52,
+    "MS_Score": 59,
     "MS_Rating": "\u2605\u2606\u2606\u2606\u2606",
     "MS_Status": "Distribution / Sell Pressure",
     "MS_Breakdown": {
-      "Trend": 22,
-      "Momentum": 3,
-      "Volume": 8,
-      "RS": 5,
+      "Trend": 21,
+      "Momentum": 8,
+      "Volume": 9,
+      "RS": 4,
       "SmartMoney": 5,
-      "VCP": 9
+      "VCP": 12
     },
     "Tier": "Tier 4"
   },

@@ -1,40 +1,52 @@
 # Performance Analytics Report
 
-- **Generated At:** 2026-08-28 00:35:28
-- **Current Balance (Cash):** Rs.142,672.14
-- **Current Account Equity:** Rs.1,054,199.70
+- **Generated At:** 2026-09-07 20:20:59
+- **Current Balance (Cash):** Rs.268,070.62
+- **Current Account Equity:** Rs.1,078,151.69
 
 ## Core Performance Metrics
 
 | Metric | Value |
 | :--- | :--- |
-| **Total Closed Trades** | 90 |
-| **Winning Trades** | 33 |
-| **Losing Trades** | 57 |
-| **Win Rate (%)** | 36.67% |
-| **Profit Factor** | 0.79 |
-| **Total R-Multiple** | -9.23R |
-| **Average Win** | Rs.5,408.87 |
-| **Average Loss** | Rs.-3,988.45 |
+| **Total Closed Trades** | 102 |
+| **Winning Trades** | 37 |
+| **Losing Trades** | 65 |
+| **Win Rate (%)** | 36.27% |
+| **Profit Factor** | 0.86 |
+| **Total R-Multiple** | -7.70R |
+| **Average Win** | Rs.5,727.14 |
+| **Average Loss** | Rs.-3,776.05 |
 | **Max Drawdown** | 5.61% |
 
 ## Active Holdings
 
 | Symbol | Entry Date | Entry Price | Current Stop | Initial Shares | Shares Remaining | P&L Net | R-Multiple |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **RRKABEL** | 2026-07-22 | Rs.2399.90 | Rs.2399.90 | 52 | 52 | Rs.+22370.41 | +2.24R |
-| **CYIENTDLM** | 2026-07-22 | Rs.623.00 | Rs.623.00 | 200 | 100 | Rs.+18740.00 | +1.88R |
-| **VARROC** | 2026-07-31 | Rs.669.50 | Rs.669.50 | 186 | 93 | Rs.+28560.31 | +2.87R |
-| **PRICOLLTD** | 2026-08-03 | Rs.715.00 | Rs.715.00 | 174 | 87 | Rs.+10755.37 | +1.08R |
-| **SENORES** | 2026-08-10 | Rs.1347.70 | Rs.1347.70 | 106 | 106 | Rs.+13451.40 | +1.35R |
-| **INOXINDIA** | 2026-08-27 | Rs.2034.00 | Rs.1871.28 | 61 | 61 | Rs.+8777.89 | +0.88R |
-| **MANAPPURAM** | 2026-08-27 | Rs.365.40 | Rs.336.17 | 342 | 342 | Rs.-5950.80 | -0.60R |
-| **KMEW** | 2026-08-27 | Rs.2878.40 | Rs.2878.40 | 43 | 22 | Rs.+1993.20 | +0.20R |
-| **ENTERO** | 2026-08-27 | Rs.1639.00 | Rs.1639.00 | 76 | 38 | Rs.+4351.00 | +0.44R |
+| **CYIENTDLM** | 2026-07-22 | Rs.623.00 | Rs.623.00 | 200 | 100 | Rs.+24235.00 | +2.43R |
+| **VARROC** | 2026-07-31 | Rs.669.50 | Rs.669.50 | 186 | 93 | Rs.+29853.00 | +3.00R |
+| **INOXINDIA** | 2026-08-27 | Rs.2034.00 | Rs.1871.28 | 61 | 61 | Rs.+12041.39 | +1.21R |
+| **ENTERO** | 2026-08-27 | Rs.1639.00 | Rs.1639.00 | 76 | 38 | Rs.+9857.20 | +0.99R |
+| **AEROENTER** | 2026-09-01 | Rs.138.00 | Rs.138.00 | 905 | 453 | Rs.+13325.86 | +1.33R |
+| **CENTENKA** | 2026-09-02 | Rs.568.00 | Rs.532.50 | 281 | 281 | Rs.+10973.05 | +1.10R |
+| **MANORAMA** | 2026-09-03 | Rs.1869.80 | Rs.1869.80 | 66 | 33 | Rs.+4415.40 | +0.45R |
+| **ARTEMISMED** | 2026-09-07 | Rs.337.50 | Rs.337.50 | 370 | 185 | Rs.+1110.00 | +0.11R |
+| **RISHABH** | 2026-09-07 | Rs.739.95 | Rs.739.95 | 168 | 84 | Rs.+5880.00 | +0.59R |
 ## Historical Trade Journal
 
 | Symbol | Entry Date | Exit Date | Entry Price | Exit Price | Initial Shares | P&L Net | R-Multiple | Exit Reason |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **RADHIKAJWE** | 2026-09-07 | 2026-09-07 | Rs.84.62 | Rs.84.62 | 1477 | Rs.+2,428.31 | +0.24R | Stop loss hit |
+| **GULFOILLUB** | 2026-09-04 | 2026-09-07 | Rs.1089.90 | Rs.1060.00 | 127 | Rs.-3,797.30 | -0.38R | Stop loss hit |
+| **SAILIFE** | 2026-09-03 | 2026-09-04 | Rs.1588.00 | Rs.1570.00 | 78 | Rs.-702.00 | -0.07R | Stop loss hit |
+| **TVSMOTOR** | 2026-08-28 | 2026-09-04 | Rs.4409.80 | Rs.4133.10 | 28 | Rs.-7,747.59 | -0.78R | Closed below EMA20 trailing stop |
+| **HEG** | 2026-09-01 | 2026-09-02 | Rs.732.40 | Rs.725.00 | 170 | Rs.-211.86 | -0.02R | Stop loss hit |
+| **PRICOLLTD** | 2026-08-03 | 2026-09-02 | Rs.715.00 | Rs.767.75 | 174 | Rs.+9,976.72 | +1.00R | Closed below EMA20 trailing stop |
+| **RRKABEL** | 2026-07-22 | 2026-09-02 | Rs.2399.90 | Rs.2630.40 | 52 | Rs.+11,986.00 | +1.20R | Closed below EMA20 trailing stop |
+| **REDINGTON** | 2026-08-28 | 2026-08-31 | Rs.360.00 | Rs.360.00 | 347 | Rs.+0.00 | +0.00R | Stop loss hit |
+| **KMEW** | 2026-08-27 | 2026-08-31 | Rs.2878.40 | Rs.2878.40 | 43 | Rs.+0.00 | +0.00R | Stop loss hit |
+| **SENORES** | 2026-08-10 | 2026-08-31 | Rs.1347.70 | Rs.1432.80 | 106 | Rs.+9,020.61 | +0.91R | Closed below EMA20 trailing stop |
+| **MARINE** | 2026-08-28 | 2026-08-28 | Rs.376.25 | Rs.376.25 | 332 | Rs.+0.00 | +0.00R | Stop loss hit |
+| **MANAPPURAM** | 2026-08-27 | 2026-08-28 | Rs.365.40 | Rs.348.90 | 342 | Rs.-5,643.00 | -0.56R | Closed below EMA20 trailing stop |
 | **LAURUSLABS** | 2026-08-27 | 2026-08-27 | Rs.1891.30 | Rs.1891.30 | 66 | Rs.+0.00 | +0.00R | Stop loss hit |
 | **ATALREAL** | 2026-08-27 | 2026-08-27 | Rs.34.60 | Rs.34.60 | 3612 | Rs.+0.00 | +0.00R | Stop loss hit |
 | **GLAXO** | 2026-08-27 | 2026-08-27 | Rs.3030.00 | Rs.3030.00 | 41 | Rs.+0.00 | +0.00R | Stop loss hit |

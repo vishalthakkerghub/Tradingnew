@@ -1,0 +1,171 @@
+# Daily Watchlist Report - 2026-09-02
+- **Scan Time:** 2026-09-02 13:00:32 to 2026-09-02 13:04:57
+- **Market Posture:** RED (Score: 4/10)
+- **Recommendation:** Weak Market Breadth (MBI: 38.1%): Suspend all new buying, raise stop losses, and hold cash to protect capital.
+- **Score Breakdown:**
+  - Index Close (18120.20) > 200 SMA (17212.21): 2 pts (Pass)
+  - Index Close (18120.20) > 50 SMA (18065.22): 2 pts (Pass)
+  - 50 SMA (18065.22) > 200 SMA (17212.21): 2 pts (Pass)
+  - Distribution Days (0 in rolling 20 sessions) <= 4: 2 pts (Pass)
+  - Leadership Win Rate (66.7%) >= 70%: 0 pts (Fail)
+- **Total Tickers Processed:** 1866
+- **Valid VCP Candidates:** 15
+- **Valid Flag Candidates:** 107
+
+## VCP Watchlist Symbols
+| Symbol | Score | Engine Type | Grade | Contraction Count | Contraction Sequence | VDU % | Pivot Price | Current Price | Distance to Pivot | Readiness Status | Entry Category | Trigger Price | Stop Loss | Risk per Share | Position Size | R-Multiple | Trade Status |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **JINDRILL** | 88 | STRICT_VCP | Grade A | 2T | T1: 10.0% \| T2: 5.0% | 20.0% | 642.10 | 642.10 | 0.00% | STRICT READY | EMA_PULLBACK | 619.83 | 600.33 | 19.50 | 403 | 0.00 | PENDING_BREAKOUT |
+| **GOLDIAM** | 86 | STRICT_VCP | Grade A | 2T | T1: 10.0% \| T2: 5.0% | 20.0% | 344.10 | 344.10 | 0.00% | STRICT READY | EMA_PULLBACK | 353.00 | 348.72 | 4.28 | 708 | 0.00 | PENDING_BREAKOUT |
+| **BLSE** | 74 | STRICT_VCP | Grade B | 3T | T1: 10.0% \| T2: 8.9% \| T3: 7.1% | 39.9% | 324.90 | 322.85 | -0.63% | STRICT READY | EMA_PULLBACK | 331.00 | 320.40 | 23.10 | 432 | 0.00 | PENDING_BREAKOUT |
+| **MATRIMONY** | 63 | STRICT_VCP | Grade B | 3T | T1: 13.1% \| T2: 11.7% \| T3: 9.5% | 23.8% | 555.00 | 514.35 | -7.32% | DEVELOPING | EMA_PULLBACK | 526.85 | 509.05 | 44.40 | 225 | 0.00 | PENDING_BREAKOUT |
+| **NRL** | 59 | STRICT_VCP | Grade B | 2T | T1: 11.4% \| T2: 4.2% | 37.7% | 118.00 | 122.00 | 3.39% | POST-BREAKOUT | EMA_PULLBACK | 120.50 | 120.05 | 5.00 | 2000 | 0.80 | ACTIVE |
+| **TMB** | 49 | STRICT_VCP | Grade B | 3T | T1: 9.1% \| T2: 8.6% \| T3: 8.0% | 26.7% | 895.65 | 906.60 | 1.22% | POST-BREAKOUT | EMA_PULLBACK | 936.00 | 878.95 | 71.65 | 139 | 0.15 | ACTIVE |
+| **E2E** | 30 | STRICT_VCP | Grade C | 3T | T1: 22.0% \| T2: 16.7% \| T3: 15.9% | 42.0% | 698.00 | 608.45 | -12.83% | DEVELOPING | EMA_PULLBACK | 649.65 | 597.68 | 55.84 | 179 | 0.00 | PENDING_BREAKOUT |
+| **SUVEN** | 27 | STRICT_VCP | Grade C | 2T | T1: 21.7% \| T2: 10.3% | 44.2% | 358.00 | 372.85 | 4.15% | POST-BREAKOUT | EMA_PULLBACK | 403.35 | 371.08 | 28.64 | 349 | 0.52 | ACTIVE |
+| **INDIANHUME** | 73 | FLEX_VCP | Grade B | 3T | T1: 13.6% \| T2: 9.1% \| T3: 10.2% | 17.1% | 396.05 | 388.70 | -1.86% | FLEX READY | EMA_PULLBACK | 381.70 | 378.21 | 31.68 | 315 | 0.00 | PENDING_BREAKOUT |
+| **RBA** | 60 | FLEX_VCP | Grade C | 4T | T1: 6.5% \| T2: 6.2% \| T3: 7.2% \| T4: 8.2% | 28.2% | 108.41 | 97.75 | -9.83% | FLEX READY | EMA_PULLBACK | 100.80 | 95.65 | 8.67 | 1153 | 0.00 | PENDING_BREAKOUT |
+| **KARURVYSYA** | 59 | FLEX_VCP | Grade B | 4T | T1: 5.1% \| T2: 4.0% \| T3: 6.1% \| T4: 3.9% | 28.4% | 340.00 | 346.60 | 1.94% | POST-BREAKOUT | TIGHT_CHEAT_VCP | 351.85 | 344.45 | 13.40 | 735 | 0.00 | BREAKOUT_WITHOUT_VOLUME |
+| **CRAFTSMAN** | 58 | FLEX_VCP | Grade B | 4T | T1: 4.4% \| T2: 5.2% \| T3: 4.8% \| T4: 5.6% | 36.7% | 10960.00 | 10999.00 | 0.36% | POST-BREAKOUT | EMA_PULLBACK | 11498.00 | 10925.00 | 610.00 | 16 | 0.06 | ACTIVE |
+| **COUNCODOS** | 50 | FLEX_VCP | Grade C | 4T | T1: 22.5% \| T2: 15.2% \| T3: 10.3% \| T4: 12.0% | 33.0% | 7.18 | 6.70 | -6.69% | FLEX READY | EMA_PULLBACK | 6.89 | 6.59 | 0.57 | 17409 | 0.00 | PENDING_BREAKOUT |
+| **HCC** | 29 | FLEX_VCP | Grade C | 3T | T1: 20.9% \| T2: 14.5% \| T3: 12.0% | 54.7% | 22.30 | 23.08 | 3.50% | POST-BREAKOUT | EMA_PULLBACK | 24.25 | 22.90 | 1.78 | 5605 | 0.44 | ACTIVE |
+| **JAGSNPHARM** | 81 | MINI_VCP | Grade A | 4T | T1: 14.0% \| T2: 9.0% \| T3: 5.0% \| T4: 5.2% | 17.0% | 248.00 | 237.03 | -4.42% | MINI READY | EMA_PULLBACK | 244.38 | 235.50 | 12.90 | 775 | 0.00 | PENDING_BREAKOUT |
+| **MWL** | 61 | PULLBACK_EMA50 | Grade A | 1T | PB: 3.8% Risk | 31.0% | 39.20 | 39.20 | 1.36% | PULLBACK READY | EMA50 PULLBACK | 39.20 | 37.71 | 1.49 | 6377 | 0.00 | PENDING_BREAKOUT |
+| **STEELCAS** | 60 | PULLBACK_EMA50 | Grade A | 1T | PB: 4.2% Risk | 21.4% | 330.75 | 330.75 | 1.80% | PULLBACK READY | EMA50 PULLBACK | 330.75 | 316.78 | 13.97 | 715 | 0.00 | PENDING_BREAKOUT |
+| **VIJAYA** | 58 | PULLBACK_EMA10 | Grade A | 1T | PB: 3.0% Risk | 56.6% | 1481.10 | 1481.10 | -0.11% | PULLBACK READY | EMA10 PULLBACK | 1481.10 | 1436.67 | 44.43 | 168 | 0.00 | PENDING_BREAKOUT |
+| **SPORTKING** | 57 | PULLBACK_EMA10 | Grade A | 1T | PB: 3.9% Risk | 51.8% | 225.74 | 225.74 | 1.41% | PULLBACK READY | EMA10 PULLBACK | 225.74 | 217.05 | 8.69 | 1107 | 0.00 | PENDING_BREAKOUT |
+| **AJANTPHARM** | 56 | PULLBACK_EMA50 | Grade A | 1T | PB: 3.7% Risk | 59.9% | 3481.70 | 3481.70 | 1.29% | PULLBACK READY | EMA50 PULLBACK | 3481.70 | 3351.53 | 130.17 | 71 | 0.00 | PENDING_BREAKOUT |
+| **NRBBEARING** | 56 | PULLBACK_EMA50 | Grade A | 1T | PB: 5.4% Risk | 46.8% | 453.55 | 453.55 | 3.09% | PULLBACK READY | EMA50 PULLBACK | 453.55 | 428.98 | 24.57 | 406 | 0.00 | PENDING_BREAKOUT |
+| **SMLMAH** | 56 | PULLBACK_EMA10 | Grade A | 1T | PB: 3.8% Risk | 58.6% | 5318.50 | 5318.50 | 1.36% | PULLBACK READY | EMA10 PULLBACK | 5318.50 | 5115.90 | 202.60 | 47 | 0.00 | PENDING_BREAKOUT |
+| **TORNTPHARM** | 55 | PULLBACK_EMA10 | Grade A | 1T | PB: 3.1% Risk | 53.9% | 5012.00 | 5012.00 | 0.60% | PULLBACK READY | EMA10 PULLBACK | 5012.00 | 4857.68 | 154.32 | 49 | 0.00 | PENDING_BREAKOUT |
+| **THYROCARE** | 55 | PULLBACK_EMA50 | Grade A | 1T | PB: 3.7% Risk | 41.4% | 576.75 | 576.75 | 1.23% | PULLBACK READY | EMA50 PULLBACK | 576.75 | 555.51 | 21.24 | 433 | 0.00 | PENDING_BREAKOUT |
+| **INDIGOPNTS** | 55 | PULLBACK_EMA10 | Grade A | 1T | PB: 3.6% Risk | 57.8% | 1171.00 | 1171.00 | 1.11% | PULLBACK READY | EMA10 PULLBACK | 1171.00 | 1129.19 | 41.81 | 213 | 0.00 | PENDING_BREAKOUT |
+| **FILATEX** | 54 | PULLBACK_EMA50 | Grade A | 1T | PB: 4.1% Risk | 49.9% | 73.31 | 73.31 | 1.66% | PULLBACK READY | EMA50 PULLBACK | 73.31 | 70.31 | 3.00 | 3332 | 0.00 | PENDING_BREAKOUT |
+| **PANAMAPET** | 53 | PULLBACK_EMA20 | Grade A | 1T | PB: 4.7% Risk | 41.9% | 489.75 | 489.75 | 2.27% | PULLBACK READY | EMA20 PULLBACK | 489.75 | 466.92 | 22.83 | 438 | 0.00 | PENDING_BREAKOUT |
+| **KOHINOOR** | 50 | PULLBACK_EMA10 | Grade A | 1T | PB: 3.3% Risk | 55.9% | 33.41 | 33.41 | 0.78% | PULLBACK READY | EMA10 PULLBACK | 33.41 | 32.32 | 1.09 | 7482 | 0.00 | PENDING_BREAKOUT |
+| **GARFIBRES** | 48 | PULLBACK_EMA10 | Grade B | 1T | PB: 3.8% Risk | 71.0% | 814.75 | 814.75 | 1.35% | PULLBACK READY | EMA10 PULLBACK | 814.75 | 783.79 | 30.96 | 306 | 0.00 | PENDING_BREAKOUT |
+| **MMFL** | 48 | PULLBACK_EMA10 | Grade B | 1T | PB: 3.4% Risk | 74.9% | 648.05 | 648.05 | 0.98% | PULLBACK READY | EMA10 PULLBACK | 648.05 | 625.71 | 22.34 | 385 | 0.00 | PENDING_BREAKOUT |
+| **RKFORGE** | 48 | PULLBACK_EMA20 | Grade B | 1T | PB: 3.1% Risk | 60.7% | 726.10 | 726.10 | 0.58% | PULLBACK READY | EMA20 PULLBACK | 726.10 | 703.86 | 22.24 | 344 | 0.00 | PENDING_BREAKOUT |
+| **UNIMECH** | 47 | PULLBACK_EMA20 | Grade B | 1T | PB: 3.0% Risk | 78.2% | 1451.90 | 1451.90 | 0.36% | PULLBACK READY | EMA20 PULLBACK | 1451.90 | 1408.34 | 43.56 | 172 | 0.00 | PENDING_BREAKOUT |
+| **MSTCLTD** | 47 | PULLBACK_EMA10 | Grade B | 1T | PB: 3.0% Risk | 64.9% | 711.75 | 711.75 | -0.39% | PULLBACK READY | EMA10 PULLBACK | 711.75 | 690.40 | 21.35 | 351 | 0.00 | PENDING_BREAKOUT |
+| **RSWM** | 45 | PULLBACK_EMA20 | Grade B | 1T | PB: 4.9% Risk | 69.4% | 206.94 | 206.94 | 2.48% | PULLBACK READY | EMA20 PULLBACK | 206.94 | 196.89 | 10.05 | 994 | 0.00 | PENDING_BREAKOUT |
+| **TI** | 44 | PULLBACK_EMA20 | Grade B | 1T | PB: 3.7% Risk | 68.5% | 552.35 | 552.35 | 1.25% | PULLBACK READY | EMA20 PULLBACK | 552.35 | 531.88 | 20.47 | 452 | 0.00 | PENDING_BREAKOUT |
+| **MCX** | 43 | PULLBACK_EMA10 | Grade B | 1T | PB: 3.7% Risk | 74.9% | 3286.00 | 3286.00 | 1.27% | PULLBACK READY | EMA10 PULLBACK | 3286.00 | 3163.80 | 122.20 | 76 | 0.00 | PENDING_BREAKOUT |
+| **QUADFUTURE** | 43 | PULLBACK_EMA10 | Grade B | 1T | PB: 3.7% Risk | 60.2% | 415.00 | 415.00 | 1.29% | PULLBACK READY | EMA10 PULLBACK | 415.00 | 399.49 | 15.51 | 602 | 0.00 | PENDING_BREAKOUT |
+| **GAEL** | 39 | PULLBACK_EMA20 | Grade B | 1T | PB: 3.0% Risk | 68.9% | 170.80 | 170.80 | -0.51% | PULLBACK READY | EMA20 PULLBACK | 170.80 | 165.68 | 5.12 | 1463 | 0.00 | PENDING_BREAKOUT |
+| **HNDFDS** | 37 | PULLBACK_EMA20 | Grade C | 1T | PB: 3.0% Risk | 98.2% | 622.80 | 622.80 | 0.17% | PULLBACK READY | EMA20 PULLBACK | 622.80 | 604.12 | 18.68 | 401 | 0.00 | PENDING_BREAKOUT |
+| **SENORES** | 36 | PULLBACK_EMA20 | Grade C | 1T | PB: 3.0% Risk | 88.1% | 1449.50 | 1449.50 | -0.75% | PULLBACK READY | EMA20 PULLBACK | 1449.50 | 1406.01 | 43.49 | 172 | 0.00 | PENDING_BREAKOUT |
+| **SIS** | 36 | PULLBACK_EMA20 | Grade C | 1T | PB: 3.6% Risk | 81.9% | 430.00 | 430.00 | 1.11% | PULLBACK READY | EMA20 PULLBACK | 430.00 | 414.63 | 15.37 | 581 | 0.00 | PENDING_BREAKOUT |
+| **AARTIDRUGS** | 34 | PULLBACK_EMA10 | Grade B | 1T | PB: 3.0% Risk | 60.3% | 417.80 | 417.80 | -0.20% | PULLBACK READY | EMA10 PULLBACK | 417.80 | 405.27 | 12.53 | 598 | 0.00 | PENDING_BREAKOUT |
+| **SARLAPOLY** | 32 | PULLBACK_EMA10 | Grade C | 1T | PB: 3.9% Risk | 96.3% | 102.46 | 102.46 | 1.41% | PULLBACK READY | EMA10 PULLBACK | 102.46 | 98.51 | 3.95 | 2439 | 0.00 | PENDING_BREAKOUT |
+| **CLSEL** | 30 | PULLBACK_EMA10 | Grade C | 1T | PB: 3.4% Risk | 96.1% | 301.40 | 301.40 | 0.98% | PULLBACK READY | EMA10 PULLBACK | 301.40 | 291.01 | 10.39 | 829 | 0.00 | PENDING_BREAKOUT |
+## Emerging Leader Flag Watchlist Symbols
+| Symbol | Score | Engine Type | Grade | Flag Length | Range | VDU % | Trigger Price | Current Price | Distance to Pivot | Readiness Status | Entry Price | Stop Loss | Risk per Share | Position Size | R-Multiple | Trade Status |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **CAPLIPOINT** | 75 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.6% Risk | 18.7% | 2750.00 | 2720.50 | -1.07% | FLAG READY | 2750.00 | 2650.00 | 100.00 | 90 | 0.00 | PENDING_BREAKOUT |
+| **NRL** | 74 | FLAG_SETUP | Grade A | 1d | T1: 4.1% | 85.7% | 125.00 | 122.00 | -2.40% | FLAG READY | 125.00 | 120.05 | 4.95 | 2000 | 0.00 | PENDING_BREAKOUT |
+| **DIVISLAB** | 74 | FLAG_SETUP | Grade A | 1d | T1: 4.8% | 118.6% | 9467.00 | 9220.00 | -2.61% | FLAG READY | 9467.00 | 9035.00 | 432.00 | 23 | 0.00 | PENDING_BREAKOUT |
+| **PPLPHARMA** | 74 | FLAG_SETUP | Grade A | 1d | T1: 4.5% | 54.3% | 220.00 | 213.78 | -2.83% | FLAG READY | 220.00 | 210.50 | 9.50 | 1052 | 0.00 | PENDING_BREAKOUT |
+| **IRISDOREME** | 74 | FLAG_SETUP | Grade A | 1d | T1: 4.5% | 87.1% | 59.19 | 58.39 | -1.35% | FLAG READY | 59.19 | 56.66 | 2.53 | 3952 | 0.00 | PENDING_BREAKOUT |
+| **LALPATHLAB** | 74 | FLAG_SETUP | Grade A | 1d | T1: 4.8% | 53.4% | 1963.00 | 1916.10 | -2.39% | FLAG READY | 1963.00 | 1873.80 | 89.20 | 112 | 0.00 | PENDING_BREAKOUT |
+| **NITINSPIN** | 74 | FLAG_SETUP | Grade A | 1d | T1: 4.7% | 47.1% | 641.50 | 623.85 | -2.75% | FLAG READY | 641.50 | 612.60 | 28.90 | 346 | 0.00 | PENDING_BREAKOUT |
+| **NAUKRI** | 73 | FLAG_SETUP | Grade A | 1d | T1: 4.5% | 66.8% | 1371.70 | 1343.70 | -2.04% | FLAG READY | 1371.70 | 1313.00 | 58.70 | 170 | 0.00 | PENDING_BREAKOUT |
+| **GLAND** | 73 | FLAG_SETUP | Grade A | 1d | T1: 4.5% | 42.9% | 2930.00 | 2868.40 | -2.10% | FLAG READY | 2930.00 | 2803.00 | 127.00 | 78 | 0.00 | PENDING_BREAKOUT |
+| **SOMANYCERA** | 72 | FLAG_SETUP | Grade A | 1d | T1: 4.6% | 92.5% | 576.80 | 570.10 | -1.16% | FLAG READY | 576.80 | 551.40 | 25.40 | 393 | 0.00 | PENDING_BREAKOUT |
+| **MANYAVAR** | 71 | FLAG_SETUP | Grade A | 1d | T1: 3.3% | 20.6% | 551.00 | 544.10 | -1.25% | FLAG READY | 551.00 | 533.30 | 17.70 | 453 | 0.00 | PENDING_BREAKOUT |
+| **GNFC** | 70 | FLAG_SETUP | Grade A | 1d | T1: 3.8% | 104.0% | 591.95 | 576.95 | -2.53% | FLAG READY | 591.95 | 570.50 | 21.45 | 422 | 0.00 | PENDING_BREAKOUT |
+| **SHYAMMETL** | 69 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.3% Risk | 29.7% | 1104.00 | 1072.60 | -2.84% | FLAG READY | 1104.00 | 1067.10 | 36.90 | 226 | 0.00 | PENDING_BREAKOUT |
+| **DYCL** | 68 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 5.3% Risk | 9.9% | 560.00 | 535.55 | -4.37% | FLAG READY | 560.00 | 530.25 | 29.75 | 336 | 0.00 | PENDING_BREAKOUT |
+| **SARLAPOLY** | 67 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.3% Risk | 16.6% | 105.00 | 102.46 | -2.42% | FLAG READY | 105.00 | 101.50 | 3.50 | 2380 | 0.00 | PENDING_BREAKOUT |
+| **FSL** | 65 | FLAG_SETUP | Grade B | 1d | T1: 6.2% | 23.3% | 272.85 | 270.40 | -0.90% | FLAG READY | 272.85 | 257.00 | 15.85 | 630 | 0.00 | PENDING_BREAKOUT |
+| **NILKAMAL** | 64 | FLAG_SETUP | Grade B | 1d | T1: 7.0% | 17.7% | 2118.60 | 2063.10 | -2.62% | FLAG READY | 2118.60 | 1980.20 | 138.40 | 72 | 0.00 | PENDING_BREAKOUT |
+| **DIFFNKG** | 64 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 5.1% Risk | 17.6% | 492.00 | 476.80 | -3.09% | FLAG READY | 492.00 | 467.00 | 25.00 | 400 | 0.00 | PENDING_BREAKOUT |
+| **LALPATHLAB** | 64 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 2.4% Risk | 38.1% | 1938.90 | 1916.10 | -1.18% | FLAG READY | 1938.90 | 1893.10 | 45.80 | 128 | 0.00 | PENDING_BREAKOUT |
+| **TBOTEK** | 64 | FLAG_SETUP | Grade B | 1d | T1: 6.0% | 72.3% | 1750.00 | 1700.00 | -2.86% | FLAG READY | 1750.00 | 1651.50 | 98.50 | 101 | 0.00 | PENDING_BREAKOUT |
+| **POLICYBZR** | 63 | FLAG_SETUP | Grade A | 1d | T1: 4.4% | 58.0% | 1875.00 | 1851.90 | -1.23% | FLAG READY | 1875.00 | 1796.40 | 78.60 | 127 | 0.00 | PENDING_BREAKOUT |
+| **MATRIMONY** | 63 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.1% Risk | 23.3% | 526.85 | 514.35 | -2.37% | FLAG READY | 526.85 | 510.55 | 16.30 | 474 | 0.00 | PENDING_BREAKOUT |
+| **BOSCH-HCIL** | 63 | FLAG_SETUP | Grade B | 1d | T1: 6.2% | 73.2% | 1762.70 | 1733.90 | -1.63% | FLAG READY | 1762.70 | 1660.00 | 102.70 | 97 | 0.00 | PENDING_BREAKOUT |
+| **ROSSTECH** | 62 | FLAG_SETUP | Grade B | 1d | T1: 6.3% | 73.7% | 1159.40 | 1134.00 | -2.19% | FLAG READY | 1159.40 | 1091.00 | 68.40 | 146 | 0.00 | PENDING_BREAKOUT |
+| **GANDHAR** | 60 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 2.4% Risk | 39.5% | 268.50 | 265.95 | -0.95% | FLAG READY | 268.50 | 262.10 | 6.40 | 931 | 0.00 | PENDING_BREAKOUT |
+| **SURAKSHA** | 60 | FLAG_SETUP | Grade B | 1d | T1: 5.3% | 69.5% | 348.95 | 340.35 | -2.46% | FLAG READY | 348.95 | 331.45 | 17.50 | 571 | 0.00 | PENDING_BREAKOUT |
+| **WELSPUNLIV** | 60 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 2.9% Risk | 67.7% | 201.50 | 200.01 | -0.74% | FLAG READY | 201.50 | 195.60 | 5.90 | 1240 | 0.00 | PENDING_BREAKOUT |
+| **GPPL** | 60 | FLAG_SETUP | Grade A | 1d | T1: 3.3% | 128.5% | 167.33 | 164.44 | -1.73% | FLAG READY | 167.33 | 161.95 | 5.38 | 1494 | 0.00 | PENDING_BREAKOUT |
+| **IGPL** | 60 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.7% Risk | 60.5% | 552.90 | 546.40 | -1.18% | FLAG READY | 552.90 | 532.60 | 20.30 | 452 | 0.00 | PENDING_BREAKOUT |
+| **MENONBE** | 59 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.8% Risk | 29.2% | 301.40 | 293.90 | -2.49% | FLAG READY | 301.40 | 287.00 | 14.40 | 694 | 0.00 | PENDING_BREAKOUT |
+| **NILKAMAL** | 59 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.4% Risk | 60.6% | 2078.00 | 2063.10 | -0.72% | FLAG READY | 2078.00 | 2007.00 | 71.00 | 120 | 0.00 | PENDING_BREAKOUT |
+| **KMEW** | 58 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 2.9% Risk | 59.5% | 2990.00 | 2951.60 | -1.28% | FLAG READY | 2990.00 | 2903.60 | 86.40 | 83 | 0.00 | PENDING_BREAKOUT |
+| **SIGIND** | 58 | FLAG_SETUP | Grade B | 1d | T1: 6.4% | 25.2% | 72.50 | 71.58 | -1.27% | FLAG READY | 72.50 | 68.12 | 4.38 | 2283 | 0.00 | PENDING_BREAKOUT |
+| **MANINDS** | 58 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.7% Risk | 56.9% | 770.00 | 744.85 | -3.27% | FLAG READY | 770.00 | 741.50 | 28.50 | 324 | 0.00 | PENDING_BREAKOUT |
+| **CHENNPETRO** | 58 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 2.9% Risk | 75.6% | 1424.40 | 1414.00 | -0.73% | FLAG READY | 1424.40 | 1382.50 | 41.90 | 175 | 0.00 | PENDING_BREAKOUT |
+| **COSMOFIRST** | 58 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 5.7% Risk | 29.8% | 996.00 | 952.85 | -4.33% | FLAG READY | 996.00 | 938.85 | 57.15 | 174 | 0.00 | PENDING_BREAKOUT |
+| **CUPID** | 58 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.1% Risk | 54.8% | 282.65 | 280.70 | -0.69% | FLAG READY | 282.65 | 274.00 | 8.65 | 884 | 0.00 | PENDING_BREAKOUT |
+| **KDDL** | 57 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.3% Risk | 85.5% | 3968.80 | 3852.90 | -2.92% | FLAG READY | 3968.80 | 3838.80 | 130.00 | 62 | 0.00 | PENDING_BREAKOUT |
+| **TARSONS** | 57 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 2.9% Risk | 46.2% | 347.00 | 345.35 | -0.48% | FLAG READY | 347.00 | 337.00 | 10.00 | 720 | 0.00 | PENDING_BREAKOUT |
+| **VISHNU** | 57 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.2% Risk | 35.5% | 676.80 | 659.55 | -2.55% | FLAG READY | 676.80 | 655.20 | 21.60 | 369 | 0.00 | PENDING_BREAKOUT |
+| **ENGINERSIN** | 56 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 5.5% Risk | 11.8% | 289.65 | 276.60 | -4.51% | FLAG READY | 289.65 | 273.65 | 16.00 | 625 | 0.00 | PENDING_BREAKOUT |
+| **MMP** | 56 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 5.2% Risk | 27.7% | 393.45 | 384.10 | -2.38% | FLAG READY | 393.45 | 373.00 | 20.45 | 488 | 0.00 | PENDING_BREAKOUT |
+| **RBA** | 55 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.3% Risk | 50.7% | 100.80 | 97.75 | -3.03% | FLAG READY | 100.80 | 97.50 | 3.30 | 2480 | 0.00 | PENDING_BREAKOUT |
+| **RPPL** | 54 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.7% Risk | 86.7% | 23.36 | 22.89 | -2.01% | FLAG READY | 23.36 | 22.50 | 0.86 | 10702 | 0.00 | PENDING_BREAKOUT |
+| **GNA** | 54 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.5% Risk | 81.9% | 544.90 | 532.40 | -2.29% | FLAG READY | 544.90 | 525.60 | 19.30 | 458 | 0.00 | PENDING_BREAKOUT |
+| **KARURVYSYA** | 54 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 1.9% Risk | 97.6% | 351.85 | 346.60 | -1.49% | FLAG READY | 351.85 | 345.00 | 6.85 | 710 | 0.00 | PENDING_BREAKOUT |
+| **DCBBANK** | 53 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.1% Risk | 65.6% | 225.62 | 222.34 | -1.45% | FLAG READY | 225.62 | 218.55 | 7.07 | 1108 | 0.00 | PENDING_BREAKOUT |
+| **AEROFLEX** | 53 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 6.0% Risk | 38.5% | 570.50 | 540.75 | -5.21% | FLAG READY | 570.50 | 536.30 | 34.20 | 292 | 0.00 | PENDING_BREAKOUT |
+| **SOUTHBANK** | 53 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 1.9% Risk | 45.1% | 46.25 | 45.74 | -1.10% | FLAG READY | 46.25 | 45.39 | 0.86 | 5405 | 0.00 | PENDING_BREAKOUT |
+| **CUPID** | 53 | FLAG_SETUP | Grade B | 1d | T1: 8.0% | 39.9% | 287.94 | 280.70 | -2.51% | FLAG READY | 287.94 | 266.50 | 21.44 | 466 | 0.00 | PENDING_BREAKOUT |
+| **HINDOILEXP** | 52 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 5.7% Risk | 19.5% | 174.99 | 166.18 | -5.03% | FLAG READY | 174.99 | 165.10 | 9.89 | 1011 | 0.00 | PENDING_BREAKOUT |
+| **MOLDTECH** | 52 | FLAG_SETUP | Grade B | 1d | T1: 8.7% | 33.8% | 202.39 | 202.38 | -0.00% | FLAG READY | 202.39 | 186.20 | 16.19 | 617 | 0.00 | PENDING_BREAKOUT |
+| **USHAMART** | 51 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 2.9% Risk | 45.7% | 512.90 | 501.60 | -2.20% | FLAG READY | 512.90 | 498.05 | 14.85 | 487 | 0.00 | PENDING_BREAKOUT |
+| **COUNCODOS** | 50 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.1% Risk | 20.2% | 6.89 | 6.70 | -2.76% | FLAG READY | 6.89 | 6.61 | 0.28 | 35714 | 0.00 | PENDING_BREAKOUT |
+| **WELSPUNLIV** | 50 | FLAG_SETUP | Grade B | 1d | T1: 7.6% | 62.1% | 201.50 | 200.01 | -0.74% | FLAG READY | 201.50 | 187.31 | 14.19 | 704 | 0.00 | PENDING_BREAKOUT |
+| **TFCILTD** | 50 | FLAG_SETUP | Grade B | 1d | T1: 7.7% | 69.6% | 147.65 | 146.14 | -1.02% | FLAG READY | 147.65 | 137.05 | 10.60 | 943 | 0.00 | PENDING_BREAKOUT |
+| **RPEL** | 49 | FLAG_SETUP | Grade B | 1d | T1: 7.4% | 101.5% | 1810.00 | 1774.60 | -1.96% | FLAG READY | 1810.00 | 1685.20 | 124.80 | 80 | 0.00 | PENDING_BREAKOUT |
+| **RPEL** | 49 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 5.2% Risk | 59.8% | 1798.00 | 1774.60 | -1.30% | FLAG READY | 1798.00 | 1704.20 | 93.80 | 106 | 0.00 | PENDING_BREAKOUT |
+| **THELEELA** | 49 | FLAG_SETUP | Grade B | 1d | T1: 7.7% | 133.8% | 582.85 | 569.90 | -2.22% | FLAG READY | 582.85 | 541.05 | 41.80 | 239 | 0.00 | PENDING_BREAKOUT |
+| **PRABHA** | 49 | FLAG_SETUP | Grade B | 1d | T1: 8.8% | 36.1% | 218.80 | 216.27 | -1.16% | FLAG READY | 218.80 | 201.30 | 17.50 | 571 | 0.00 | PENDING_BREAKOUT |
+| **VSSL** | 49 | FLAG_SETUP | Grade B | 1d | T1: 7.0% | 45.9% | 369.90 | 362.10 | -2.11% | FLAG READY | 369.90 | 345.55 | 24.35 | 410 | 0.00 | PENDING_BREAKOUT |
+| **COFORGE** | 49 | FLAG_SETUP | Grade B | 1d | T1: 7.5% | 86.8% | 2021.20 | 1965.70 | -2.75% | FLAG READY | 2021.20 | 1881.00 | 140.20 | 71 | 0.00 | PENDING_BREAKOUT |
+| **DEEPINDS** | 49 | FLAG_SETUP | Grade B | 1d | T1: 7.6% | 53.6% | 704.95 | 693.65 | -1.60% | FLAG READY | 704.95 | 655.00 | 49.95 | 200 | 0.00 | PENDING_BREAKOUT |
+| **MARKSANS** | 49 | FLAG_SETUP | Grade B | 1d | T1: 7.8% | 74.8% | 337.65 | 332.50 | -1.53% | FLAG READY | 337.65 | 313.10 | 24.55 | 407 | 0.00 | PENDING_BREAKOUT |
+| **ARTEMISMED** | 48 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.5% Risk | 41.5% | 335.00 | 320.70 | -4.27% | FLAG READY | 335.00 | 320.00 | 15.00 | 666 | 0.00 | PENDING_BREAKOUT |
+| **WSTCSTPAPR** | 48 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 5.4% Risk | 58.1% | 658.50 | 629.05 | -4.47% | FLAG READY | 658.50 | 622.75 | 35.75 | 279 | 0.00 | PENDING_BREAKOUT |
+| **CHENNPETRO** | 48 | FLAG_SETUP | Grade B | 1d | T1: 7.5% | 61.2% | 1424.40 | 1414.00 | -0.73% | FLAG READY | 1424.40 | 1325.10 | 99.30 | 100 | 0.00 | PENDING_BREAKOUT |
+| **GARFIBRES** | 48 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.9% Risk | 57.7% | 852.00 | 814.75 | -4.37% | FLAG READY | 852.00 | 810.30 | 41.70 | 239 | 0.00 | PENDING_BREAKOUT |
+| **MOLDTKPAC** | 47 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 3.1% Risk | 61.5% | 714.75 | 694.55 | -2.83% | FLAG READY | 714.75 | 692.25 | 22.50 | 349 | 0.00 | PENDING_BREAKOUT |
+| **UNIVCABLES** | 47 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.5% Risk | 70.6% | 1695.00 | 1628.00 | -3.95% | FLAG READY | 1695.00 | 1618.40 | 76.60 | 130 | 0.00 | PENDING_BREAKOUT |
+| **EMIL** | 46 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 5.2% Risk | 98.4% | 182.45 | 176.44 | -3.29% | FLAG READY | 182.45 | 173.00 | 9.45 | 1058 | 0.00 | PENDING_BREAKOUT |
+| **WINDMACHIN** | 46 | INSIDE_BAR_FLAG | Grade A | 1d | IB: 2.2% Risk | 52.2% | 310.00 | 305.05 | -1.60% | FLAG READY | 310.00 | 303.10 | 6.90 | 806 | 0.00 | PENDING_BREAKOUT |
+| **PARAS** | 46 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.8% Risk | 79.6% | 1433.20 | 1413.10 | -1.40% | FLAG READY | 1433.20 | 1363.80 | 69.40 | 144 | 0.00 | PENDING_BREAKOUT |
+| **AARTIPHARM** | 45 | FLAG_SETUP | Grade B | 1d | T1: 8.6% | 61.7% | 879.40 | 867.25 | -1.38% | FLAG READY | 879.40 | 810.10 | 69.30 | 144 | 0.00 | PENDING_BREAKOUT |
+| **LTM** | 45 | FLAG_SETUP | Grade B | 1d | T1: 5.3% | 88.4% | 4700.00 | 4588.00 | -2.38% | FLAG READY | 4700.00 | 4464.00 | 236.00 | 42 | 0.00 | PENDING_BREAKOUT |
+| **VRLLOG** | 45 | FLAG_SETUP | Grade B | 1d | T1: 7.0% | 48.8% | 304.90 | 299.85 | -1.66% | FLAG READY | 304.90 | 285.05 | 19.85 | 503 | 0.00 | PENDING_BREAKOUT |
+| **RGL** | 45 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.7% Risk | 51.0% | 141.47 | 137.79 | -2.60% | FLAG READY | 141.47 | 134.80 | 6.67 | 1499 | 0.00 | PENDING_BREAKOUT |
+| **BLSE** | 44 | FLAG_SETUP | Grade C | 1d | T1: 9.6% | 39.9% | 331.30 | 322.85 | -2.55% | FLAG READY | 331.30 | 304.80 | 26.50 | 377 | 0.00 | PENDING_BREAKOUT |
+| **THEMISMED** | 44 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.8% Risk | 67.7% | 128.41 | 124.15 | -3.32% | FLAG READY | 128.41 | 122.21 | 6.20 | 1612 | 0.00 | PENDING_BREAKOUT |
+| **CUB** | 43 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.1% Risk | 76.3% | 235.99 | 230.61 | -2.28% | FLAG READY | 235.99 | 226.40 | 9.59 | 1042 | 0.00 | PENDING_BREAKOUT |
+| **SIL** | 43 | FLAG_SETUP | Grade B | 1d | T1: 6.9% | 45.0% | 20.20 | 19.67 | -2.62% | FLAG READY | 20.20 | 18.90 | 1.30 | 7692 | 0.00 | PENDING_BREAKOUT |
+| **SIL** | 43 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.7% Risk | 74.1% | 20.20 | 19.67 | -2.62% | FLAG READY | 20.20 | 19.25 | 0.95 | 10526 | 0.00 | PENDING_BREAKOUT |
+| **MUKKA** | 41 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.1% Risk | 34.7% | 27.73 | 26.85 | -3.17% | FLAG READY | 27.73 | 26.60 | 1.13 | 8849 | 0.00 | PENDING_BREAKOUT |
+| **AGARWALEYE** | 41 | FLAG_SETUP | Grade B | 1d | T1: 7.2% | 69.9% | 524.50 | 514.25 | -1.95% | FLAG READY | 524.50 | 489.50 | 35.00 | 285 | 0.00 | PENDING_BREAKOUT |
+| **RISHABH** | 40 | FLAG_SETUP | Grade C | 1d | T1: 11.6% | 114.3% | 753.00 | 746.00 | -0.93% | FLAG READY | 753.00 | 692.76 | 60.24 | 166 | 0.00 | PENDING_BREAKOUT |
+| **CYIENTDLM** | 39 | FLAG_SETUP | Grade C | 1d | T1: 9.8% | 85.4% | 869.95 | 854.75 | -1.75% | FLAG READY | 869.95 | 800.35 | 69.60 | 143 | 0.00 | PENDING_BREAKOUT |
+| **QUESS** | 39 | FLAG_SETUP | Grade C | 1d | T1: 9.5% | 62.5% | 388.75 | 379.25 | -2.44% | FLAG READY | 388.75 | 357.65 | 31.10 | 321 | 0.00 | PENDING_BREAKOUT |
+| **SHILPAMED** | 39 | FLAG_SETUP | Grade C | 1d | T1: 10.9% | 95.9% | 952.00 | 928.55 | -2.46% | FLAG READY | 952.00 | 875.84 | 76.16 | 131 | 0.00 | PENDING_BREAKOUT |
+| **BEML** | 38 | FLAG_SETUP | Grade B | 1d | T1: 7.3% | 118.5% | 2047.80 | 2032.40 | -0.75% | FLAG READY | 2047.80 | 1909.00 | 138.80 | 72 | 0.00 | PENDING_BREAKOUT |
+| **SAIL** | 38 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 5.2% Risk | 64.4% | 200.80 | 196.50 | -2.14% | FLAG READY | 200.80 | 190.27 | 10.53 | 949 | 0.00 | PENDING_BREAKOUT |
+| **SSWL** | 38 | INSIDE_BAR_FLAG | Grade C | 1d | IB: 7.5% Risk | 15.9% | 365.95 | 349.70 | -4.44% | FLAG READY | 365.95 | 338.40 | 27.55 | 362 | 0.00 | PENDING_BREAKOUT |
+| **ASIANHOTNR** | 38 | INSIDE_BAR_FLAG | Grade C | 1d | IB: 7.5% Risk | 12.3% | 389.45 | 379.90 | -2.45% | FLAG READY | 389.45 | 360.10 | 29.35 | 340 | 0.00 | PENDING_BREAKOUT |
+| **63MOONS** | 37 | FLAG_SETUP | Grade C | 1d | T1: 10.9% | 26.4% | 820.00 | 805.10 | -1.82% | FLAG READY | 820.00 | 754.40 | 65.60 | 152 | 0.00 | PENDING_BREAKOUT |
+| **BAJAJHIND** | 37 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.3% Risk | 90.1% | 22.54 | 21.84 | -3.11% | FLAG READY | 22.54 | 21.57 | 0.97 | 10309 | 0.00 | PENDING_BREAKOUT |
+| **JAYSREETEA** | 37 | INSIDE_BAR_FLAG | Grade B | 1d | IB: 4.9% Risk | 72.2% | 102.00 | 99.79 | -2.17% | FLAG READY | 102.00 | 97.02 | 4.98 | 2008 | 0.00 | PENDING_BREAKOUT |
+| **UNIVASTU** | 36 | FLAG_SETUP | Grade C | 1d | T1: 11.2% | 50.5% | 162.50 | 160.70 | -1.11% | FLAG READY | 162.50 | 149.50 | 13.00 | 769 | 0.00 | PENDING_BREAKOUT |
+| **INDOBORAX** | 33 | INSIDE_BAR_FLAG | Grade C | 1d | IB: 6.7% Risk | 20.8% | 538.40 | 506.15 | -5.99% | FLAG READY | 538.40 | 502.15 | 36.25 | 275 | 0.00 | PENDING_BREAKOUT |
+| **SEAMECLTD** | 33 | FLAG_SETUP | Grade C | 1d | T1: 9.3% | 112.9% | 1749.00 | 1735.70 | -0.76% | FLAG READY | 1749.00 | 1609.08 | 139.92 | 71 | 0.00 | PENDING_BREAKOUT |
+| **VIMTALABS** | 30 | FLAG_SETUP | Grade C | 1d | T1: 9.6% | 145.3% | 670.00 | 655.35 | -2.19% | FLAG READY | 670.00 | 616.40 | 53.60 | 186 | 0.00 | PENDING_BREAKOUT |
+| **GFLLIMITED** | 29 | FLAG_SETUP | Grade C | 1d | T1: 10.9% | 147.4% | 59.67 | 58.82 | -1.42% | FLAG READY | 59.67 | 54.90 | 4.77 | 2094 | 0.00 | PENDING_BREAKOUT |
+| **AEROENTER** | 28 | INSIDE_BAR_FLAG | Grade C | 1d | IB: 6.3% Risk | 30.9% | 148.80 | 140.46 | -5.60% | FLAG READY | 148.80 | 139.41 | 9.39 | 1064 | 0.00 | PENDING_BREAKOUT |
+| **INDSWFTLAB** | 28 | INSIDE_BAR_FLAG | Grade C | 1d | IB: 6.8% Risk | 34.2% | 389.50 | 366.85 | -5.82% | FLAG READY | 389.50 | 363.10 | 26.40 | 378 | 0.00 | PENDING_BREAKOUT |
+| **SOLARA** | 26 | INSIDE_BAR_FLAG | Grade C | 1d | IB: 6.2% Risk | 32.7% | 674.00 | 640.35 | -4.99% | FLAG READY | 674.00 | 632.35 | 41.65 | 240 | 0.00 | PENDING_BREAKOUT |
+| **SHILPAMED** | 24 | INSIDE_BAR_FLAG | Grade C | 1d | IB: 6.8% Risk | 65.5% | 952.00 | 928.55 | -2.46% | FLAG READY | 952.00 | 887.05 | 64.95 | 153 | 0.00 | PENDING_BREAKOUT |
+| **FCL** | 23 | INSIDE_BAR_FLAG | Grade C | 1d | IB: 6.2% Risk | 55.5% | 51.30 | 49.19 | -4.11% | FLAG READY | 51.30 | 48.11 | 3.19 | 3134 | 0.00 | PENDING_BREAKOUT |
+| **SIKKO** | 23 | FLAG_SETUP | Grade C | 1d | T1: 9.4% | 42.4% | 5.34 | 5.19 | -2.81% | FLAG READY | 5.34 | 4.91 | 0.43 | 23408 | 0.00 | PENDING_BREAKOUT |
+| **SIMPLEXINF** | 14 | INSIDE_BAR_FLAG | Grade C | 1d | IB: 6.8% Risk | 93.2% | 271.00 | 265.20 | -2.14% | FLAG READY | 271.00 | 252.55 | 18.45 | 542 | 0.00 | PENDING_BREAKOUT |
