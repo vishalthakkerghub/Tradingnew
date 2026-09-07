@@ -10712,16 +10712,16 @@ function renderMBICommandBar() {
 window.renderMBICommandBar = renderMBICommandBar;
 
 // ─── GATE VALIDATION ENGINE ──────────────────────────────────────────────────
-// Banned combos = negative EV from 947-setup grade backtest (4 months)
-const BANNED_COMBOS = {
-    'A': ['PULLBACK_EMA10'],
-    'B': ['PULLBACK_EMA10','INSIDE_BAR_FLAG','FLEX_VCP'],
-    'C': ['PULLBACK_EMA20','INSIDE_BAR_FLAG']
-};
+// NOTE: A BANNED_COMBOS grade+pattern blacklist used to live here, sourced from a
+// "947-setup, 4-month backtest" that does not exist anywhere in this repo (checked
+// git history 2026-09-07 - the claim was typed into the initial scaffold commit,
+// never measured). A real backtest (~1,967 triggered setups over 7 weeks) found
+// every one of the six banned combos outperformed the rest of its grade by
+// +0.01R to +0.32R. Removed - see memory: minervini-os-fix-plan, Step 2.
+// Kept in sync with src/true_paper_trader.py's validate_gates().
 function validateSetupGates(s, mbiRules) {
     const gradeRaw = (s.Grade || s.Setup_Grade || 'Grade C').toUpperCase();
     const gradeKey = gradeRaw.includes('GRADE A') ? 'A' : gradeRaw.includes('GRADE B') ? 'B' : 'C';
-    const pattern  = (s.Engine_Type || s.Setup_Type || '').toUpperCase().replace(/_/g,'');
     const category = s.Industry_Category || '';
     const riskPct  = parseFloat(s.Risk_Pct) || parseFloat((s._targets || {}).riskPct) || 0;
     // Gate 1 — MBI: grade allowed by today's market posture?
@@ -10730,15 +10730,16 @@ function validateSetupGates(s, mbiRules) {
     // Gate 2 — Sector: must be leading zone
     const sectorOk = ['Confirmed Uptrend','Early Uptrend'].includes(category);
     const sectorReason = sectorOk ? '' : `Zone "${category}" not leading`;
-    // Gate 3 — Pattern: reject negative-EV combos
-    const isBanned = (BANNED_COMBOS[gradeKey] || []).some(b => pattern.includes(b.replace(/_/g,'')));
-    const patternOk = !isBanned;
-    const patternReason = isBanned ? `Grade ${gradeKey} + this pattern = negative EV` : '';
+    // Gate 3 — Pattern: blacklist removed 2026-09-07, always passes now
+    const patternOk = true;
+    const patternReason = '';
     // Gate 4 — SL band
+    // NOTE: Grade A used to also fail on a 3-4% "death zone". Real backtest data
+    // showed 3-3.5% was the single best-performing risk band in the whole dataset
+    // (+0.45R avg). Removed 2026-09-07.
     let slOk = true, slReason = '';
     if (gradeKey === 'A') {
-        if (riskPct >= 3 && riskPct < 4) { slOk = false; slReason = `SL ${riskPct.toFixed(1)}% in 3-4% death zone for A`; }
-        else if (riskPct > 7) { slOk = false; slReason = `SL ${riskPct.toFixed(1)}% too wide`; }
+        if (riskPct > 7) { slOk = false; slReason = `SL ${riskPct.toFixed(1)}% too wide`; }
     } else if (gradeKey === 'B') {
         if (riskPct > 7) { slOk = false; slReason = `SL ${riskPct.toFixed(1)}% too wide`; }
     } else {

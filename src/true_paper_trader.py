@@ -8,13 +8,18 @@ import pandas as pd
 
 logger = logging.getLogger("TruePaperTrader")
 
+class IntegrityError(Exception):
+    """Raised when the ledger fails a sanity check before being written to disk."""
+    pass
+
 STATE_FILE = "data/true_paper_portfolio.json"
 
-BANNED_COMBOS = {
-    'A': ['PULLBACK_EMA10'],
-    'B': ['PULLBACK_EMA10','INSIDE_BAR_FLAG','FLEX_VCP'],
-    'C': ['PULLBACK_EMA20','INSIDE_BAR_FLAG']
-}
+# NOTE: A grade+pattern "BANNED_COMBOS" blacklist used to live here, sourced from a
+# "947-setup, 4-month backtest" that does not exist anywhere in this repo (checked
+# git history - the claim was typed into the initial scaffold commit, never measured).
+# A real backtest (2026-09-07, ~1,967 triggered setups over 7 weeks) found every one
+# of the six banned combos outperformed the rest of its grade by +0.01R to +0.32R.
+# Removed. See memory: minervini-os-fix-plan, Step 2.
 
 def get_mbi_allowed_grades(mbi_idx):
     if mbi_idx >= 70: return ['A','B','C']
@@ -102,10 +107,56 @@ class TruePaperTrader:
 
     def save_state(self):
         try:
+            self._validate_integrity()
+        except IntegrityError as e:
+            logger.error(
+                f"REFUSING TO SAVE True Paper Portfolio - integrity check failed: {e} "
+                f"State on disk left untouched. Investigate self.state before retrying "
+                f"(this is the exact class of bug that caused the 2026-08-27 corruption "
+                f"incident - a manual/partial edit that added a position without "
+                f"debiting cash)."
+            )
+            return
+        try:
             with open(self.state_file, "w", encoding="utf-8") as f:
                 json.dump(self.state, f, indent=2, default=str)
         except Exception as e:
             logger.error(f"Failed to save True Paper Portfolio: {e}")
+
+    def _validate_integrity(self):
+        """
+        Guards against silent ledger corruption before every save. Two checks:
+        1. Cash can never go negative - impossible in a real cash-settled account.
+        2. Equity cannot swing >=25% in a single save. With a max of 8 positions and
+           a 25% max-allocation cap per position, no combination of legitimate same-day
+           price moves and gate-passed entries/exits can move total equity that much in
+           one step - a jump that size means the ledger was edited outside the normal
+           buy/sell code path (cash not debited/credited to match a position change).
+        Raises IntegrityError to block the save; never mutates self.state.
+        """
+        cash = self.state.get("cash", 0.0)
+        if cash < -0.01:
+            raise IntegrityError(f"cash is negative (Rs.{cash:.2f})")
+
+        open_trades = self.state.get("open_trades", [])
+        open_val = sum(t.get("open_qty", 0) * t.get("cmp", t.get("entry_price", 0)) for t in open_trades)
+        equity_now = cash + open_val
+
+        snapshots = self.state.get("daily_snapshots", {})
+        if len(snapshots) >= 2:
+            sorted_dates = sorted(snapshots.keys())
+            # sorted_dates[-1] is typically today's own snapshot, already written into
+            # self.state by the caller before save_state() runs - comparing against it
+            # would be self-referential, so compare against the day before that.
+            prev_date = sorted_dates[-2]
+            prev_equity = snapshots[prev_date].get("equity", equity_now)
+            if prev_equity > 0:
+                pct_change = abs(equity_now - prev_equity) / prev_equity
+                if pct_change >= 0.25:
+                    raise IntegrityError(
+                        f"equity would move {pct_change*100:.1f}% since {prev_date} "
+                        f"(Rs.{prev_equity:.2f} -> Rs.{equity_now:.2f})"
+                    )
 
     def rollback_day(self, date_str):
         # Only rollback if this date was already processed (exists in snapshots)
@@ -270,8 +321,7 @@ class TruePaperTrader:
     def validate_gates(self, s, mbi_rules, category):
         grade_raw = (s.get("Setup_Grade") or s.get("Grade") or 'Grade C').upper()
         grade_key = 'A' if 'GRADE A' in grade_raw else 'B' if 'GRADE B' in grade_raw else 'C'
-        pattern = (s.get("Setup_Type") or s.get("Engine_Type") or s.get("Pattern") or '').upper().replace('_','')
-        
+
         # Resolve risk percent
         risk_pct = float(s.get("Risk_Pct") or s.get("risk_pct") or 0)
         if risk_pct == 0:
@@ -286,20 +336,16 @@ class TruePaperTrader:
         # Gate 2: Sector
         sector_ok = category in ['Confirmed Uptrend', 'Early Uptrend']
 
-        # Gate 3: Pattern
-        is_banned = False
-        for b in BANNED_COMBOS.get(grade_key, []):
-            if b.replace('_', '') in pattern:
-                is_banned = True
-                break
-        pattern_ok = not is_banned
+        # Gate 3: Pattern - blacklist removed 2026-09-07, see note at top of file
+        pattern_ok = True
 
         # Gate 4: SL Band
+        # NOTE: Grade A used to also fail on 3.0<=risk_pct<4.0 (a "death zone" carve-out).
+        # Real backtest data showed 3-3.5% was the single best-performing risk band in
+        # the whole dataset (+0.45R avg). Removed 2026-09-07.
         sl_ok = True
         if grade_key == 'A':
-            if 3.0 <= risk_pct < 4.0:
-                sl_ok = False
-            elif risk_pct > 7.0:
+            if risk_pct > 7.0:
                 sl_ok = False
         elif grade_key == 'B':
             if risk_pct > 7.0:
