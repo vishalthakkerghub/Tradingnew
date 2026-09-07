@@ -1,0 +1,112 @@
+[
+  {
+    "symbol": "PRASOLCHEM",
+    "company_name": "Prasol Chemicals Limited",
+    "offer_price": 659.5,
+    "price_low": 643.0,
+    "price_high": 676.0,
+    "issue_end_date": "2026-09-10",
+    "source": "nse_api",
+    "first_seen": "2026-09-08"
+  },
+  {
+    "symbol": "GLASSWALL",
+    "company_name": "Glass Wall Systems (India) Limited",
+    "offer_price": 177.0,
+    "price_low": 172.0,
+    "price_high": 182.0,
+    "issue_end_date": "2026-09-10",
+    "source": "nse_api",
+    "first_seen": "2026-09-08"
+  },
+  {
+    "symbol": "KANOHAR",
+    "company_name": "Kanohar Electricals Limited",
+    "offer_price": 616.5,
+    "price_low": 601.0,
+    "price_high": 632.0,
+    "issue_end_date": "2026-09-10",
+    "source": "nse_api",
+    "first_seen": "2026-09-08"
+  },
+  {
+    "symbol": "PRANAV",
+    "company_name": "Pranav Constructions Limited",
+    "offer_price": 121.0,
+    "price_low": 118.0,
+    "price_high": 124.0,
+    "issue_end_date": "2026-09-09",
+    "source": "nse_api",
+    "first_seen": "2026-09-08"
+  },
+  {
+    "symbol": "ARCIL",
+    "company_name": "Asset Reconstruction Company (India) Limited",
+    "offer_price": 135.5,
+    "price_low": 132.0,
+    "price_high": 139.0,
+    "issue_end_date": "2026-09-11",
+    "source": "nse_api",
+    "first_seen": "2026-09-08"
+  },
+  {
+    "symbol": "STEAMHOUSE",
+    "company_name": "Steamhouse India Limited",
+    "offer_price": 79.0,
+    "price_low": 77.0,
+    "price_high": 81.0,
+    "issue_end_date": "2026-09-11",
+    "source": "nse_api",
+    "first_seen": "2026-09-08"
+  },
+  {
+    "symbol": "MPIMANIPAL",
+    "company_name": "Manipal Payment and Identity Solutions Limited",
+    "offer_price": 330.5,
+    "price_low": 322.0,
+    "price_high": 339.0,
+    "issue_end_date": "2026-09-11",
+    "source": "nse_api",
+    "first_seen": "2026-09-08"
+  },
+  {
+    "symbol": "LCCPROJECT",
+    "company_name": "LCC Projects Limited",
+    "offer_price": 142.5,
+    "price_low": 139.0,
+    "price_high": 146.0,
+    "issue_end_date": "2026-09-11",
+    "source": "nse_api",
+    "first_seen": "2026-09-08"
+  },
+  {
+    "symbol": "KARAMTARA",
+    "company_name": "Karamtara Engineering Limited",
+    "offer_price": 247.5,
+    "price_low": 241.0,
+    "price_high": 254.0,
+    "issue_end_date": "2026-09-11",
+    "source": "nse_api",
+    "first_seen": "2026-09-08"
+  },
+  {
+    "symbol": "RENTOMOJO",
+    "company_name": "Rentomojo Limited",
+    "offer_price": 394.0,
+    "price_low": 384.0,
+    "price_high": 404.0,
+    "issue_end_date": "2026-09-11",
+    "source": "nse_api",
+    "first_seen": "2026-09-08"
+  },
+  {
+    "symbol": "VINOD",
+    "company_name": "Vinod Texworld Limited",
+    "offer_price": 94.0,
+    "price_low": 94.0,
+    "price_high": 94.0,
+    "issue_end_date": "2026-09-11",
+    "source": "nse_api",
+    "first_seen": "2026-09-08"
+  }
+]

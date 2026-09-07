@@ -40,6 +40,25 @@ class VCPEngine:
                 "proximity": 0.95,
                 "min_weeks": 3,
                 "max_weeks": 6
+            },
+            # IPO profile (2026-09-08): for recently-listed stocks, which the
+            # standard Trend Template can't evaluate at all (hard-requires ~250
+            # trading days for SMA150/200/52-week levels). A young issue may only
+            # have a few weeks of history, so this uses a tighter pivot
+            # sensitivity (less data to search within), a looser contraction
+            # tolerance and VDU threshold (a young stock's "normal" volume
+            # baseline is itself still forming), and a shorter min/max base
+            # duration - min 2 weeks so we're not chasing the noisy first days
+            # post-listing (grey-market-premium driven, not real supply/demand),
+            # max 10 weeks since young-issue bases tend to resolve faster than a
+            # seasoned stock's. See src/ipo_scanner.py.
+            "IPO": {
+                "sensitivity": 2,
+                "tolerance": 3.0,
+                "vdu": 0.40,
+                "proximity": 0.90,
+                "min_weeks": 2,
+                "max_weeks": 10
             }
         }
         logger.info(
@@ -290,8 +309,13 @@ class VCPEngine:
         Returns a tuple of (is_candidate, pivot_price, grade, contraction_count, depths_str, vdu_ratio, final_contraction_low).
         """
         logger.info(f"Evaluating VCP candidacy criteria under mode: {mode}")
-        if len(stock_df) < 50:
-            logger.warning(f"Data length ({len(stock_df)} bars) is too short to evaluate VCP.")
+        # IPO mode needs a lower floor than the other three - a young issue is
+        # exactly the case this mode exists for, and will often have well under
+        # 50 trading days available. 20 bars still leaves room for a 2-week
+        # (10-day) minimum base plus the sensitivity buffer at each edge.
+        min_bars_required = 20 if mode == "IPO" else 50
+        if len(stock_df) < min_bars_required:
+            logger.warning(f"Data length ({len(stock_df)} bars) is too short to evaluate VCP (mode {mode} requires >= {min_bars_required}).")
             return False, 0.0, None, 0, "", 0.0, 0.0
 
         pivots = self.detect_pivot_swing_points(stock_df, mode=mode)
@@ -323,12 +347,19 @@ class VCPEngine:
                 vdu_idx = low_n['row_index'] + 1
             
             if vdu_idx is not None:
-                avg_vol_5 = stock_df['Volume'].iloc[vdu_idx-5:vdu_idx].mean()
-                avg_vol_50 = stock_df['Volume'].iloc[vdu_idx-50:vdu_idx].mean()
+                # Clamp to 0 - with IPO mode's lower bar-count floor (as low as
+                # 20 bars), vdu_idx-50 can go negative. An un-clamped negative
+                # start wraps around from the end of the array (Python slicing
+                # semantics), silently pulling the wrong window instead of
+                # erroring. Was safe before since every other mode required
+                # >=50 bars, so vdu_idx-50 could never be negative.
+                avg_vol_5 = stock_df['Volume'].iloc[max(0, vdu_idx-5):vdu_idx].mean()
+                avg_vol_50 = stock_df['Volume'].iloc[max(0, vdu_idx-50):vdu_idx].mean()
                 vdu_ratio = avg_vol_5 / avg_vol_50 if avg_vol_50 > 0 else 1.0
             else:
-                avg_vol_5 = stock_df['Volume'].iloc[-5:].mean()
-                avg_vol_50 = stock_df['Volume'].iloc[-50:].mean()
+                n = len(stock_df)
+                avg_vol_5 = stock_df['Volume'].iloc[max(0, n-5):].mean()
+                avg_vol_50 = stock_df['Volume'].iloc[max(0, n-50):].mean()
                 vdu_ratio = avg_vol_5 / avg_vol_50 if avg_vol_50 > 0 else 1.0
 
             # Power Play Check
