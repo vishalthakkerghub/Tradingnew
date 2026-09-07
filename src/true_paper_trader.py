@@ -28,6 +28,29 @@ def get_mbi_allowed_grades(mbi_idx):
     if mbi_idx >= 30: return ['C']
     return []
 
+def classify_setup_type(engine_type, grade, entry_category, score):
+    """Python port of web/app.js's classifySetupType() - kept in sync so the
+    automated engine and the human-facing Stocks Filter table agree on which
+    setups count as Type A/B/C. See prioritize_entries() below (Step 6,
+    2026-09-08)."""
+    eng = (engine_type or '').upper()
+    gr = (grade or '').upper()
+    cat = (entry_category or '').upper()
+    sc = score if score else 50
+    if ('STRICT_VCP' in eng or 'TIGHT_CHEAT' in cat) and 'GRADE A' in gr:
+        return 'A'
+    if 'STRICT_VCP' in eng and 'GRADE B' in gr and sc >= 70:
+        return 'A'
+    if any(x in eng for x in ['FLAG_SETUP', 'INSIDE_BAR_FLAG', 'FLEX_VCP', 'MINI_VCP']) and ('GRADE A' in gr or 'GRADE B' in gr):
+        return 'B'
+    if 'TIGHT_CHEAT' in cat and 'GRADE B' in gr:
+        return 'B'
+    if 'PULLBACK_EMA10' in eng and 'GRADE A' in gr:
+        return 'B'
+    if 'PULLBACK_EMA20' in eng and 'GRADE A' in gr:
+        return 'B'
+    return 'C'
+
 def get_cmp_from_cache(symbol):
     path = f"data/cache/{symbol.upper()}.csv"
     if not os.path.exists(path):
@@ -362,6 +385,66 @@ class TruePaperTrader:
             "sl": sl_ok
         }
 
+    def compute_priority_score(self, s, mbi_allowed, industry_data, top_confirmed_inds, top_early_inds, category, gate_detail):
+        """
+        Python port of web/app.js's priority-score formula (Step 6, 2026-09-08).
+        Ranks a candidate the same way the Stocks Filter tab does, so when slots
+        are scarce the automated engine fills them best-setup-first instead of
+        whatever order the watchlist happened to list them in. Gate status is
+        still just a small tie-breaker nudge (Step 3) - it can move a candidate
+        a few places, not exclude it.
+        """
+        # "Pattern" is the field name used by daily_focus_watchlist entries -
+        # every symbol there is also in strategic_watchlist, and since curated_pool
+        # is built by dict-overwrite (strategic first, then daily_focus), any
+        # overlapping symbol ends up holding the daily_focus-shaped dict, which has
+        # no Setup_Type/Engine_Type field at all. Missing this fallback silently
+        # defaulted ~half of curated_pool to engine_type="VCP" regardless of its
+        # real pattern (found 2026-09-08 while testing this function).
+        engine_type = s.get("Setup_Type") or s.get("Engine_Type") or s.get("Pattern") or "VCP"
+        grade = s.get("Setup_Grade") or s.get("Grade") or "Grade C"
+        ms_score = float(s.get("MS_Score") or 0)
+        industry = (s.get("Industry") or "").upper().strip()
+        setup_type = classify_setup_type(engine_type, grade, s.get("Entry_Category", ""), ms_score)
+
+        score = 0.0
+        if setup_type == 'A':
+            score += 1000 if (mbi_allowed and mbi_allowed[0] == 'A') else 400
+        elif setup_type == 'B':
+            score += 1000 if (mbi_allowed and mbi_allowed[0] == 'B') else (700 if len(mbi_allowed) > 1 and mbi_allowed[1] == 'B' else 200)
+        else:
+            score += 1000 if (mbi_allowed and mbi_allowed[0] == 'C') else 300
+
+        if category == 'Confirmed Uptrend':
+            score += 500
+        elif category == 'Early Uptrend':
+            score += 350
+        elif category == 'Consolidation':
+            score += 100
+        else:
+            score -= 400
+
+        if industry in top_confirmed_inds[:3]:
+            score += 300
+        elif industry in top_confirmed_inds[:5]:
+            score += 150
+        if industry in top_early_inds[:3]:
+            score += 200
+        elif industry in top_early_inds[:5]:
+            score += 100
+
+        streak_days = industry_data.get(industry, {}).get("Streak_Days", 0)
+        score += min(streak_days * 30, 150)
+        score += ms_score * 5
+
+        if setup_type == 'A' and (not mbi_allowed or 'A' not in mbi_allowed):
+            score -= 100
+        gates_passed = sum(1 for v in gate_detail.values() if v)
+        if gates_passed < 4:
+            score -= (4 - gates_passed) * 50
+
+        return score
+
     def run_daily_update(self, date_str=None):
         if not date_str:
             date_str = datetime.now().strftime("%Y-%m-%d")
@@ -428,16 +511,31 @@ class TruePaperTrader:
             if sym:
                 curated_pool[sym] = s
 
-        # Load sector categories
+        # Load sector categories + ranking data (2026-09-08: extended for
+        # prioritize_entries() below - same Sort_Score/Streak_Days the Stocks
+        # Filter tab's priority score uses, so the automated engine picks
+        # entries in the same order a human would see them ranked there).
         sector_cats = {}
+        industry_data = {}
         ipr_file = "data/industry_participation_report.json"
         if os.path.exists(ipr_file):
             try:
                 ipr_list = json.load(open(ipr_file, "r", encoding="utf-8"))
                 for item in ipr_list:
-                    sector_cats[item["Industry"].upper().strip()] = item.get("Category", "Avoid")
+                    ind_key = item["Industry"].upper().strip()
+                    cat = item.get("Category", "Avoid")
+                    sector_cats[ind_key] = cat
+                    industry_data[ind_key] = {
+                        "Category": cat,
+                        "Sort_Score": (item.get("Avg_Return_10D") or 0.0) + (item.get("Part_EMA20_Today") or 0.0) / 10.0,
+                        "Streak_Days": item.get("Streak_Days", 0) or 0,
+                    }
             except Exception as e:
                 logger.error(f"Failed to load industry categories: {e}")
+
+        sorted_inds = sorted(industry_data.items(), key=lambda kv: kv[1]["Sort_Score"], reverse=True)
+        top_confirmed_inds = [k for k, v in sorted_inds if v["Category"] == "Confirmed Uptrend"]
+        top_early_inds = [k for k, v in sorted_inds if v["Category"] == "Early Uptrend"]
 
         # ── 3. Evaluate Exits for Open Positions ──────────────────────────────
         exited_symbols = []
@@ -593,10 +691,26 @@ class TruePaperTrader:
         free_slots = 8 - len(self.state["open_trades"])
         if free_slots > 0 and is_weekday:
             entered_count = 0
+
+            # Prioritize entries (Step 6, 2026-09-08): previously this iterated
+            # curated_pool in whatever order the watchlist happened to list
+            # symbols in, so on a day with more triggers than free slots, entry
+            # was first-listed-first, not best-setup-first. Now scores every
+            # candidate the same way the Stocks Filter tab ranks them and fills
+            # scarce slots with the highest-priority setups first.
+            scored_pool = []
             for sym, s in curated_pool.items():
+                ind = s.get("Industry", "").upper().strip()
+                cat = sector_cats.get(ind, "Neutral")
+                _, _, gd = self.validate_gates(s, mbi_allowed, cat)
+                pscore = self.compute_priority_score(s, mbi_allowed, industry_data, top_confirmed_inds, top_early_inds, cat, gd)
+                scored_pool.append((pscore, sym, s))
+            scored_pool.sort(key=lambda x: x[0], reverse=True)
+
+            for pscore, sym, s in scored_pool:
                 if entered_count >= free_slots:
                     break
-                
+
                 # Check if already holding
                 if any(t["symbol"] == sym for t in self.state["open_trades"]):
                     continue
@@ -666,7 +780,12 @@ class TruePaperTrader:
                                 "risk_per_share": round(risk_per_share, 2),
                                 "risk_amount": round(qty * risk_per_share, 2),
                                 "grade": s.get("Setup_Grade") or s.get("Grade") or "Grade C",
-                                "engine_type": s.get("Setup_Type") or s.get("Engine_Type") or "VCP",
+                                # "Pattern" fallback added 2026-09-08 - see the matching
+                                # note in compute_priority_score(); daily_focus_watchlist
+                                # entries only carry this field name, so trades sourced
+                                # from an overlapping symbol were silently recorded as
+                                # "VCP" regardless of their real pattern before this fix.
+                                "engine_type": s.get("Setup_Type") or s.get("Engine_Type") or s.get("Pattern") or "VCP",
                                 "sector": s.get("Industry", "Neutral"),
                                 "sector_zone": cat,
                                 # Honest record of what was actually true at entry, not
