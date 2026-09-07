@@ -44,9 +44,16 @@ let appState = {
 
     sortDirection: "desc",
 
-    screenerSortColumn: "Overall_Rank",
+    // Bug found 2026-09-08: this defaulted to "Overall_Rank" (server-computed raw
+    // MS_Score rank), which is truthy, so renderFilteredWatchlist()'s
+    // `appState.screenerSortColumn || "_priorityScore"` fallback never engaged -
+    // the table has been defaulting to plain MS_Score order on every fresh load,
+    // completely bypassing the Type A/B/C regime-aware priority score (Setup Type,
+    // Sector, gate nudges) unless a user manually clicked the "Priority" column
+    // header once per session. Fixed to default to the intended ranking.
+    screenerSortColumn: "_priorityScore",
 
-    screenerSortDirection: "asc",
+    screenerSortDirection: "desc",
 
     showStrongLeadersOnly: true,
 
