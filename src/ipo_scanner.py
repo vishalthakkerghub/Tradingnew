@@ -70,6 +70,27 @@ EXPECTED_LISTING_BUFFER_DAYS = 5   # calendar days after subscription close befo
                                      # even attempt a price fetch (SEBI T+3 listing norm
                                      # + a settling buffer), to avoid tripping the
                                      # simulated-data fallback on a not-yet-listed symbol
+MAX_BACKFILL_DAYS = 160   # NSE's public-past-issues archive goes back years - without
+                            # this cap, fetch_nse_past_issues() would happily backfill
+                            # multi-year-old, fully mature listings (LICI, DELHIVERY,
+                            # INDIAMART, CAMPUS, MAPMYINDIA were all pulled in and
+                            # evaluated as "IPO_BASE" candidates before this existed,
+                            # since their real 250-day price history passes every other
+                            # guard fine - it's genuinely real data, just for a stock
+                            # that isn't young anymore). This is a CALENDAR-day cutoff,
+                            # while DAY_BUCKETS[-1] (100) is a TRADING-day one - at
+                            # India's ~0.68 trading-day ratio, 100 trading days spans
+                            # roughly 146 calendar days, so this needs real headroom
+                            # above 100, not just past it, or genuinely in-window stocks
+                            # near the 60-100 trading-day edge get pruned before ever
+                            # being evaluated (found by comparing bucket-report row
+                            # counts before/after tuning this constant - a cutoff of
+                            # 120 silently dropped ~20 legitimate rows). The trading-day
+                            # bucket ceiling (the authoritative measure, checked
+                            # separately wherever a candidate/bucket row is built) is
+                            # what actually enforces the 100-day boundary - this is only
+                            # a coarse pre-filter to keep the tracked list from growing
+                            # forever.
 
 
 def _resolve_path(path):
@@ -79,6 +100,27 @@ def _resolve_path(path):
         return path
     alt = os.path.join("minervini_os", path)
     return alt if os.path.exists(alt) else path
+
+
+def _default_engines():
+    """
+    Builds a fresh (VCPEngine, DataIngestionEngine) pair, robust to both ways
+    this module gets loaded: run standalone (`python src/ipo_scanner.py` -
+    the script's own directory goes on sys.path, so the bare `from
+    vcp_engine import ...` sibling-module form works), and imported as
+    `src.ipo_scanner` from main.py's daily orchestration (only the project
+    root is on sys.path there, so it needs the `src.` package prefix
+    instead). No other src module needed this - vcp_engine.py and
+    true_paper_trader.py don't cross-import their src siblings - so this
+    dual-path handling didn't exist anywhere else to reuse.
+    """
+    try:
+        from vcp_engine import VCPEngine
+        from data_ingestion import DataIngestionEngine
+    except ImportError:
+        from src.vcp_engine import VCPEngine
+        from src.data_ingestion import DataIngestionEngine
+    return VCPEngine({"vcp_parameters": {}}), DataIngestionEngine()
 
 
 def fetch_nse_ipo_calendar():
@@ -238,6 +280,12 @@ def fetch_nse_past_issues():
         listing_date = _parse_nse_date(listing_date_raw)
         if not listing_date:
             continue
+        try:
+            days_since = (datetime.now() - datetime.strptime(listing_date, "%Y-%m-%d")).days
+        except Exception:
+            continue
+        if not (0 <= days_since <= MAX_BACKFILL_DAYS):
+            continue  # out of this scanner's entire reason for existing - see module docstring
 
         seen_symbols.add(symbol)
         low, high = _parse_price_band(item.get("priceRange", ""))
@@ -370,9 +418,41 @@ def sync_ipo_watchlist():
             }
             logger.info(f"New IPO added manually: {sym}")
 
-    tracked_list = list(tracked.values())
+    tracked_list = _prune_stale(list(tracked.values()))
     save_tracked_ipos(tracked_list)
     return tracked_list
+
+
+def _prune_stale(tracked_list):
+    """
+    Defense in depth alongside the MAX_BACKFILL_DAYS filter already applied
+    in fetch_nse_past_issues(): drops any tracked entry whose best-known
+    reference date (listing_date if confirmed, else the issue_end_date
+    proxy) is older than MAX_BACKFILL_DAYS. Self-healing - also cleans up
+    data/ipo_watchlist.json entries that were added before this filter
+    existed (a real batch of ~100 multi-year-old, already-mature stocks -
+    LICI, DELHIVERY, INDIAMART, CAMPUS, MAPMYINDIA among them - got pulled
+    in and evaluated as "IPO_BASE" candidates before this existed). An
+    entry with no date at all is kept (a freshly-opened subscription NSE
+    hasn't reported a listing/close date for yet).
+    """
+    kept = []
+    for entry in tracked_list:
+        ref = entry.get("listing_date") or entry.get("issue_end_date")
+        if not ref:
+            kept.append(entry)
+            continue
+        try:
+            days_since = (datetime.now() - datetime.strptime(ref, "%Y-%m-%d")).days
+        except Exception:
+            kept.append(entry)
+            continue
+        if days_since <= MAX_BACKFILL_DAYS:
+            kept.append(entry)
+    dropped = len(tracked_list) - len(kept)
+    if dropped:
+        logger.info(f"Pruned {dropped} tracked IPO(s) older than {MAX_BACKFILL_DAYS} days (outside this scanner's window).")
+    return kept
 
 
 def _looks_like_real_data(df, reference_date_str):
@@ -501,12 +581,10 @@ def build_bucket_report(vcp_engine=None, ingestion_engine=None):
     qualify as a base candidate - the point here is visibility into the
     whole recent-IPO universe at each stage of its life, not just picks.
     """
-    if vcp_engine is None:
-        from vcp_engine import VCPEngine
-        vcp_engine = VCPEngine({"vcp_parameters": {}})
-    if ingestion_engine is None:
-        from data_ingestion import DataIngestionEngine
-        ingestion_engine = DataIngestionEngine()
+    if vcp_engine is None or ingestion_engine is None:
+        _ve, _ie = _default_engines()
+        vcp_engine = vcp_engine or _ve
+        ingestion_engine = ingestion_engine or _ie
 
     tracked = sync_ipo_watchlist()
     index_df = None
@@ -601,6 +679,10 @@ def evaluate_ipo_candidate(vcp_engine, ingestion_engine, entry, index_df=None):
     if days_since_listing < MIN_DAYS_SINCE_LISTING:
         logger.info(f"{symbol}: only {days_since_listing} trading days available (<{MIN_DAYS_SINCE_LISTING}) - too early, skipping to avoid chasing listing-pop noise.")
         return None
+    if days_since_listing > DAY_BUCKETS[-1]:
+        # Past this age it's just a normal stock for the main VCP/Trend
+        # Template engine to pick up, not an "IPO base" - see MAX_BACKFILL_DAYS.
+        return None
 
     is_candidate, pivot_price, grade, contraction_count, depths_str, vdu_ratio, final_low = \
         vcp_engine.is_vcp_candidate(df, mode="IPO")
@@ -643,12 +725,10 @@ def scan_ipos(vcp_engine=None, ingestion_engine=None):
     daily_focus_watchlist, or True Paper Trading yet - review this output
     directly first.
     """
-    if vcp_engine is None:
-        from vcp_engine import VCPEngine
-        vcp_engine = VCPEngine({"vcp_parameters": {}})
-    if ingestion_engine is None:
-        from data_ingestion import DataIngestionEngine
-        ingestion_engine = DataIngestionEngine()
+    if vcp_engine is None or ingestion_engine is None:
+        _ve, _ie = _default_engines()
+        vcp_engine = vcp_engine or _ve
+        ingestion_engine = ingestion_engine or _ie
 
     tracked = sync_ipo_watchlist()
     if not tracked:
@@ -682,11 +762,127 @@ def scan_ipos(vcp_engine=None, ingestion_engine=None):
     return candidates
 
 
+def run_daily_ipo_scan(vcp_engine=None, ingestion_engine=None):
+    """
+    Combined daily entry point - this is what main.py's orchestration calls.
+    Does the sync + per-symbol fetch + VCP-base check exactly once and
+    produces both outputs from that single pass (scan_ipos() and
+    save_bucket_report(), called back-to-back, would each sync and
+    re-evaluate every tracked symbol independently - harmless but wasteful
+    on ~1300+ tracked entries run every day). scan_ipos()/save_bucket_report()
+    are kept as-is for standalone/manual use (e.g. from a shell) where that
+    doesn't matter.
+
+    Writes reports/daily/ipo_candidates.csv (+ dated copy) and
+    reports/daily/ipo_bucket_report.csv (+ dated copy). Never raises - any
+    per-symbol failure is logged and skipped, consistent with every other
+    step in main.py's orchestration (each wrapped in its own non-fatal
+    try/except so one failing step doesn't take down the rest of the scan).
+    """
+    if vcp_engine is None or ingestion_engine is None:
+        _ve, _ie = _default_engines()
+        vcp_engine = vcp_engine or _ve
+        ingestion_engine = ingestion_engine or _ie
+
+    tracked = sync_ipo_watchlist()
+    if not tracked:
+        logger.info("No IPOs tracked yet (NSE feed empty and no manual entries) - nothing to scan.")
+        return [], {}
+
+    index_df = None
+    try:
+        index_df = ingestion_engine.fetch_historical_ohlcv("NIFTY_50", lookback_days=100)
+    except Exception as e:
+        logger.warning(f"Could not load index data for RS calculation: {e}")
+
+    candidates = []
+    buckets = {f"{([0]+DAY_BUCKETS)[i]+1}-{b}d": [] for i, b in enumerate(DAY_BUCKETS)}
+
+    for entry in tracked:
+        try:
+            status = get_ipo_status(ingestion_engine, entry, index_df)
+        except Exception as e:
+            logger.error(f"Error evaluating {entry.get('symbol')}: {e}")
+            continue
+        if status is None:
+            continue
+
+        df = status.pop("df")
+        symbol = status["symbol"]
+        is_candidate, pivot_price, grade, contraction_count, depths_str, vdu_ratio, final_low = \
+            False, 0.0, None, 0, "", 0.0, 0.0
+        try:
+            is_candidate, pivot_price, grade, contraction_count, depths_str, vdu_ratio, final_low = \
+                vcp_engine.is_vcp_candidate(df, mode="IPO")
+        except Exception as e:
+            logger.warning(f"{symbol}: VCP base check failed: {e}")
+
+        # Bucket report: every tracked symbol with real data, within the 100-day window
+        if status["days_since_listing"] <= DAY_BUCKETS[-1]:
+            b_status = dict(status)
+            b_status["forming_base"] = bool(is_candidate)
+            b_status["base_grade"] = grade if is_candidate else None
+            label = _bucket_label(status["days_since_listing"])
+            if label in buckets:
+                buckets[label].append(b_status)
+
+        # Candidates CSV: stricter - must actually qualify as an IPO base, and
+        # be within the window this scanner exists for at all (defense in
+        # depth alongside the MAX_BACKFILL_DAYS filter/prune upstream - a
+        # stock past this age is just a normal stock for the main VCP/Trend
+        # Template engine to pick up, not an "IPO base").
+        if is_candidate and MIN_DAYS_SINCE_LISTING <= status["days_since_listing"] <= DAY_BUCKETS[-1]:
+            risk_per_share = pivot_price - final_low
+            if risk_per_share > 0:
+                candidates.append({
+                    "Symbol": symbol,
+                    "Engine_Type": "IPO_BASE",
+                    "Grade": grade,
+                    "Company_Name": status["company_name"],
+                    "Listing_Reference_Date": status["listing_date"] or entry.get("issue_end_date", ""),
+                    "Days_Since_Listing": status["days_since_listing"],
+                    "Offer_Price": status["offer_price"],
+                    "Pct_From_Offer": status["pct_from_offer"],
+                    "RS_Vs_Index": status["rs_vs_index"],
+                    "Contraction_Count": contraction_count,
+                    "Contraction_Sequence": depths_str,
+                    "VDU_Ratio": round(vdu_ratio, 2),
+                    "Pivot_Price": round(pivot_price, 2),
+                    "Current_Price": status["current_price"],
+                    "Stop_Loss": round(final_low, 2),
+                    "Risk_Pct": round(risk_per_share / pivot_price * 100.0, 2),
+                    "Target_1": round(pivot_price + 1.5 * risk_per_share, 2),
+                    "Target_2": round(pivot_price + 2.5 * risk_per_share, 2),
+                })
+                logger.info(f"IPO BASE CANDIDATE: {symbol} - {grade}, Pivot Rs.{pivot_price:.2f}, {status['days_since_listing']}d of history, {status['pct_from_offer']:+.1f}% from offer")
+
+    for label in buckets:
+        buckets[label].sort(key=lambda s: s["days_since_listing"])
+
+    out_dir = _resolve_path(REPORT_DIR)
+    os.makedirs(out_dir, exist_ok=True)
+    today_str = datetime.now().strftime("%Y%m%d")
+
+    pd.DataFrame(candidates).to_csv(os.path.join(out_dir, "ipo_candidates.csv"), index=False)
+    pd.DataFrame(candidates).to_csv(os.path.join(out_dir, f"ipo_candidates_{today_str}.csv"), index=False)
+
+    bucket_rows = []
+    for label, items in buckets.items():
+        for it in items:
+            bucket_rows.append({
+                "Bucket": label, "Symbol": it["symbol"], "Company_Name": it["company_name"],
+                "Listing_Date": it["listing_date"], "Days_Since_Listing": it["days_since_listing"],
+                "Offer_Price": it["offer_price"], "Current_Price": it["current_price"],
+                "Pct_From_Offer": it["pct_from_offer"], "RS_Vs_Index": it["rs_vs_index"],
+                "Forming_Base": it["forming_base"], "Base_Grade": it["base_grade"],
+            })
+    pd.DataFrame(bucket_rows).to_csv(os.path.join(out_dir, "ipo_bucket_report.csv"), index=False)
+    pd.DataFrame(bucket_rows).to_csv(os.path.join(out_dir, f"ipo_bucket_report_{today_str}.csv"), index=False)
+
+    logger.info(f"IPO daily scan complete: {len(candidates)} base candidate(s), {len(bucket_rows)} row(s) in bucket report, out of {len(tracked)} tracked IPO(s).")
+    return candidates, buckets
+
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(name)s] %(message)s")
-    from vcp_engine import VCPEngine
-    from data_ingestion import DataIngestionEngine
-    engine = VCPEngine({"vcp_parameters": {}})
-    ingestion = DataIngestionEngine()
-    scan_ipos(engine, ingestion)
-    save_bucket_report(engine, ingestion)
+    run_daily_ipo_scan()

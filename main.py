@@ -1320,7 +1320,20 @@ def main():
             logger.info("True Paper Trading daily update completed successfully.")
         except Exception as paper_ex:
             logger.error(f"Failed to run True Paper Trading daily update: {paper_ex}")
-            
+
+        # Run IPO Base Scanner daily update. Observation-only: writes
+        # reports/daily/ipo_candidates.csv and ipo_bucket_report.csv but is
+        # NOT wired into strategic_watchlist, daily_focus_watchlist, or True
+        # Paper Trading - reviewed manually until it's been backtested the
+        # way every other rule in this system has been.
+        try:
+            from src.ipo_scanner import run_daily_ipo_scan
+            logger.info("Running IPO Base scanner daily update...")
+            ipo_candidates, ipo_buckets = run_daily_ipo_scan()
+            logger.info(f"IPO Base scanner daily update completed: {len(ipo_candidates)} base candidate(s).")
+        except Exception as ipo_ex:
+            logger.error(f"Failed to run IPO Base scanner daily update: {ipo_ex}")
+
         # Write scan status for dashboard notification
         status_file = "data/last_scan_status.json"
         try:

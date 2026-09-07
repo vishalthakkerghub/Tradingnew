@@ -1,1 +1,8 @@
-
+Symbol,Engine_Type,Grade,Company_Name,Listing_Reference_Date,Days_Since_Listing,Offer_Price,Pct_From_Offer,RS_Vs_Index,Contraction_Count,Contraction_Sequence,VDU_Ratio,Pivot_Price,Current_Price,Stop_Loss,Risk_Pct,Target_1,Target_2
+INDOMIM,IPO_BASE,Grade B,INDO-MIM Limited,2026-07-30,28,485.0,95.2,29.8,3,T1: 11.0% | T2: 11.4% | T3: 9.2%,0.2,924.45,946.7,839.05,9.24,1052.55,1137.95
+CMLL,IPO_BASE,Grade A,Caliber Mining and Logistics Limited,2026-07-24,32,424.0,15.6,-7.2,2,T1: 19.0% | T2: 9.1%,0.16,554.9,490.25,504.3,9.12,630.8,681.4
+SBIFUNDS,IPO_BASE,Grade B,SBI Funds Management Limited,2026-07-21,35,574.0,-2.8,-6.8,3,T1: 4.9% | T2: 4.6% | T3: 4.7%,0.21,563.0,557.8,536.5,4.71,602.75,629.25
+LASERPOWER,IPO_BASE,Grade B,Laser Power & Infra Limited,2026-07-16,38,214.0,45.2,19.6,4,T1: 11.6% | T2: 9.4% | T3: 11.9% | T4: 6.0%,0.2,341.95,310.7,321.3,6.04,372.93,393.58
+KUSUMGAR,IPO_BASE,Grade A,Kusumgar Limited,2026-07-15,39,419.0,36.5,-3.9,3,T1: 15.7% | T2: 10.4% | T3: 5.9%,0.18,588.0,571.9,553.2,5.92,640.2,675.0
+AASTHA,IPO_BASE,Grade A,Aastha Spintex Limited,2026-07-06,46,136.0,-43.1,-40.7,4,T1: 31.5% | T2: 29.8% | T3: 24.0% | T4: 2.3%,0.1,74.71,77.36,73.0,2.29,77.27,78.98
+CSM,IPO_BASE,Grade B,CSM Technologies Limited,2026-07-02,48,113.0,-17.2,-11.2,4,T1: 8.5% | T2: 9.9% | T3: 5.8% | T4: 5.4%,0.28,98.47,93.57,93.12,5.43,106.49,111.84
