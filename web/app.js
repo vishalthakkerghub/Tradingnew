@@ -10862,9 +10862,17 @@ function renderFilteredWatchlist() {
         else if (topEarlyInds.slice(0,5).includes(s.Industry)) pScore += 100;
         pScore += Math.min(sectorStreakDays * 30, 150);
         pScore += (parseFloat(s.MS_Score) || 0) * 5;
-        if (setupType === 'A' && !_mbiRules.priority.includes('A')) pScore -= 2000;
+        // Gate-related penalties (2026-09-07, Step 3): reduced from dominant
+        // (-2000 / -600 per gate) to small tie-breaker nudges. A 7-week backtest
+        // found gating in aggregate net-harmful (0-gates-passed setups averaged
+        // +0.59R vs +0.25R for 4-gates-passed), and MBI/Sector were untested or
+        // currently-broken rather than proven bad. A -600-to-2400 penalty in a
+        // ~2450-point score range was a de facto exclusion, not a nudge - gates
+        // are informational now (still shown, still slightly influence order)
+        // and no longer able to bury a candidate. See memory: minervini-os-fix-plan.
+        if (setupType === 'A' && !_mbiRules.priority.includes('A')) pScore -= 100;
         const _gates = validateSetupGates(s, _mbiRules);
-        if (!_gates.allPass) pScore -= (4 - _gates.gatesPassed) * 600;
+        if (!_gates.allPass) pScore -= (4 - _gates.gatesPassed) * 50;
         return { ...s, _setupType: setupType, _targets: targets, _priorityScore: pScore, _gates };
     });
 

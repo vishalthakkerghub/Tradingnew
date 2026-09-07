@@ -603,13 +603,19 @@ class TruePaperTrader:
 
                 ind = s.get("Industry", "").upper().strip()
                 cat = sector_cats.get(ind, "Neutral")
-                
-                # Check 4 gates
-                passes_gates, gk, gd = self.validate_gates(s, mbi_allowed, cat)
-                if not passes_gates:
-                    continue
 
-                # Gates passed! Check daily price cache to see if trigger hit
+                # Gates are informational only as of 2026-09-07 (Step 3). A 7-week
+                # backtest found gating in aggregate net-harmful: setups passing 0 of
+                # 4 gates averaged +0.59R, setups passing all 4 averaged +0.25R. MBI
+                # and Sector were untested/currently-broken rather than proven useless
+                # (MBI never left Caution/Weak in that window; Sector's Money Flow
+                # input has no smoothing), so they're suspended pending repair
+                # (see memory: minervini-os-fix-plan, Steps 4-5) rather than deleted.
+                # gd is still recorded on the trade for audit/display; it no longer
+                # blocks entry.
+                gates_pass, gk, gd = self.validate_gates(s, mbi_allowed, cat)
+
+                # Check daily price cache to see if trigger hit
                 cmp, high, low = get_cmp_from_cache(sym)
                 trigger_price = float(s.get("Entry") or s.get("Entry_Price") or 0)
                 sl = float(s.get("Stop_Loss") or 0)
@@ -663,7 +669,11 @@ class TruePaperTrader:
                                 "engine_type": s.get("Setup_Type") or s.get("Engine_Type") or "VCP",
                                 "sector": s.get("Industry", "Neutral"),
                                 "sector_zone": cat,
-                                "gates": ["MBI", "Sector", "Pattern", "SL Band"],
+                                # Honest record of what was actually true at entry, not
+                                # a hardcoded "all passed" label - gates are advisory
+                                # only as of Step 3, so this can now show False entries.
+                                "gates": gd,
+                                "gates_all_passed": gates_pass,
                                 "phase": "PRE-T1",
                                 "cmp": cmp if cmp else entry_price,
                                 "unrealized_pnl": round(qty * ((cmp if cmp else entry_price) - entry_price), 2),
@@ -676,7 +686,8 @@ class TruePaperTrader:
                             }
                             self.state["open_trades"].append(new_trade)
                             entered_count += 1
-                            self.add_log(date_str, f"BUY TRIGGERED: Entered {sym} at ₹{entry_price:.2f} (Triggered on High ₹{high:.2f}). Qty: {qty}. Stop: ₹{sl:.2f}, T1: ₹{new_trade['t1']:.2f}, T2: ₹{new_trade['t2']:.2f}")
+                            gate_summary = ", ".join(f"{k.upper()}:{'OK' if v else 'FAIL'}" for k, v in gd.items())
+                            self.add_log(date_str, f"BUY TRIGGERED: Entered {sym} at ₹{entry_price:.2f} (Triggered on High ₹{high:.2f}). Qty: {qty}. Stop: ₹{sl:.2f}, T1: ₹{new_trade['t1']:.2f}, T2: ₹{new_trade['t2']:.2f}. Gates (informational, not blocking): {gate_summary}")
 
         # ── 5. Record Equity Snapshot ─────────────────────────────────────────
         open_val = sum(t["open_qty"] * t["cmp"] for t in self.state["open_trades"])
