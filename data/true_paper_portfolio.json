@@ -3,14 +3,12 @@
     "initial_capital": 100000.0,
     "started_on": "2026-09-07",
     "last_updated": "2026-09-07",
-    "version": "1.2",
-    "reset_note": "True fresh start, 2026-09-07: this was the original Step 1 decision (open slate, Rs.1,00,000 fresh capital) - a prior message resynced this file from production's ongoing state instead while the ledger-corruption investigation was underway, so it briefly carried forward 4 open / 5 closed trades entered under the OLD gate logic (pre Step 2/3 fixes: BANNED_COMBOS blacklist, Grade-A SL death-zone, and hard-blocking MBI/Sector/SL gates were all still active when those trades were taken). That state is fully preserved in true_paper_portfolio_pre_gate_fix_archive.json for reference. Starting clean from here so every trade in this ledger going forward was taken under the fixed (Steps 1-3) gate logic, giving a clean baseline to measure the fixes against."
+    "version": "1.1",
+    "reset_note": "Clean template used by self-heal logic if the live state file is missing or corrupt. Deliberately empty/fresh at Rs.1,00,000 - do not restore this to a mid-history snapshot again, that was the original cause of the 2026-08-27 corruption."
   },
   "cash": 100000.0,
   "open_trades": [],
   "closed_trades": [],
   "daily_snapshots": {},
-  "process_log": [
-    "[2026-09-07] ACCOUNT RESET: True fresh start at Rs.1,00,000.00 initial capital, per original Step 1 decision. Prior state (4 open, 5 closed trades entered under pre-fix gate logic) archived to true_paper_portfolio_pre_gate_fix_archive.json."
-  ]
+  "process_log": []
 }
