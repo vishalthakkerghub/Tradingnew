@@ -362,6 +362,7 @@ def analyze_participation(end_date=None):
                         "Category": item.get("Category", "Avoid"),
                         "Streak_Days": item.get("Streak_Days", 0),
                         "Failure_Days": item.get("Failure_Days", 0),
+                        "Confirm_Days": item.get("Confirm_Days", 0),
                         "Last_Updated_Date": item.get("Last_Updated_Date", ""),
                         "Breadth": item.get("Breadth", 0.0),
                         "Flow_Val": item.get("Flow_Val", 0.0)
@@ -410,10 +411,22 @@ def analyze_participation(end_date=None):
         part_52wh_yesterday = get_participation_percentage(d_yesterday, 'near_52wh')
         part_52wh_change = part_52wh_today - part_52wh_yesterday
         
-        # Idea A: Net Money Flow %
-        sum_flow_today = sum(r['Daily_Indicators'].get(d_today, {}).get('volume_flow', 0.0) for _, r in group.iterrows())
-        sum_val_today = sum(r['Daily_Indicators'].get(d_today, {}).get('volume_value', 0.0) for _, r in group.iterrows())
-        net_flow_pct_today = (sum_flow_today / sum_val_today) * 100.0 if sum_val_today > 0.0 else 0.0
+        # Idea A: Net Money Flow % - smoothed with a 5-day EMA (2026-09-08, Step 4).
+        # The raw single-day version was "what fraction of today's group dollar
+        # volume came from up-day stocks, today" with zero persistence - it swung
+        # the full range between consecutive readings even in 37-46 stock
+        # industries (e.g. Banks: -68.5% to +73.3% in back-to-back sessions), which
+        # fed directly into flow_trend flipping the industry's Category on 52% of
+        # all day-to-day transitions in a backtest. See memory: minervini-os-fix-plan.
+        flow_dates = target_dates[-5:] if len(target_dates) >= 5 else target_dates
+        daily_flow_pcts = []
+        for d in flow_dates:
+            sum_flow_d = sum(r['Daily_Indicators'].get(d, {}).get('volume_flow', 0.0) for _, r in group.iterrows())
+            sum_val_d = sum(r['Daily_Indicators'].get(d, {}).get('volume_value', 0.0) for _, r in group.iterrows())
+            daily_flow_pcts.append((sum_flow_d / sum_val_d) * 100.0 if sum_val_d > 0.0 else 0.0)
+        flow_ema = pd.Series(daily_flow_pcts).ewm(span=5, adjust=False).mean()
+        net_flow_pct_today = float(flow_ema.iloc[-1])
+        net_flow_pct_prev_smoothed = float(flow_ema.iloc[-2]) if len(flow_ema) >= 2 else net_flow_pct_today
         net_flow_score_scaled = (net_flow_pct_today + 100.0) / 2.0
         
         # Idea D: Pocket Pivot Group Breadth (last 5 sessions)
@@ -521,7 +534,7 @@ def analyze_participation(end_date=None):
         tickers_list = [item["Symbol"] for item in stock_details_list]
         
         # Load previous day's state parameters
-        prev = prev_states.get(ind_name, {"Category": "Avoid", "Streak_Days": 0, "Failure_Days": 0, "Last_Updated_Date": "", "Breadth": 0.0, "Flow_Val": 0.0})
+        prev = prev_states.get(ind_name, {"Category": "Avoid", "Streak_Days": 0, "Failure_Days": 0, "Confirm_Days": 0, "Last_Updated_Date": "", "Breadth": 0.0, "Flow_Val": 0.0})
         prev_cat = prev["Category"]
         # Safe migration mapping for previous day categories if running first time on old logs
         if prev_cat in ["Running Hot", "The Sweet Spot"]:
@@ -533,9 +546,9 @@ def analyze_participation(end_date=None):
             
         prev_streak = prev["Streak_Days"]
         prev_fail = prev["Failure_Days"]
+        prev_confirm = prev.get("Confirm_Days", 0)
         prev_date = prev.get("Last_Updated_Date", "")
         prev_breadth = prev.get("Breadth", 0.0)
-        prev_flow = prev.get("Flow_Val", 0.0)
         
         # Override to force Movies & Entertainment (music) streak to start fresh on Thursday 2026-07-23
         if ind_name == "Movies & Entertainment" and str(d_today)[:10] == "2026-07-23":
@@ -555,10 +568,14 @@ def analyze_participation(end_date=None):
         else:
             breadth_trend = "FLAT"
 
-        # Calculate Flow Trend (UP, DOWN, FLAT)
-        if net_flow_pct_today > prev_flow and net_flow_pct_today > -5.0:
+        # Calculate Flow Trend (UP, DOWN, FLAT) - now compares two EMA-smoothed
+        # values (today's vs. the prior day's, both from the same freshly-computed
+        # series) instead of today's raw reading against a stored single-day
+        # snapshot from yesterday's run. A one-day spike can no longer flip this
+        # on its own the way it used to.
+        if net_flow_pct_today > net_flow_pct_prev_smoothed and net_flow_pct_today > -5.0:
             flow_trend = "UP"
-        elif net_flow_pct_today < prev_flow and net_flow_pct_today < 5.0:
+        elif net_flow_pct_today < net_flow_pct_prev_smoothed and net_flow_pct_today < 5.0:
             flow_trend = "DOWN"
         else:
             flow_trend = "FLAT"
@@ -593,6 +610,7 @@ def analyze_participation(end_date=None):
         was_focus = prev_cat in ["Confirmed Uptrend", "Early Uptrend"]
         
         if was_focus:
+            confirm_days = 0  # not applicable once already in a focus state
             if raw_category == "Downtrend Warning":
                 category = "Downtrend Warning"
                 streak = 0
@@ -616,15 +634,36 @@ def analyze_participation(end_date=None):
                     fail_days = 0
                     explanation = f"Demoted to {category} after 2 consecutive days below quality floor."
         else:
-            category = raw_category
-            streak = 1 if category in ["Confirmed Uptrend", "Early Uptrend"] else 0
             fail_days = 0
-            explanation = f"Stage: {category}."
-            
+            if raw_category in ["Confirmed Uptrend", "Early Uptrend"]:
+                # Symmetric hysteresis (2026-09-08, Step 4): promotions into a focus
+                # state now need 2 consecutive qualifying days too, mirroring the
+                # demotion grace period above. Previously a promotion was instant
+                # while a demotion needed confirmation - that asymmetry let one
+                # noisy day (e.g. a single Money-Flow spike) flip an industry
+                # straight into "Confirmed Uptrend" with no corroboration, while
+                # exiting the same state took two days minimum either way.
+                if prev_confirm < 1:
+                    category = prev_cat
+                    streak = 0
+                    confirm_days = 1
+                    explanation = f"Pending promotion to {raw_category} (confirmation day 1 of 2)."
+                else:
+                    category = raw_category
+                    streak = 1
+                    confirm_days = 0
+                    explanation = f"Promoted to {category} after 2 consecutive qualifying days."
+            else:
+                category = raw_category
+                streak = 0
+                confirm_days = 0
+                explanation = f"Stage: {category}."
+
         if is_repeat_run:
             category = prev_cat
             streak = prev_streak
             fail_days = prev_fail
+            confirm_days = prev_confirm
             explanation = "Repeat run on same trading session date. State preserved."
             
         # Determine unique Sector and Zone for this group
@@ -639,7 +678,8 @@ def analyze_participation(end_date=None):
             "Category": category,
             "Streak_Days": streak,
             "Failure_Days": fail_days,
-            
+            "Confirm_Days": confirm_days,
+
             "Breadth": stacked_today,
             "Breadth_Change": stacked_change,
             "Flow": net_flow_pct_today,
