@@ -446,7 +446,92 @@ def _get_latest_watchlist_data_uncached(date_str=None):
                 })
         except Exception as e:
             print("Error parsing VCP file:", e)
-            
+
+    # Parse IPO Base candidates (src/ipo_scanner.py's run_daily_ipo_scan) and
+    # merge into the same list so they flow through the exact same pipeline
+    # (industry join, AMS/MS_Score, Tier) as every other candidate. Mirrors
+    # resolve_candidates_files()'s dated-file naming convention so a past
+    # scan_date resolves the matching dated ipo_candidates_YYYYMMDD.csv
+    # instead of always showing today's. Kept in its own try/except and its
+    # own file read - a problem here must never take down the main VCP list.
+    ipo_file = os.path.join(os.path.dirname(vcp_file) or ".", "ipo_candidates.csv")
+    if scan_date:
+        dated_ipo_file = os.path.join(os.path.dirname(vcp_file) or ".", f"ipo_candidates_{scan_date.replace('-', '')}.csv")
+        if os.path.exists(dated_ipo_file):
+            ipo_file = dated_ipo_file
+    if os.path.exists(ipo_file):
+        try:
+            df = pd.read_csv(ipo_file)
+            for _, r in df.iterrows():
+                sym = r["Symbol"]
+                mto = get_cached_delivery_data(sym, scan_date)
+                stock_info = stock_to_industry.get(sym, {})
+                ind_name = stock_info.get("industry", "Others")
+                ind_detail = industry_details.get(ind_name, {"Category": "Neutral", "Trend": "N/A"})
+
+                ams_data = ams_engine.calculate_ams(sym)
+
+                earn_info = earnings_cal.get(str(sym).upper().strip(), {})
+                earn_date = earn_info.get("Earnings_Date", "N/A")
+                earn_days = earn_info.get("Days_To_Earnings", None)
+
+                pivot = float(r.get("Pivot_Price", 0.0))
+                cmp = float(r.get("Current_Price", 0.0))
+                stop_loss = float(r.get("Stop_Loss", 0.0))
+                grade = r.get("Grade", "Grade C")
+                # No comparable raw "Score" exists for an IPO base (it isn't
+                # scanned by the main VCP engine) - approximate from Grade,
+                # same rough scale the main scanner's grades correspond to.
+                grade_score = {"Grade A": 90, "Grade B": 75, "Grade C": 60}.get(grade, 55)
+
+                vcp_candidates.append({
+                    "Symbol": sym,
+                    "Earnings_Date": earn_date,
+                    "Days_To_Earnings": earn_days,
+                    "Industry": ind_name,
+                    "Industry_Category": ind_detail["Category"],
+                    "Industry_Trend": ind_detail["Trend"],
+                    "Score": grade_score,
+                    "Engine_Type": "IPO_BASE",
+                    "Grade": grade,
+                    "Contractions": r.get("Contraction_Sequence", ""),
+                    "VDU_Pct": f"{float(r.get('VDU_Ratio', 0.0)) * 100:.1f}%",
+                    "Pivot": pivot,
+                    "CMP": cmp,
+                    "Distance": f"{((cmp - pivot) / pivot * 100):.1f}%" if pivot > 0 else "0.0%",
+                    "Readiness": "POST-BREAKOUT" if (pivot > 0 and cmp > pivot) else "DEVELOPING",
+                    "Stop_Loss": stop_loss,
+                    "Trigger": pivot,
+                    "Risk_Pct": round(((pivot - stop_loss) / pivot) * 100, 2) if pivot > 0 else 0.0,
+                    "Target_1": float(r.get("Target_1", 0.0)),
+                    "Target_2": float(r.get("Target_2", 0.0)),
+                    "Traded_Vol": mto["Traded"],
+                    "Deliverable_Qty": mto["Deliverable"],
+                    "Delivery_Pct": mto["Delivery_Pct"],
+                    "Entry_Category": "IPO Base",
+                    "MS_Score": ams_data["Total"],
+                    "Tier": calculate_watchlist_tier(ams_data["Total"], ind_detail["Category"]),
+                    "MS_Rating": ams_data["RatingStars"],
+                    "MS_Status": ams_data["Status"],
+                    "MS_Breakdown": {
+                        "Trend": ams_data["Trend"],
+                        "Momentum": ams_data["Momentum"],
+                        "Volume": ams_data["Volume"],
+                        "RS": ams_data["RS"],
+                        "SmartMoney": ams_data["SmartMoney"],
+                        "VCP": ams_data["VCP"]
+                    },
+                    # Flags this row as a recently-listed IPO for the
+                    # frontend to badge distinctly - not a proven pattern
+                    # type yet, see minervini-os-fix-plan memory.
+                    "Is_IPO_Base": True,
+                    "Days_Since_Listing": int(r.get("Days_Since_Listing", 0)),
+                    "Offer_Price": float(r.get("Offer_Price", 0.0)),
+                    "Pct_From_Offer": float(r.get("Pct_From_Offer", 0.0)),
+                })
+        except Exception as e:
+            print("Error parsing IPO candidates file:", e)
+
     # Parse Flag
     flag_candidates = []
     if os.path.exists(flag_file):

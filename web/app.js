@@ -10757,6 +10757,7 @@ function renderFilteredWatchlist() {
     const filterPb50 = document.getElementById("filter-pb50")?.checked ?? true;
     const filterIb = document.getElementById("filter-ib")?.checked ?? true;
     const filterPp = document.getElementById("filter-pp")?.checked ?? true;
+    const filterIpo = document.getElementById("filter-ipo")?.checked ?? true;
     
     const filterCircuit20 = document.getElementById("filter-circuit-20")?.checked ?? true;
     const filterCircuit10 = document.getElementById("filter-circuit-10")?.checked ?? true;
@@ -10846,7 +10847,10 @@ function renderFilteredWatchlist() {
         if (filterPp && (s.Pocket_Pivot === 1 || s.Pocket_Pivot === true || type.includes("POCKET_PIVOT") || type.includes("POCKET"))) {
             matchesPattern = true;
         }
-        
+        if (filterIpo && type === "IPO_BASE") {
+            matchesPattern = true;
+        }
+
         if (!matchesPattern) return false;
 
         // Circuit Filter check
@@ -10965,6 +10969,7 @@ function renderFilteredWatchlist() {
         if (displayType === "PULLBACK_EMA20") displayType = "EMA 20 PB";
         if (displayType === "PULLBACK_EMA50") displayType = "EMA 50 PB";
         if (displayType === "INSIDE_BAR_FLAG") displayType = "Inside Bar";
+        if (displayType === "IPO_BASE") displayType = "IPO Base 🆕";
 
         // ── Setup Type badge (A/B/C) ──
         const setupType = s._setupType || 'C';
