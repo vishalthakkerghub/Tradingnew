@@ -11050,24 +11050,13 @@ function renderFilteredWatchlist() {
 
         const distColor = parseFloat(s.Distance) >= 0 ? "var(--accent-green)" : "var(--accent-red)";
 
-        // ── Gate validation cell ──
-        const gates = s._gates || validateSetupGates(s, _mbiRules);
-        const gIcon = ok => ok
-            ? '<span style="color:#10b981;font-weight:900;font-size:11px;">&#10003;</span>'
-            : '<span style="color:#ef4444;font-weight:900;font-size:10px;">&#10007;</span>';
-        const gRow = (ok, lbl) => `<div style="display:flex;align-items:center;gap:2px;font-size:8.5px;color:${ok?'#10b981':'#ef4444'};line-height:1.5;">${gIcon(ok)}<span>${lbl}</span></div>`;
-        const tooltipTxt = gates.allPass ? 'All 4 gates pass — ready to trade' : ('BLOCKED: ' + gates.reasons.join(' | '));
-        const gatesCell = `<div title="${tooltipTxt.replace(/"/g,"'")}" style="cursor:help;min-width:60px;">
-            ${gRow(gates.mbiOk,'MBI')}
-            ${gRow(gates.sectorOk,'Sector')}
-            ${gRow(gates.patternOk,'Pattern')}
-            ${gRow(gates.slOk,'SL Band')}
-        </div>`;
-
-        const allPass = gates.allPass;
-        const rowStyle = allPass
-            ? (isRecommended ? `background:${stColor}09;border-left:3px solid ${stColor}65;` : 'border-left:3px solid transparent;')
-            : 'border-left:3px solid rgba(239,68,68,0.5);opacity:0.45;';
+        // Gates column and the allPass opacity-fade/red-border row styling were both
+        // removed 2026-09-08: every backtest this session showed MBI/Sector/SL Band
+        // status doesn't reliably predict setup quality (sometimes the opposite), so
+        // fading a row to 45% opacity with a red border was implying a verdict the
+        // evidence didn't support. s._gates is still computed (feeds the small
+        // priority-score nudge) - just no longer shown as a visual judgment.
+        const rowStyle = isRecommended ? `background:${stColor}09;border-left:3px solid ${stColor}65;` : 'border-left:3px solid transparent;';
 
         return `
             <tr style="${rowStyle}">
@@ -11097,7 +11086,6 @@ function renderFilteredWatchlist() {
                 <td style="font-family: monospace; text-align: right; color: var(--accent-red);">&#8377;${(s.Stop_Loss !== undefined && s.Stop_Loss !== null) ? Number(s.Stop_Loss).toFixed(2) : '0.00'}</td>
                 <td style="text-align:center;">${t1Html}</td>
                 <td style="text-align:center;">${t2Html}</td>
-                <td style="padding:4px 6px;">${gatesCell}</td>
                 <td style="text-align: center;">
                     <button class="table-add-journal-btn" onclick="addCandidateToJournal('${s.Symbol}')" title="Add to Journal">
                         <i class="fa-solid fa-plus"></i> Add

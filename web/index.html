@@ -696,15 +696,14 @@
                     <!-- MBI Command Bar: auto-rendered by renderMBICommandBar() -->
                     <div id="mbi-command-bar"></div>
 
-                    <!-- Gates legend (informational only - gates no longer filter the list) -->
+                    <!-- Sort note: gate badges removed 2026-09-08 (Gates column dropped from the
+                         table entirely) - every backtest this session showed MBI/Sector/SL Band
+                         status doesn't reliably predict setup quality (sometimes the opposite), so
+                         a red/green per-row verdict was implying a judgment the evidence didn't
+                         support. Still computed and still nudges the sort order (a few points, not
+                         a verdict) via _gates in app.js - just no longer shown as a checklist. -->
                     <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px;padding:8px 14px;background:rgba(255,255,255,0.03);border:1px solid var(--border-color);border-radius:8px;flex-wrap:wrap;">
-                        <span style="font-size:11px;color:var(--text-secondary);">Sorted by priority score (reflects gate status as a small tie-breaker, not a filter)</span>
-                        <span style="margin-left:auto;font-size:10px;color:var(--text-secondary);">
-                            Gates: <span style="color:#10b981;">&#9646; MBI</span>&nbsp;
-                            <span style="color:#3b82f6;">&#9646; Sector</span>&nbsp;
-                            <span style="color:#f59e0b;">&#9646; Pattern</span>&nbsp;
-                            <span style="color:#ef4444;">&#9646; SL Band</span>
-                        </span>
+                        <span style="font-size:11px;color:var(--text-secondary);">Sorted by priority score (Setup Type vs today's regime, sector, MS Score)</span>
                     </div>
 
                     <div class="table-container">
@@ -728,7 +727,6 @@
                                     <th onclick="sortScreener('Stop_Loss')" style="cursor: pointer; user-select: none; color: var(--accent-red);">SL <span class="sort-icon"></span></th>
                                     <th style="color: #10b981;">T1 (+R)</th>
                                     <th style="color: #3b82f6;">T2 (+R)</th>
-                                    <th style="white-space:nowrap;">Gates &#9432;</th>
                                     <th>Add</th>
                                 </tr>
                             </thead>
@@ -1709,6 +1707,6 @@
         </div>
     </div>
 
-    <script src="web/app.js?v=5.7"></script>
+    <script src="web/app.js?v=5.8"></script>
 </body>
 </html>
