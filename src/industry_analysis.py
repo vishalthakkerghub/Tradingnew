@@ -1,8 +1,75 @@
 import os
 import json
+import glob
 import pandas as pd
 import numpy as np
 from concurrent.futures import ThreadPoolExecutor
+
+
+def compute_mbi_percentile(current_score: float, today_str: str, lookback_days: int = 252) -> dict:
+    """
+    Regime-relative MBI (Step 5, 2026-09-08). The raw absolute MBI score
+    (average of 5 participation metrics - see analyze_participation) is
+    structurally biased low: two of its components (% of stocks with RS>=70,
+    a percentile-style cutoff, and % near their 52-week high, inherently
+    restrictive across a broad universe) can rarely climb high regardless of
+    how strong the market actually is. Confirmed on real data: across the
+    first 36 days this system has tracked (2026-07-20 to 2026-09-08), the
+    raw score ranged only 36.9-50.3 - it never once reached the "Strong"
+    threshold (>=65), spending its entire observed history in "Weak" or
+    barely "Caution" territory. A fixed absolute threshold on a formula that
+    may structurally never clear it gives almost no real discrimination
+    between genuinely-stronger and genuinely-weaker days.
+
+    This computes today's score's percentile rank against its own trailing
+    history instead - "is breadth unusually strong or weak FOR THIS MARKET",
+    which is answerable regardless of the raw formula's structural ceiling.
+    Ranks against PRIOR days only (today's own file, if already written, is
+    excluded) to avoid the trivial self-inclusion artifact. Reads the
+    already-accumulating dated data/market_breadth_YYYYMMDD.json snapshots -
+    no separate history file needed, and it only grows richer over time.
+
+    Returns {"percentile": float 0-100, "sample_size": int, "used_fallback": bool}.
+    A sample_size below ~15 is too thin to be statistically meaningful yet;
+    used_fallback=True (percentile defaults to 50.0, neutral) signals that
+    to callers so they can fall back to the absolute-score classification
+    until enough real history has accumulated.
+    """
+    mb_dir = "data"
+    if not os.path.exists(mb_dir):
+        mb_dir = os.path.join("minervini_os", mb_dir)
+
+    pattern = os.path.join(mb_dir, "market_breadth_*.json")
+    files = sorted(glob.glob(pattern))
+
+    cutoff = today_str.replace("-", "")
+    prior_scores = []
+    for fpath in files:
+        fname = os.path.basename(fpath)
+        date_part = fname.replace("market_breadth_", "").replace(".json", "")
+        if not date_part.isdigit() or date_part >= cutoff:
+            continue  # strictly prior days only - excludes today and any future-dated file
+        try:
+            with open(fpath, "r", encoding="utf-8") as f:
+                d = json.load(f)
+            val = d.get("Index")
+            if val is not None:
+                prior_scores.append(float(val))
+        except Exception:
+            continue
+
+    # Keep only the trailing lookback_days window (once history exceeds it)
+    prior_scores = prior_scores[-lookback_days:]
+
+    MIN_SAMPLE = 15
+    if len(prior_scores) < MIN_SAMPLE:
+        return {"percentile": 50.0, "sample_size": len(prior_scores), "used_fallback": True}
+
+    below = sum(1 for v in prior_scores if v < current_score)
+    equal = sum(1 for v in prior_scores if v == current_score)
+    percentile = (below + 0.5 * equal) / len(prior_scores) * 100.0
+    return {"percentile": round(percentile, 1), "sample_size": len(prior_scores), "used_fallback": False}
+
 
 def load_data():
     symbols_json = "config/symbols.json"
@@ -799,18 +866,33 @@ def analyze_participation(end_date=None):
     change_3d = idx_today - idx_3d
     change_5d = idx_today - idx_5d
     
+    # Step 5 (2026-09-08): regime-relative status instead of a fixed
+    # absolute threshold the raw score may structurally never clear - see
+    # compute_mbi_percentile()'s docstring for why. Falls back to the old
+    # absolute-score classification (used_fallback=True) until at least 15
+    # days of real history have accumulated.
+    mbi_pctl = compute_mbi_percentile(idx_today, today_str)
+    percentile = mbi_pctl["percentile"]
+
     status = "Caution"
     status_color = "caution"
-    if idx_today >= 60.0:
-        status = "Strong"
-        status_color = "strong"
-    elif idx_today < 40.0:
-        status = "Weak"
-        status_color = "weak"
-        
+    if mbi_pctl["used_fallback"]:
+        if idx_today >= 60.0:
+            status, status_color = "Strong", "strong"
+        elif idx_today < 40.0:
+            status, status_color = "Weak", "weak"
+    else:
+        if percentile >= 70.0:
+            status, status_color = "Strong", "strong"
+        elif percentile < 30.0:
+            status, status_color = "Weak", "weak"
+
     breadth_report = {
         "AsOfDate": today_str,
         "Index": round(idx_today, 1),
+        "Percentile": percentile,
+        "Percentile_Sample_Size": mbi_pctl["sample_size"],
+        "Percentile_Is_Fallback": mbi_pctl["used_fallback"],
         "Change_1D": round(change_1d, 1),
         "Change_3D": round(change_3d, 1),
         "Change_5D": round(change_5d, 1),

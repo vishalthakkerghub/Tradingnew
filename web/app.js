@@ -10635,10 +10635,18 @@ function renderMBICommandBar() {
     if (!container) return;
     const mb = appState.marketBreadth || {};
     const idx = parseFloat(mb.Index) || 0;
+    // Step 5 (2026-09-08): regime-relative gauge - percentile of MBI's own
+    // trailing history - instead of the raw absolute score, which is
+    // structurally biased low and may rarely/never reach "Strong". Falls
+    // back to the raw score if no percentile is available yet (old cached
+    // response, or fewer than 15 days of history) - see
+    // industry_analysis.compute_mbi_percentile()'s docstring.
+    const usePercentile = mb.Percentile !== undefined && mb.Percentile_Is_Fallback === false;
+    const mbiGauge = usePercentile ? parseFloat(mb.Percentile) : idx;
     const change1d = parseFloat(mb.Change_1D) || 0;
     const indicators = mb.Indicators || {};
     const asOf = mb.AsOfDate || '';
-    const rules = getMBIPriorityRules(idx);
+    const rules = getMBIPriorityRules(mbiGauge);
     const priorityBadges = rules.priority.map(t => {
         const colors = {A:'#10b981',B:'#3b82f6',C:'#f59e0b'};
         return `<span style="display:inline-flex;align-items:center;background:rgba(255,255,255,0.07);border:1px solid ${colors[t]};color:${colors[t]};font-weight:800;font-size:11px;padding:3px 12px;border-radius:20px;letter-spacing:0.5px;">TYPE ${t}</span>`;
@@ -10652,15 +10660,15 @@ function renderMBICommandBar() {
         <div style="background:linear-gradient(135deg,var(--surface-card),rgba(20,20,40,0.98));border:1px solid ${rules.color}40;border-radius:12px;padding:16px 20px;margin-bottom:14px;box-shadow:0 4px 24px ${rules.color}18;">
             <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:12px;">
                 <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;">
-                    <div style="width:64px;height:64px;border-radius:50%;background:conic-gradient(${rules.color} ${idx*3.6}deg,rgba(255,255,255,0.05) 0deg);display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px ${rules.color}40;">
+                    <div style="width:64px;height:64px;border-radius:50%;background:conic-gradient(${rules.color} ${mbiGauge*3.6}deg,rgba(255,255,255,0.05) 0deg);display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px ${rules.color}40;">
                         <div style="width:50px;height:50px;border-radius:50%;background:var(--surface-card);display:flex;flex-direction:column;align-items:center;justify-content:center;">
-                            <span style="font-size:17px;font-weight:900;color:${rules.color};line-height:1;">${idx.toFixed(0)}</span>
-                            <span style="font-size:7px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;">MBI</span>
+                            <span style="font-size:17px;font-weight:900;color:${rules.color};line-height:1;">${mbiGauge.toFixed(0)}</span>
+                            <span style="font-size:7px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;">${usePercentile ? 'MBI %ILE' : 'MBI'}</span>
                         </div>
                     </div>
                     <div>
                         <div style="font-size:14px;font-weight:900;color:${rules.color};text-transform:uppercase;letter-spacing:1.5px;">${rules.label}</div>
-                        <div style="font-size:10.5px;color:var(--text-secondary);margin-top:2px;">${change1d >= 0 ? '&#9650;' : '&#9660;'} ${Math.abs(change1d).toFixed(1)} pts today &nbsp;|&nbsp; ${asOf}</div>
+                        <div style="font-size:10.5px;color:var(--text-secondary);margin-top:2px;">${change1d >= 0 ? '&#9650;' : '&#9660;'} ${Math.abs(change1d).toFixed(1)} pts today &nbsp;|&nbsp; ${asOf}${usePercentile ? ` &nbsp;|&nbsp; Raw MBI: ${idx.toFixed(1)}%` : ''}</div>
                     </div>
                 </div>
                 <div style="width:1px;height:50px;background:var(--border-color);flex-shrink:0;"></div>
@@ -10739,7 +10747,9 @@ function renderFilteredWatchlist() {
     if (!tableBody) return;
 
     const _mb = appState.marketBreadth || {};
-    const _mbiRules = getMBIPriorityRules(_mb.Index);
+    // Step 5 (2026-09-08): see renderMBICommandBar's identical fallback logic.
+    const _useMbiPctl = _mb.Percentile !== undefined && _mb.Percentile_Is_Fallback === false;
+    const _mbiRules = getMBIPriorityRules(_useMbiPctl ? parseFloat(_mb.Percentile) : _mb.Index);
 
     // Always the full scanned pool (2026-09-07 redesign): a 7-week backtest found
     // the Curated pool (strategic_watchlist + daily_focus_watchlist) underperforming

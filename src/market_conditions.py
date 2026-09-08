@@ -49,6 +49,8 @@ class MarketConditionsEngine:
         """
         # 1. Resolve and Load MBI Score
         mbi_score = 50.0
+        mbi_percentile = None
+        percentile_is_fallback = True
         mb_file = "data/market_breadth.json"
         if date_str:
             cleaned_date = date_str.replace("-", "")
@@ -66,25 +68,37 @@ class MarketConditionsEngine:
                 with open(mb_file, "r", encoding="utf-8") as f_mb:
                     mb_data = json.load(f_mb)
                     mbi_score = float(mb_data.get("Index", 50.0))
+                    # Percentile fields added in Step 5 (2026-09-08) - may be
+                    # absent on an old dated snapshot from before that change.
+                    if "Percentile" in mb_data:
+                        mbi_percentile = float(mb_data["Percentile"])
+                        percentile_is_fallback = bool(mb_data.get("Percentile_Is_Fallback", False))
             except Exception as mb_ex:
                 logger.error(f"Error loading market breadth file {mb_file} inside posture engine: {mb_ex}")
 
-        # Derive Posture, Score, and Recommendation from MBI
-        if mbi_score >= 65.0:
+        # Derive Posture, Score, and Recommendation - regime-relative
+        # (percentile of MBI's own trailing history) rather than a fixed
+        # absolute threshold, since the raw score is structurally biased low
+        # and may rarely/never clear a fixed "Strong" bar - see
+        # industry_analysis.compute_mbi_percentile()'s docstring. Falls back
+        # to the old absolute-score thresholds when no percentile is
+        # available yet (old snapshot, or fewer than 15 days of history).
+        use_percentile = mbi_percentile is not None and not percentile_is_fallback
+        gauge = mbi_percentile if use_percentile else mbi_score
+        gauge_label = f"MBI percentile: {gauge:.0f}" if use_percentile else f"MBI: {mbi_score:.1f}%"
+
+        if gauge >= 70.0:
             posture = "GREEN"
-            total_score = min(10, max(8, round(mbi_score / 10.0)))
-            recommendation = f"Favorable Market Breadth (MBI: {mbi_score:.1f}%): Fully fund new long positions, focus on high-conviction breakouts, and pyramid working trades."
-        elif mbi_score >= 45.0:
+            total_score = min(10, max(8, round(gauge / 10.0)))
+            recommendation = f"Favorable Market Breadth ({gauge_label}): Fully fund new long positions, focus on high-conviction breakouts, and pyramid working trades."
+        elif gauge >= 30.0:
             posture = "YELLOW"
-            if mbi_score >= 55.0:
-                total_score = 6 if mbi_score < 60.0 else 7
-            else:
-                total_score = 5
-            recommendation = f"Caution / Defensive Mode (MBI: {mbi_score:.1f}%): Keep position sizes small, tighten stop losses, and buy only the absolute strongest leaders."
+            total_score = min(7, max(5, round(gauge / 10.0)))
+            recommendation = f"Caution / Defensive Mode ({gauge_label}): Keep position sizes small, tighten stop losses, and buy only the absolute strongest leaders."
         else:
             posture = "RED"
-            total_score = min(4, max(0, round(mbi_score / 10.0)))
-            recommendation = f"Weak Market Breadth (MBI: {mbi_score:.1f}%): Suspend all new buying, raise stop losses, and hold cash to protect capital."
+            total_score = min(4, max(0, round(gauge / 10.0)))
+            recommendation = f"Weak Market Breadth ({gauge_label}): Suspend all new buying, raise stop losses, and hold cash to protect capital."
 
         # Compute index informational metrics
         above_200 = False
@@ -151,6 +165,8 @@ class MarketConditionsEngine:
             "posture": posture,
             "recommendation": recommendation,
             "mbi_score": mbi_score,
+            "mbi_percentile": mbi_percentile,
+            "mbi_percentile_is_fallback": percentile_is_fallback,
             "breakdown": {
                 "above_200_sma": {"status": bool(above_200), "value": float(latest_close), "sma": float(sma_200), "points": pts_200},
                 "above_50_sma": {"status": bool(above_50), "value": float(latest_close), "sma": float(sma_50), "points": pts_50},

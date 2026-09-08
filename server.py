@@ -670,16 +670,23 @@ def _get_latest_watchlist_data_uncached(date_str=None):
             
     # Phase 1: Market Health Setup (derived directly from MBI index inside the engine)
     mbi_score = breakup.get("mbi_score", 50.0)
+    mbi_percentile = breakup.get("mbi_percentile")
+    mbi_percentile_is_fallback = breakup.get("mbi_percentile_is_fallback", True)
     market_posture = breakup["posture"]
     market_score = breakup["score"]
 
+    # Step 5 (2026-09-08): regime-relative gauge instead of a fixed absolute
+    # threshold - see industry_analysis.compute_mbi_percentile()'s docstring.
+    # Falls back to the old mbi_score thresholds until enough history exists.
+    _use_pctl = mbi_percentile is not None and not mbi_percentile_is_fallback
+    _gauge = mbi_percentile if _use_pctl else mbi_score
 
-    if mbi_score >= 60.0:
+    if _gauge >= 60.0:
         market_status = "Favorable"
         pos_sizing = "Normal position sizing, all signals trusted"
         aggressiveness = "Favorable"
         max_watchlist_stocks = 20
-    elif mbi_score < 40.0:
+    elif _gauge < 40.0:
         market_status = "Avoid"
         pos_sizing = "Defensive - protect capital, signals are unvalidated"
         aggressiveness = "Avoid"
