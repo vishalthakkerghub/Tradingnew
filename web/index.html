@@ -587,6 +587,18 @@
                      the Sector Category system shown to flip 52% of day-to-day transitions and, for
                      Curated specifically, to underperform the unfiltered pool (+0.17R vs +0.25R avg,
                      7-week backtest). Kept: the filters with a clear, non-alpha-claiming purpose. -->
+                <div class="glass" style="padding: 16px 20px; border-radius: 16px; border: 1px solid #8b5cf6; margin-bottom: 16px; background: linear-gradient(135deg, rgba(139,92,246,0.10), rgba(139,92,246,0.02)); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <input type="checkbox" id="filter-top-engines-only" style="width: 16px; height: 16px; cursor: pointer;">
+                        <label for="filter-top-engines-only" style="font-size: 13px; font-weight: 800; color: var(--text-primary); cursor: pointer;">🎯 Top Engines Only</label>
+                        <span style="font-size: 11px; color: var(--text-muted);" title="Restricts to Strict VCP, Mini VCP, and EMA10 Pullback - the 3 highest win-rate engines from the 3-month backtest that the live scanner can still actually produce (bare 'Pullback' backtested #1 but is a retired legacy tag no longer generated). Overrides the Setup/Pattern checkboxes below while active.">(Strict VCP · Mini VCP · EMA10 Pullback — backtest-proven, hover for why)</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <label for="filter-top-n" style="font-size: 12px; color: var(--text-secondary);">Show top</label>
+                        <input type="number" id="filter-top-n" min="1" max="50" value="3" style="width: 52px; padding: 5px 6px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); font-size: 13px; text-align: center;">
+                        <label for="filter-top-n" style="font-size: 12px; color: var(--text-secondary);">by priority score (for realistically trading 2-3 a day)</label>
+                    </div>
+                </div>
                 <div class="filters-console glass" style="padding: 20px; border-radius: 16px; border: 1px solid var(--border-color); margin-bottom: 24px; display: flex; flex-direction: column; gap: 16px;">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
                         <!-- Setup / Pattern -->
@@ -1713,6 +1725,6 @@
         </div>
     </div>
 
-    <script src="web/app.js?v=6.1"></script>
+    <script src="web/app.js?v=6.2"></script>
 </body>
 </html>

@@ -10769,6 +10769,17 @@ function renderFilteredWatchlist() {
     const filterPp = document.getElementById("filter-pp")?.checked ?? true;
     const filterIpo = document.getElementById("filter-ipo")?.checked ?? true;
     const filterSupport = document.getElementById("filter-support")?.checked ?? true;
+    // "Top Engines Only" - the 3 highest win-rate engines from the 3-month
+    // backtest that the live scanner can still produce (bare "Pullback"
+    // backtested #1 but is a retired legacy tag no longer generated -
+    // see memory: minervini-os-fix-plan). Deliberately bypasses the
+    // Setup/Pattern checkboxes above rather than being expressed through
+    // them, since "VCP Breakouts" is one combined Strict+Flex checkbox
+    // and can't isolate Strict alone at that granularity.
+    const filterTopEnginesOnly = document.getElementById("filter-top-engines-only")?.checked ?? false;
+    const TOP_ENGINES = ["STRICT_VCP", "MINI_VCP", "PULLBACK_EMA10"];
+    const topNRaw = parseInt(document.getElementById("filter-top-n")?.value, 10);
+    const topN = (Number.isFinite(topNRaw) && topNRaw > 0) ? topNRaw : null;
 
     const filterCircuit20 = document.getElementById("filter-circuit-20")?.checked ?? true;
     const filterCircuit10 = document.getElementById("filter-circuit-10")?.checked ?? true;
@@ -10865,6 +10876,13 @@ function renderFilteredWatchlist() {
             matchesPattern = true;
         }
 
+        // Overrides everything above when active - an explicit engine
+        // allowlist, not another OR-condition, so it actually restricts
+        // rather than just adding another way in.
+        if (filterTopEnginesOnly) {
+            matchesPattern = TOP_ENGINES.includes(type);
+        }
+
         if (!matchesPattern) return false;
 
         // Circuit Filter check
@@ -10916,7 +10934,7 @@ function renderFilteredWatchlist() {
         return true;
     });
 
-    const displayList = filtered;
+    let displayList = filtered;
 
     // Apply sorting — default to priority score (gate-pass stocks float to top via pScore)
     const col = appState.screenerSortColumn || "_priorityScore";
@@ -10960,8 +10978,16 @@ function renderFilteredWatchlist() {
 
     updateScreenerHeaderSortIcons();
 
+    // Applied after sorting, not before - "top N" means the N highest-
+    // priority-score survivors of every other filter, not an arbitrary N.
+    const totalMatched = displayList.length;
+    if (topN !== null && displayList.length > topN) {
+        displayList = displayList.slice(0, topN);
+    }
+
     if (countSpan) {
-        countSpan.innerHTML = `${displayList.length} <span style="font-size:9.5px;color:var(--text-muted);">candidates</span>`;
+        const topLabel = (topN !== null && totalMatched > topN) ? ` <span style="font-size:9.5px;color:var(--text-muted);">of ${totalMatched} matched (top ${topN} shown)</span>` : "";
+        countSpan.innerHTML = `${displayList.length} <span style="font-size:9.5px;color:var(--text-muted);">candidates</span>${topLabel}`;
     }
 
     if (displayList.length === 0) {
@@ -11165,12 +11191,18 @@ window.applyStocksFilters = function() {
 window.resetStocksFilters = function() {
     const checkboxes = document.querySelectorAll(".filter-checkbox");
     checkboxes.forEach(chk => chk.checked = true);
-    
+
     const select = document.getElementById("filter-industry-select");
     if (select) select.value = "ALL";
-    
-    
-    
+
+    // Not a .filter-checkbox on purpose - it's an opt-in restrictive mode,
+    // "reset to default" should mean "show everything", not "keep only
+    // the top 3 engines". Reset separately, explicitly.
+    const topEnginesOnly = document.getElementById("filter-top-engines-only");
+    if (topEnginesOnly) topEnginesOnly.checked = false;
+    const topN = document.getElementById("filter-top-n");
+    if (topN) topN.value = "3";
+
     window.renderFilteredWatchlist();
     showToast("Filters reset to default.", "info");
 };
