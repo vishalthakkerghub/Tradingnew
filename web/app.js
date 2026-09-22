@@ -10768,7 +10768,8 @@ function renderFilteredWatchlist() {
     const filterIb = document.getElementById("filter-ib")?.checked ?? true;
     const filterPp = document.getElementById("filter-pp")?.checked ?? true;
     const filterIpo = document.getElementById("filter-ipo")?.checked ?? true;
-    
+    const filterSupport = document.getElementById("filter-support")?.checked ?? true;
+
     const filterCircuit20 = document.getElementById("filter-circuit-20")?.checked ?? true;
     const filterCircuit10 = document.getElementById("filter-circuit-10")?.checked ?? true;
     const filterCircuit5 = document.getElementById("filter-circuit-5")?.checked ?? true;
@@ -10858,6 +10859,9 @@ function renderFilteredWatchlist() {
             matchesPattern = true;
         }
         if (filterIpo && type === "IPO_BASE") {
+            matchesPattern = true;
+        }
+        if (filterSupport && type === "SUPPORT_RETEST") {
             matchesPattern = true;
         }
 
@@ -10980,6 +10984,7 @@ function renderFilteredWatchlist() {
         if (displayType === "PULLBACK_EMA50") displayType = "EMA 50 PB";
         if (displayType === "INSIDE_BAR_FLAG") displayType = "Inside Bar";
         if (displayType === "IPO_BASE") displayType = "IPO Base 🆕";
+        if (displayType === "SUPPORT_RETEST") displayType = "Support Retest 🆕";
 
         // ── Setup Type badge (A/B/C) ──
         const setupType = s._setupType || 'C';

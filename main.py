@@ -16,6 +16,7 @@ from src.risk_engine import RiskEngine
 from src.notifier import TelegramNotifier
 from src.paper_trading_engine import PaperTradingEngine
 from src.flag_engine import FlagEngine
+from src.support_engine import SupportEngine
 
 logger = logging.getLogger("Orchestrator")
 
@@ -83,6 +84,7 @@ def run_daily_scan():
     risk_engine = RiskEngine(config)
     notifier = TelegramNotifier(config)
     flag_engine = FlagEngine(config)
+    support_engine = SupportEngine(config)
     
     # 3. Evaluate Market Conditions
     logger.info("Step 3: Checking Index Market Posture.")
@@ -756,7 +758,68 @@ def run_daily_scan():
                                 logger.info(f"Ticker {symbol} passes {pb_type} filters. Watchlist Candidate! Trigger: {pb_trigger:.2f}")
             except Exception as e_pb:
                 logger.warning(f"Error checking Pullbacks for {symbol}: {e_pb}")
-        
+
+        # 5. Support Retest Scan - distinct from EMA Pullback: tests a real
+        # prior PRICE STRUCTURE level (a swing low other traders would
+        # recognize) rather than a smoothed moving average. Only checked
+        # if nothing else already classified this stock today, same
+        # mutual-exclusivity convention the pullback check uses.
+        if not is_vcp_candidate_found and not is_flag and not is_pullback_candidate:
+            try:
+                sr_is_candidate, sr_support, sr_stop, sr_grade, sr_vdu, sr_dist_pct, sr_bars_ago = \
+                    support_engine.find_support_retest(stock_df)
+                if sr_is_candidate:
+                    if trend_engine.is_stage2_aligned(stock_df, index_df, relaxed=(posture != "GREEN")):
+                        sr_risk_pct = ((sr_support - sr_stop) / sr_support) * 100 if sr_support > 0 else 0.0
+                        sr_t1 = sr_support * (1.0 + max(0.05, 2.0 * (sr_risk_pct / 100)))
+                        sr_t2 = sr_support * (1.0 + max(0.10, 3.5 * (sr_risk_pct / 100)))
+
+                        sr_score_breakdown = scoring_engine.calculate_score(
+                            stock_df=stock_df,
+                            index_df=index_df,
+                            grade=sr_grade,
+                            vdu_ratio=sr_vdu,
+                            readiness_status="SUPPORT READY",
+                            risk_pct=sr_risk_pct
+                        )
+                        sr_score = sr_score_breakdown["total_score"]
+
+                        sr_setup = execution_engine.calculate_trade_setup(
+                            symbol=symbol,
+                            pivot_price=sr_support,
+                            contraction_low=sr_stop
+                        )
+
+                        vcp_candidates_detailed.append({
+                            "Symbol": symbol,
+                            "Score": round(sr_score),
+                            "Raw_Score": sr_score,
+                            "Engine_Type": "SUPPORT_RETEST",
+                            "Grade": sr_grade,
+                            "Contraction Count": 1,
+                            "Contraction Sequence": f"Support set {sr_bars_ago}d ago, retest {sr_dist_pct:+.1f}%",
+                            "VDU %": f"{sr_vdu * 100:.1f}%",
+                            "Pivot Price": sr_support,
+                            "Current Price": float(stock_df["Close"].iloc[-1]),
+                            "Distance to Pivot": f"{sr_dist_pct:.2f}%",
+                            "Readiness Status": "SUPPORT READY",
+                            "Entry Price": sr_setup["Entry_Price"],
+                            "Stop Loss": sr_setup["Stop_Loss"],
+                            "Risk per Share": sr_setup["Risk_Per_Share"],
+                            "Position Size": sr_setup["Position_Size"],
+                            "R-Multiple": sr_setup["R_Multiple"],
+                            "Trade Status": sr_setup["Trade_Status"],
+                            "Entry_Category": "SUPPORT_RETEST",
+                            "Entry_Category_Display": "SUPPORT RETEST",
+                            "Trigger_Price": sr_support,
+                            "Tactical_Stop": sr_stop,
+                            "Target_1": sr_t1,
+                            "Target_2": sr_t2
+                        })
+                        logger.info(f"Ticker {symbol} passes SUPPORT_RETEST filters. Watchlist Candidate! Support: {sr_support:.2f}, Retest: {sr_dist_pct:+.2f}%")
+            except Exception as e_sr:
+                logger.warning(f"Error checking Support Retest for {symbol}: {e_sr}")
+
     end_time = datetime.now()
     end_time_str = end_time.strftime("%Y-%m-%d %H:%M:%S")
     execution_duration = (end_time - start_time).total_seconds()
@@ -772,12 +835,14 @@ def run_daily_scan():
     flex_list = [c for c in vcp_candidates_detailed if c["Engine_Type"] == "FLEX_VCP"]
     mini_list = [c for c in vcp_candidates_detailed if c["Engine_Type"] == "MINI_VCP"]
     pullback_list = [c for c in vcp_candidates_detailed if c["Engine_Type"].startswith("PULLBACK")]
-    
+    support_list = [c for c in vcp_candidates_detailed if c["Engine_Type"] == "SUPPORT_RETEST"]
+
     # Sort descending by Raw_Score
     strict_list.sort(key=lambda x: x["Raw_Score"], reverse=True)
     flex_list.sort(key=lambda x: x["Raw_Score"], reverse=True)
     mini_list.sort(key=lambda x: x["Raw_Score"], reverse=True)
     pullback_list.sort(key=lambda x: x["Raw_Score"], reverse=True)
+    support_list.sort(key=lambda x: x["Raw_Score"], reverse=True)
     flag_candidates_detailed.sort(key=lambda x: x["Raw_Score"], reverse=True)
 
     # Write EOD Watchlist Report placeholder
@@ -805,7 +870,7 @@ def run_daily_scan():
         f.write(f"- **Valid Flag Candidates:** {len(flag_candidates_detailed)}\n\n")
         
         f.write("## VCP Watchlist Symbols\n")
-        combined_sorted = strict_list + flex_list + mini_list + pullback_list
+        combined_sorted = strict_list + flex_list + mini_list + pullback_list + support_list
         if combined_sorted:
             f.write("| Symbol | Score | Engine Type | Grade | Contraction Count | Contraction Sequence | VDU % | Pivot Price | Current Price | Distance to Pivot | Readiness Status | Entry Category | Trigger Price | Stop Loss | Risk per Share | Position Size | R-Multiple | Trade Status |\n")
             f.write("| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |\n")
