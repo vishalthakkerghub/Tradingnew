@@ -51,22 +51,47 @@ def classify_setup_type(engine_type, grade, entry_category, score):
         return 'B'
     return 'C'
 
-def get_cmp_from_cache(symbol):
+def get_cmp_from_cache(symbol, date_str):
+    """
+    Returns (close, high, low) for `symbol` on exactly `date_str`.
+
+    Fixed 2026-09-22: this used to always return df.iloc[-1] - whatever the
+    LATEST cached row happened to be - regardless of what date_str was being
+    processed. That's fine on a normal day (latest row == today), but makes
+    run_daily_update() unable to correctly process a missed day after the
+    fact: asked to evaluate "yesterday", it would silently grade the trade
+    against TODAY's price instead. This caused two real missed exits
+    (CYIENTDLM, SKYGOLD) during a multi-day local-automation gap in
+    Sept 2026, found and hand-corrected in a system audit - see memory:
+    minervini-os-fix-plan for the incident. Now looks up date_str exactly.
+
+    Returns (None, None, None) if date_str isn't in the cache - either the
+    market didn't open that day (weekend/holiday - the cache correctly has
+    no row for it) or the data is genuinely missing for some other reason.
+    Both cases get the same safe treatment by the caller (leave the trade
+    untouched rather than guess), so they're deliberately not distinguished
+    here.
+    """
     path = f"data/cache/{symbol.upper()}.csv"
     if not os.path.exists(path):
         return None, None, None
     try:
-        df = pd.read_csv(path)
+        df = pd.read_csv(path, index_col="Date")
         if df.empty:
             return None, None, None
         df.columns = [c.strip() for c in df.columns]
-        last = df.iloc[-1]
-        close = float(last.get("Close", 0))
-        high = float(last.get("High", 0))
-        low = float(last.get("Low", 0))
+        if date_str not in df.index:
+            logger.info(f"No cached price row for {symbol} on {date_str} (market holiday, or data gap for this date).")
+            return None, None, None
+        row = df.loc[date_str]
+        if isinstance(row, pd.DataFrame):
+            row = row.iloc[-1]
+        close = float(row.get("Close", 0))
+        high = float(row.get("High", 0))
+        low = float(row.get("Low", 0))
         return close, high, low
     except Exception as e:
-        logger.warning(f"Error reading cache for {symbol}: {e}")
+        logger.warning(f"Error reading cache for {symbol} on {date_str}: {e}")
         return None, None, None
 
 class TruePaperTrader:
@@ -542,7 +567,7 @@ class TruePaperTrader:
         active_trades = []
         for t in self.state["open_trades"]:
             sym = t["symbol"]
-            cmp, high, low = get_cmp_from_cache(sym)
+            cmp, high, low = get_cmp_from_cache(sym, date_str)
             if cmp is None:
                 # Keep active trade if no price data available
                 active_trades.append(t)
@@ -730,7 +755,7 @@ class TruePaperTrader:
                 gates_pass, gk, gd = self.validate_gates(s, mbi_allowed, cat)
 
                 # Check daily price cache to see if trigger hit
-                cmp, high, low = get_cmp_from_cache(sym)
+                cmp, high, low = get_cmp_from_cache(sym, date_str)
                 trigger_price = float(s.get("Entry") or s.get("Entry_Price") or 0)
                 sl = float(s.get("Stop_Loss") or 0)
 
