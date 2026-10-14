@@ -145,5 +145,48 @@ class TestDataIngestionEngine(unittest.TestCase):
         self.assertEqual(len(df_res), 10)
         mock_ticker.history.assert_called_once()
 
+    def _df(self, rows):
+        df = pd.DataFrame(rows, columns=["Date", "Open", "High", "Low", "Close", "Volume"]).set_index("Date")
+        return df
+
+    def test_merge_restores_date_missing_from_download(self):
+        """A session the vendor omits must not erase the cached candle (2026-10-12 bug)."""
+        path = os.path.join(self.test_cache_dir, "GAP.csv")
+        old = self._df([("2026-10-09", 100, 101, 99, 100, 10), ("2026-10-12", 100, 103, 99, 102, 11), ("2026-10-13", 102, 104, 101, 103, 12)])
+        old["Delivery_Pct"] = [0.0, 55.0, 0.0]
+        old.to_csv(path)
+        new = self._df([("2026-10-09", 100, 101, 99, 100, 10), ("2026-10-13", 102, 104, 101, 103, 12)])
+        merged = self.engine._merge_with_cache(new, path)
+        self.assertEqual(list(merged.index), ["2026-10-09", "2026-10-12", "2026-10-13"])
+        self.assertAlmostEqual(merged.loc["2026-10-12", "Close"], 102.0)
+        self.assertEqual(merged.loc["2026-10-12", "Delivery_Pct"], 55.0)
+
+    def test_merge_rescales_restored_row_after_readjustment(self):
+        path = os.path.join(self.test_cache_dir, "ADJ.csv")
+        old = self._df([("2026-10-09", 100, 100, 100, 100, 10), ("2026-10-12", 110, 110, 110, 110, 10), ("2026-10-13", 120, 120, 120, 120, 10)])
+        old.to_csv(path)
+        # vendor re-adjusted history by 0.5x and omitted 10-12
+        new = self._df([("2026-10-09", 50, 50, 50, 50, 10), ("2026-10-13", 60, 60, 60, 60, 10)])
+        merged = self.engine._merge_with_cache(new, path)
+        self.assertAlmostEqual(merged.loc["2026-10-12", "Close"], 55.0)
+
+    def test_merge_does_not_resurrect_dates_before_download_window(self):
+        path = os.path.join(self.test_cache_dir, "OLD.csv")
+        self._df([("2020-01-01", 1, 1, 1, 1, 1), ("2026-10-09", 100, 100, 100, 100, 10)]).to_csv(path)
+        new = self._df([("2026-10-09", 100, 100, 100, 100, 10), ("2026-10-13", 101, 101, 101, 101, 10)])
+        merged = self.engine._merge_with_cache(new, path)
+        self.assertNotIn("2020-01-01", merged.index)
+
+    def test_find_calendar_gaps_flags_missing_and_ignores_prelisting(self):
+        cal = ["2026-10-08", "2026-10-09", "2026-10-12", "2026-10-13"]
+        self._df([(d, 1, 1, 1, 1, 1) for d in cal]).to_csv(os.path.join(self.test_cache_dir, "NIFTY_50.csv"))
+        self._df([(d, 1, 1, 1, 1, 1) for d in ["2026-10-08", "2026-10-09", "2026-10-13"]]).to_csv(os.path.join(self.test_cache_dir, "GAPPED.csv"))
+        self._df([(d, 1, 1, 1, 1, 1) for d in ["2026-10-12", "2026-10-13"]]).to_csv(os.path.join(self.test_cache_dir, "NEWIPO.csv"))
+        self._df([(d, 1, 1, 1, 1, 1) for d in ["2026-10-08", "2026-10-09"]]).to_csv(os.path.join(self.test_cache_dir, "STALE.csv"))
+        res = self.engine.find_calendar_gaps(["GAPPED", "NEWIPO", "STALE"], window=4)
+        self.assertEqual(res["GAPPED"], ["2026-10-12"])
+        self.assertNotIn("NEWIPO", res)
+        self.assertEqual(res["__stale__"], ["STALE"])
+
 if __name__ == "__main__":
     unittest.main()

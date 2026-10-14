@@ -2511,6 +2511,7 @@ def get_stock_detail(symbol, date_str=None):
             "SmartMoney": ams_data.get("SmartMoney", 0),
             "VCP": ams_data.get("VCP", 0)
         },
+        "Setup_Found": found_row is not None,
         "Setup_Type": setup_type,
         "Grade": grade,
         "Trigger_Price": trigger,
@@ -2980,11 +2981,23 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             try:
-                pf_file = "data/true_paper_portfolio.json"
+                # ?book= selects which of the 3 independent books to return
+                # (2026-09-23) - "all" (default) is the original Rs.1L book;
+                # "top_engines"/"latest_findings" are the two screener-
+                # specific Rs.5L books (see src/true_paper_trader.py). Each
+                # maps to its own state file + default-config template, the
+                # same pairing TruePaperTrader.load_state() itself derives -
+                # keep both in sync if either naming scheme ever changes.
+                book = query_params.get("book", ["all"])[0]
+                book_files = {
+                    "all": ("data/true_paper_portfolio.json", "config/true_paper_portfolio_default.json"),
+                    "top_engines": ("data/true_paper_portfolio_top_engines.json", "config/true_paper_portfolio_top_engines_default.json"),
+                    "latest_findings": ("data/true_paper_portfolio_latest_findings.json", "config/true_paper_portfolio_latest_findings_default.json"),
+                }
+                pf_file, default_pf = book_files.get(book, book_files["all"])
                 if not os.path.exists(pf_file):
                     pf_file = os.path.join("minervini_os", pf_file)
-                    
-                default_pf = "config/true_paper_portfolio_default.json"
+
                 if not os.path.exists(default_pf):
                     default_pf = os.path.join("minervini_os", default_pf)
                 
@@ -3018,7 +3031,8 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
                 else:
                     try:
                         from src.true_paper_trader import TruePaperTrader
-                        trader = TruePaperTrader()
+                        screener = book if book in ("top_engines", "latest_findings") else "all"
+                        trader = TruePaperTrader(state_file=pf_file, screener=screener)
                         data = trader.state
                     except Exception as e:
                         data = {"error": f"Trader Init Error: {str(e)}", "traceback": traceback.format_exc()}
@@ -3070,6 +3084,35 @@ class DashboardRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(safe_json_dumps(data).encode("utf-8"))
             return
             
+        # REST API: price chart payload (candles, MAs, volume, consolidation zones, setup levels)
+        if path == "/api/stock_chart":
+            symbol = query_params.get("symbol", [None])[0]
+            date_str = query_params.get("date", [None])[0]
+            if not symbol or not re.fullmatch(r"[A-Za-z0-9&_.\-]{1,30}", symbol):
+                self.send_response(400)
+                self.end_headers()
+                self.wfile.write(b"Missing or invalid symbol parameter")
+                return
+            try:
+                from src.chart_data import build_chart_payload
+                payload = build_chart_payload(symbol, config)
+                try:
+                    detail = get_stock_detail(symbol, date_str)
+                    payload["detail"] = detail
+                except Exception as detail_ex:
+                    print(f"stock_chart: detail unavailable for {symbol}: {detail_ex}")
+                    payload["detail"] = None
+                body = safe_json_dumps(payload).encode("utf-8")
+                self.send_response(200)
+            except Exception as chart_ex:
+                traceback.print_exc()
+                body = safe_json_dumps({"symbol": symbol, "error": f"Chart failed: {chart_ex}"}).encode("utf-8")
+                self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+
         # REST API: Get Scan Dates List
         if path == "/api/scan_dates":
             self.send_response(200)

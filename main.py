@@ -151,6 +151,21 @@ def run_daily_scan():
     if stale_symbols:
         logger.info(f"Bulk downloading {len(stale_symbols)} stale/missing symbols to cache...")
         data_engine.bulk_fetch_ohlcv(stale_symbols)
+
+        # Data-quality gate: report symbols missing sessions the index calendar has.
+        try:
+            gaps = data_engine.find_calendar_gaps(symbols, window=10)
+            stale_n = len(gaps.pop("__stale__", []))
+            gapped = len(gaps)
+            if gapped:
+                worst = sorted({d for v in gaps.values() for d in v})
+                logger.warning(f"DATA GAP CHECK: {gapped} symbols are missing sessions in the last 10 days "
+                               f"(dates: {worst}); {stale_n} symbols have no row for the latest session. "
+                               f"Breadth/advance-decline may be distorted until backfilled.")
+            else:
+                logger.info(f"Data gap check passed (no missing sessions in the last 10 days; {stale_n} stale symbols).")
+        except Exception as gap_ex:
+            logger.warning(f"Data gap check failed: {gap_ex}")
         
     # Clear FORCE_STALE from environment so the main loop reads from the newly updated cache without re-downloading
     if "FORCE_STALE" in os.environ:

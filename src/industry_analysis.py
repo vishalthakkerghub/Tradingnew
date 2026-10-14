@@ -802,10 +802,13 @@ def analyze_participation(end_date=None):
         sum_52wh = 0
         sum_adv = 0
         
+        prev_covered = 0
         try:
             d_idx = trading_dates.index(d)
+            d_idx_cur = d_idx
             d_prev = trading_dates[d_idx - 1] if d_idx > 0 else d
         except Exception:
+            d_idx_cur = 0
             d_prev = d
             
         for r in results:
@@ -820,6 +823,17 @@ def analyze_participation(end_date=None):
                 sum_52wh += ind.get("near_52wh", 0)
                 
                 ind_prev = r['Daily_Indicators'].get(d_prev, {})
+                if not ind_prev.get("price", 0.0) > 0.0:
+                    # Previous session missing for this stock (vendor data gap):
+                    # compare against its last available earlier close instead of
+                    # treating it as "not advancing" (2026-10-12 gap bug).
+                    for d_back in reversed(trading_dates[:max(d_idx_cur, 0)]):
+                        cand = r['Daily_Indicators'].get(d_back, {})
+                        if cand.get("price", 0.0) > 0.0:
+                            ind_prev = cand
+                            break
+                else:
+                    prev_covered += 1
                 if ind_prev.get("price", 0.0) > 0.0:
                     if ind.get("price", 0.0) > ind_prev.get("price", 0.0):
                         sum_adv += 1
@@ -832,6 +846,11 @@ def analyze_participation(end_date=None):
             p_rs = (sum_rs / total_valid) * 100.0
             p_52wh = (sum_52wh / total_valid) * 100.0
             p_adv = (sum_adv / total_valid) * 100.0
+            prev_coverage = prev_covered / total_valid
+            if prev_coverage < 0.8:
+                print(f"WARNING: only {prev_coverage*100:.0f}% of stocks have a price on the previous session "
+                      f"({d_prev.strftime('%Y-%m-%d')}) for {d.strftime('%Y-%m-%d')}; advance/decline used each stock's last "
+                      f"available close. Check the price cache for missing sessions.")
             
             # MBI is the average of 5 primary indicators (200-SMA, 50-SMA, A/D, Near 52WH, RS >= 70)
             breadth_index = (p_sma200 + p_sma50 + p_adv + p_52wh + p_rs) / 5.0
@@ -844,7 +863,8 @@ def analyze_participation(end_date=None):
                 "Stacked": p_stacked,
                 "HighRS": p_rs,
                 "Near52WH": p_52wh,
-                "AdvancesDeclines": p_adv
+                "AdvancesDeclines": p_adv,
+                "PrevSessionCoverage": prev_coverage
             }
             
     today_str = target_dates[-1].strftime('%Y-%m-%d')
@@ -898,6 +918,11 @@ def analyze_participation(end_date=None):
         "Change_5D": round(change_5d, 1),
         "Status": status,
         "StatusColor": status_color,
+        "Data_Quality": {
+            "PrevSessionCoverage_Pct": round(t_data.get("PrevSessionCoverage", 1.0) * 100.0, 1),
+            "Warning": ("Less than 80% of stocks have the previous session cached; A/D used last available closes."
+                        if t_data.get("PrevSessionCoverage", 1.0) < 0.8 else None)
+        },
         "Indicators": {
             "Above20EMA": round(t_data.get("Above20EMA", 0.0), 1),
             "Above50SMA": round(t_data.get("Above50SMA", 0.0), 1),

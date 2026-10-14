@@ -7821,6 +7821,20 @@ function showAMSDetail(symbol) {
 
     if (!symbol) return;
 
+    // Every stock click opens the price chart (web/stock_chart.js); it falls back to
+    // the detail drawer below when the chart library is unavailable.
+    if (typeof window.openStockChart === "function") {
+        window.openStockChart(symbol);
+        return;
+    }
+
+    showTickerDrawer(symbol);
+}
+
+function showTickerDrawer(symbol) {
+
+    if (!symbol) return;
+
     
 
     fetch(`/api/stock_detail?symbol=${symbol}`)
@@ -8185,6 +8199,7 @@ function renderAMSDetailCard(data) {
 }
 
 window.showAMSDetail = showAMSDetail;
+window.showTickerDrawer = showTickerDrawer;
 
 // Collapsible Trade Cards toggle
 

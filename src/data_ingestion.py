@@ -182,6 +182,7 @@ class DataIngestionEngine:
             if not df.empty:
                 df = self._normalize_columns(df, symbol)
                 if self.validate_data(df, symbol):
+                    df = self._merge_with_cache(df, cache_file)
                     self._save_cache_file(df, cache_file)
                     logger.info(f"Successfully cached and validated data for {symbol}.")
                     return df.tail(lookback_days)
@@ -287,6 +288,7 @@ class DataIngestionEngine:
                                     
                             df_sym = self._normalize_columns(df_sym, symbol)
                             if self.validate_data(df_sym, symbol):
+                                df_sym = self._merge_with_cache(df_sym, cache_file)
                                 self._save_cache_file(df_sym, cache_file)
                                 results[symbol] = df_sym.tail(lookback_days)
                             else:
@@ -493,6 +495,103 @@ class DataIngestionEngine:
                 df = df[df[col] > 0]
                 
         return df
+
+    def _merge_with_cache(self, new_df: pd.DataFrame, cache_file: str) -> pd.DataFrame:
+        """
+        Merges a fresh download into the existing cache instead of replacing it.
+
+        Why: a full "2y" re-download replaces the whole CSV, so a day that the data
+        vendor omits (seen 2026-10-12: Yahoo returned no row for equities while the
+        index had one) silently erased a good candle that was already cached.
+        Rows in the new download win on overlapping dates; dates present only in
+        the cache are kept. Delivery_Pct, which the vendor never supplies, is carried
+        over from the cache.
+
+        Cached rows that fall in a gap are rescaled by the old/new close ratio at the
+        nearest earlier common date, so a split/dividend re-adjustment between the
+        two downloads does not leave rows on different price bases.
+        """
+        try:
+            if new_df is None or new_df.empty or not os.path.exists(cache_file):
+                return new_df
+            old_df = self._load_cache_file(cache_file)
+            if old_df is None or old_df.empty or "Close" not in old_df.columns:
+                return new_df
+            old_df = old_df[~old_df.index.duplicated(keep="last")]
+            new_df = new_df.copy()
+            new_df = new_df[~new_df.index.duplicated(keep="last")]
+
+            common = old_df.index.intersection(new_df.index)
+            if "Delivery_Pct" in old_df.columns:
+                if "Delivery_Pct" not in new_df.columns:
+                    new_df["Delivery_Pct"] = 0.0
+                keep = old_df.loc[common, "Delivery_Pct"]
+                new_df.loc[common, "Delivery_Pct"] = keep.where(keep > 0, new_df.loc[common, "Delivery_Pct"])
+
+            only_old = old_df.index.difference(new_df.index)
+            # Only restore dates inside the span the new download covers (true gaps),
+            # not older history the vendor window has simply scrolled past.
+            gap_dates = [d for d in only_old if new_df.index[0] < d < new_df.index[-1]]
+            if not gap_dates:
+                return new_df
+
+            rows = []
+            for d in gap_dates:
+                prior_common = [c for c in common if c < d]
+                scale = 1.0
+                if prior_common:
+                    c = prior_common[-1]
+                    o, n = float(old_df.loc[c, "Close"]), float(new_df.loc[c, "Close"])
+                    if o > 0 and n > 0 and abs(n / o - 1.0) > 0.002:
+                        scale = n / o
+                row = old_df.loc[d].copy()
+                for col in ("Open", "High", "Low", "Close"):
+                    if col in row.index:
+                        row[col] = float(row[col]) * scale
+                rows.append(row.rename(d))
+            restored = pd.DataFrame(rows)
+            merged = pd.concat([new_df, restored.reindex(columns=new_df.columns)]).sort_index()
+            merged.index.name = "Date"
+            logger.warning(f"Cache merge: restored {len(gap_dates)} date(s) missing from the download for {os.path.basename(cache_file)}: {sorted(gap_dates)}")
+            return merged
+        except Exception as e:
+            logger.warning(f"Cache merge failed for {cache_file}, using download as-is: {e}")
+            return new_df
+
+    def find_calendar_gaps(self, symbols: list, window: int = 10, benchmark: str = "NIFTY_50") -> dict:
+        """
+        Compares each symbol's cached dates against the benchmark index calendar over
+        the last `window` sessions. Returns {symbol: [missing dates]} for symbols that
+        trade (have a row on the latest date) yet lack earlier sessions in the window.
+        Symbols whose cache ends before the latest session are stale, not gapped, and
+        are reported separately under the key "__stale__" as a list.
+        """
+        bench_path = os.path.join(self.cache_dir, f"{benchmark}.csv")
+        if not os.path.exists(bench_path):
+            return {}
+        bench = self._load_cache_file(bench_path)
+        calendar = list(bench.index[-window:])
+        if not calendar:
+            return {}
+        latest = calendar[-1]
+        gaps, stale = {}, []
+        for sym in symbols:
+            path = os.path.join(self.cache_dir, f"{sym.upper()}.csv")
+            if not os.path.exists(path):
+                continue
+            try:
+                idx = set(self._load_cache_file(path).index)
+            except Exception:
+                continue
+            if latest not in idx:
+                stale.append(sym)
+                continue
+            first = min(idx) if idx else latest
+            missing = [d for d in calendar if d not in idx and d > first]  # ignore pre-listing dates
+            if missing:
+                gaps[sym] = missing
+        gaps["__stale__"] = stale
+        return gaps
 
     def _load_cache_file(self, cache_file: str) -> pd.DataFrame:
         """

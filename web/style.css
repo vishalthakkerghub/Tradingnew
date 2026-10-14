@@ -3381,3 +3381,11 @@ body {
 }
 
 
+
+
+/* Stock chart modal buttons */
+.sc-btn {
+    font-size: 11px; padding: 4px 10px; border-radius: 12px; cursor: pointer; font-family: inherit;
+    border: 1px solid var(--border-color); background: transparent; color: var(--text-secondary);
+}
+.sc-btn:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.25); }
